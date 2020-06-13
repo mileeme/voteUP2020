@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}2020 Candidate Info{% endblock %}
+
+{% block body %}
+<h1>Question 1</h1>
+{% for response in response_list %}
+{% if response.question.number == 1 %}
+<p>{{ response.response }} / {{ response.candidate }} / {{ response.description }}</p>
+{% endif %}
+{% endfor %}
+
+<h1>Question 2</h1>
+{% for response in response_list %}
+{% if response.question.number == 2 %}
+<p>{{ response.response }} / {{ response.candidate }} / {{ response.description }}</p>
+{% endif %}
+{% endfor %}
+
+<h1>trump</h1>
+{% for response in trump_response %}
+<p>{{ response.question }} / {{ response.response }}</p>
+{% endfor %}
+
+{% endblock %}
