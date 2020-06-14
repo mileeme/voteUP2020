@@ -12,4 +12,4 @@ class ResponseAdmin(admin.ModelAdmin):
 
 @admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin):
-    list_display = ('question',)
+    list_display = ('number', 'question')

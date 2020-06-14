@@ -16,10 +16,10 @@ class Candidate(models.Model):
 class Question(models.Model):
     number = models.PositiveIntegerField(
         'number', blank=True, null=True)
-    question = models.CharField(max_length=255, blank=True, null=True)
+    question = models.TextField(max_length=1000, blank=True, null=True)
 
     class Meta:
-        ordering = ['question', ]
+        ordering = ['number', ]
 
     def __str__(self):
         return f"{self.question}"

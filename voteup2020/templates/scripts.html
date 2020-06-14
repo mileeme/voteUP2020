@@ -1,0 +1,26 @@
+<script>
+    let countOne = function () {
+        let n = $('input[id="1"]:checked').length;
+        let y = $('input[id="1"]:checked').val();
+        $('#candidateA').text(n);
+        $('#insertHere').text(y);
+    }
+    countOne();
+    $('input[type=radio]').on('click', countOne);
+
+    let counterTwo = function () {
+        let n = $('input[id="2"]:checked').length;
+        let y = $('input[id="2"]:checked').val();
+        $('#candidateB').text(n);
+        $('#insertHere').text(y);
+    }
+    counterTwo();
+    $('input[type=radio]').on('click', counterTwo);
+
+
+    // let addThis = function() {
+    //     $('#InsertHere').text("hello there");
+    // }
+
+
+</script>

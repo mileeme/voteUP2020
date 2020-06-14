@@ -8,10 +8,10 @@
 
     {% for question in question_list %}
     <form>
-        <h3>{{ question.number }} / {{ question }}</h3>
+        <h3>{{ question.number }} / {{ question|safe }}</h3>
         {% for response in response_list %}
         {% if question.number == response.response_id %}
-            <label class="radio-inline" for="{{ response.candidate_id }}"><input type="radio" name="{{ response.question_id }}" id="{{ response.candidate_id }}">{{ response.candidate.l_name }}: {{ response.response }} / {{ response.description }}</label>
+            <label class="radio-inline" for="{{ response.candidate_id }}"><input type="radio" name="{{ response.question_id }}" value="{{ response.response }}" id="{{ response.candidate_id }}">{{ response.candidate.l_name }}: {{ response.response }} / {{ response.description }}</label>
         {% endif %}
         {% endfor %}
     </form>
@@ -19,21 +19,4 @@
     <p>biden: <span id="candidateA"></span></p>
     <p>trump: <span id="candidateB"></span></p>
 </div>
-
-<script>
-    let countOne = function () {
-        let n = $('input[id="1"]:checked').length;
-        $('#candidateA').text(n);
-    }
-    countOne();
-    $('input[type=radio]').on('click', countOne);
-
-    let counterTwo = function () {
-            let n = $('input[id="2"]:checked').length;
-            $('#candidateB').text(n);
-        }
-        counterTwo();
-        $('input[type=radio]').on('click', counterTwo);
-
-</script>
 {% endblock %}
