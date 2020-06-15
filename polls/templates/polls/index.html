@@ -1,22 +1,37 @@
 {% extends 'base.html' %}
 {% block title %}2020 Candidate Info{% endblock %}
-
 {% block body %}
 <div class="container">
     <!-- poll -->
     <h1>questions</h1>
 
+    <!-- get question -->
     {% for question in question_list %}
-    <form>
+    <form id="singleQuestion" method="post" action="#">
+        <!-- question title -->
         <h3>{{ question.number }} / {{ question|safe }}</h3>
         {% for response in response_list %}
+        <!-- get response that matches question_id -->
         {% if question.number == response.response_id %}
-            <label class="radio-inline" for="{{ response.candidate_id }}"><input type="radio" name="{{ response.question_id }}" value="{{ response.response }}" id="{{ response.candidate_id }}">{{ response.candidate.l_name }}: {{ response.response }} / {{ response.description }}</label>
+        <!-- response -->
+        <div id="responsesToQuestion">
+            <input id="{{ response.candidate_id }}" type="radio" name="toggler" value="{{ response.response }}">
+            <label for="{{ response.candidate_id }}">{{ response.candidate.l_name }}: {{ response.response }}</label>
+            <!-- detail -->
+            <div class="reveal-if-active">
+                {{ response.description }}
+            </div>
+        </div>
+    
         {% endif %}
         {% endfor %}
+
     </form>
     {% endfor %}
-    <p>biden: <span id="candidateA"></span></p>
+
+    <!-- total count -->
     <p>trump: <span id="candidateB"></span></p>
+    <p>biden: <span id="candidateA"></span></p>
 </div>
+
 {% endblock %}

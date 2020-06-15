@@ -2,3 +2,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{% block title %}{% endblock %}</title>
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+<style>
+    .reveal-if-active {
+        opacity: 0;
+        overflow: hidden;
+    }
+
+    input[type="radio"]:checked ~ .reveal-if-active {
+        opacity: 1;
+        overflow: visible;
+    }
+</style>
