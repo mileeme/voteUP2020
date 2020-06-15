@@ -1,18 +1,36 @@
 <script>
     // get count per candidate
     let countOne = function () {
-        let n = $('input[id="1"]:checked').length;
+        let n = $('input[id="candidate-1"]:checked').length;
         $('#candidateA').text(n);
     }
     let countTwo = function () {
-        let n = $('input[id="2"]:checked').length;
+        let n = $('input[id="candidate-2"]:checked').length;
         $('#candidateB').text(n);
     }
-  
+
+    // insert response into question
+    $(function () {
+        $('input[type=radio]').on('change', function () {
+            let val = $(this).val();
+            // let $span = $(this).parent().closest('div#poll').find('.add-if-active');
+            // let $span = $(this).parent().parent('div').attr('id');
+            let $span = $(this).parent().parent('div').find('.add-if-active');
+            console.log(val);
+            console.log($span);
+            if (val) {
+                $span.empty();
+                $span.append(val);
+            } else {
+                $span.append(val);
+            }
+        });
+    });
+
     $('input[type=radio]').click(function() {
         countOne();
         countTwo();
     });
-
 </script>
-
+<!-- https://jsfiddle.net/44w3n1k6/12/ -->
+<!-- https://stackoverflow.com/questions/34905507/jquery-change-function-only-for-closest-element -->

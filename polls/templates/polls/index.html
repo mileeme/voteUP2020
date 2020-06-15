@@ -7,24 +7,30 @@
 
     <!-- get question -->
     {% for question in question_list %}
-    <form id="singleQuestion" method="post" action="#">
-        <!-- question title -->
-        <h3>{{ question.number }} / {{ question|safe }}</h3>
-        {% for response in response_list %}
-        <!-- get response that matches question_id -->
-        {% if question.number == response.response_id %}
-        <!-- response -->
-        <div id="responsesToQuestion">
-            <input id="{{ response.candidate_id }}" type="radio" name="toggler" value="{{ response.response }}">
-            <label for="{{ response.candidate_id }}">{{ response.candidate.l_name }}: {{ response.response }}</label>
-            <!-- detail -->
-            <div class="reveal-if-active">
-                {{ response.description }}
+    <form method="post" action="#">
+
+        <div id="poll">
+            
+            <!-- question title -->
+            <h3>{{ question.number }} / {{ question|safe }}</h3>
+            
+            {% for response in response_list %}
+            <!-- get response that matches question_id -->
+            {% if question.number == response.response_id %}
+            <!-- response -->
+            <div id="responses">
+                <input id="candidate-{{ response.candidate_id }}" class="please" type="radio" name="candidate-response" value="{{ response.response }}">
+                <label for="candidate-{{ response.candidate_id }}">{{ response.response_id }} / {{ response.candidate_id }} {{ response.candidate.l_name }}: {{ response.response }}</label>
+
+                <!-- detail -->
+                <div class="reveal-if-active">
+                    {{ response.description }}
+                </div>
+
             </div>
+            {% endif %}
+            {% endfor %}
         </div>
-    
-        {% endif %}
-        {% endfor %}
 
     </form>
     {% endfor %}
