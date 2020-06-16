@@ -36,8 +36,10 @@
     {% endfor %}
 
     <!-- total count -->
-    <p>trump: <span id="candidateB"></span></p>
-    <p>biden: <span id="candidateA"></span></p>
+    {% for candidate in candidate_list %}
+    <p>{{ candidate.l_name }}: <span id="candidate{{ candidate.id }}"></span></p>
+    <!-- <p>biden: <span id="candidateA"></span></p> -->
+    {% endfor %}
 </div>
 
 {% endblock %}
