@@ -1,6 +1,10 @@
 from django.contrib import admin
-from .models import Candidate, Response, Question
+from .models import Election, Candidate, Response, Question
 
+
+@admin.register(Election)
+class ElectionAdmin(admin.ModelAdmin):
+    list_display = ('date', 'name',)
 
 @admin.register(Candidate)
 class CandidateAdmin(admin.ModelAdmin):

@@ -3,42 +3,46 @@
 {% block body %}
 <div class="container">
     <!-- poll -->
-    <h1>questions</h1>
+    {% for election in election_list %}
+    <div>
+        <h1>{{ election.name }}</h1>
 
-    <!-- get question -->
-    {% for question in question_list %}
-    <form method="post" action="#">
+        <!-- get question -->
+        {% for question in question_list %}
+        <form method="post" action="#">
 
-        <div id="poll">
-            
-            <!-- question title -->
-            <h3>{{ question.number }} / {{ question|safe }}</h3>
-            
-            {% for response in response_list %}
-            <!-- get response that matches question_id -->
-            {% if question.number == response.response_id %}
-            <!-- response -->
-            <div id="responses">
-                <input id="candidate-{{ response.candidate_id }}" class="please" type="radio" name="candidate-response" value="{{ response.response }}">
-                <label for="candidate-{{ response.candidate_id }}">{{ response.response_id }} / {{ response.candidate_id }} {{ response.candidate.l_name }}: {{ response.response }}</label>
+            <div id="poll">
+                
+                <!-- question title -->
+                <h3>{{ question.number }} / {{ question|safe }}</h3>
+                
+                {% for response in response_list %}
+                <!-- get response that matches question_id -->
+                {% if question.number == response.response_id %}
+                <!-- response -->
+                <div id="responses">
+                    <input id="candidate-{{ response.candidate_id }}" class="please" type="radio" name="candidate-response" value="{{ response.response }}">
+                    <label for="candidate-{{ response.candidate_id }}">{{ response.response_id }} / {{ response.candidate_id }} {{ response.candidate.l_name }}: {{ response.response }}</label>
 
-                <!-- detail -->
-                <div class="reveal-if-active">
-                    {{ response.description }}
+                    <!-- detail -->
+                    <div class="reveal-if-active">
+                        {{ response.description }}
+                    </div>
+
                 </div>
-
+                {% endif %}
+                {% endfor %}
             </div>
-            {% endif %}
-            {% endfor %}
-        </div>
 
-    </form>
-    {% endfor %}
+        </form>
+        {% endfor %}
 
-    <!-- total count -->
-    {% for candidate in candidate_list %}
-    <p>{{ candidate.l_name }}: <span id="candidate{{ candidate.id }}"></span></p>
-    <!-- <p>biden: <span id="candidateA"></span></p> -->
+        <!-- total count -->
+        {% for candidate in candidate_list %}
+        <p>{{ candidate.l_name }}: <span id="candidate{{ candidate.id }}"></span></p>
+        <!-- <p>biden: <span id="candidateA"></span></p> -->
+        {% endfor %}
+    </div>
     {% endfor %}
 </div>
 
