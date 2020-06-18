@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Election, Candidate, Response, Question
+from .models import Election, Candidate, Response, Question, RegisterToVote
 
 
 @admin.register(Election)
@@ -16,4 +16,8 @@ class ResponseAdmin(admin.ModelAdmin):
 
 @admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin):
-    list_display = ('number', 'question')
+    list_display = ('number', 'question',)
+
+@admin.register(RegisterToVote)
+class RegisterToVoteAdmin(admin.ModelAdmin):
+    list_display = ('state',)

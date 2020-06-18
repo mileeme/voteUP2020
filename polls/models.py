@@ -49,3 +49,16 @@ class Response(models.Model):
     
     def __str__(self):
         return f"{self.candidate}: {self.response}"
+
+
+class RegisterToVote(models.Model):
+    state = models.CharField(max_length=60, blank=True, null=True)
+    check_url = models.URLField(max_length=255, blank=True, null=True)
+    register_url = models.URLField(max_length=255, blank=True, null=True)
+
+    class Meta:
+        ordering = ['state',]
+    
+    def __str__(self):
+        return f"{self.state}"
+

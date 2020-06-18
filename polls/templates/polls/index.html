@@ -14,7 +14,7 @@
             <div id="poll">
                 
                 <!-- question title -->
-                <h3>{{ question.number }} / {{ question|safe }}</h3>
+                <h3 id="question">{{ question.number }} / {{ question|safe }}</h3>
                 
                 {% for response in response_list %}
                 <!-- get response that matches question_id -->
