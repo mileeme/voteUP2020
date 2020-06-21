@@ -1,7 +1,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{% block title %}{% endblock %}</title>
-<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+{% load static %}
+<script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+
 <style>
     .reveal-if-active {
         opacity: 0;
