@@ -34,18 +34,18 @@ class Question(models.Model):
         ordering = ['number', ]
 
     def __str__(self):
-        return f"{self.question}"
+        return f"{self.number} {self.question}"
 
 
 class Response(models.Model):
     candidate = models.ForeignKey(Candidate, on_delete=models.CASCADE, related_name='responses')
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     response_id = models.PositiveIntegerField('response id', blank=True, null=True)
-    response = models.CharField(max_length=255, blank=True, null=True)
-    description = models.CharField(max_length=255, blank=True, null=True)
+    response = models.TextField(max_length=255, blank=True, null=True)
+    description = models.TextField(max_length=255, blank=True, null=True)
 
     class Meta:
-        ordering = ['candidate', 'response_id',]
+        ordering = ['response_id', 'candidate', ]
     
     def __str__(self):
         return f"{self.candidate}: {self.response}"

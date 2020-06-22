@@ -2,31 +2,4 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{% block title %}{% endblock %}</title>
 {% load static %}
-<script type="text/javascript" src="{% static 'js/index.js' %}"></script>
-
-<style>
-    .reveal-if-active {
-        opacity: 0;
-        overflow: hidden;
-    }
-    input[type="radio"]:checked ~ .reveal-if-active {
-        opacity: 1;
-        overflow: visible;
-    }
-
-    .add-if-active {
-        opacity: 1;
-        overflow: hidden;
-        text-decoration: underline;
-    }
-
-    .show {
-        display: block;
-    }
-    .hide {
-        display: none;
-    }
-    .background-color {
-        background: red;
-    }
-</style>
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">

@@ -1,57 +1,56 @@
 {% extends 'base.html' %}
 {% block title %}2020 Candidate Info{% endblock %}
 {% block body %}
+
+
+<!-- poll -->
+{% for election in election_list %}
 <div class="container">
-    
-    <!-- poll -->
-    {% for election in election_list %}
-    <div>
-        <h1>{{ election.name }}</h1>
+    <h1>{{ election.name }}</h1>
+</div>
+<!-- get questions -->
+{% for question in question_list %}
+<form method="post" action="#" class="container-form">
+    {% csrf_token %}
+    <div id="poll" class="container">
+        <!-- question title -->
+        <h3 id="question" data-id="{{ question.number }}">{{ question|safe }}</h3>
+        <!-- get responses that matches question_id -->
+        {% for response in response_list %}
+        {% if question.number == response.response_id %}
+        <!-- response -->
+        <input id="candidate" class="response-button" type="button" name="candidate-response" value="{{ response.response|safe }}" data-response="{{ response.response_id }}" data-candidate="{{ response.candidate_id }}">
 
-        <!-- get questions -->
-        {% for question in question_list %}
-        <form method="post" action="#">
-
-            <div id="poll">
-                
-                <!-- question title -->
-                <h3 id="question" data-id="{{ question.number }}">{{ question.number }} / {{ question|safe }}</h3>
-                <!-- get responses that matches question_id -->
-                {% for response in response_list %}
-                {% if question.number == response.response_id %}
-                <!-- response -->
-                <div id="responses">
-                    <input id="candidate-{{ response.candidate_id }}" type="radio" name="candidate-response" value="{{ response.response }}" data-response="{{ response.response_id }}" data-candidate="{{ response.candidate_id }}">
-                    <label for="candidate-{{ response.candidate_id }}">{{ response.response }}</label>
-                </div>
-                {% endif %}
-                {% endfor %}
-
-                <!-- response detail -->
-                {% for response in response_list %}
-                {% if question.number == response.response_id %}
-                <div>
-                    <p id="responseDetail" class="hide" data-response="{{ response.response_id }}" data-candidate="{{ response.candidate_id }}">More deets: {{ response.description }}</p>
-                </div>
-                {% endif %}
-                {% endfor %}
-            </div>
-        </form>
+        {% endif %}
         {% endfor %}
 
-        <hr>
-
-        <!-- total tally -->
-        <p>total questions: <span id="counter">0</span></p>
-        {% for candidate in candidate_list %}
-        <p><span id="candidate{{ candidate.id }}">0</span> / Your values are <span id="percentage{{ candidate.id }}">0</span>% compatible with {{ candidate.l_name }}</p>
+        <!-- response detail -->
+        {% for response in response_list %}
+        {% if question.number == response.response_id %}
+        <div>
+            <p id="responseDetail" class="hide" data-response="{{ response.response_id }}"
+                data-candidate="{{ response.candidate_id }}">More deets: {{ response.description|safe }}</p>
+        </div>
+        {% endif %}
         {% endfor %}
     </div>
+</form>
+{% endfor %}
 
-    <hr>
+<hr>
+
+<!-- total tally -->
+<div class="container">
+    <p>total questions answered: <span id="count-all"></span> out of <span id="counter">0</span></p>
+    {% for candidate in candidate_list %}
+    <p>From the questions, I have matched <span id="candidate{{ candidate.id }}">0</span> / My values are <span id="percentage{{ candidate.id }}">0</span>% compatible with {{ candidate.l_name }}</p>
+    {% endfor %}
+</div>
+<hr>
 
 <!-- table of results -->
-<table style="border: 1px solid #ccc;padding: 20px;">
+<div class="container">
+    <table style="border: 1px solid #ccc;padding: 20px;">
         <thead>
             <th></th>
             {% for candidate in candidate_list %}
@@ -66,14 +65,46 @@
                 <td>{{ question|safe }}</td>
                 {% for response in response_list %}
                 {% if question.number == response.response_id %}
-                <td id="tableColumn" class="" data-response="{{ response.response_id }}" data-candidate="{{ response.candidate_id }}">{{ response.response_id }} / {{ response.response }}</td>
+                <td id="tableColumn" class="" data-response="{{ response.response_id }}"
+                    data-candidate="{{ response.candidate_id }}">{{ response.response_id }} / {{ response.response }}
+                </td>
                 {% endif %}
                 {% endfor %}
             </tr>
             {% endfor %}
         </tbody>
     </table>
-
-    {% endfor %}
 </div>
+{% endfor %}
+
+<hr>
+
+<!-- check registration placeholder -->
+<div class="container">
+    <form action="">
+        {% csrf_token %}
+        <h2>Am I registered to vote?</h2>
+        <select id="states" name="registration">
+            <option value="choose your state">choose your state</option>
+            {% for registration in registration_list %}
+            <option value="{{ registration.check_url }}">{{ registration.state }}</option>
+            {% endfor %}
+        </select>
+        <button id="checkGovPage" type="submit" onclick="gotoGov()">Let's check</button>
+    </form>
+</div>
+
+<script>
+    function gotoGov() {
+        selectElement = document.querySelector('#states');
+        output = selectElement.value;
+        console.log(output);
+        if (output) {
+            window.open(output);
+        }
+        return false;
+    } 
+</script>
+
+
 {% endblock %}

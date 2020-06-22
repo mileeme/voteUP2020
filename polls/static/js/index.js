@@ -1,11 +1,10 @@
-
 // on page load
 document.addEventListener('DOMContentLoaded', () => {
-    countQuestions();
+    // countQuestions();
     // on input click
     document.querySelectorAll('input').forEach(item => {
         item.addEventListener('click', event => {
-            tallyCandidateCount();
+            tallyCount();
             showDetail();
             insertResponse();
             highlightTableColumn();
@@ -14,49 +13,74 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// get total questions
-countQuestions = () => {
-    // get total number of questions 
-    let counter = document.querySelectorAll('#question').length;
-    // insert total
-    document.querySelector('#counter').innerHTML = counter;
-};
+// // get total questions
+// countQuestions = () => {
+//     // get total number of questions 
+//     let counter = document.querySelectorAll('#question').length;
+//     // insert total
+//     document.querySelector('#counter').innerHTML = counter;
+// };
 
 
 // get total count per candidate
-tallyCandidateCount = () => {
-    // candidate inputs 
+tallyCount = () => {
+    const candidates = document.querySelectorAll('#candidate');
     const questions = document.querySelectorAll('#question').length;
-    const candidateA = document.querySelectorAll('input[id="candidate-1"]');
-    const candidateB = document.querySelectorAll('input[id="candidate-2"]');
+    let e = event.target;
+    let eResponse = e.dataset.response;
+    let eCandidate = e.dataset.candidate;
 
-    // checked counter
-    let countA = 0;
-    let countB = 0;
+    let candidateA = 0;
+    let candidateB = 0;
+    let countAnswered = 0;
+    let allActives = [];
 
-    // iterate through input to count checked 
-    for (let i = 0; i < candidateA.length; i++) {
-        if (candidateA[i].checked) {
-            countA++;
+    for (i = 0; i < candidates.length; i++) {
+        if (candidates[i].dataset.response === eResponse) {
+            if (candidates[i].dataset.candidate === eCandidate) {
+                candidates[i].classList.add('button-active');
+                allActives++;
+            } else {
+                candidates[i].classList.remove('button-active');
+            }
         }
+        let buttonActive = document.getElementsByClassName('button-active');
+        countAnswered = buttonActive.length;
+        allActives = buttonActive;
     }
-    for (let i = 0; i < candidateB.length; i++) {
-        if (candidateB[i].checked) {
-            countB++;
+
+    for (j = 0; j < allActives.length; j++) {
+        if (allActives[j].dataset.candidate === "1") {
+           candidateA++;
         }
+        if (allActives[j].dataset.candidate === "2") {
+            candidateB++;
+        }
+
     }
+    console.log(candidateA);
+    console.log(candidateB);
+    
 
-    // get percentage 
-    let percentageA = (countA / questions) * 100;
-    let percentageB = (countB / questions) * 100;
+    // do math 
+    let percentageAnswered = (countAnswered / questions) * 100;
+    let percentageA = (candidateA / questions) * 100;
+    let percentageB = (candidateB / questions) * 100;
 
-    // text for candidate-1
-    document.getElementById('candidate1').innerHTML = countA;
+
+    // all totals
+    document.querySelector('#counter').innerHTML = `${questions} (${percentageAnswered}% answered)`;
+    document.getElementById('count-all').innerHTML = countAnswered; 
+
+    // total for candidate-1
+    document.getElementById('candidate1').innerHTML = candidateA;
     document.getElementById('percentage1').innerHTML = percentageA;
 
-    // text for candidate-2
-    document.getElementById('candidate2').innerHTML = countB;
+    // total for candidate-2
+    document.getElementById('candidate2').innerHTML = candidateB;
     document.getElementById('percentage2').innerHTML = percentageB;
+
+
 };
 
 
@@ -87,13 +111,15 @@ insertResponse = () => {
     let e = event.target;
     let eResponse = e.dataset.response;
     let eValue = e.value;
-    let questions = document.querySelectorAll('#question');
+    let questions = document.querySelectorAll('#question-span');
 
     // iterate through questions
     for (i = 0; i < questions.length; i++) {
         // insert value if question id match response id
-        if (questions[i].dataset.id === eResponse) {
-            questions[i].firstElementChild.innerHTML = eValue;
+        if (questions[i].dataset.question === eResponse) {
+            questions[i].className = "insert-response";
+            questions[i].innerHTML = eValue;
+            // questions[i].firstElementChild.innerHTML = eValue;
         }
     }
 };
@@ -117,4 +143,3 @@ highlightTableColumn = () => {
         }
     }
 };
-

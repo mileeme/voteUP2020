@@ -8,11 +8,11 @@ class ElectionAdmin(admin.ModelAdmin):
 
 @admin.register(Candidate)
 class CandidateAdmin(admin.ModelAdmin):
-    list_display = ('f_name', 'l_name',)
+    list_display = ('election', 'f_name', 'l_name',)
 
 @admin.register(Response)
 class ResponseAdmin(admin.ModelAdmin):
-    list_display = ('question', 'candidate', 'response',)
+    list_display = ('question_id', 'candidate', 'response',)
 
 @admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin):

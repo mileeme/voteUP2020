@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% include 'head.html' %}
+{% include 'head.html' %}
 </head>
 <body>
-    {% block body %}{% endblock %}
+{% block body %}{% endblock %}
 
-    <!-- scripts -->
-    {% include 'scripts.html' %}
+<!-- scripts -->
+{% load static %}
+{% block js %}
+<script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+{% endblock %}
 </body>
 </html>

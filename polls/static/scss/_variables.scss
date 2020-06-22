@@ -1,0 +1,135 @@
+/* 
+* Variables
+ */
+
+ /* -----------------------------------------------------------------
+Containers
+----------------------------------------------------------------- */ 
+$containers: (
+    'sm': 540px,
+    'md': 720px,
+    'lg': 960px,
+    'xl': 1140px,
+) !default;
+
+/* -----------------------------------------------------------------
+Breakpoints
+----------------------------------------------------------------- */ 
+$breakpoints: (
+    'xs': 0rem,
+    'sm': 36rem,
+    'md': 48rem,
+    'lg': 62rem,
+    'xl': 75rem,
+) !default;
+
+/* -----------------------------------------------------------------
+Global colors
+----------------------------------------------------------------- */ 
+$background: #ffffff !default;
+$background-secondary: #E1F7FF !default;
+$primary-color: !default;
+$secondary-color: !default;
+$accent-color: !default;
+$link-color: !default;
+$link-hover-color: !default;
+$highlight: !default;
+$error: !default;
+$success: !default;
+$border: !default;
+/* -----------------------------------------------------------------
+Typography
+----------------------------------------------------------------- */ 
+
+// Body
+$font-size: 1rem !default;
+$font-style: normal !default;
+$font-variant: normal !default;
+$font-weight: normal !default;
+$font-color: !default;
+$font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial,sans-serif !default;
+$line-height: 1.6 !default;
+
+// Headings
+$heading-font-color: !default;
+$heading-font-weight: 400 !default;
+$heading-font-family: -apple-system-headline, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif !default;
+$heading-line-height: 1.4 !default;
+
+// heading font-size
+$h1-sm: 1.7rem !default;
+$h2-sm: 1.5rem !default;
+$h3-sm: 1.25rem !default;
+$h4-sm: 1.1rem !default;
+$h5-sm: 1rem !default;
+$h6-sm: 0.9rem !default;
+
+$multiplier: 1.1 !default;
+$h1: $h1-sm * $multiplier !default;
+$h2: $h2-sm * $multiplier !default;
+$h3: $h3-sm * $multiplier !default;
+$h4: $h4-sm * $multiplier !default;
+$h5: $h5-sm * $multiplier !default;
+$h6: $h6-sm * $multiplier !default;
+
+/* -----------------------------------------------------------------
+Spacing
+----------------------------------------------------------------- */ 
+$padding: 1rem !default;
+$margin: 1rem !default;
+$content-padding: 3.5rem 0 !default;
+$content-padding-sm: 1.5rem 0 !default;
+
+/* -----------------------------------------------------------------
+Borders
+----------------------------------------------------------------- */ 
+$border-width: 1px !default;
+$border-style: solid !default;
+$border-color: $border !default;
+$border-radius: .25rem !default;
+$borders: $border-width $border-style $border-color !default;
+
+/* -----------------------------------------------------------------
+Buttons
+----------------------------------------------------------------- */ 
+$button-background: $primary-color !default;
+$button-background-hover: scale($button-background, 10%) !default;
+$button-color: #ffffff !default;
+$button-font-weight: 600 !default;
+$button-font-size: 1rem !default;
+$button-border-style: solid !default;
+$button-border-color: $button-background !default;
+$button-border-radius: $border-radius !default;
+
+// Accent buttons
+$accent-button-background: $secondary-color !default;
+$accent-button-background-hover: scale($accent-button-background, 10%) !default;
+$accent-button-color: #ffffff !default;
+$accent-button-color-hover: #ffffff !default;
+
+// Muted buttons
+
+// Round buttons
+
+/* -----------------------------------------------------------------
+Forms
+----------------------------------------------------------------- */ 
+$forms: (
+
+) !default;
+$buttons: (
+    '.button,
+    a.button,
+    button,
+    [type=submit],
+    [type=button]'
+) !default;
+$input-background: transparent !default;
+$placeholder: scale($accent-color, 20%) !default;
+$form-border: 1px $border-style $border-color !default;
+$form-border-hover: 1px $border-style scale($border-color, 10%) !default;
+$form-border-focus: 1px $border-style $link-color !default;
+
+/* -----------------------------------------------------------------
+Tables
+----------------------------------------------------------------- */ 
