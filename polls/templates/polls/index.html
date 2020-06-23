@@ -13,7 +13,7 @@
 </div>
 <!-- get questions -->
 {% for question in question_list %}
-<form method="post" action="#" class="container-form">
+<form action="#" class="container-form">
     {% csrf_token %}
     <div id="poll" class="container">
         <!-- question title -->
@@ -90,33 +90,17 @@
 {% endfor %}
 
 <hr>
-
 <!-- check registration -->
 <div class="container">
-    <form action="">
-        {% csrf_token %}
+    <form action="#">
+    {% csrf_token %}
         <h2>Am I registered to vote?</h2>
-        <select id="states" name="registration">
-            <option value="choose your state">choose your state</option>
+        <input type="text" placeholder="search your state abbreviation" autocomplete="off" onkeyup="searchStates()" id="myInput">
+        <ul id="myUL" style="height: 100px; overflow: hidden;">
             {% for registration in registration_list %}
-            <option value="{{ registration.check_url }}">{{ registration.state }} ({{ registration.state_abbr }})</option>
+            <li id="stateLink" class="hide" data-state="{{ registration.id }}"><a href="{{ registration.check_url }}" target="_blank" data-id="{{ registration.id }}">{{ registration.state_abbr }} ({{ registration.state }}) registration lookup</a></li>
             {% endfor %}
-        </select>
-        <button id="checkGovPage" type="submit" onclick="gotoGov()">Let's check</button>
+        </ul>
     </form>
 </div>
-
-<script>
-    function gotoGov() {
-        selectElement = document.querySelector('#states');
-        output = selectElement.value;
-        console.log(output);
-        if (output) {
-            window.open(output);
-        }
-        return false;
-    } 
-</script>
-
-
 {% endblock %}

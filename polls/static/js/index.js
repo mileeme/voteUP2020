@@ -1,7 +1,7 @@
 // on page load
 document.addEventListener('DOMContentLoaded', () => {
     // form input buttons
-    document.querySelectorAll('input').forEach(item => {
+    document.querySelectorAll('#candidate').forEach(item => {
         item.addEventListener('click', event => {
             event.preventDefault();
             tallyCandidateCount();
@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         showPollResults();
     });
 });
+
 
 // on scroll 
 window.onscroll = () => {
@@ -170,8 +171,34 @@ highlightTableColumn = () => {
     }
 };
 
-
 // show results
 showPollResults = () => {
     document.querySelector('#revealResults').className = "show";
-}
+};
+
+// search registration filter
+searchStates = () => {
+    event.preventDefault();
+    let input = document.querySelector('#myInput');
+    let filter = input.value.toUpperCase();
+    let ul = document.querySelector('#myUL');
+    let stateLists = document.querySelectorAll('#stateLink');
+
+    // loop through the list and show matches 
+    for (i = 0; i < stateLists.length; i++) {
+        let listData = stateLists[i].dataset.state;
+        let listValue = stateLists[i].firstElementChild.innerHTML.toUpperCase().slice(0,2);
+
+        if (listValue.indexOf(filter) > -1) {
+            console.log(listValue);
+            stateLists[i].className = "show";
+        } else {
+            stateLists[i].className = "hide";
+        }
+        if (filter.length === 0) {
+            stateLists[i].className = "hide";
+        };
+    }
+};
+
+
