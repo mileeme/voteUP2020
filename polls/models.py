@@ -1,15 +1,25 @@
 from django.db import models
 
 
+
 class Election(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     date = models.DateField('date')
+    description = models.TextField(max_length=1000, blank=True, null=True)
 
     class Meta:
         ordering = ['date', 'name',]
 
     def __str__(self):
         return f"{self.name}"
+
+
+# class Topic(models.Model):
+#     election = models.ForeignKey(Election, blank=True, null=True, on_delete=models.CASCADE)
+#     title = models.CharField(max_length=255, blank=True, null=True)
+
+#     def __str__(self):
+#         return f"{self.title}"
 
 
 class Candidate(models.Model):
@@ -26,15 +36,15 @@ class Candidate(models.Model):
 
 
 class Question(models.Model):
-    number = models.PositiveIntegerField(
-        'number', blank=True, null=True)
+    # topic = models.ForeignKey(Topic, blank=True, null=True, on_delete=models.CASCADE, related_name="topics")
+    number = models.PositiveIntegerField('number', blank=True, null=True)
     question = models.TextField(max_length=1000, blank=True, null=True)
 
     class Meta:
         ordering = ['number', ]
 
     def __str__(self):
-        return f"{self.number} {self.question}"
+        return f"{self.question}"
 
 
 class Response(models.Model):
@@ -53,6 +63,7 @@ class Response(models.Model):
 
 class RegisterToVote(models.Model):
     state = models.CharField(max_length=60, blank=True, null=True)
+    state_abbr = models.CharField(max_length=3, blank=True, null=True)
     check_url = models.URLField(max_length=255, blank=True, null=True)
     register_url = models.URLField(max_length=255, blank=True, null=True)
 
@@ -60,5 +71,5 @@ class RegisterToVote(models.Model):
         ordering = ['state',]
     
     def __str__(self):
-        return f"{self.state}"
+        return f"{self.state_abbr}"
 

@@ -289,6 +289,10 @@ Containers
   background-color: #E1F7FF;
 }
 
+.container-results {
+  padding: 3rem 0;
+}
+
 /* -----------------------------------------------------------------
 Grid
 ----------------------------------------------------------------- */
@@ -302,7 +306,7 @@ Buttons
   cursor: pointer;
   padding: 1rem 1rem;
   margin: 1rem 0;
-  background-color: red;
+  background-color: gray;
 }
 
 .response-button:hover {
@@ -310,16 +314,46 @@ Buttons
 }
 
 .response-button:active {
-  background-color: blue;
+  background-color: yellow;
 }
 
 .button-active {
-  background-color: blue;
+  background-color: yellow;
+}
+
+.button-disabled {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  pointer-events: none;
+  background-color: #B2BFD6;
+}
+
+.button-show {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+  background-color: #1A69F5;
+}
+
+.result-button--fixed {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #B2BFD6;
+  text-align: center;
+  padding: 1rem 0;
 }
 
 /* -----------------------------------------------------------------
 Forms
 ----------------------------------------------------------------- */
+.election-description {
+  padding: 3rem 0;
+}
+
 /* -----------------------------------------------------------------
 Navigation
 ----------------------------------------------------------------- */
@@ -333,8 +367,12 @@ table {
 /* -----------------------------------------------------------------
 Questions
 ----------------------------------------------------------------- */
-.background-color {
-  background: red;
+.background-false {
+  background: gray;
+}
+
+.background-true {
+  background: yellow;
 }
 
 .no-response {

@@ -7,6 +7,9 @@
 {% for election in election_list %}
 <div class="container">
     <h1>{{ election.name }}</h1>
+    {% if election.description %}
+        {{ election.description|safe }}
+    {% endif %}
 </div>
 <!-- get questions -->
 {% for question in question_list %}
@@ -37,49 +40,58 @@
 </form>
 {% endfor %}
 
-<hr>
 
-<!-- total tally -->
-<div class="container">
-    <p>total questions answered: <span id="count-all"></span> out of <span id="counter">0</span></p>
-    {% for candidate in candidate_list %}
-    <p>From the questions, I have matched <span id="candidate{{ candidate.id }}">0</span> / My values are <span id="percentage{{ candidate.id }}">0</span>% compatible with {{ candidate.l_name }}</p>
-    {% endfor %}
-</div>
-<hr>
+<div id="pre-button"></div>
+<button id="showResults" class="button-disabled">0 answered</button>
 
-<!-- table of results -->
-<div class="container">
-    <table style="border: 1px solid #ccc;padding: 20px;">
-        <thead>
-            <th></th>
-            {% for candidate in candidate_list %}
-            {% if election.id == candidate.election_id %}
-            <th>{{ candidate.f_name }} {{ candidate.l_name }}</th>
-            {% endif %}
-            {% endfor %}
-        </thead>
-        <tbody>
-            {% for question in question_list %}
-            <tr id="tableRow" data-question="{{ question.number }}">
-                <td>{{ question|safe }}</td>
-                {% for response in response_list %}
-                {% if question.number == response.response_id %}
-                <td id="tableColumn" class="" data-response="{{ response.response_id }}"
-                    data-candidate="{{ response.candidate_id }}">{{ response.response_id }} / {{ response.response }}
-                </td>
+
+<div id="revealResults" class="hide">
+    <!-- total tally -->
+    <div class="container container-results">
+        <p>total questions answered: <span id="count-all"></span> out of <span id="counter">0</span></p>
+        {% for candidate in candidate_list %}
+        <p>From the questions, I have matched <span id="candidate{{ candidate.id }}">0</span> / My values are <span
+                id="percentage{{ candidate.id }}">0</span>% compatible with {{ candidate.l_name }}</p>
+        {% endfor %}
+    </div>
+
+
+    <!-- table of results -->
+    <div class="container container-results">
+        <table>
+            <thead>
+                <th></th>
+                {% for candidate in candidate_list %}
+                {% if election.id == candidate.election_id %}
+                <th>{{ candidate.f_name }} {{ candidate.l_name }}</th>
                 {% endif %}
                 {% endfor %}
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                {% for question in question_list %}
+                <tr id="tableRow" data-question="{{ question.number }}">
+                    <td>{{ question|safe }}</td>
+                    {% for response in response_list %}
+                    {% if question.number == response.response_id %}
+                    <td id="tableColumn" class="" data-response="{{ response.response_id }}"
+                        data-candidate="{{ response.candidate_id }}"><span id="agreed"></span>
+                    </td>
+                    <!-- <td id="tableColumn" class="" data-response="{{ response.response_id }}"
+                        data-candidate="{{ response.candidate_id }}">{{ response.response_id }} / {{ response.response }}
+                    </td> -->
+                    {% endif %}
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 {% endfor %}
 
 <hr>
 
-<!-- check registration placeholder -->
+<!-- check registration -->
 <div class="container">
     <form action="">
         {% csrf_token %}
@@ -87,7 +99,7 @@
         <select id="states" name="registration">
             <option value="choose your state">choose your state</option>
             {% for registration in registration_list %}
-            <option value="{{ registration.check_url }}">{{ registration.state }}</option>
+            <option value="{{ registration.check_url }}">{{ registration.state }} ({{ registration.state_abbr }})</option>
             {% endfor %}
         </select>
         <button id="checkGovPage" type="submit" onclick="gotoGov()">Let's check</button>

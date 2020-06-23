@@ -14,6 +14,10 @@ class CandidateAdmin(admin.ModelAdmin):
 class ResponseAdmin(admin.ModelAdmin):
     list_display = ('question_id', 'candidate', 'response',)
 
+# @admin.register(Topic)
+# class TopicAdmin(admin.ModelAdmin):
+#     list_display = ('title', )
+
 @admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin):
     list_display = ('number', 'question',)

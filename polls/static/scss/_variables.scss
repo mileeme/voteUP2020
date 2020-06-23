@@ -28,7 +28,7 @@ Global colors
 ----------------------------------------------------------------- */ 
 $background: #ffffff !default;
 $background-secondary: #E1F7FF !default;
-$primary-color: !default;
+$primary-color: #1A69F5 !default;
 $secondary-color: !default;
 $accent-color: !default;
 $link-color: !default;
@@ -100,6 +100,7 @@ $button-font-size: 1rem !default;
 $button-border-style: solid !default;
 $button-border-color: $button-background !default;
 $button-border-radius: $border-radius !default;
+$button-disabled: #B2BFD6 !default;
 
 // Accent buttons
 $accent-button-background: $secondary-color !default;
