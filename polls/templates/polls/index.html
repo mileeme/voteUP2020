@@ -11,53 +11,51 @@
         {{ election.description|safe }}
     {% endif %}
 </div>
+
 <!-- get questions -->
-{% for question in question_list %}
-<form action="#" class="container-form">
-    {% csrf_token %}
-    <div id="poll" class="container">
-        <!-- question title -->
+<div class="container">
+    {% for question in question_list %}
+    <div id="poll">
+        <!-- question -->
         <h3 id="question" data-id="{{ question.number }}">{{ question|safe }}</h3>
-        <!-- get responses that matches question_id -->
         {% for response in response_list %}
         {% if question.number == response.response_id %}
-        <!-- response -->
-        <input id="candidate" class="response-button" type="button" name="candidate-response" value="{{ response.response|safe }}" data-response="{{ response.response_id }}" data-candidate="{{ response.candidate_id }}">
 
+        <!-- response -->
+        <span id="candidateResponse" class="candidate-response" value="{{ response.response|safe }}" data-response="{{ response.response_id }}" data-candidate="{{ response.candidate_id }}">{{ response.response|safe }}</span>
         {% endif %}
         {% endfor %}
 
-        <!-- response detail -->
+        <!-- detail -->
         {% for response in response_list %}
         {% if question.number == response.response_id %}
-        <div>
-            <p id="responseDetail" class="hide" data-response="{{ response.response_id }}"
-                data-candidate="{{ response.candidate_id }}">More deets: {{ response.description|safe }}</p>
+        <div id="responseDetail" class="u-hide" data-response="{{ response.response_id }}"
+                data-candidate="{{ response.candidate_id }}">
+            <p>{{ response.description|safe }}</p>
         </div>
         {% endif %}
         {% endfor %}
     </div>
-</form>
-{% endfor %}
+    {% endfor %}
+</div>
 
-
+<!-- results button -->
 <div id="pre-button"></div>
-<button id="showResults" class="button-disabled">0 answered</button>
+<button id="showResults" class="is-disabled-button">0 answered</button>
 
 
-<div id="revealResults" class="hide">
+<div id="pollResults" class="u-hide">
     <!-- total tally -->
-    <div class="container container-results">
-        <p>total questions answered: <span id="count-all"></span> out of <span id="counter">0</span></p>
+    <div class="container">
+        <p>total questions answered: <span id="countAll"></span> out of <span id="candidateCounter">0</span></p>
         {% for candidate in candidate_list %}
         <p>From the questions, I have matched <span id="candidate{{ candidate.id }}">0</span> / My values are <span
                 id="percentage{{ candidate.id }}">0</span>% compatible with {{ candidate.l_name }}</p>
         {% endfor %}
     </div>
-
-
+    
     <!-- table of results -->
-    <div class="container container-results">
+    <div class="container">
         <table>
             <thead>
                 <th></th>
@@ -74,11 +72,8 @@
                     {% for response in response_list %}
                     {% if question.number == response.response_id %}
                     <td id="tableColumn" class="" data-response="{{ response.response_id }}"
-                        data-candidate="{{ response.candidate_id }}"><span id="agreed"></span>
+                        data-candidate="{{ response.candidate_id }}"><span ></span>
                     </td>
-                    <!-- <td id="tableColumn" class="" data-response="{{ response.response_id }}"
-                        data-candidate="{{ response.candidate_id }}">{{ response.response_id }} / {{ response.response }}
-                    </td> -->
                     {% endif %}
                     {% endfor %}
                 </tr>
@@ -89,18 +84,22 @@
 </div>
 {% endfor %}
 
-<hr>
 <!-- check registration -->
-<div class="container">
-    <form action="#">
-    {% csrf_token %}
-        <h2>Am I registered to vote?</h2>
-        <input type="text" placeholder="search your state abbreviation" autocomplete="off" onkeyup="searchStates()" id="myInput">
-        <ul id="myUL" style="height: 100px; overflow: hidden;">
-            {% for registration in registration_list %}
-            <li id="stateLink" class="hide" data-state="{{ registration.id }}"><a href="{{ registration.check_url }}" target="_blank" data-id="{{ registration.id }}">{{ registration.state_abbr }} ({{ registration.state }}) registration lookup</a></li>
-            {% endfor %}
-        </ul>
-    </form>
+<div class="check-registration">
+    <div class="registration-form">
+        <form action="#">
+            {% csrf_token %}
+            <h2>Check my voter registration status</h2>
+
+            <input type="text" placeholder="search your state abbreviation" autocomplete="off" onkeyup="searchStates()" id="registrationInput" class="registration-input">
+
+            <ul id="registrationUL" style="height: 100px; overflow: hidden;">
+                {% for registration in registration_list %}
+                <li id="stateLink" class="u-hide" data-state="{{ registration.id }}"><a href="{{ registration.check_url }}" target="_blank" data-id="{{ registration.id }}">{{ registration.state_abbr }} ({{ registration.state }}) registration lookup</a></li>
+                {% endfor %}
+            </ul>
+        </form>
+    </div>
 </div>
+
 {% endblock %}

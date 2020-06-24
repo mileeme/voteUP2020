@@ -2,22 +2,9 @@
 * Mixins
  */
 
-/* -----------------------------------------------------------------
-Breakpoints
------------------------------------------------------------------ */ 
- @mixin screen($breakpoint) {
-    @if map-has-key($breakpoints, $breakpoint) {
-        @media (min-width: map-get($breakpoints, $breakpoint)) {
-            @content;
-        }
-    } @else {
-        @warn "error";
-    }
-}
-
-/* -----------------------------------------------------------------
-Container
------------------------------------------------------------------ */ 
+ /* -----------------
+* Containers
+----------------- */ 
 @mixin container($container) {
     @if map-has-key($containers, $container) {
         max-width: map-get($containers, $container);
@@ -26,6 +13,15 @@ Container
     }
 }
 
-/* -----------------------------------------------------------------
-Toggle triangle
------------------------------------------------------------------ */ 
+/* -----------------
+* Breakpoints
+----------------- */ 
+ @mixin screen($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        @media (min-width: map-get($breakpoints, $breakpoint)) {
+            @content;
+        }
+    } @else {
+        @warn "error";
+    }
+} 

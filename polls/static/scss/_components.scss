@@ -1,35 +1,23 @@
-/* 
+/**
 * Components
  */
 
-/* -----------------------------------------------------------------
-Scaffolding
------------------------------------------------------------------ */
+/* -----------------
+* Scaffolding
+----------------- */
 html {
+    font-size: $font-size;
+    line-height: $line-height;
+}
+body {
     font: $font-style $font-variant $font-weight #{$font-size}/#{$line-height} $font-family;
     font-size: $font-size;
-    scroll-behavior: smooth;
-}
-
-article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
-    display: block;
-}
-
-body {
     color: $font-color;
     background: $background;
-    font-size: $font-size;
-    width: 100%;
-    height: 100%;
-    margin: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    margin: $margin 0;
     font-weight: $heading-font-weight;
-    font-family: $heading-font-family; 
-    line-height: $heading-line-height;
-    color: $heading-font-color;
 }
 
 h1 {
@@ -69,59 +57,23 @@ h6 {
     }
 }
 
-p, ol, ul, dl, table {
-    margin: 0 0 $margin 0;
-}
-
-ul li ul {
-    margin-bottom: 0;
-}
-
-ol li ol {
-    margin-bottom: 0;
-}
-
-a {
-    color: $link-color;
-    text-decoration: none;
-
-    &:hover,
-    &:active,
-    &:focus {
-        color: $link-hover-color;
-    }
-}
-
 // highlight
 mark {
     background: $highlight;
     padding: 0 0.2rem;
 }
 
-blockquote {
-    margin: 0 0 $margin 0;
-    padding: 0 1.5rem;
-}
-
-cite {
-    display: block;
-    margin-top: $margin;
-    font-size: $font-size;
-    text-align: right;
-}
-
 hr {
     margin-top: $margin;
     margin-bottom: $margin;
     border: 0;
-    height: 0;
     border-top: $borders;
 }
 
-/* -----------------------------------------------------------------
-Helpers
------------------------------------------------------------------ */
- .clearfix::before,
+/* -----------------
+* Helpers
+----------------- */
+.clearfix::before,
  .clearfix::after {
      content: ' ';
      display: block;
@@ -131,46 +83,18 @@ Helpers
      clear: both;
  }
 
- .text-left {
-     text-align: left;
- }
- 
- .text-right {
-     text-align: right;
- }
-
- .text-center {
-     text-align: center;
- }
-
- .text-justify {
-     text-align: justify;
- }
-
- .block {
+ .u-show {
      display: block;
  }
 
- .inline-block {
-     display: inline-block;
- }
-
- .inline {
-     display: inline;
- }
-
- .show {
-     display: block;
- }
-
- .hide {
+ .u-hide {
      display: none;
  }
 
 
- /* -----------------------------------------------------------------
-Containers
------------------------------------------------------------------ */
+/* -----------------
+* Containers
+----------------- */
 .container {
     width: 100%;
     margin-left: auto;
@@ -187,61 +111,115 @@ Containers
     }
 }
 
-.container-form {
-    margin: $margin 0;
-    padding: 3rem 0;
-    background-color: $background-secondary;
+
+/* -----------------
+* Grids
+----------------- */
+
+
+
+/* -----------------
+* Layout
+----------------- */
+
+.check-registration {
+    display: grid;
+    grid-template-rows: auto;
+    width: 100%;
+    margin-top: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3rem;
+    padding: 0 $padding;
+    .registration-form {
+        justify-self: center;
+        @include screen(md) {
+            max-width: 28rem;
+        }
+    }
 }
 
-.container-results {
+#registrationInput {
+    // background-image: url('');
+    background-position: 0.65rem 0.75rem;
+    background-repeat: no-repeat;
+    background-color: $background-secondary; 
+    width: 100%;
+    padding: 1.25rem 1.25rem 1.25rem 2.5rem;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 3px $border-style $primary-color;
+    margin-bottom: 1rem;
+}
+
+#registrationUL {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    li{
+        text-align: center;
+        a {
+            border: $borders;
+            border-radius: $border-radius;
+            margin-top: -1px;
+            background-color: $button-background;
+            padding: 1rem;
+            text-decoration: none;
+            color: $button-color;
+            display: block;
+            &:hover {
+                background-color: $button-background-hover;
+            }
+        }
+
+    }
+}
+
+/* -----------------
+* Heading
+----------------- */
+.election-description {
     padding: 3rem 0;
 }
 
-/* -----------------------------------------------------------------
-Grid
------------------------------------------------------------------ */ 
-
-
-/* -----------------------------------------------------------------
-Layout
------------------------------------------------------------------ */
-
-
-/* -----------------------------------------------------------------
-Buttons
------------------------------------------------------------------ */
-.response-button {
-    cursor: pointer;
+/* -----------------
+* Buttons
+----------------- */
+.candidate-response {
     padding: 1rem 1rem;
     margin: $margin 0;
-    background-color: gray;
+    background-color: $secondary-color;
+    color: $primary-color;
 }
-.response-button:hover {
-    border: $borders;
+.candidate-response:hover {
+    // border-bottom: $borders;
 }
-.response-button:active {
-    background-color: yellow;
-}
-.button-active {
-    background-color: yellow;
+
+.is-active-button {
+    padding: 1rem 1rem;
+    margin: $margin 0;
+    background-color: $primary-color;
+    color: $background;
 }
 
 // result button
-.button-disabled {
+.is-disabled-button {
     display: block;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     pointer-events: none;
     background-color: $button-disabled;
 }
-.button-show {
+.is-abled-button {
     display: block;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
-    cursor: pointer;
     background-color: $button-background;
 }
-.result-button--fixed {
+.is-fixed-button {
     position: fixed;
     left: 0;
     bottom: 0;
@@ -251,79 +229,51 @@ Buttons
     padding: 1rem 0;
 }
 
-// registration search filter
-#myInput {
-//   background-image: url('/css/searchicon.png'); /* Add a search icon to input */
-  background-position: 10px 12px; /* Position the search icon */
-  background-repeat: no-repeat; /* Do not repeat the icon image */
-  width: 100%; /* Full-width */
-  font-size: 16px; /* Increase font-size */
-  padding: 12px 20px 12px 40px; /* Add some padding */
-  border: 1px solid #ddd; /* Add a grey border */
-  margin-bottom: 12px; /* Add some space below the input */
+
+/* -----------------
+* Forms
+----------------- */
+
+
+
+/* -----------------
+* Navigation
+----------------- */
+
+
+/* -----------------
+* Footer
+----------------- */
+footer {
+    background: $background-footer;
+    padding: 2rem 0;
+    height: 8rem;
+    margin-top: auto;
 }
 
-#myUL {
-  /* Remove default list styling */
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-#myUL li a {
-  border: 1px solid #ddd; /* Add a border to all links */
-  margin-top: -1px; /* Prevent double borders */
-  background-color: #f6f6f6; /* Grey background color */
-  padding: 12px; /* Add some padding */
-  text-decoration: none; /* Remove default text underline */
-  font-size: 18px; /* Increase the font-size */
-  color: black; /* Add a black text color */
-  display: block; /* Make it into a block element to fill the whole list */
-}
-
-#myUL li a:hover:not(.header) {
-  background-color: #eee; /* Add a hover effect to all links, except for headers */
-}
-
-
-/* -----------------------------------------------------------------
-Forms
------------------------------------------------------------------ */
-.election-description {
-    padding: 3rem 0;
-}
-
-
-/* -----------------------------------------------------------------
-Navigation
------------------------------------------------------------------ */
-
-
-/* -----------------------------------------------------------------
-Tables
------------------------------------------------------------------ */ 
-table {
-    border-collapse: collapse;
-}
-
-/* -----------------------------------------------------------------
-Questions
------------------------------------------------------------------ */ 
-.background-false {
+/* -----------------
+* Tables
+----------------- */ 
+.is-false {
     background: gray;
 }
-.background-true {
+.is-true {
     background: yellow;
 }
 
-.no-response {
+
+/* -----------------
+* Questions
+----------------- */ 
+
+.is-no-response {
     display: inline-block;
     width: 6rem;
     border-bottom: 2px $border-style $border-color;
     text-decoration: none;
 }
 
-.insert-response {
+.is-response {
     overflow: hidden;
     text-decoration: underline;
 }

@@ -1,10 +1,10 @@
-/* 
+/** 
 * Variables
  */
 
- /* -----------------------------------------------------------------
-Containers
------------------------------------------------------------------ */ 
+/* -----------------
+* Containers
+----------------- */
 $containers: (
     'sm': 540px,
     'md': 720px,
@@ -12,9 +12,9 @@ $containers: (
     'xl': 1140px,
 ) !default;
 
-/* -----------------------------------------------------------------
-Breakpoints
------------------------------------------------------------------ */ 
+/* -----------------
+* Breakpoints
+----------------- */ 
 $breakpoints: (
     'xs': 0rem,
     'sm': 36rem,
@@ -23,37 +23,39 @@ $breakpoints: (
     'xl': 75rem,
 ) !default;
 
-/* -----------------------------------------------------------------
-Global colors
------------------------------------------------------------------ */ 
+/* -----------------
+* Global colors
+----------------- */ 
 $background: #ffffff !default;
-$background-secondary: #E1F7FF !default;
-$primary-color: #1A69F5 !default;
-$secondary-color: !default;
+$background-secondary: #f3f6ff !default;
+$background-footer: #f3f6ff !default;
+$primary-color: #5b2bef !default;
+$secondary-color: #c4bae0 !default;
 $accent-color: !default;
 $link-color: !default;
 $link-hover-color: !default;
 $highlight: !default;
 $error: !default;
 $success: !default;
-$border: !default;
-/* -----------------------------------------------------------------
-Typography
------------------------------------------------------------------ */ 
+$border: #000 !default;
+
+/* -----------------
+* Typography
+----------------- */ 
 
 // Body
 $font-size: 1rem !default;
 $font-style: normal !default;
 $font-variant: normal !default;
 $font-weight: normal !default;
-$font-color: !default;
-$font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial,sans-serif !default;
-$line-height: 1.6 !default;
+$font-color: #222222 !default;
+$font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif !default;
+$line-height: 1.15 !default;
 
 // Headings
 $heading-font-color: !default;
 $heading-font-weight: 400 !default;
-$heading-font-family: -apple-system-headline, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif !default;
+$heading-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif !default;
 $heading-line-height: 1.4 !default;
 
 // heading font-size
@@ -72,28 +74,28 @@ $h4: $h4-sm * $multiplier !default;
 $h5: $h5-sm * $multiplier !default;
 $h6: $h6-sm * $multiplier !default;
 
-/* -----------------------------------------------------------------
-Spacing
------------------------------------------------------------------ */ 
+/* -----------------
+* Spacing
+----------------- */ 
 $padding: 1rem !default;
 $margin: 1rem !default;
 $content-padding: 3.5rem 0 !default;
 $content-padding-sm: 1.5rem 0 !default;
 
-/* -----------------------------------------------------------------
-Borders
------------------------------------------------------------------ */ 
+/* -----------------
+* Borders
+----------------- */ 
 $border-width: 1px !default;
 $border-style: solid !default;
 $border-color: $border !default;
 $border-radius: .25rem !default;
 $borders: $border-width $border-style $border-color !default;
 
-/* -----------------------------------------------------------------
-Buttons
------------------------------------------------------------------ */ 
+/* -----------------
+* Buttons
+----------------- */ 
 $button-background: $primary-color !default;
-$button-background-hover: scale($button-background, 10%) !default;
+$button-background-hover: scale($button-background, 20%) !default;
 $button-color: #ffffff !default;
 $button-font-weight: 600 !default;
 $button-font-size: 1rem !default;
@@ -112,25 +114,17 @@ $accent-button-color-hover: #ffffff !default;
 
 // Round buttons
 
-/* -----------------------------------------------------------------
-Forms
------------------------------------------------------------------ */ 
-$forms: (
+// inputs
 
-) !default;
-$buttons: (
-    '.button,
-    a.button,
-    button,
-    [type=submit],
-    [type=button]'
-) !default;
-$input-background: transparent !default;
-$placeholder: scale($accent-color, 20%) !default;
-$form-border: 1px $border-style $border-color !default;
-$form-border-hover: 1px $border-style scale($border-color, 10%) !default;
-$form-border-focus: 1px $border-style $link-color !default;
+/* -----------------
+* Forms
+----------------- */ 
+// $input-background: #f3f6ff !default;
+// $placeholder: scale($secondary-color, 20%) !default;
+// $form-border: none !default;
+// $form-border-hover: none !default;
+// $form-border-focus: none !default;
 
-/* -----------------------------------------------------------------
-Tables
------------------------------------------------------------------ */ 
+/* -----------------
+* Tables
+----------------- */

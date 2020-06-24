@@ -4,7 +4,11 @@
 {% include 'head.html' %}
 </head>
 <body>
+<!-- main -->
 {% block body %}{% endblock %}
+
+<!-- footer -->
+{% include 'footer.html' %}
 
 <!-- scripts -->
 {% load static %}
@@ -12,7 +16,4 @@
 <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
 {% endblock %}
 </body>
-<footer>
-    {% include 'footer.html' %}
-</footer>
 </html>

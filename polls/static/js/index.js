@@ -1,44 +1,83 @@
 // on page load
 document.addEventListener('DOMContentLoaded', () => {
     // form input buttons
-    document.querySelectorAll('#candidate').forEach(item => {
+    document.querySelectorAll('#candidateResponse').forEach(item => {
         item.addEventListener('click', event => {
             event.preventDefault();
-            tallyCandidateCount();
-            showResponseDetail();
-            insertResponse();
-            highlightTableColumn();
+            insertResponse(); //1
+            showResponseDetail(); //2
+            tallyCandidateCount(); //3
+            highlightTableColumn(); //4
         });
     });
+
     // results button
     document.querySelector('#showResults').addEventListener('click', function(event) {
         event.preventDefault();
-        showPollResults();
+        showPollResults(); //5
     });
 });
 
 
-// on scroll 
+// on scroll fix button to bottom
 window.onscroll = () => {
-    const firstForm = document.getElementsByTagName('form')[0].offsetTop;
+    const firstQuestion = document.querySelector('#poll').offsetTop;
     const preButtonId = document.querySelector('#pre-button');
     let preButtonLoc = preButtonId.offsetTop;
     let buttonInView = window.scrollY + window.innerHeight;
     // console.log(preButtonLoc);
     // console.log(`window innerheight: ${window.innerHeight}, scrollY: ${window.scrollY}, button loc: ${preButtonLoc}, doc body offsetHeight: ${document.body.offsetHeight}, buttonInView: ${window.innerHeight + window.scrollY}`);
 
-    if (window.scrollY >= firstForm && window.scrollY < preButtonLoc) {
-        document.querySelector('#showResults').classList.add('result-button--fixed');
+    if (window.scrollY >= firstQuestion && window.scrollY < preButtonLoc) {
+        document.querySelector('#showResults').classList.add('is-fixed-button');
     }
     if (buttonInView > preButtonLoc) {
-        document.querySelector('#showResults').classList.remove('result-button--fixed');
+        document.querySelector('#showResults').classList.remove('is-fixed-button');
     }
 }
 
-// get total count per candidate
+// 1 insert target into question
+insertResponse = () => {
+    // get value of target
+    let e = event.target;
+    let eResponse = e.dataset.response;
+    let eValue = e.innerHTML;
+    let questions = document.querySelectorAll('#questionSpan');
+    // iterate through questions
+    for (i = 0; i < questions.length; i++) {
+        // insert target value if question match id
+        if (questions[i].dataset.question === eResponse) {
+            questions[i].className = "is-response";
+            questions[i].innerHTML = eValue;
+        }
+    }
+};
+
+// 2 show detail of selected response 
+showResponseDetail = () => {
+    // get target
+    let e = event.target;
+    let eResponse = e.dataset.response;
+    let eCandidate = e.dataset.candidate;
+    const details = document.querySelectorAll('#responseDetail');
+
+    // iterate through the details
+    for (i = 0; i < details.length; i++) {
+        // show detail if it matches target
+        if (details[i].dataset.response === eResponse) {
+            if (details[i].dataset.candidate === eCandidate) {
+                details[i].classList.replace("u-hide", "u-show");
+            } else {
+                details[i].classList.replace("u-show", "u-hide");
+            }
+        }
+    }
+};
+
+// 3 get total count per candidate
 tallyCandidateCount = () => {
 
-    const candidates = document.querySelectorAll('#candidate');
+    const candidates = document.querySelectorAll('#candidateResponse');
     const questions = document.querySelectorAll('#question').length;
     let e = event.target;
     let eResponse = e.dataset.response;
@@ -49,25 +88,25 @@ tallyCandidateCount = () => {
     let countAnswered = 0;
     let allActives = [];
 
-    // iterate through response buttons
+    // iterate through responses chosen
     for (i = 0; i < candidates.length; i++) {
         if (candidates[i].dataset.response === eResponse) {
             if (candidates[i].dataset.candidate === eCandidate) {
-                candidates[i].classList.add('button-active');
+                candidates[i].className = "is-active-button";
                 allActives++;
             } else {
-                candidates[i].classList.remove('button-active');
+                candidates[i].className = "candidate-response";
             }
         }
-        // get all active buttons
-        let buttonActive = document.getElementsByClassName('button-active');
+        // get all active responses
+        let buttonActive = document.getElementsByClassName('is-active-button');
         // count actives 
         countAnswered = buttonActive.length;
         // store actives 
         allActives = buttonActive;
     }
 
-    // count candidate response active
+    // count candidate response actives
     for (j = 0; j < allActives.length; j++) {
         if (allActives[j].dataset.candidate === "1") {
            candidateA++;
@@ -83,8 +122,8 @@ tallyCandidateCount = () => {
     let percentageB = (candidateB / questions) * 100;
 
     // display totals
-    document.querySelector('#counter').innerHTML = `${questions} (${percentageAnswered}% answered)`;
-    document.querySelector('#count-all').innerHTML = countAnswered; 
+    document.querySelector('#candidateCounter').innerHTML = `${questions} (${percentageAnswered}% answered)`;
+    document.querySelector('#countAll').innerHTML = countAnswered; 
 
     // total for candidate-1
     document.querySelector('#candidate1').innerHTML = candidateA;
@@ -94,59 +133,19 @@ tallyCandidateCount = () => {
     document.querySelector('#candidate2').innerHTML = candidateB;
     document.querySelector('#percentage2').innerHTML = percentageB;
 
-    // show progress on disabled results button
+    // show answered responses progress on disabled results
     if (percentageAnswered === 100) {
-        document.querySelector('#showResults').classList.remove('button-disabled');
-        document.querySelector('#showResults').classList.add('button-show');
+        document.querySelector('#showResults').classList.remove('is-disabled-button');
+        document.querySelector('#showResults').classList.add('is-abled-button');
         document.querySelector('#showResults').innerHTML = 'Show results';
     } else {
-        document.querySelector('#showResults').classList.remove('button-show');
-        document.querySelector('#showResults').classList.add('button-disabled');
+        document.querySelector('#showResults').classList.remove('is-abled-button');
+        document.querySelector('#showResults').classList.add('is-disabled-button');
         document.querySelector('#showResults').innerHTML = `${countAnswered} out of ${questions} answered`;
     }
 };
 
-
-// show detail of selected response 
-showResponseDetail = () => {
-    // get target
-    let e = event.target;
-    let eResponse = e.dataset.response;
-    let eCandidate = e.dataset.candidate;
-    const details = document.querySelectorAll('#responseDetail');
-
-    // iterate through the details
-    for (i = 0; i < details.length; i++) {
-        // show detail if it matches target
-        if (details[i].dataset.response === eResponse) {
-            if (details[i].dataset.candidate === eCandidate) {
-                details[i].classList.replace("hide", "show");
-            } else {
-                details[i].classList.replace("show", "hide");
-            }
-        }
-    }
-};
-
-// insert target into question
-insertResponse = () => {
-    // get value of target
-    let e = event.target;
-    let eResponse = e.dataset.response;
-    let eValue = e.value;
-    let questions = document.querySelectorAll('#question-span');
-
-    // iterate through questions
-    for (i = 0; i < questions.length; i++) {
-        // insert target value if question match id
-        if (questions[i].dataset.question === eResponse) {
-            questions[i].className = "insert-response";
-            questions[i].innerHTML = eValue;
-        }
-    }
-};
-
-// table 
+// 4 table 
 highlightTableColumn = () => {
     // get ids of checked input 
     let e = event.target;
@@ -160,28 +159,28 @@ highlightTableColumn = () => {
         if (tableColumns[i].dataset.response === eResponse) {
             if (tableColumns[i].dataset.candidate === eCandidate) {
                 tableColumns[i].className = '';
-                tableColumns[i].className = 'background-true';
+                tableColumns[i].className = 'is-true';
                 tableColumns[i].firstElementChild.innerHTML = "✔️";
             } else {
                 tableColumns[i].className = '';
-                tableColumns[i].className = 'background-false';
+                tableColumns[i].className = 'is-false';
                 tableColumns[i].firstElementChild.innerHTML = "✖️";
             }
         }
     }
 };
 
-// show results
+// 5 show results
 showPollResults = () => {
-    document.querySelector('#revealResults').className = "show";
+    document.querySelector('#pollResults').className = "u-show";
 };
 
 // search registration filter
 searchStates = () => {
     event.preventDefault();
-    let input = document.querySelector('#myInput');
+    let input = document.querySelector('#registrationInput');
     let filter = input.value.toUpperCase();
-    let ul = document.querySelector('#myUL');
+    let ul = document.querySelector('#registrationUL');
     let stateLists = document.querySelectorAll('#stateLink');
 
     // loop through the list and show matches 
@@ -190,13 +189,13 @@ searchStates = () => {
         let listValue = stateLists[i].firstElementChild.innerHTML.toUpperCase().slice(0,2);
 
         if (listValue.indexOf(filter) > -1) {
-            console.log(listValue);
-            stateLists[i].className = "show";
+            stateLists[i].className = "u-show";
         } else {
-            stateLists[i].className = "hide";
+            stateLists[i].className = "u-hide";
         }
+
         if (filter.length === 0) {
-            stateLists[i].className = "hide";
+            stateLists[i].className = "u-hide";
         };
     }
 };
