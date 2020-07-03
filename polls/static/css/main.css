@@ -7,54 +7,51 @@
 * Author: Milee Yu https://mileeyu.com
 * Source/documentation: https://github.com/mileeme/simple
  */
-/* -----------------------------------------------------------------
-Configuration
------------------------------------------------------------------ */
-/* 
+/* -----------------
+* Configs
+----------------- */
+/** 
 * Variables
  */
-/* -----------------------------------------------------------------
-Containers
------------------------------------------------------------------ */
-/* -----------------------------------------------------------------
-Breakpoints
------------------------------------------------------------------ */
-/* -----------------------------------------------------------------
-Global colors
------------------------------------------------------------------ */
-/* -----------------------------------------------------------------
-Typography
------------------------------------------------------------------ */
-/* -----------------------------------------------------------------
-Spacing
------------------------------------------------------------------ */
-/* -----------------------------------------------------------------
-Borders
------------------------------------------------------------------ */
-/* -----------------------------------------------------------------
-Buttons
------------------------------------------------------------------ */
-/* -----------------------------------------------------------------
-Forms
------------------------------------------------------------------ */
-/* -----------------------------------------------------------------
-Tables
------------------------------------------------------------------ */
+/* -----------------
+* Containers
+----------------- */
+/* -----------------
+* Breakpoints
+----------------- */
+/* -----------------
+* Global colors
+----------------- */
+/* -----------------
+* Typography
+----------------- */
+/* -----------------
+* Spacing
+----------------- */
+/* -----------------
+* Borders
+----------------- */
+/* -----------------
+* Buttons
+----------------- */
+/* -----------------
+* Forms
+----------------- */
+/* -----------------
+* Tables
+----------------- */
 /* 
 * Mixins
  */
-/* -----------------------------------------------------------------
-Breakpoints
------------------------------------------------------------------ */
-/* -----------------------------------------------------------------
-Container
------------------------------------------------------------------ */
-/* -----------------------------------------------------------------
-Toggle triangle
------------------------------------------------------------------ */
-/* -----------------------------------------------------------------
-Reset
------------------------------------------------------------------ */
+/* -----------------
+* Containers
+----------------- */
+/* -----------------
+* Breakpoints
+----------------- */
+/* -----------------
+* Resets
+----------------- */
 /** 
 * Normalize css, css reset and typography properties
 * for browser compatibility and clean base for designers and developers
@@ -439,15 +436,15 @@ table {
   border-spacing: 0;
 }
 
-/* -----------------------------------------------------------------
-Components 
------------------------------------------------------------------ */
+/* -----------------
+* Components
+----------------- */
 /**
 * Components
  */
-/**
+/* -----------------
 * Scaffolding
------------------------------------------------------------- */
+----------------- */
 html {
   font-size: 1rem;
   line-height: 1.15;
@@ -456,12 +453,12 @@ html {
 body {
   font: normal normal normal 1rem/1.15 -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-size: 1rem;
-  color: #222222;
-  background: #ffffff;
+  color: #3C3C3C;
+  background: #F4F4F4;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 400;
+  font-weight: 600;
 }
 
 h1 {
@@ -485,12 +482,12 @@ h2 {
 }
 
 h3 {
-  font-size: 1.25rem;
+  font-size: 1.3rem;
 }
 
 @media (min-width: 48rem) {
   h3 {
-    font-size: 1.375rem;
+    font-size: 1.43rem;
   }
 }
 
@@ -515,16 +512,25 @@ h5 {
 }
 
 h6 {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #3C3C3C;
+  padding-bottom: 1rem;
 }
 
 @media (min-width: 48rem) {
   h6 {
-    font-size: 0.99rem;
+    font-size: 0.88rem;
   }
 }
 
+.label {
+  color: #B4B4B4;
+  font-weight: 600;
+}
+
 mark {
+  background: #00D9E2;
   padding: 0 0.2rem;
 }
 
@@ -532,12 +538,12 @@ hr {
   margin-top: 1rem;
   margin-bottom: 1rem;
   border: 0;
-  border-top: 1px solid #000;
+  border-top: 1px solid #3C3C3C;
 }
 
-/**
+/* -----------------
 * Helpers
------------------------------------------------------------- */
+----------------- */
 .clearfix::before,
 .clearfix::after {
   content: ' ';
@@ -556,9 +562,9 @@ hr {
   display: none;
 }
 
-/* 
+/* -----------------
 * Containers
------------------------------------------------------------- */
+----------------- */
 .container {
   width: 100%;
   margin-left: auto;
@@ -584,23 +590,293 @@ hr {
   }
 }
 
-/* 
-* Grid
------------------------------------------------------------- */
-/*
+/* -----------------
+* Grids
+----------------- */
+/* -----------------
 * Layout
------------------------------------------------------------- */
-.poll-results {
-  display: grid;
-  grid-template-rows: auto;
-  grid-gap: 3rem;
+----------------- */
+/* -----------------
+* Heading
+----------------- */
+.hero {
+  display: block;
+  margin-bottom: -6rem;
+  padding: 9rem 2.5rem 15rem;
+  background: rgba(0, 217, 226, 0.3);
 }
 
+.hero-heading {
+  opacity: 0;
+  -webkit-transform: translate3d(0.2rem, 1.5rem, -0.5rem);
+  -moz-transform: translate3d(0.2rem, 1.5rem, -0.5rem);
+  -o-transform: translate3d(0.2rem, 1.5rem, -0.5rem);
+  transform: translate3d(0.2rem, 1.5rem, -0.5rem);
+  -webkit-transition: opacity 0.4s ease-in, transform 0.4s 0.25s cubic-bezier(0, 0, 0.3, 1);
+  -moz-transition: opacity 0.4s ease-in, transform 0.4s 0.25s cubic-bezier(0, 0, 0.3, 1);
+  -o-transition: opacity 0.4s ease-in, transform 0.4s 0.25s cubic-bezier(0, 0, 0.3, 1);
+  transition: opacity 0.4s ease-in, transform 0.4s 0.25s cubic-bezier(0, 0, 0.3, 1);
+}
+
+.is-heading-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* -----------------
+* Buttons
+----------------- */
+.section-result-button {
+  padding: 2rem;
+  margin: 0 0 1rem;
+  background: #ffffff;
+}
+
+.is-disabled-button {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.3rem;
+  font-weight: normal;
+  color: rgba(0, 0, 0, 0.5);
+  background: #EBECF1;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+  border-radius: 1rem;
+}
+
+.is-abled-button {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.3rem;
+  font-weight: normal;
+  color: #000000;
+  background: #EBECF1;
+  border: 1px solid #000000;
+  border-radius: 1rem;
+}
+
+.is-fixed-button {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #3C3C3C;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+/* -----------------
+* Forms
+----------------- */
+/* -----------------
+* Navigation
+----------------- */
+/* -----------------
+* Footer
+----------------- */
+footer {
+  background: #f3f6ff;
+  padding: 2rem 0;
+  height: 8rem;
+  margin-top: auto;
+}
+
+/* -----------------
+* Tables
+----------------- */
+/* -----------------
+* Card
+----------------- */
+.card {
+  margin: 1rem 0 0;
+  background: #ffffff;
+  border-top: 1px solid #ffffff;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.08), 0 0 2px rgba(0, 0, 0, 0.12);
+}
+
+.card h3 {
+  font-weight: normal;
+  -moz-transition: width 1s ease-in-out, left 1.5s ease-in-out;
+  -webkit-transition: width 1s ease-in-out, left 1.5s ease-in-out;
+  -moz-transition: width 1s ease-in-out, left 1.5s ease-in-out;
+  -o-transition: width 1s ease-in-out, left 1.5s ease-in-out;
+  transition: width 1s ease-in-out, left 1.5s ease-in-out;
+}
+
+.card h6 {
+  padding-bottom: 0.5rem;
+}
+
+.card-question {
+  padding: 2rem 2rem 2.2rem;
+  background: #ffffff;
+}
+
+.card-question h6 {
+  color: #B4B4B4;
+}
+
+.card-response {
+  padding: 0 2rem 2rem;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.candidate-response {
+  padding: 1rem;
+  margin: 0 0 0.6rem;
+  color: #3C3C3C;
+  background-color: #F4F4F4;
+}
+
+.is-active-response {
+  padding: 1rem;
+  margin: 0 0 0.6rem;
+  color: #3C3C3C;
+  background-color: rgba(0, 0, 0, 0.25);
+  transition: background-color 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.card-detail {
+  display: block;
+  position: relative;
+  height: 0;
+  z-index: -1;
+  color: #909090;
+  background: rgba(0, 0, 0, 0.05);
+  -webkit-transform: translate3d(0rem, -18rem, -1rem);
+  -moz-transform: translate3d(0rem, -18rem, -1rem);
+  transform: translate3d(0rem, -18rem, -1rem);
+}
+
+.card-detail-section {
+  padding: 2rem;
+}
+
+.test {
+  position: relative;
+}
+
+.is-visible {
+  height: 100%;
+  opacity: 1;
+  -webkit-transform: translate3d(0rem, 0rem, 0rem);
+  -moz-transform: translate3d(0rem, 0rem, 0rem);
+  -o-transform: translate3d(0rem, 0rem, 0rem);
+  transform: translate3d(0rem, 0rem, 0rem);
+  -webkit-transition: opacity 0.1s, transform 0.3s cubic-bezier(0.6, 0.13, 0.01, 0.93);
+  -moz-transition: opacity 0.1s, transform 0.3s cubic-bezier(0.6, 0.13, 0.01, 0.93);
+  -o-transition: opacity 0.1s, transform 0.3s cubic-bezier(0.6, 0.13, 0.01, 0.93);
+  transition: opacity 0.1s, transform 0.3s cubic-bezier(0.6, 0.13, 0.01, 0.93);
+}
+
+.is-invisible {
+  height: 0;
+  opacity: 0;
+  -webkit-transition: transform .2s ease-in;
+  -moz-transition: transform .2s ease-in;
+  -o-transition: transform .2s ease-in;
+  transition: transform .2s ease-in;
+}
+
+/* -----------------
+* Question
+----------------- */
+.is-no-response {
+  display: inline-block;
+  width: 6rem;
+  border-bottom: 2px solid #3C3C3C;
+  text-decoration: none;
+}
+
+.is-response {
+  overflow: hidden;
+  border-bottom: 3px solid #000000;
+  padding-bottom: .125rem;
+}
+
+/* -----------------
+* Result
+----------------- */
+#candidateName {
+  color: #000000;
+}
+
+.result-heading {
+  text-align: center;
+  padding: 2rem;
+}
+
+.result-candidate-profile {
+  display: grid;
+  margin: 1rem 0;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.result-blurb {
+  margin: 1rem 0;
+  text-align: center;
+  padding: 2rem 3rem;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.profile-img {
+  width: 5.5rem;
+  -moz-outline-radius: 5.5rem;
+  padding: 2px;
+  border-radius: 5.5rem;
+  border: 4px solid transparent;
+}
+
+.is-profile-disabled {
+  border: 4px solid rgba(0, 0, 0, 0.2);
+}
+
+.is-profile-active {
+  border: 4px solid #000000;
+}
+
+.result-match {
+  display: grid;
+  margin: 1.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+}
+
+.result-match-item {
+  padding: 2rem;
+}
+
+.result-match-item:first-child {
+  align-self: start;
+  text-align: left;
+}
+
+.result-match-item:last-child {
+  align-self: end;
+  text-align: right;
+}
+
+.result-match-item .profile-img {
+  width: 3rem;
+  border-radius: 3rem;
+  padding: 1px;
+  border: 3px solid transparent;
+}
+
+/* -----------------
+* Registration
+----------------- */
 .check-registration {
   display: grid;
   grid-template-rows: auto;
   width: 100%;
-  margin-top: 3rem;
+  margin-top: 5rem;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 3rem;
@@ -620,14 +896,15 @@ hr {
 #registrationInput {
   background-position: 0.65rem 0.75rem;
   background-repeat: no-repeat;
-  background-color: #f3f6ff;
+  background-color: #EBECF1;
   width: 100%;
   padding: 1.25rem 1.25rem 1.25rem 2.5rem;
   border-top: 0;
   border-left: 0;
   border-right: 0;
-  border-bottom: 3px solid #5b2bef;
   margin-bottom: 1rem;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 #registrationUL {
@@ -641,110 +918,127 @@ hr {
 }
 
 #registrationUL li a {
-  border: 1px solid #000;
-  border-radius: 0.25rem;
-  margin-top: -1px;
-  background-color: #5b2bef;
+  border: 1px solid transparent;
+  margin-bottom: 1px;
+  background-color: #EBECF1;
   padding: 1rem;
   text-decoration: none;
-  color: #ffffff;
+  color: #3C3C3C;
   display: block;
 }
 
 #registrationUL li a:hover {
-  background-color: scale(#5b2bef, 20%);
+  color: #000000;
+  border: 1px solid #000000;
 }
 
-/**
-*Buttons
------------------------------------------------------------- */
-.candidate-response {
-  padding: 1rem 1rem;
+.add-margin {
   margin: 1rem 0;
-  background-color: #c4bae0;
-  color: #5b2bef;
 }
 
-.is-active-button {
-  padding: 1rem 1rem;
-  margin: 1rem 0;
-  background-color: #5b2bef;
-  color: #ffffff;
-}
-
-.is-disabled-button {
-  display: block;
-  width: 100%;
+/*
+* HELP SLIDER 
+*/
+/* -----------------
+* Carousel
+----------------- */
+/* -----------------
+* Carousel v.2
+----------------- */
+.wrapper {
   margin-left: auto;
   margin-right: auto;
-  pointer-events: none;
-  background-color: #B2BFD6;
+  overflow: hidden;
+  position: relative;
+  width: 22rem;
+  height: 20rem;
+  background: #ffffff;
 }
 
-.is-abled-button {
-  display: block;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: #5b2bef;
-}
-
-.is-fixed-button {
-  position: fixed;
+.slides {
+  display: flex;
+  position: relative;
   left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: #B2BFD6;
-  text-align: center;
-  padding: 1rem 0;
+  height: 100%;
+  background: #ffffff;
 }
 
-/**
-* Forms
------------------------------------------------------------- */
-.election-description {
-  padding: 3rem 0;
+.slides.shifting {
+  -webkit-transition: left .175s ease-in;
+  -moz-transition: left .175s ease-in;
+  -o-transition: left .175s ease-in;
+  transition: left .175s ease-in;
 }
 
-/** 
-* Navigation
------------------------------------------------------------- */
-/**
-* Footer
------------------------------------------------------------- */
-footer {
-  background: #f3f6ff;
-  padding: 2rem 0;
-  height: 8rem;
-  margin-top: auto;
+.slide {
+  text-align: left;
+  min-width: 22rem;
+  cursor: pointer;
+  position: relative;
+  background: #ffffff;
+  padding: 1rem;
 }
 
-/** 
-* Tables
------------------------------------------------------------- */
-table {
-  border-collapse: collapse;
+.slide h3 {
+  font-size: 1rem;
+  font-weight: normal;
+  line-height: 1.15;
 }
 
-/**
-* Questions
------------------------------------------------------------- */
-.is-false {
-  background: gray;
-}
-
-.is-true {
-  background: yellow;
-}
-
-.is-no-response {
+.slide .is-no-response {
   display: inline-block;
   width: 6rem;
-  border-bottom: 2px solid #000;
+  border-bottom: 1px solid #3C3C3C;
   text-decoration: none;
 }
 
-.is-response {
+.slide .is-response {
   overflow: hidden;
-  text-decoration: underline;
+  border-bottom: 1px solid #000000;
+  padding-bottom: .125rem;
+}
+
+.slide-question {
+  padding: 1rem;
+}
+
+.control {
+  position: absolute;
+  cursor: pointer;
+  top: 50%;
+  /* change based on screen size */
+  width: 50px;
+  height: 3rem;
+  background: transparent;
+  z-index: 2;
+  opacity: .2;
+  background-size: 22px;
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transition: opacity .25s ease-in-out, transform .25s ease-in;
+  -moz-transition: opacity .25s ease-in-out, transform .25s ease-in;
+  -o-transition: opacity .25s ease-in-out, transform .25s ease-in;
+  transition: opacity .25s ease-in-out, transform .25s ease-in;
+}
+
+.control:hover {
+  opacity: 1;
+  -webkit-transform: translateY(-50%) scale(1.5, 1.5);
+  -moz-transform: translateY(-50%) scale(1.5, 1.5);
+  -o-transform: translateY(-50%) scale(1.5, 1.5);
+  transform: translateY(-50%) scale(1.5, 1.5);
+}
+
+.prev {
+  background-image: url(https://cdn0.iconfinder.com/data/icons/navigation-set-arrows-part-one/32/ChevronLeft-512.png);
+  left: 0px;
+}
+
+.next {
+  background-image: url(https://cdn0.iconfinder.com/data/icons/navigation-set-arrows-part-one/32/ChevronRight-512.png);
+  right: 0px;
 }

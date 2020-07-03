@@ -26,7 +26,7 @@ class Candidate(models.Model):
     election = models.ForeignKey(Election, blank=True, null=True, on_delete=models.CASCADE, related_name='candidates')
     f_name = models.CharField(max_length=60, blank=True, null=True)
     l_name = models.CharField(max_length=60, blank=True, null=True)
-    profile_photo = models.ImageField(upload_to='polls', blank=True, null=True)
+    profile_photo = models.ImageField(upload_to='polls/', blank=True, null=True)
 
     class Meta: 
         ordering = ['f_name', 'l_name',]

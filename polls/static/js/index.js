@@ -1,203 +1,466 @@
-// on page load
-document.addEventListener('DOMContentLoaded', () => {
-    // form input buttons
-    document.querySelectorAll('#candidateResponse').forEach(item => {
-        item.addEventListener('click', event => {
-            event.preventDefault();
-            insertResponse(); //1
-            showResponseDetail(); //2
-            tallyCandidateCount(); //3
-            highlightTableColumn(); //4
-        });
-    });
+// poll response features 
+const response = () => {
+    // 1. initialize variables
+    var responses = document.querySelectorAll('#candidateResponse'),
+        questions = document.querySelectorAll('#question'),
+        showResultsButton = document.querySelector('#showResults'),
+        // response tally
+        totalQuestions = questions.length,
+        activeResponses = 0,
+        totalAnswers = 0,
+        percentageAnswered = 0,
+        candidate1Name,
+        candidate2Name,
+        candidate1Count = 0,
+        candidate1Percentage = 0,
+        candidate2Count = 0,
+        candidate2Percentage = 0
 
-    // results button
-    document.querySelector('#showResults').addEventListener('click', function(event) {
-        event.preventDefault();
-        showPollResults(); //5
-    });
-});
+    // 2. add eventlisteners to elements
+    document.addEventListener('DOMContentLoaded', () => {
+        getCandidateNames()
+    })
+    responses.forEach(response => {
+        response.addEventListener('click', e => { 
+            // variables 
+            const targetResponse = e.target,
+                targetValue = targetResponse.innerHTML,
+                targetIdResponse = targetResponse.dataset.response, 
+                targetIdCandidate = targetResponse.dataset.candidate
 
+            // function calls 
+            insertResponse(targetValue, targetIdResponse) 
+            showResponseDetail(targetIdResponse, targetIdCandidate)
+            countResponses(targetIdResponse, targetIdCandidate)
+            updateResults(targetIdResponse, targetIdCandidate)
 
-// on scroll fix button to bottom
-window.onscroll = () => {
-    const firstQuestion = document.querySelector('#poll').offsetTop;
-    const preButtonId = document.querySelector('#pre-button');
-    let preButtonLoc = preButtonId.offsetTop;
-    let buttonInView = window.scrollY + window.innerHeight;
-    // console.log(preButtonLoc);
-    // console.log(`window innerheight: ${window.innerHeight}, scrollY: ${window.scrollY}, button loc: ${preButtonLoc}, doc body offsetHeight: ${document.body.offsetHeight}, buttonInView: ${window.innerHeight + window.scrollY}`);
+            e.preventDefault()
+        }, false)
+    })
+    showResultsButton.addEventListener('click', function() { showResults() })
 
-    if (window.scrollY >= firstQuestion && window.scrollY < preButtonLoc) {
-        document.querySelector('#showResults').classList.add('is-fixed-button');
+    // 3. functions 
+    // get candidate names
+    function getCandidateNames() {
+        var candidateNames = Array.from(document.querySelectorAll('#candidateProfileName')),
+            candidate1,
+            candidate2
+
+        // get name of candidates 
+        candidateNames.forEach((name) => {
+            if (name.dataset.id == 1) {
+                candidate1 = name.innerHTML
+            } else {
+                candidate2 = name.innerHTML
+            }
+        })
+        candidate1Name = candidate1
+        candidate2Name = candidate2
     }
-    if (buttonInView > preButtonLoc) {
-        document.querySelector('#showResults').classList.remove('is-fixed-button');
+
+    // display results
+    function showResults() {
+        var showPollResults = document.querySelector('#pollResults'),
+            resultsHeading = document.querySelector('#resultsHeading')
+
+        // show results
+        showPollResults.className = 'u-show'
+        resultsHeading.scrollIntoView()
+    }
+
+    // update result changes
+    function updateResults(targetIdResponse, targetIdCandidate) {
+
+        var candidateWinners = document.querySelectorAll('#candidateWinnerName'),
+            matchPercentage = document.querySelector('#matchPercentage'),
+            responseMatches = Array.from(document.querySelectorAll('#responseMatch')),
+            responseMatchColumns = Array.from(document.querySelectorAll('#responseMatchColumn')),
+            candidateProfileImages = Array.from(document.querySelectorAll('#candidateProfileImage')),
+            getMatches = Array.from(document.querySelectorAll('#getMatch'))
+            
+            // update name of winner into results
+        candidateWinners.forEach((winner) => {
+            if (candidate1Count > candidate2Count) {
+                winner.innerHTML = candidate1Name
+            } else {
+                winner.innerHTML = candidate2Name
+            }
+        })
+
+        // update winner percentage match
+        if (candidate1Percentage > candidate2Percentage) {
+            matchPercentage.innerHTML = candidate1Percentage + '%'
+        } else (
+            matchPercentage.innerHTML = candidate2Percentage + '%'
+        )
+
+        // update winner profile border highlight 
+        candidateProfileImages.forEach((profile) => {
+            if (candidate1Count > candidate2Count) {
+                if (profile.dataset.profile == 1) {
+                    profile.className = 'profile-img is-profile-active'
+                } else {
+                    profile.className = 'profile-img is-profile-disabled'
+                }
+            } else {
+                if (profile.dataset.profile == 2) {
+                    profile.className = 'profile-img is-profile-active'
+                } else {
+                    profile.className = 'profile-img is-profile-disabled'
+                }
+            }
+        })
+
+        // get all response results 
+        responseMatches.forEach((response) => {
+            if (response.dataset.response == targetIdResponse) {
+                if (response.dataset.candidate == targetIdCandidate) {
+                    // response.className = 'result-response-item'
+                    response.parentElement.classList.remove('candidate2')
+                    response.parentElement.classList.add('candidate1')
+                } else {
+                    response.parentElement.classList.remove('candidate1')
+                    response.parentElement.classList.add('candidate2')
+                }
+            }
+        })
+
+        // get only matched responses 
+        getMatches.forEach((match) => {
+            if (candidate1Count > candidate2Count) {
+                if (match.classList.contains('candidate1')) {
+                    match.style.display = 'inherit'
+                } else {
+                    match.style.display = 'none'
+                }
+            } else {
+                if (match.classList.contains('candidate2')) {
+                    match.style.display = 'inherit'
+                } else {
+                    match.style.display = 'none'
+                }
+            }
+        })
+        
+        // update result slides
+        // responseMatches.forEach((match) => {
+        //     if (match.dataset.response == targetIdResponse) {
+        //         if (match.dataset.candidate == targetIdCandidate) {
+        //             // match.className = 'result-match-item'
+        //             match.firstElementChild.innerHTML = '✔️'
+        //         } else {
+        //             match.firstElementChild.innerHTML = '✖️'
+        //             // console.log(match)
+        //         }
+        //     }
+        // })
+
+        // update result table columns
+        responseMatchColumns.forEach((match) => {
+            if (match.dataset.response == targetIdResponse) {
+                if (match.dataset.candidate == targetIdCandidate) {
+                    // match.className = 'result-match-item'
+                    match.firstElementChild.innerHTML = '✔️'
+                } else {
+                    match.firstElementChild.innerHTML = '✖️'
+                }
+            }
+        })
+    }
+
+
+    // insert response to question
+    function insertResponse(targetValue, targetIdResponse) {
+        var questionSpans = document.querySelectorAll('#questionSpan')
+
+        questionSpans.forEach((question) => {
+            // if match, insert response
+            if (question.dataset.question == targetIdResponse) {
+                question.className = 'is-response'
+                question.innerHTML = targetValue
+            }
+        })
+    }
+
+    // show detail of selected response 
+    function showResponseDetail(targetIdResponse, targetIdCandidate) {
+        var responseDetails = document.querySelectorAll('#responseDetail')
+
+        responseDetails.forEach((detail) => {
+            if (detail.dataset.response == targetIdResponse) {
+                if (detail.dataset.candidate == targetIdCandidate) {
+                    detail.classList.replace('is-invisible', 'is-visible')
+                } else {
+                    detail.classList.replace('is-visible', 'is-invisible')
+                }
+            }
+        })
+    }
+
+    // count responses 
+    function countResponses(targetIdResponse, targetIdCandidate) {
+        let candidateA = 0,
+            candidateB = 0,
+            totalActives,
+            allAnswers = 0
+
+        responses.forEach((response) => {
+            if (response.dataset.response == targetIdResponse) {
+                // toggle active css class for response 
+                if (response.dataset.candidate == targetIdCandidate) {
+                    response.className = 'is-active-response'
+                } else {
+                    response.className = 'candidate-response'
+                }
+            }
+            // count all active responses and candidates
+            if (response.className == 'is-active-response') {
+                totalActives = document.querySelectorAll('.is-active-response')
+                if (response.dataset.candidate == '1') {
+                    candidateA++
+                } else {
+                    candidateB++
+                }
+                allAnswers = totalActives.length
+            }
+        })
+        // get totals
+        activeResponses = totalActives
+        totalAnswers = allAnswers
+        candidate1Count = candidateA
+        candidate2Count = candidateB
+        percentageAnswered = (totalActives.length / totalQuestions) * 100
+        candidate1Percentage = (candidateA / totalQuestions) * 100
+        candidate2Percentage = (candidateB / totalQuestions) * 100
+        // call button function
+        updateResultsButton()
+    }
+
+    // update button innerHTML
+    function updateResultsButton() {
+        // update innerHTML
+        if (totalAnswers >= 3 && totalAnswers < totalQuestions) {
+            showResultsButton.innerHTML = `${totalAnswers} / ${totalQuestions} answered`
+        } else if (totalAnswers == totalQuestions) {
+            showResultsButton.classList.replace('is-disabled-button', 'is-abled-button')
+            showResultsButton.innerHTML = 'See my match results'
+        }
     }
 }
 
-// 1 insert target into question
-insertResponse = () => {
-    // get value of target
-    let e = event.target;
-    let eResponse = e.dataset.response;
-    let eValue = e.innerHTML;
-    let questions = document.querySelectorAll('#questionSpan');
-    // iterate through questions
-    for (i = 0; i < questions.length; i++) {
-        // insert target value if question match id
-        if (questions[i].dataset.question === eResponse) {
-            questions[i].className = "is-response";
-            questions[i].innerHTML = eValue;
-        }
-    }
-};
+// touch enabled slider 
+const carousel = () => {
+    // 1. initialize variables
+    // variables to for HTML elements
+    var responses = document.querySelectorAll('#candidateResponse'),
+        slides = document.querySelector('#slides'),
+        prev = document.querySelector('#prev'),
+        next = document.querySelector('#next'),
+        // navDots = document.querySelector('#navDots'),
+        // dotsArray,
+        slidesArray = Array.from(slides.querySelectorAll('#getMatch')),
+        slidesCount,
+        slideWidth,
+        slidesArrayWidth,
+        slidesArrayLeft,
+        startX,
+        startY,
+        distX,
+        distY,
+        posInitial,
+        posFinal,
+        threshold = 100, //required min X-distance to be considered swipe
+        restraint = 100, // Y-height boundary to be considered a horizontal swipe
+        index = 0
 
-// 2 show detail of selected response 
-showResponseDetail = () => {
-    // get target
-    let e = event.target;
-    let eResponse = e.dataset.response;
-    let eCandidate = e.dataset.candidate;
-    const details = document.querySelectorAll('#responseDetail');
+    // 2. add event to elements
+    // mouse events
+    slides.onmousedown = dragStart
 
-    // iterate through the details
-    for (i = 0; i < details.length; i++) {
-        // show detail if it matches target
-        if (details[i].dataset.response === eResponse) {
-            if (details[i].dataset.candidate === eCandidate) {
-                details[i].classList.replace("u-hide", "u-show");
-            } else {
-                details[i].classList.replace("u-show", "u-hide");
-            }
-        }
-    }
-};
+    // touch events (chrome, firefox, android)
+    slides.addEventListener('touchstart', dragStart)
+    slides.addEventListener('touchmove', dragMove)
+    slides.addEventListener('touchend', dragEnd)
 
-// 3 get total count per candidate
-tallyCandidateCount = () => {
+    // click events 
+    responses.forEach(response => { response.addEventListener('click', (e) => { updateSlides() }) })
+    
+    prev.addEventListener('click', (e) => { 
+        e.preventDefault()
+        shiftSlide('prev') 
+    })
+    next.addEventListener('click', (e) => {
+        e.preventDefault() 
+        shiftSlide('next')
+    })
+    // navDots.addEventListener('click', e => { 
+    //     e.preventDefault
+    //     clickNav(e) 
+    // })
 
-    const candidates = document.querySelectorAll('#candidateResponse');
-    const questions = document.querySelectorAll('#question').length;
-    let e = event.target;
-    let eResponse = e.dataset.response;
-    let eCandidate = e.dataset.candidate;
+    // transition events 
+    slides.addEventListener('transitionend', checkIndex)
 
-    let candidateA = 0;
-    let candidateB = 0;
-    let countAnswered = 0;
-    let allActives = [];
+    // 3. touchstart function
+    function dragStart(e) {
+        // get the initial left position of the slide 
+        posInitial = slides.offsetLeft // positive number
 
-    // iterate through responses chosen
-    for (i = 0; i < candidates.length; i++) {
-        if (candidates[i].dataset.response === eResponse) {
-            if (candidates[i].dataset.candidate === eCandidate) {
-                candidates[i].className = "is-active-button";
-                allActives++;
-            } else {
-                candidates[i].className = "candidate-response";
-            }
-        }
-        // get all active responses
-        let buttonActive = document.getElementsByClassName('is-active-button');
-        // count actives 
-        countAnswered = buttonActive.length;
-        // store actives 
-        allActives = buttonActive;
-    }
-
-    // count candidate response actives
-    for (j = 0; j < allActives.length; j++) {
-        if (allActives[j].dataset.candidate === "1") {
-           candidateA++;
-        }
-        if (allActives[j].dataset.candidate === "2") {
-            candidateB++;
-        }
-    }
-
-    // get total 
-    let percentageAnswered = (countAnswered / questions) * 100;
-    let percentageA = (candidateA / questions) * 100;
-    let percentageB = (candidateB / questions) * 100;
-
-    // display totals
-    document.querySelector('#candidateCounter').innerHTML = `${questions} (${percentageAnswered}% answered)`;
-    document.querySelector('#countAll').innerHTML = countAnswered; 
-
-    // total for candidate-1
-    document.querySelector('#candidate1').innerHTML = candidateA;
-    document.querySelector('#percentage1').innerHTML = percentageA;
-
-    // total for candidate-2
-    document.querySelector('#candidate2').innerHTML = candidateB;
-    document.querySelector('#percentage2').innerHTML = percentageB;
-
-    // show answered responses progress on disabled results
-    if (percentageAnswered === 100) {
-        document.querySelector('#showResults').classList.remove('is-disabled-button');
-        document.querySelector('#showResults').classList.add('is-abled-button');
-        document.querySelector('#showResults').innerHTML = 'Show results';
-    } else {
-        document.querySelector('#showResults').classList.remove('is-abled-button');
-        document.querySelector('#showResults').classList.add('is-disabled-button');
-        document.querySelector('#showResults').innerHTML = `${countAnswered} out of ${questions} answered`;
-    }
-};
-
-// 4 table 
-highlightTableColumn = () => {
-    // get ids of checked input 
-    let e = event.target;
-    let eResponse = e.dataset.response;
-    let eCandidate = e.dataset.candidate;
-    const tableColumns = document.querySelectorAll('#tableColumn');
-
-    // iterate through the columns
-    for (i = 0; i < tableColumns.length; i++) {
-        // show detail if it matches the response of candidate
-        if (tableColumns[i].dataset.response === eResponse) {
-            if (tableColumns[i].dataset.candidate === eCandidate) {
-                tableColumns[i].className = '';
-                tableColumns[i].className = 'is-true';
-                tableColumns[i].firstElementChild.innerHTML = "✔️";
-            } else {
-                tableColumns[i].className = '';
-                tableColumns[i].className = 'is-false';
-                tableColumns[i].firstElementChild.innerHTML = "✖️";
-            }
-        }
-    }
-};
-
-// 5 show results
-showPollResults = () => {
-    document.querySelector('#pollResults').className = "u-show";
-};
-
-// search registration filter
-searchStates = () => {
-    event.preventDefault();
-    let input = document.querySelector('#registrationInput');
-    let filter = input.value.toUpperCase();
-    let ul = document.querySelector('#registrationUL');
-    let stateLists = document.querySelectorAll('#stateLink');
-
-    // loop through the list and show matches 
-    for (i = 0; i < stateLists.length; i++) {
-        let listData = stateLists[i].dataset.state;
-        let listValue = stateLists[i].firstElementChild.innerHTML.toUpperCase().slice(0,2);
-
-        if (listValue.indexOf(filter) > -1) {
-            stateLists[i].className = "u-show";
+        // if touch detected
+        if (e.type == 'touchstart') {
+            // gets touch x position inside element
+            startX = e.touches[0].clientX
+            startY = e.touches[0].clientY
         } else {
-            stateLists[i].className = "u-hide";
+            // for mouse event
+            startX = e.clientX
+            document.onmouseup = dragEnd
+            document.onmousemove = dragMove
         }
-
-        if (filter.length === 0) {
-            stateLists[i].className = "u-hide";
-        };
     }
-};
 
+    // 4. touch move function
+    function dragMove(e) {
+        e.preventDefault()
 
+        if (e.type == 'touchmove') {
+            // get distanced moved 
+            distX = e.touches[0].clientX - startX
+            distY = e.touches[0].clientY - startY
+        } else {
+            // get mouse event
+            distX = e.clientX - startX
+        }
+        // set new left position of slide 
+        // based on distance of touch moved
+        slides.style.left = (posInitial + distX) + 'px'
+        console.log(`dragmove: posinitial: ${posInitial} slides.style.left: ${slides.style.left}, index: ${index}`)
+    }
+
+    // 5. end of touch/mousedown - either, call function or stay put
+    function dragEnd(e) {
+        e.preventDefault()
+
+        if (e.type == 'touchend') {
+            posFinal = slides.offsetLeft
+        }
+        // check that distance move beyond threshold
+        if (Math.abs(distX) >= threshold && Math.abs(distY) <= restraint) {
+            // check whether wipe was in pos or neg direction 
+            if (Math.sign(distX) == 1) {
+                // if positive, direction is prev
+                shiftSlide('prev', 'drag')
+                // console.log(`${posInitial} ${slideWidth}`)
+            } else {
+                // if negative, direction is next
+                shiftSlide('next', 'drag')
+            }
+        } else {
+            // if didn't meet the threshold than stay put 
+            slides.style.left = posInitial + 'px'
+        }
+        console.log(`drageEnd: posinitial: ${posInitial} slides.style.left: ${slides.style.left}, index: ${index}`)        
+        document.onmouseup = null
+        document.onmousemove = null
+    }
+    // 6. function to move slide 
+    function shiftSlide(dir, action) {
+        // add css transition 
+        slides.classList.add('shifting')
+        // remove active css class during transition
+        // dotsArray[index].classList.remove('dot-active')
+        // transition to next slide
+        // if a click event, set posInitial to current click position
+        if (!action) { posInitial = slides.offsetLeft }
+        if (dir == 'next') {
+            slides.style.left = (posInitial - slideWidth) + 'px'
+            index++
+
+        } else if (dir == 'prev') {
+            slides.style.left = (posInitial + slideWidth) + 'px'
+            index--
+
+        }
+        console.log(`shiftSlide: dir: ${dir} posinitial: ${posInitial} slides.style.left: ${slides.style.left}, index: ${index}`)    
+    }
+    // 7. navigation 
+    // function clickNav(e) {
+    //     const targetDot = e.target.closest('a')
+    //     if (!targetDot) return;
+    //     // make node list into array
+    //     const dots = Array.from(dotsArray)
+    //     // loop through array and find index of targetDot
+    //     const targetIndex = dots.findIndex(dot => dot === targetDot)
+
+    //     // add css transition 
+    //     slides.classList.add('shifting')
+    //     // remove active css class during transition
+    //     dotsArray[index].classList.remove('dot-active')
+    //     // transition to slide 
+    //     slides.style.left = -(slideWidth) * (targetIndex + 1) + 'px'
+    //     index = targetIndex
+    // }
+
+    // update slides
+    function updateSlides() {
+        var slidesInherit = slidesArray.filter(slide => (slide.style.display == 'inherit'))
+
+        slidesCount = slidesInherit.length
+        slideWidth = slidesInherit[0].offsetWidth
+        slidesArrayWidth = slideWidth * slidesCount
+        slidesArrayLeft = slidesArrayWidth - slideWidth
+    }
+
+    // 8. check index 
+    function checkIndex() {
+        slides.classList.remove('shifting')
+        
+        // set first slide boundary 
+        if (index == -1) {
+            slides.style.left = 0 + 'px'
+            index = 0
+         // set last slide boundary 
+        } else if (index == slidesCount) {
+            slides.style.left = -slidesArrayLeft + 'px'
+            index = slidesCount - 1
+        } 
+        // console.log(`length checkIndex: ${slidesCount}, slides style left: ${slides.style.left}, index: ${index}`)
+        // console.log(`checkIndex Length: ${slidesCount}, width: ${slidesArrayWidth}, final pos: ${posFinal}, array left: ${slidesArrayLeft}, index: ${index}`)
+        console.log(`checkIndex: posinitial: ${posInitial} slides.style.left: ${slides.style.left}, index: ${index}`)        // add active class to nav when on the slide 
+        // dotsArray[index].classList.add('dot-active')
+    }
+}
+
+// page animation 
+const animate = () => {
+    var scroll = window.requestAnimationFrame || function(callback) { window.setTimeout(callback, 1000/60) },
+        scrollAnimate = document.querySelectorAll('#scrollAnimate')
+    
+    loop()
+
+    function loop() {
+        scrollAnimate.forEach(element => {
+            if (isInViewport(element)) {
+                element.classList.add('is-heading-visible')
+            } else {
+                element.classList.remove('is-heading-visible')
+            }
+        })
+        scroll(loop)
+    }
+
+    // determine if element is in viewport
+    function isInViewport(element) {
+        var rect = element.getBoundingClientRect();
+            html = document.documentElement;
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || html.clientHeight) &&
+            rect.right <= (window.innerWidth || html.clientWidth)
+        );
+    }
+}
+animate()
+response()
+carousel()

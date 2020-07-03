@@ -1,0 +1,21 @@
+<div class="check-registration">
+    <div class="registration-form">
+        <form action="#">
+            {% csrf_token %}
+            <h2>Check my voter registration status</h2>
+            <div class="add-margin">
+                <input type="text" placeholder="search by state abbreviation" autocomplete="off"
+                    onkeyup="searchStates()" id="registrationInput" class="registration-input">
+
+                <ul id="registrationUL" style="height: 106px; overflow: hidden;">
+                    {% for registration in registration_list %}
+                    <li id="stateLink" class="u-hide" data-state="{{ registration.id }}"><a
+                            href="{{ registration.check_url }}" target="_blank"
+                            data-id="{{ registration.id }}">{{ registration.state_abbr }} ({{ registration.state }})
+                            registration lookup</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </form>
+    </div>
+</div>

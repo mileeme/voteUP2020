@@ -1,0 +1,145 @@
+{% for election in election_list %}
+<div class="hero">
+    <div class="container election-description">
+        <h6>{{ election.name|safe }}</h6>
+        {% if election.description %}
+        <h1>{{ election.description|safe }}</h1>
+        {% endif %}
+    </div>
+</div>
+
+<!-- get questions -->
+{% for question in question_list %}
+<div class="card">
+    <div id="poll">
+        <!-- question -->
+        <div class="card-question">
+            <h6>Topic</h6>
+            <h3 id="question" data-id="{{ question.number }}">{{ question|safe }}</h3>
+        </div>
+
+        <!-- response -->
+        <div class="card-response">
+            {% for response in response_list %}
+            {% if question.number == response.response_id %}
+            <div id="candidateResponse" class="candidate-response" value="{{ response.response|safe }}"
+                data-response="{{ response.response_id }}" data-candidate="{{ response.candidate_id }}">
+                {{ response.response|safe }}
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+
+        <!-- detail -->
+        {% for response in response_list %}
+        {% if question.number == response.response_id %}
+        <div id="responseDetail" class="u-hide" data-response="{{ response.response_id }}"
+            data-candidate="{{ response.candidate_id }}">
+            <div class="card-detail">
+                <div class="card-detail-section">
+                    <h6>Tell me more</h6>
+                    <p>{{ response.description|safe }}</p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endfor %}
+
+
+<!-- results button -->
+<div id="pre-button"></div>
+<div class="section-result-button">
+    <button id="showResults" class="is-disabled-button">0 answered</button>
+</div>
+
+<!-- results -->
+<div id="pollResults" class="u-hide">
+    <div class="container">
+
+        <!-- <div class="is-hide"><span id="candidateCounter">0</span></div> -->
+
+        <!-- heading -->
+        <div class="result-heading">
+            <h2>Your 2020 Presidential<br>Candidate match is<br><span id="candidateName"></span></h2>
+        </div>
+
+        <!-- candidate profiles -->
+        <div class="result-candidate-profile">
+            {% for candidate in candidate_list %}
+            <div>
+                <img id="candidateProfileImage" class="profile-img is-profile-disabled"
+                    data-profile="{{ candidate.candidate_id }}" src="{{ candidate.profile_photo.url }}"
+                    alt="candidate profile photo">
+            </div>
+            {% endfor %}
+
+            {% for candidate in candidate_list %}
+            <div id="candidateProfileName">{{ candidate.f_name }} {{ candidate.l_name }}</div>
+            {% endfor %}
+        </div>
+
+        <!-- match percentage -->
+        <div class="result-blurb">
+            <p id="matchPercentage"></p>
+        </div>
+
+        <!-- match responses -->
+        {% for question in question_list %}
+        <div class="card">
+            <div class="card-question" data-question="{{ question.number }}">
+                <h3>{{ question|safe }}</h3>
+            </div>
+            <div class="result-matches">
+                {% for response in response_list %}
+                {% if question.number == response.response_id %}
+                <div id="tableColumn" class="result-match-item" data-response="{{ response.response_id }}"
+                    data-candidate="{{ response.candidate_id }}">
+                    <span></span>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+
+        <!-- <p>total questions answered: <span id="countAll"></span> out of <span id="candidateCounter">0</span></p> -->
+        <!-- {% for candidate in candidate_list %}
+        <p>From the questions, I have matched <span id="candidate{{ candidate.id }}">0</span> / My values are <span
+                id="percentage{{ candidate.id }}">0</span>% compatible with {{ candidate.l_name }}</p>
+        {% endfor %} -->
+    </div>
+
+    <!-- table of results -->
+    <div class="container">
+        <table>
+            <thead>
+                <th>
+                    <p>Your response</p>
+                </th>
+                {% for candidate in candidate_list %}
+                {% if election.id == candidate.election_id %}
+                <th>{{ candidate.f_name }} {{ candidate.l_name }}</th>
+                {% endif %}
+                {% endfor %}
+            </thead>
+            <tbody>
+                {% for question in question_list %}
+                <tr id="tableRow" data-question="{{ question.number }}">
+                    <td>{{ question|safe }}</td>
+                    {% for response in response_list %}
+                    {% if question.number == response.response_id %}
+                    <td id="tableColumn" class="" data-response="{{ response.response_id }}"
+                        data-candidate="{{ response.candidate_id }}"><span></span>
+                    </td>
+                    {% endif %}
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endfor %}
