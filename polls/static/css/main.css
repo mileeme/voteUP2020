@@ -633,11 +633,10 @@ hr {
   padding: 1rem;
   font-size: 1.3rem;
   font-weight: normal;
-  color: rgba(0, 0, 0, 0.5);
-  background: #EBECF1;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: rgba(90, 69, 255, 0.5);
+  background-color: rgba(90, 69, 255, 0.1);
   pointer-events: none;
-  border-radius: 0.8rem;
+  border-radius: 0.4rem;
 }
 
 .is-abled-button {
@@ -648,10 +647,17 @@ hr {
   padding: 1rem;
   font-size: 1.3rem;
   font-weight: normal;
-  color: #000000;
-  background: linear-gradient(98deg, #5A45FF, rgba(90, 69, 255, 0.5));
-  border: 1px solid #5A45FF;
-  border-radius: 0.8rem;
+  color: #ffffff;
+  background-color: rgba(90, 69, 255, 0.9);
+  border-radius: 0.4rem;
+  -webkit-transition: background-color .2s ease-in;
+  -moz-transition: background-color .2s ease-in;
+  -o-transition: background-color .2s ease-in;
+  transition: background-color .2s ease-in;
+}
+
+.is-abled-button:hover, .is-abled-button:active {
+  background-color: #5a45ff;
 }
 
 .button-ripple {
@@ -663,7 +669,7 @@ hr {
   transform: translate(-50%, -50%);
   pointer-events: none;
   border-radius: 50%;
-  animation: ripple .6s linear infinite;
+  animation: ripple .4s linear infinite;
 }
 
 @keyframes ripple {
@@ -809,6 +815,7 @@ table {
   background: rgba(0, 0, 0, 0.05);
   -webkit-transform: translate3d(0rem, -18rem, -1rem);
   -moz-transform: translate3d(0rem, -18rem, -1rem);
+  -o-transform: translate3d(0rem, -18rem, -1rem);
   transform: translate3d(0rem, -18rem, -1rem);
 }
 
@@ -871,8 +878,34 @@ table {
   color: #000000;
 }
 
+.is-results-hide {
+  position: relative;
+  max-height: 0px;
+  overflow: hidden;
+}
+
+.is-results-show {
+  position: relative;
+  animation: showPoll 0.4s cubic-bezier(0.29, 0.24, 1, 0.19);
+}
+
+@keyframes showPoll {
+  0% {
+    opacity: 0;
+    max-height: 0;
+  }
+  50% {
+    opacity: 0;
+    max-height: var(max-height);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .result-heading {
   text-align: center;
+  margin: 1rem 0;
   padding: 2rem;
 }
 
@@ -900,6 +933,7 @@ table {
 }
 
 .result-blurb {
+  grid-column: 1 / -1;
   margin: 1rem 3rem;
   text-align: center;
   padding: 2rem 1rem;
@@ -932,7 +966,7 @@ table {
 .profile-detail-item {
   background: rgba(0, 0, 0, 0.2);
   border-radius: 2rem;
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   font-weight: 200;
   color: #000000;
   padding: .25rem .75rem;
@@ -940,12 +974,12 @@ table {
 }
 
 .is-profile-disabled {
-  border: 4px solid rgba(0, 0, 0, 0.2);
+  border: 3px solid rgba(0, 0, 0, 0.2);
   opacity: 0.7;
 }
 
 .is-profile-active {
-  border: 4px solid #000000;
+  border: 3px solid #000000;
 }
 
 .result-match {
@@ -980,14 +1014,15 @@ table {
 * Registration
 ----------------- */
 .check-registration {
+  background: white;
+  padding: 3rem 2rem;
+  margin-top: 1rem;
   display: grid;
   grid-template-rows: auto;
   width: 100%;
-  margin-top: 5rem;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 3rem;
-  padding: 0 1rem;
 }
 
 .check-registration .registration-form {

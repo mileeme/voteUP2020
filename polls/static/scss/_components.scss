@@ -186,9 +186,8 @@ hr {
     padding: $padding;
     font-size: $h3-sm;
     font-weight: normal;
-    color: transparentize($black, 0.5);
-    background: $button-background;
-    border: 1px $border-style transparentize($black, 0.8);
+    color: transparentize($primary-color, 0.5);
+    background-color: transparentize($color: $primary-color, $amount: 0.9);
     pointer-events: none;
     border-radius: $button-border-radius;
 }
@@ -200,10 +199,19 @@ hr {
     padding: $padding;
     font-size: $h3-sm;
     font-weight: normal;
-    color: $black;
-    background: linear-gradient(98deg, $primary-color, transparentize($primary-color, 0.5));
-    border: 1px $border-style $primary-color;
+    color: $background;
+    background-color: transparentize($color: $primary-color, $amount: 0.1);
+    // background-color: linear-gradient(98deg, $primary-color, transparentize($primary-color, 0.5));
     border-radius: $button-border-radius;
+    -webkit-transition: background-color .2s ease-in;
+    -moz-transition: background-color .2s ease-in;
+    -o-transition: background-color .2s ease-in;
+    transition: background-color .2s ease-in;
+    &:hover,
+    &:active {
+        background-color: transparentize($color: $primary-color, $amount: 0);
+
+    }
 }
 .button-ripple {
    position: absolute; 
@@ -214,7 +222,7 @@ hr {
    transform: translate(-50%, -50%);
    pointer-events: none;
    border-radius: 50%;
-   animation: ripple .6s linear infinite;
+   animation: ripple .4s linear infinite;
 }
 @keyframes ripple {
     0% {
@@ -349,6 +357,7 @@ table {
     background: transparentize($black, 0.95);
     -webkit-transform: translate3d(0rem, -18rem, -1rem);
     -moz-transform: translate3d(0rem, -18rem, -1rem);
+    -o-transform: translate3d(0rem, -18rem, -1rem);
     transform: translate3d(0rem, -18rem, -1rem);
 }
 .card-detail-section {
@@ -405,8 +414,31 @@ table {
 #candidateName {
     color: $black;
 }
+.is-results-hide {
+    position: relative;
+    max-height: 0px;
+    overflow: hidden;
+}
+.is-results-show {
+    position: relative;
+    animation: showPoll .4s cubic-bezier(0.29, 0.24, 1, 0.19);
+}
+@keyframes showPoll {
+    0% {
+        opacity: 0;
+        max-height: 0;
+    }
+    50% {
+        opacity: 0;
+        max-height: var(max-height);
+    }
+    100% {
+        opacity: 1;
+    }
+}
 .result-heading {
     text-align: center;
+    margin: $margin 0;
     padding: 2rem;
     @include screen(md) {
         padding: 2rem 4rem;
@@ -426,6 +458,7 @@ table {
     }
 }
 .result-blurb {
+    grid-column: 1 / -1;
     margin: $margin 3rem;
     text-align: center;
     padding: 2rem $padding;
@@ -463,12 +496,12 @@ table {
 }
 .is-profile-disabled {
     // outline: 4px $border-style transparentize($secondary-color, 0.8); 
-    border: 4px $border-style transparentize($black, 0.8);
+    border: 3px $border-style transparentize($black, 0.8);
     opacity: 0.7;
 }
 .is-profile-active {
     // outline: 4px $border-style $secondary-color; 
-    border: 4px $border-style $black;
+    border: 3px $border-style $black;
 }
 
 // candidate responses in card form
@@ -504,14 +537,15 @@ table {
 * Registration
 ----------------- */ 
 .check-registration {
+    background: white;
+    padding: 3rem 2rem;
+    margin-top: 1rem;
     display: grid;
     grid-template-rows: auto;
     width: 100%;
-    margin-top: 5rem;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 3rem;
-    padding: 0 $padding;
     .registration-form {
         justify-self: center;
         @include screen(md) {

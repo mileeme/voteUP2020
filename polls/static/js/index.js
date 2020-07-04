@@ -61,10 +61,15 @@ const response = () => {
     // display results
     function showResults() {
         var showPollResults = document.querySelector('#pollResults'),
-            resultsHeading = document.querySelector('#resultsHeading')
+            // resultsHeading = document.querySelector('#resultsHeading'),
+            pollResults = document.querySelector('.is-results-hide'),
+            pollResultsHeight = pollResults.scrollHeight
 
         // show results
-        showPollResults.classList.replace('u-hide', 'u-show')
+        showPollResults.classList.replace('is-results-hide', 'is-results-show')
+        showPollResults.style.setProperty('max-height', pollResultsHeight + 'px')
+        console.log(showPollResults)
+
         // resultsHeading.scrollIntoView()
     }
 
@@ -426,7 +431,7 @@ const carousel = () => {
 }
 
 // page animation 
-const scrollAnimate = () => {
+const animateOnScroll = () => {
     // scroll animation
     var scroll = window.requestAnimationFrame || function(callback) { window.setTimeout(callback, 1000/60) },
         scrollAnimate = document.querySelectorAll('#scrollAnimate')
@@ -458,7 +463,7 @@ const scrollAnimate = () => {
     }
 }
 
-// button 
+// buttons 
 const buttonRipple = () => {
     // ripple effect 
     const buttons = document.querySelectorAll('#showResults')
@@ -477,11 +482,11 @@ const buttonRipple = () => {
 
             setTimeout(() => {
                 ripple.remove()
-            }, 600)
+            }, 400)
         })
     })
 }
-scrollAnimate()
+animateOnScroll()
 response()
 carousel()
 buttonRipple()

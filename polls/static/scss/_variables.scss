@@ -54,7 +54,7 @@ $body-link-color: $font-color !default;
 // $body-link-hover-color: scale($font-color, $50%) !default;
 $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif !default;
 $line-height: 1.15 !default;
-$small: 0.6 !default;
+$small: 0.7 !default;
 
 // Notes
 $label-color: #B4B4B4 !default;
@@ -94,7 +94,7 @@ $margin: 1rem !default;
 $border-width: 1px !default;
 $border-style: solid !default;
 $border-color: $border !default;
-$border-radius: .8rem !default;
+$border-radius: .4rem !default;
 $borders: $border-width $border-style $border-color !default;
 
 /* -----------------

@@ -57,11 +57,22 @@
     <!-- results button -->
     <div id="pre-button"></div>
     <div class="section-result-button">
-        <a id="showResults" class="is-abled-button">0 answered</a>
+        <a id="showResults" class="is-disabled-button">0 answered</a>
     </div>
 
-    <!-- results: insert u-hide -->
-    <div id="pollResults" class="card u-show">
+
+
+    <!-- 
+        results: insert u-hide 
+        *********************************************
+    -->
+    <div id="pollResults" class="is-results-hide">
+
+        <!-- 
+            end experiment
+            *********************************************
+        -->
+
 
         <!-- heading -->
         <div id="resultsHeading" class="result-heading">
@@ -70,13 +81,12 @@
             </h2>
         </div>
 
-        <!-- match percentage -->
-        <div class="result-blurb">
-            <p><span id="candidateWinnerName"></span> agrees with you <span id="matchPercentage"></span> of the time.</p>
-        </div>
-
         <!-- candidate profiles -->
         <div class="result-candidate-profile">
+            <!-- match percentage -->
+            <div class="result-blurb">
+                <p><span id="candidateWinnerName"></span> agrees with you <span id="matchPercentage"></span> of the time.</p>
+            </div>
             {% for candidate in candidate_list %}
             <div>
                 <img id="candidateProfileImage" class="profile-img is-profile-disabled"
@@ -90,6 +100,11 @@
                 {{ candidate.f_name }} {{ candidate.l_name }}
             </div>
             {% endfor %}
+
+
+        <!-- todo 
+            ************************************************
+        -->
             <div>
                 <h5>"The former vice president, now the presumptive Democratic nominee, says he can build on the Obama legacy and unite the
                 country in a challenging time."</h5>
@@ -113,6 +128,9 @@
                 <span class="profile-detail-item">endorsement</span>
             </div>
         </div>
+        <!-- end of todo 
+            ************************************************
+        -->
 
 
         <!-- slider -->
@@ -172,7 +190,32 @@
                 </tbody>
             </table>
         </div>
+    </div>
 
+    <!-- 
+        TEST: registration 
+        *****************************************
+    -->
+    <div id="checkRegistration" class="check-registration">
+        <div class="registration-form">
+            <form action="#">
+                {% csrf_token %}
+                <h2>Check my voter registration status</h2>
+                <div class="add-margin">
+                    <input type="text" placeholder="search by state abbreviation" autocomplete="off"
+                        onkeyup="searchStates()" id="registrationInput" class="registration-input">
+
+                    <ul id="registrationUL" style="height: 106px; overflow: hidden;">
+                        {% for registration in registration_list %}
+                        <li id="stateLink" class="u-hide" data-state="{{ registration.id }}"><a
+                                href="{{ registration.check_url }}" target="_blank"
+                                data-id="{{ registration.id }}">{{ registration.state_abbr }} ({{ registration.state }})
+                                registration lookup</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 {% endfor %}
