@@ -64,8 +64,8 @@ const response = () => {
             resultsHeading = document.querySelector('#resultsHeading')
 
         // show results
-        showPollResults.className = 'u-show'
-        resultsHeading.scrollIntoView()
+        showPollResults.classList.replace('u-hide', 'u-show')
+        // resultsHeading.scrollIntoView()
     }
 
     // update result changes
@@ -78,7 +78,7 @@ const response = () => {
             candidateProfileImages = Array.from(document.querySelectorAll('#candidateProfileImage')),
             getMatches = Array.from(document.querySelectorAll('#getMatch'))
             
-            // update name of winner into results
+        // update name of winner into results
         candidateWinners.forEach((winner) => {
             if (candidate1Count > candidate2Count) {
                 winner.innerHTML = candidate1Name
@@ -334,7 +334,6 @@ const carousel = () => {
         // set new left position of slide 
         // based on distance of touch moved
         slides.style.left = (posInitial + distX) + 'px'
-        console.log(`dragmove: posinitial: ${posInitial} slides.style.left: ${slides.style.left}, index: ${index}`)
     }
 
     // 5. end of touch/mousedown - either, call function or stay put
@@ -350,7 +349,6 @@ const carousel = () => {
             if (Math.sign(distX) == 1) {
                 // if positive, direction is prev
                 shiftSlide('prev', 'drag')
-                // console.log(`${posInitial} ${slideWidth}`)
             } else {
                 // if negative, direction is next
                 shiftSlide('next', 'drag')
@@ -358,8 +356,7 @@ const carousel = () => {
         } else {
             // if didn't meet the threshold than stay put 
             slides.style.left = posInitial + 'px'
-        }
-        console.log(`drageEnd: posinitial: ${posInitial} slides.style.left: ${slides.style.left}, index: ${index}`)        
+        }      
         document.onmouseup = null
         document.onmousemove = null
     }
@@ -380,8 +377,7 @@ const carousel = () => {
             slides.style.left = (posInitial + slideWidth) + 'px'
             index--
 
-        }
-        console.log(`shiftSlide: dir: ${dir} posinitial: ${posInitial} slides.style.left: ${slides.style.left}, index: ${index}`)    
+        } 
     }
     // 7. navigation 
     // function clickNav(e) {
@@ -423,21 +419,21 @@ const carousel = () => {
         } else if (index == slidesCount) {
             slides.style.left = -slidesArrayLeft + 'px'
             index = slidesCount - 1
-        } 
-        // console.log(`length checkIndex: ${slidesCount}, slides style left: ${slides.style.left}, index: ${index}`)
-        // console.log(`checkIndex Length: ${slidesCount}, width: ${slidesArrayWidth}, final pos: ${posFinal}, array left: ${slidesArrayLeft}, index: ${index}`)
-        console.log(`checkIndex: posinitial: ${posInitial} slides.style.left: ${slides.style.left}, index: ${index}`)        // add active class to nav when on the slide 
+        }       
+        // add active class to nav when on the slide 
         // dotsArray[index].classList.add('dot-active')
     }
 }
 
 // page animation 
-const animate = () => {
+const scrollAnimate = () => {
+    // scroll animation
     var scroll = window.requestAnimationFrame || function(callback) { window.setTimeout(callback, 1000/60) },
         scrollAnimate = document.querySelectorAll('#scrollAnimate')
-    
+
     loop()
 
+    // loop animation
     function loop() {
         scrollAnimate.forEach(element => {
             if (isInViewport(element)) {
@@ -461,6 +457,31 @@ const animate = () => {
         );
     }
 }
-animate()
+
+// button 
+const buttonRipple = () => {
+    // ripple effect 
+    const buttons = document.querySelectorAll('#showResults')
+    buttons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            let rect = button.getBoundingClientRect(),
+                x = e.clientX - rect.left,
+                y = e.clientY - rect.top,
+                ripple = document.createElement('span')
+            
+            ripple.setAttribute('class', 'button-ripple')
+            ripple.style.left = x + 'px'
+            ripple.style.top = y + 'px'
+
+            button.appendChild(ripple)
+
+            setTimeout(() => {
+                ripple.remove()
+            }, 600)
+        })
+    })
+}
+scrollAnimate()
 response()
 carousel()
+buttonRipple()

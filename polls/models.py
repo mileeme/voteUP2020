@@ -23,16 +23,24 @@ class Election(models.Model):
 
 
 class Candidate(models.Model):
+    # PartyAssociation = models.TextChoices('PartyAssociation', 'Republican Democrat')
     election = models.ForeignKey(Election, blank=True, null=True, on_delete=models.CASCADE, related_name='candidates')
     f_name = models.CharField(max_length=60, blank=True, null=True)
     l_name = models.CharField(max_length=60, blank=True, null=True)
     profile_photo = models.ImageField(upload_to='polls/', blank=True, null=True)
+    # birth_date = models.DateField(blank=True, null=True)
+    # party = models.CharField(max_length=20, choices=PartyAssociation.choices, blank=True, null=True)
+    
 
     class Meta: 
         ordering = ['f_name', 'l_name',]
     
-    def __str__(self):
-        return f"{self.f_name} {self.l_name}"
+    def full_name(self):
+        return '%s %s' % (self.f_name, self.l_name)
+    # def calculate_age(self):
+    #     import datetime
+    #     return int((datetime.date.today() - self.birth_date).days / 365.25)
+    # age = property(calculate_age)
 
 
 class Question(models.Model):

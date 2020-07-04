@@ -108,16 +108,15 @@ hr {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding: 0 $padding;
     @include screen(md) {
         @include container(md);
     }
-    @include screen(lg) {
-        @include container(lg);
-    }
-    @include screen(xl) {
-        @include container(xl);
-    }
+    // @include screen(lg) {
+    //     @include container(lg);
+    // }
+    // @include screen(xl) {
+    //     @include container(xl);
+    // }
 }
 /* -----------------
 * Grids
@@ -171,13 +170,18 @@ hr {
 * Buttons
 ----------------- */
 .section-result-button {
+    text-align: center;
     padding: 2rem;
-    margin: 0 0 1rem;
+    margin: 1rem 0 1rem;
     background: $background;
+    @include screen(md) {
+        padding: 2rem 4rem;
+    }
 }
 // result button
 .is-disabled-button {
-    display: block;
+    display: inline-block;
+    position: relative;
     width: 100%;
     padding: $padding;
     font-size: $h3-sm;
@@ -189,15 +193,40 @@ hr {
     border-radius: $button-border-radius;
 }
 .is-abled-button {
-    display: block;
+    display: inline-block;
+    position: relative;
     width: 100%;
+    overflow: hidden;
     padding: $padding;
     font-size: $h3-sm;
     font-weight: normal;
     color: $black;
-    background: $button-background;
-    border: 1px $border-style $black;
+    background: linear-gradient(98deg, $primary-color, transparentize($primary-color, 0.5));
+    border: 1px $border-style $primary-color;
     border-radius: $button-border-radius;
+}
+.button-ripple {
+   position: absolute; 
+   background: $background;
+   -webkit-transform: translate(-50%, -50%);
+   -moz-transform: translate(-50%, -50%);
+   -o-transform: translate(-50%, -50%);
+   transform: translate(-50%, -50%);
+   pointer-events: none;
+   border-radius: 50%;
+   animation: ripple .6s linear infinite;
+}
+@keyframes ripple {
+    0% {
+        width: 0px;
+        height: 0px;
+        opacity: .3;
+    }
+    100% {
+        width: 1000px;
+        height: 1000px;
+        opacity: 0;
+    }
 }
 
 .is-fixed-button {
@@ -209,7 +238,6 @@ hr {
     text-align: center;
     padding: 1rem 0;
 }
-
 
 /* -----------------
 * Forms
@@ -235,6 +263,17 @@ footer {
 /* -----------------
 * Tables
 ----------------- */ 
+.results-table {
+    display: none;
+    @include screen(md) {
+        display: block;
+        padding: 2rem 4rem 4rem;
+    }
+}
+table {
+    border-spacing: $padding;
+}
+
 
 
 /* -----------------
@@ -261,6 +300,10 @@ footer {
 .card-question {
     padding: 2rem 2rem 2.2rem;
     background: $background;
+    @include screen(md) {
+        padding: 2rem 4rem 4rem;
+        min-height: 10rem;
+    }
     h6 {
         color: $label-color;
     }
@@ -269,18 +312,32 @@ footer {
     padding: 0 2rem 2rem;
     background: $background;
     cursor: pointer;
+    @include screen(md) {
+        padding: 0 4rem 2rem;
+    }
 }
 .candidate-response {
     padding: 1rem;
     margin: 0 0 0.6rem;
     color: $font-color;
     background-color: $background-secondary;
+    -webkit-transition: background-color .25 ease-in;
+    -moz-transition: background-color .25 ease-in;
+    -o-transition: background-color .25 ease-in;
+    transition: background-color .25 ease-in;
+    &:hover,
+    &:active {
+        background-color: transparentize($color: $background-secondary, $amount: 0.8);
+    }
 }
 .is-active-response {
     padding: 1rem;
     margin: 0 0 0.6rem;
     color: $font-color;
     background-color: transparentize($black, 0.75);
+    -webkit-transition: background-color .6s cubic-bezier(0.22, 0.61, 0.36, 1);
+    -moz-transition: background-color .6s cubic-bezier(0.22, 0.61, 0.36, 1);
+    -o-transition: background-color .6s cubic-bezier(0.22, 0.61, 0.36, 1);
     transition: background-color .6s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 .card-detail {
@@ -296,6 +353,9 @@ footer {
 }
 .card-detail-section {
     padding: 2rem;
+    @include screen(md) {
+        padding: 2rem 4rem;
+    }
 }
 .test {
     position: relative;
@@ -348,21 +408,34 @@ footer {
 .result-heading {
     text-align: center;
     padding: 2rem;
+    @include screen(md) {
+        padding: 2rem 4rem;
+    }
 }
 .result-candidate-profile {
     display: grid;
+    padding: $padding;
     margin: $margin 0;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: $padding;
     text-align: center;
     font-weight: 600;
+    @include screen(md) {
+        padding: 2rem 4rem;
+        grid-gap: 2rem;
+    }
 }
 .result-blurb {
-    margin: $margin 0;
+    margin: $margin 3rem;
     text-align: center;
-    padding: 2rem 3rem;
+    padding: 2rem $padding;
+    border-radius: 50% 50% 1% 50%;
     background: transparentize($black, 0.8); 
+    @include screen(md) {
+        margin: 2rem 4rem;
+    }
 }
+
 .profile-img {
     width: 5.5rem;
     // outline: 4px $border-style transparent; 
@@ -370,10 +443,28 @@ footer {
     padding: 2px;
     border-radius: 5.5rem;
     border: 4px $border-style transparent;
+    opacity: 1;
+}
+.profile-detail {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: flex-start;
+
+}
+.profile-detail-item {
+    background: transparentize($black, 0.8);
+    border-radius: 2rem;
+    font-size: $font-size * $small;
+    font-weight: 200;
+    color: $black;
+    padding: .25rem .75rem;
+    margin: 0.17rem;
 }
 .is-profile-disabled {
     // outline: 4px $border-style transparentize($secondary-color, 0.8); 
     border: 4px $border-style transparentize($black, 0.8);
+    opacity: 0.7;
 }
 .is-profile-active {
     // outline: 4px $border-style $secondary-color; 
@@ -617,6 +708,10 @@ footer {
     width: 22rem;
     height: 20rem;
     background: $background;
+    @include screen(md) {
+        width: 35rem;
+        height: 20rem;
+    }
 }
 .slides {
     display: flex;
@@ -643,6 +738,9 @@ footer {
         font-size: $font-size;
         font-weight: $font-weight;
         line-height: $line-height;
+        @include screen(md) {
+            line-height: $heading-line-height;
+        }
     }
     .is-no-response {
         display: inline-block;
@@ -656,6 +754,9 @@ footer {
         border-bottom: 1px $border-style $black;
         padding-bottom: .125rem;
     }
+    @include screen(md) {
+        min-width: 35rem;
+    }
 }
 .slide-question {
     padding: $padding;
@@ -666,32 +767,35 @@ footer {
 
 // /* allow controls only for non-touch displays */
 .control {
-    position: absolute;
-    cursor: pointer;
-    top: 50%; /* change based on screen size */
-    width: 50px; 
-    height: 3rem;
-    background: transparent;
-    z-index: 2;
-    opacity: .2;
-    background-size: 22px;
-    background-position: center;
-    background-repeat: no-repeat;
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-    transform: translateY(-50%);
-    -webkit-transition: opacity .25s ease-in-out, transform .25s ease-in;
-    -moz-transition: opacity .25s ease-in-out, transform .25s ease-in;
-    -o-transition: opacity .25s ease-in-out, transform .25s ease-in;
-    transition: opacity .25s ease-in-out, transform .25s ease-in;
-    &:hover {
-        opacity: 1;
-        -webkit-transform: translateY(-50%) scale(1.5, 1.5); 
-        -moz-transform: translateY(-50%) scale(1.5, 1.5); 
-        -o-transform: translateY(-50%) scale(1.5, 1.5); 
-        transform: translateY(-50%) scale(1.5, 1.5); 
-
+    display: none;
+    @include screen(md) {
+        display: block;
+        position: absolute;
+        cursor: pointer;
+        top: 50%; /* change based on screen size */
+        width: 50px; 
+        height: 3rem;
+        background: transparent;
+        z-index: 2;
+        opacity: .2;
+        background-size: 22px;
+        background-position: center;
+        background-repeat: no-repeat;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+        -webkit-transition: opacity .25s ease-in-out, transform .25s ease-in;
+        -moz-transition: opacity .25s ease-in-out, transform .25s ease-in;
+        -o-transition: opacity .25s ease-in-out, transform .25s ease-in;
+        transition: opacity .25s ease-in-out, transform .25s ease-in;
+        &:hover {
+            opacity: 1;
+            -webkit-transform: translateY(-50%) scale(1.5, 1.5); 
+            -moz-transform: translateY(-50%) scale(1.5, 1.5); 
+            -o-transform: translateY(-50%) scale(1.5, 1.5); 
+            transform: translateY(-50%) scale(1.5, 1.5); 
+        }
     }
 }
 .prev {
