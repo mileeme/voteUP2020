@@ -454,7 +454,7 @@ body {
   font: normal normal normal 1rem/1.15 -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-size: 1rem;
   color: #3C3C3C;
-  background: #F4F4F4;
+  background: rgba(187, 187, 187, 0.4);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -590,11 +590,17 @@ hr {
   display: block;
   margin-bottom: -6rem;
   padding: 9rem 2rem 12rem;
-  background: rgba(17, 196, 204, 0.6);
+  background: #c4fffc;
 }
 
 .hero h1 {
   font-size: 2rem;
+}
+
+@media (min-width: 48rem) {
+  .hero h1 {
+    font-size: 3rem;
+  }
 }
 
 .hero-heading {
@@ -746,7 +752,7 @@ table {
   margin: 1rem 0 0;
   background: #ffffff;
   border-top: 1px solid #ffffff;
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.08), 0 0 2px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.08), 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .card h3 {
@@ -756,10 +762,6 @@ table {
   -moz-transition: width 1s ease-in-out, left 1.5s ease-in-out;
   -o-transition: width 1s ease-in-out, left 1.5s ease-in-out;
   transition: width 1s ease-in-out, left 1.5s ease-in-out;
-}
-
-.card h6 {
-  padding-bottom: 0.5rem;
 }
 
 .card-question {
@@ -778,6 +780,10 @@ table {
   color: #B4B4B4;
 }
 
+.card-question h4 {
+  font-weight: 400;
+}
+
 .card-response {
   padding: 0 2rem 2rem;
   background: #ffffff;
@@ -793,8 +799,9 @@ table {
 .candidate-response {
   padding: 1rem;
   margin: 0 0 0.6rem;
+  border-radius: 25px 25px 1px 25px;
   color: #3C3C3C;
-  background-color: rgba(17, 196, 204, 0.2);
+  background-color: rgba(90, 69, 255, 0.1);
   -webkit-transition: background-color .25 ease-in;
   -moz-transition: background-color .25 ease-in;
   -o-transition: background-color .25 ease-in;
@@ -802,14 +809,17 @@ table {
 }
 
 .candidate-response:hover, .candidate-response:active {
-  background-color: rgba(244, 244, 244, 0.2);
+  background-color: rgba(187, 187, 187, 0.2);
 }
 
 .is-active-response {
   padding: 1rem;
   margin: 0 0 0.6rem;
+  border-radius: 25px 25px 1px 25px;
   color: #ffffff;
-  background-color: #11c4cc;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1), 2px 2px 2px rgba(0, 0, 0, 0.2);
+  background: #5a45ff;
+  background: linear-gradient(90deg, #5A45FF 0%, rgba(90, 69, 255, 0.6) 90%);
   -webkit-transition: background-color 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
   -moz-transition: background-color 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
   -o-transition: background-color 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
@@ -822,7 +832,7 @@ table {
   height: 0;
   z-index: -1;
   color: #909090;
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.8);
   -webkit-transform: translate3d(0rem, -18rem, -1rem);
   -moz-transform: translate3d(0rem, -18rem, -1rem);
   -o-transform: translate3d(0rem, -18rem, -1rem);
@@ -877,7 +887,8 @@ table {
 
 .is-response {
   overflow: hidden;
-  border-bottom: 5px solid rgba(17, 196, 204, 0.8);
+  color: #3C3C3C;
+  font-weight: 700;
 }
 
 /* -----------------
@@ -940,6 +951,7 @@ table {
   grid-column-gap: 1.5rem;
   grid-row-gap: 1rem;
   border-radius: 20px 20px 0px 20px;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.08), 0 0 2px rgba(0, 0, 0, 0.12);
 }
 
 @media (min-width: 48rem) {
@@ -967,7 +979,7 @@ table {
   justify-self: center;
   align-self: center;
   padding: 2rem 0 1rem;
-  border-top: 1px solid #F4F4F4;
+  border-top: 1px solid rgba(90, 69, 255, 0.2);
 }
 
 .card-candidate-profile .profile-quote {
@@ -1180,7 +1192,7 @@ table {
   align-content: center;
   padding: 2rem;
   width: 100%;
-  background-color: rgba(90, 69, 255, 0.7);
+  background-color: #1de0bc;
   border-radius: 1rem;
 }
 
@@ -1191,7 +1203,7 @@ table {
 }
 
 .slide-question h3 {
-  color: #ffffff;
+  color: #3C3C3C;
   font-size: 1.2rem;
   line-height: 1.4rem;
   font-weight: 400;
@@ -1217,7 +1229,7 @@ table {
 }
 
 .slide-question .is-response {
-  border-bottom: 5px solid rgba(90, 69, 255, 0.9);
+  color: #3C3C3C;
 }
 
 .control {
