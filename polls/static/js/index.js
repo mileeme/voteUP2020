@@ -58,6 +58,9 @@ const response = () => {
         candidate2Name = candidate2
     }
 
+    /**********************************************
+    * Survey results
+    **********************************************/
     // display results
     function showResults() {
         var showPollResults = document.querySelector('#pollResults'),
@@ -77,13 +80,15 @@ const response = () => {
     function updateResults(targetIdResponse, targetIdCandidate) {
 
         var candidateWinners = document.querySelectorAll('#candidateWinnerName'),
-            matchPercentage = document.querySelector('#matchPercentage'),
+            candidateProfiles = document.querySelectorAll('#candidateProfile'),
+            matchPercentages = document.querySelectorAll('#matchPercentage'),
+            candidateProfileImages = Array.from(document.querySelectorAll('#candidateProfileImage')),
+            // slider and table
             responseMatches = Array.from(document.querySelectorAll('#responseMatch')),
             responseMatchColumns = Array.from(document.querySelectorAll('#responseMatchColumn')),
-            candidateProfileImages = Array.from(document.querySelectorAll('#candidateProfileImage')),
             getMatches = Array.from(document.querySelectorAll('#getMatch'))
             
-        // update name of winner into results
+        // update name of winner in result heading
         candidateWinners.forEach((winner) => {
             if (candidate1Count > candidate2Count) {
                 winner.innerHTML = candidate1Name
@@ -92,12 +97,19 @@ const response = () => {
             }
         })
 
-        // update winner percentage match
-        if (candidate1Percentage > candidate2Percentage) {
-            matchPercentage.innerHTML = candidate1Percentage + '%'
-        } else (
-            matchPercentage.innerHTML = candidate2Percentage + '%'
-        )
+        // update candidate percentage match
+        matchPercentages.forEach((match) => {
+            if (match.dataset.candidate == 1) {
+                match.innerHTML = candidate1Percentage + '% match'
+            } else {
+                match.innerHTML = candidate2Percentage + '% match'
+            }
+        })
+        // if (candidate1Percentage > candidate2Percentage) {
+        //     matchPercentage.innerHTML = candidate1Percentage + '% match'
+        // } else (
+        //     matchPercentage.innerHTML = candidate2Percentage + '% match'
+        // )
 
         // update winner profile border highlight 
         candidateProfileImages.forEach((profile) => {
@@ -112,6 +124,23 @@ const response = () => {
                     profile.className = 'profile-img is-profile-active'
                 } else {
                     profile.className = 'profile-img is-profile-disabled'
+                }
+            }
+        })
+
+        // only show winner profile 
+        candidateProfiles.forEach((profile) => {
+            if (candidate1Count > candidate2Count) {
+                if (profile.dataset.candidate != 1) {
+                    profile.className = 'u-hide'
+                } else {
+                    profile.className = 'card-candidate-profile'
+                }
+            } else {
+                if (profile.dataset.candidate !=2) {
+                    profile.className = 'u-hide'
+                } else {
+                    profile.className = 'card-candidate-profile'
                 }
             }
         })
@@ -173,7 +202,9 @@ const response = () => {
         })
     }
 
-
+    /**********************************************
+    * Survey
+    **********************************************/
     // insert response to question
     function insertResponse(targetValue, targetIdResponse) {
         var questionSpans = document.querySelectorAll('#questionSpan')
@@ -252,6 +283,7 @@ const response = () => {
         }
     }
 }
+
 
 // touch enabled slider 
 const carousel = () => {
@@ -469,6 +501,7 @@ const buttonRipple = () => {
     const buttons = document.querySelectorAll('#showResults')
     buttons.forEach(button => {
         button.addEventListener('click', (e) => {
+            e.preventDefault()
             let rect = button.getBoundingClientRect(),
                 x = e.clientX - rect.left,
                 y = e.clientY - rect.top,

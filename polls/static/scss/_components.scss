@@ -111,12 +111,6 @@ hr {
     @include screen(md) {
         @include container(md);
     }
-    // @include screen(lg) {
-    //     @include container(lg);
-    // }
-    // @include screen(xl) {
-    //     @include container(xl);
-    // }
 }
 /* -----------------
 * Grids
@@ -137,8 +131,11 @@ hr {
     display: block;
     margin-bottom: -6rem;
     // padding-bottom: 6rem;
-    padding: 9rem 2.5rem 15rem;
-    background: transparentize($secondary-color, 0.7);
+    padding: 9rem 2rem 12rem;
+    background: transparentize($color: $secondary-color, $amount: 0.4);
+    h1 {
+        font-size: 2rem;
+    }
 }
 .hero-heading {
     opacity: 0;
@@ -150,6 +147,9 @@ hr {
     -moz-transition: opacity .4s ease-in, transform .4s .25s cubic-bezier(0,0,.3,1);
     -o-transition: opacity .4s ease-in, transform .4s .25s cubic-bezier(0,0,.3,1);
     transition: opacity .4s ease-in, transform .4s .25s cubic-bezier(0,0,.3,1);
+    @include screen(md) {
+        padding: 0 4rem;
+    }
 }
 
 // @animate heroMove {
@@ -171,7 +171,7 @@ hr {
 ----------------- */
 .section-result-button {
     text-align: center;
-    padding: 2rem;
+    padding: 2rem 1rem;
     margin: 1rem 0 1rem;
     background: $background;
     @include screen(md) {
@@ -328,7 +328,7 @@ table {
     padding: 1rem;
     margin: 0 0 0.6rem;
     color: $font-color;
-    background-color: $background-secondary;
+    background-color: transparentize($color: $secondary-color, $amount: 0.8);
     -webkit-transition: background-color .25 ease-in;
     -moz-transition: background-color .25 ease-in;
     -o-transition: background-color .25 ease-in;
@@ -341,8 +341,8 @@ table {
 .is-active-response {
     padding: 1rem;
     margin: 0 0 0.6rem;
-    color: $font-color;
-    background-color: transparentize($black, 0.75);
+    color: $background;
+    background-color: $secondary-color;
     -webkit-transition: background-color .6s cubic-bezier(0.22, 0.61, 0.36, 1);
     -moz-transition: background-color .6s cubic-bezier(0.22, 0.61, 0.36, 1);
     -o-transition: background-color .6s cubic-bezier(0.22, 0.61, 0.36, 1);
@@ -404,8 +404,8 @@ table {
 
 .is-response {
     overflow: hidden;
-    border-bottom: 3px $border-style $black;
-    padding-bottom: .125rem;
+    border-bottom: 5px $border-style transparentize($color: $secondary-color, $amount: 0.2);
+    // padding-bottom: .1rem;
 }
 
 /* -----------------
@@ -413,6 +413,9 @@ table {
 ----------------- */ 
 #candidateName {
     color: $black;
+}
+.divider {
+    border-top: 1px $border-style transparentize($color: $border, $amount: 0.8);
 }
 .is-results-hide {
     position: relative;
@@ -438,36 +441,126 @@ table {
 }
 .result-heading {
     text-align: center;
-    margin: $margin 0;
+    // margin: $margin 0;
     padding: 2rem;
     @include screen(md) {
         padding: 2rem 4rem;
     }
+    .candidate-winner {
+        color: $primary-color;
+    }
 }
-.result-candidate-profile {
+
+// candidate profile card
+.card-candidate-profile {
+    margin: 1rem;
+    padding: 2rem;
+    background: $background;
     display: grid;
-    padding: $padding;
-    margin: $margin 0;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: $padding;
-    text-align: center;
-    font-weight: 600;
+    grid-template-columns: 1fr 2fr;
+    grid-column-gap: 1.5rem;
+    grid-row-gap: 1rem;
+    border-radius: 20px 20px 0px 20px;
+    @include screen(md) {
+        grid-column-gap: 4rem;
+        grid-rop-gap: 2rem;
+        margin: 1rem 0;
+    }
+    .profile-h3 {
+        line-height: 2rem;
+    }
+    .profile-p {
+        font-size: .75rem;
+    }
+    .profile-left {
+        text-align: center;
+    }
+    .profile-right {
+
+    }
+    .profile-row {
+        grid-column: 1 / -1;
+        justify-self: center;
+        align-self: center;
+        padding: 2rem 0 1rem;
+        border-top: 1px $border-style $background-secondary;
+    }
+    .profile-quote {
+    font-size: 1rem;
+    line-height: 1.4rem;
     @include screen(md) {
         padding: 2rem 4rem;
-        grid-gap: 2rem;
+    }
+    }
+    .profile-squad {
+        list-style: none;
+        display: flex;
+        text-align: center;
+        font-size: 0.625rem;
+        color: $note-color;
+    }
+    .profile-squad li {
+        margin: 0.5rem 0.1rem;
+        padding: 0.2rem;
+    }
+    .profile-squad-img {
+    width: 2.5rem;
+    border-radius: 0.625rem; 
+    margin-bottom: 0.4rem;
+    }
+    .profile-match {
+        color: $primary-color;
+    }
+    .profile-button {
+        display: block;
+        text-align: center;
+        padding-top: 0.4rem;
+        padding-bottom: 0.4rem;
+        padding-left: auto;
+        padding-right: auto;
+        margin: 1rem 0 1rem;
+        background: $primary-color;
+        color: white;
+        border-radius: .5rem;
+        font-size: 0.75rem;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        @include screen(md) {
+            width: 100px;
+        }
     }
 }
-.result-blurb {
-    grid-column: 1 / -1;
-    margin: $margin 3rem;
-    text-align: center;
-    padding: 2rem $padding;
-    border-radius: 50% 50% 1% 50%;
-    background: transparentize($black, 0.8); 
-    @include screen(md) {
-        margin: 2rem 4rem;
-    }
-}
+
+
+
+
+
+
+// .result-candidate-profile {
+//     display: grid;
+//     padding: $padding;
+//     margin: $margin 0;
+//     grid-template-columns: repeat(2, 1fr);
+//     grid-gap: $padding;
+//     text-align: center;
+//     font-weight: 600;
+//     @include screen(md) {
+//         padding: 2rem 4rem;
+//         grid-gap: 2rem;
+//     }
+// }
+// .result-blurb {
+//     grid-column: 1 / -1;
+//     margin: $margin 3rem;
+//     text-align: center;
+//     padding: 2rem $padding;
+//     border-radius: 50% 50% 1% 50%;
+//     background: transparentize($black, 0.8); 
+//     @include screen(md) {
+//         margin: 2rem 4rem;
+//     }
+// }
 
 .profile-img {
     width: 5.5rem;
@@ -478,22 +571,22 @@ table {
     border: 4px $border-style transparent;
     opacity: 1;
 }
-.profile-detail {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-content: flex-start;
+// .profile-detail {
+//     display: flex;
+//     flex-flow: row wrap;
+//     justify-content: center;
+//     align-content: flex-start;
 
-}
-.profile-detail-item {
-    background: transparentize($black, 0.8);
-    border-radius: 2rem;
-    font-size: $font-size * $small;
-    font-weight: 200;
-    color: $black;
-    padding: .25rem .75rem;
-    margin: 0.17rem;
-}
+// }
+// .profile-detail-item {
+//     background: transparentize($black, 0.8);
+//     border-radius: 2rem;
+//     font-size: $font-size * $small;
+//     font-weight: 200;
+//     color: $black;
+//     padding: .25rem .75rem;
+//     margin: 0.17rem;
+// }
 .is-profile-disabled {
     // outline: 4px $border-style transparentize($secondary-color, 0.8); 
     border: 3px $border-style transparentize($black, 0.8);
@@ -501,33 +594,33 @@ table {
 }
 .is-profile-active {
     // outline: 4px $border-style $secondary-color; 
-    border: 3px $border-style $black;
+    border: 3px $border-style $primary-color;
 }
 
 // candidate responses in card form
-.result-match {
-    display: grid;
-    margin: 1.5rem;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: $padding;
-}
-.result-match-item {
-    padding: 2rem;
-    &:first-child {
-        align-self: start;
-        text-align: left;
-    }
-    &:last-child {
-        align-self: end;
-        text-align: right;
-    }
-    .profile-img {
-        width: 3rem;
-        border-radius: 3rem;
-        padding: 1px;
-        border: 3px $border-style transparent;
-    }
-}
+// .result-match {
+//     display: grid;
+//     margin: 1.5rem;
+//     grid-template-columns: repeat(2, 1fr);
+//     grid-gap: $padding;
+// }
+// .result-match-item {
+//     padding: 2rem;
+//     &:first-child {
+//         align-self: start;
+//         text-align: left;
+//     }
+//     &:last-child {
+//         align-self: end;
+//         text-align: right;
+//     }
+//     .profile-img {
+//         width: 3rem;
+//         border-radius: 3rem;
+//         padding: 1px;
+//         border: 3px $border-style transparent;
+//     }
+// }
 // .is-false {
 // }
 // .is-true {
@@ -733,18 +826,21 @@ table {
 /* -----------------
 * Carousel v.2
 ----------------- */ 
-
+.slider-heading {
+    margin: 2rem $margin $margin;
+    text-align: center;
+}
 .wrapper {
     margin-left: auto;
     margin-right: auto;
     overflow: hidden;
     position: relative;
     width: 22rem;
-    height: 20rem;
-    background: $background;
+    height: 22rem;
+    background: transparent;
     @include screen(md) {
         width: 35rem;
-        height: 20rem;
+        height: 22rem;
     }
 }
 .slides {
@@ -752,7 +848,7 @@ table {
     position: relative;
     left: 0;
     height: 100%;
-    background: $background;
+    background: transparent;
 }
 .slides.shifting {
     -webkit-transition: left .175s ease-in;
@@ -766,15 +862,37 @@ table {
     // height: 100%;
     cursor: pointer;
     position: relative;
-    background: $background;
-    padding: $padding;
+    background: transparent;
+    padding: .1rem;
+    @include screen(md) {
+        min-width: 35rem;
+    }
+}
+.slide-question {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    padding: 2rem;
+    width: 100%;
+    background-color: transparentize($color: $primary-color, $amount: 0.3);
+    border-radius: 1rem;
+    @include screen(md) {
+        padding: 2rem 4rem;
+    }
     h3 {
-        font-size: $font-size;
-        font-weight: $font-weight;
-        line-height: $line-height;
+        color: $background;
+        font-size: 1.2rem;
+        // font-weight: $font-weight;
+        line-height: 1.4rem;
+        font-weight: 400;
         @include screen(md) {
-            line-height: $heading-line-height;
+            line-height: 1.4rem;
+            font-size: $h3;
+            font-weight: 400;
         }
+    }
+    h6 {
+        color: $background;
     }
     .is-no-response {
         display: inline-block;
@@ -782,19 +900,9 @@ table {
         border-bottom: 1px $border-style $border-color;
         text-decoration: none;
     }
-
     .is-response {
-        overflow: hidden;
-        border-bottom: 1px $border-style $black;
-        padding-bottom: .125rem;
+        border-bottom: 5px $border-style transparentize($color: $primary-color, $amount: 0.1);
     }
-    @include screen(md) {
-        min-width: 35rem;
-    }
-}
-.slide-question {
-    padding: $padding;
-    // background: transparentize($color: $primary-color, $amount: 0.9);
 }
 .slide-avatar-container {}
 .slide-avatar-item {}
