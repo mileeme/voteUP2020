@@ -58,9 +58,9 @@ const response = () => {
         candidate2Name = candidate2
     }
 
-    /**********************************************
+    /*
     * Survey results
-    **********************************************/
+    *****************/
     // display results
     function showResults() {
         var showPollResults = document.querySelector('#pollResults'),
@@ -105,11 +105,6 @@ const response = () => {
                 match.innerHTML = candidate2Percentage + '% match'
             }
         })
-        // if (candidate1Percentage > candidate2Percentage) {
-        //     matchPercentage.innerHTML = candidate1Percentage + '% match'
-        // } else (
-        //     matchPercentage.innerHTML = candidate2Percentage + '% match'
-        // )
 
         // update winner profile border highlight 
         candidateProfileImages.forEach((profile) => {
@@ -202,9 +197,9 @@ const response = () => {
         })
     }
 
-    /**********************************************
+    /*
     * Survey
-    **********************************************/
+    *****************/
     // insert response to question
     function insertResponse(targetValue, targetIdResponse) {
         var questionSpans = document.querySelectorAll('#questionSpan')

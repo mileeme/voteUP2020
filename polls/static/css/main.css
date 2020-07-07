@@ -453,8 +453,8 @@ html {
 body {
   font: normal normal normal 1rem/1.15 -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-size: 1rem;
-  color: #3C3C3C;
-  background: rgba(187, 187, 187, 0.4);
+  color: #425466;
+  background-color: rgba(236, 236, 236, 0.4);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -514,7 +514,7 @@ h5 {
 h6 {
   font-size: 0.8rem;
   font-weight: 600;
-  color: #3C3C3C;
+  color: #425466;
   padding-bottom: 1rem;
 }
 
@@ -577,6 +577,18 @@ hr {
   }
 }
 
+.header {
+  padding: 2rem;
+  font-size: .8rem;
+  font-weight: 600;
+}
+
+@media (min-width: 48rem) {
+  .header {
+    padding: 2rem 0;
+  }
+}
+
 /* -----------------
 * Grids
 ----------------- */
@@ -588,13 +600,16 @@ hr {
 ----------------- */
 .hero {
   display: block;
+  margin-top: -5rem;
   margin-bottom: -6rem;
   padding: 9rem 2rem 12rem;
-  background: #c4fffc;
+  background-color: #1de0bc;
 }
 
 .hero h1 {
-  font-size: 2rem;
+  font-size: 2.2rem;
+  color: #ffffff;
+  font-weight: 500;
 }
 
 @media (min-width: 48rem) {
@@ -706,7 +721,7 @@ hr {
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: #3C3C3C;
+  background-color: #425466;
   text-align: center;
   padding: 1rem 0;
 }
@@ -800,7 +815,7 @@ table {
   padding: 1rem;
   margin: 0 0 0.6rem;
   border-radius: 25px 25px 1px 25px;
-  color: #3C3C3C;
+  color: #425466;
   background-color: rgba(90, 69, 255, 0.1);
   -webkit-transition: background-color .25 ease-in;
   -moz-transition: background-color .25 ease-in;
@@ -809,7 +824,7 @@ table {
 }
 
 .candidate-response:hover, .candidate-response:active {
-  background-color: rgba(187, 187, 187, 0.2);
+  background-color: rgba(236, 236, 236, 0.4);
 }
 
 .is-active-response {
@@ -887,7 +902,7 @@ table {
 
 .is-response {
   overflow: hidden;
-  color: #3C3C3C;
+  color: #425466;
   font-weight: 700;
 }
 
@@ -968,6 +983,7 @@ table {
 
 .card-candidate-profile .profile-p {
   font-size: .75rem;
+  color: #909090;
 }
 
 .card-candidate-profile .profile-left {
@@ -983,8 +999,8 @@ table {
 }
 
 .card-candidate-profile .profile-quote {
-  font-size: 1rem;
-  line-height: 1.4rem;
+  font-size: 0.9rem;
+  line-height: 1.2rem;
 }
 
 @media (min-width: 48rem) {
@@ -1007,7 +1023,7 @@ table {
 }
 
 .card-candidate-profile .profile-squad-img {
-  width: 2.5rem;
+  width: 2.7rem;
   border-radius: 0.625rem;
   margin-bottom: 0.4rem;
 }
@@ -1019,15 +1035,15 @@ table {
 .card-candidate-profile .profile-button {
   display: block;
   text-align: center;
-  padding-top: 0.4rem;
-  padding-bottom: 0.4rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   padding-left: auto;
   padding-right: auto;
   margin: 1rem 0 1rem;
   background: #5A45FF;
   color: white;
   border-radius: .5rem;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -1060,71 +1076,6 @@ table {
 /* -----------------
 * Registration
 ----------------- */
-.check-registration {
-  background: white;
-  padding: 3rem 2rem;
-  margin-top: 1rem;
-  display: grid;
-  grid-template-rows: auto;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 3rem;
-}
-
-.check-registration .registration-form {
-  justify-self: center;
-}
-
-@media (min-width: 48rem) {
-  .check-registration .registration-form {
-    max-width: 28rem;
-  }
-}
-
-#registrationInput {
-  background-position: 0.65rem 0.75rem;
-  background-repeat: no-repeat;
-  background-color: #EBECF1;
-  width: 100%;
-  padding: 1.25rem 1.25rem 1.25rem 2.5rem;
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
-  margin-bottom: 1rem;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-#registrationUL {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-#registrationUL li {
-  text-align: center;
-}
-
-#registrationUL li a {
-  border: 1px solid transparent;
-  margin-bottom: 1px;
-  background-color: #EBECF1;
-  padding: 1rem;
-  text-decoration: none;
-  color: #3C3C3C;
-  display: block;
-}
-
-#registrationUL li a:hover {
-  color: #000000;
-  border: 1px solid #000000;
-}
-
-.add-margin {
-  margin: 1rem 0;
-}
-
 /*
 * HELP SLIDER 
 */
@@ -1142,6 +1093,7 @@ table {
 .wrapper {
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 2rem;
   overflow: hidden;
   position: relative;
   width: 22rem;
@@ -1203,8 +1155,8 @@ table {
 }
 
 .slide-question h3 {
-  color: #3C3C3C;
-  font-size: 1.2rem;
+  color: #425466;
+  font-size: 1rem;
   line-height: 1.4rem;
   font-weight: 400;
 }
@@ -1229,7 +1181,7 @@ table {
 }
 
 .slide-question .is-response {
-  color: #3C3C3C;
+  color: #425466;
 }
 
 .control {
@@ -1277,4 +1229,50 @@ table {
 .next {
   background-image: url(https://cdn0.iconfinder.com/data/icons/navigation-set-arrows-part-one/32/ChevronRight-512.png);
   right: 0px;
+}
+
+/* -----------------
+* Registration
+----------------- */
+.registration-container {
+  margin: 0;
+  padding: 2rem 3rem 4rem;
+  background: #ffffff;
+}
+
+@media (min-width: 48rem) {
+  .registration-container {
+    margin: 1rem 0;
+  }
+}
+
+.registration-search-input {
+  background-position: 0.65rem 0.75rem;
+  background-repeat: no-repeat;
+  background-color: rgba(90, 69, 255, 0.1);
+  width: 100%;
+  padding: .8rem 2rem;
+  border-radius: 50px;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+  font-size: 0.8rem;
+}
+
+.registration-lists {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  overflow: scroll;
+  max-height: 10rem;
+  border: 1px solid #5A45FF;
+  border-radius: 1rem;
+}
+
+.registration-link {
+  border-bottom: 1px solid lightgray;
+  padding: 0.75rem 1.25rem;
+  text-decoration: none;
+  display: block;
+  margin-bottom: .08rem;
+  color: #5A45FF;
 }

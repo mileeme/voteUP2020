@@ -13,7 +13,7 @@ body {
     font: $font-style $font-variant $font-weight #{$font-size}/#{$line-height} $font-family;
     font-size: $font-size;
     color: $font-color;
-    background: transparentize($color: $background-secondary, $amount: .6);
+    background-color: $background-secondary;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -112,6 +112,15 @@ hr {
         @include container(md);
     }
 }
+
+.header {
+    padding: 2rem;
+    font-size: .8rem;
+    font-weight: 600;
+    @include screen(md) {
+        padding: 2rem 0;
+    }
+}
 /* -----------------
 * Grids
 ----------------- */
@@ -129,12 +138,24 @@ hr {
 ----------------- */
 .hero {
     display: block;
+    margin-top: -5rem;
     margin-bottom: -6rem;
     // padding-bottom: 6rem;
     padding: 9rem 2rem 12rem;
-    background: #c4fffc;
+    background-color: $secondary-color;
+    // background-position: center;
+    // background-repeat: no-repeat;
+    // background-size: cover;
+    // background:
+    //     linear-gradient(90deg, 
+    //     rgba(90,69,255,0.5) 0%, 
+    //     rgba(255,255,255,0.2) 100%),
+    //     url('https://images.pexels.com/photos/1234853/pexels-photo-1234853.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
+
     h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
+        color: $background;
+        font-weight: 500;
         @include screen(md) {
             font-size: 3rem;
         }
@@ -340,7 +361,7 @@ table {
     transition: background-color .25 ease-in;
     &:hover,
     &:active {
-        background-color: transparentize($color: $background-secondary, $amount: 0.8);
+        background-color: $background-secondary;
     }
 }
 .is-active-response {
@@ -484,6 +505,7 @@ table {
     }
     .profile-p {
         font-size: .75rem;
+        color: $note-color;
     }
     .profile-left {
         text-align: center;
@@ -499,8 +521,8 @@ table {
         border-top: 1px $border-style transparentize($color: $primary-color, $amount: 0.8);
     }
     .profile-quote {
-    font-size: 1rem;
-    line-height: 1.4rem;
+    font-size: 0.9rem;
+    line-height: 1.2rem;
     @include screen(md) {
         padding: 2rem 4rem;
     }
@@ -517,7 +539,7 @@ table {
         padding: 0.2rem;
     }
     .profile-squad-img {
-    width: 2.5rem;
+    width: 2.7rem;
     border-radius: 0.625rem; 
     margin-bottom: 0.4rem;
     }
@@ -527,15 +549,15 @@ table {
     .profile-button {
         display: block;
         text-align: center;
-        padding-top: 0.4rem;
-        padding-bottom: 0.4rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
         padding-left: auto;
         padding-right: auto;
         margin: 1rem 0 1rem;
         background: $primary-color;
         color: white;
         border-radius: .5rem;
-        font-size: 0.75rem;
+        font-size: 0.8rem;
         width: 100%;
         margin-left: auto;
         margin-right: auto;
@@ -642,67 +664,71 @@ table {
 /* -----------------
 * Registration
 ----------------- */ 
-.check-registration {
-    background: white;
-    padding: 3rem 2rem;
-    margin-top: 1rem;
-    display: grid;
-    grid-template-rows: auto;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 3rem;
-    .registration-form {
-        justify-self: center;
-        @include screen(md) {
-            max-width: 28rem;
-        }
-    }
+// .check-registration {
+//     background: white;
+//     // padding: 3rem 2rem;
+//     // margin-top: 1rem;
+//     margin: 1rem;
+//     padding: 2rem;
+//     display: grid;
+//     grid-template-rows: auto;
+//     width: 100%;
+//     // margin-left: auto;
+//     // margin-right: auto;
+//     // margin-bottom: 3rem;
+//     box-shadow: 0 0 1px rgba(0, 0, 0, 0.08), 0 0 2px rgba(0, 0, 0, 0.12)
+//     border-radius: 20px;
+//     .registration-form {
+//         justify-self: center;
+//         @include screen(md) {
+//             max-width: 28rem;
+//         }
+//     }
 
-}
+// }
 
-#registrationInput {
-    // background-image: url('');
-    background-position: 0.65rem 0.75rem;
-    background-repeat: no-repeat;
-    background-color: $button-background; 
-    width: 100%;
-    padding: 1.25rem 1.25rem 1.25rem 2.5rem;
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
-    // border-bottom: 3px $border-style $primary-color;
-    margin-bottom: 1rem;
-    text-align: center;
-    text-transform: uppercase;
-}
+// #registrationInput {
+//     // background-image: url('');
+//     background-position: 0.65rem 0.75rem;
+//     background-repeat: no-repeat;
+//     background-color: $button-background; 
+//     width: 100%;
+//     padding: 1.25rem 1.25rem 1.25rem 2.5rem;
+//     border-top: 0;
+//     border-left: 0;
+//     border-right: 0;
+//     // border-bottom: 3px $border-style $primary-color;
+//     margin-bottom: 1rem;
+//     text-align: center;
+//     text-transform: uppercase;
+// }
 
-#registrationUL {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    li{
-        text-align: center;
-        a {
-            border: 1px $border-style transparent;
-            // margin-top: -1px;
-            margin-bottom: 1px;
-            background-color: $button-background;
-            padding: 1rem;
-            text-decoration: none;
-            color: $font-color;
-            display: block;
-            &:hover {
-                color: $black;
-                border: 1px $border-style $black;
-            }
-        }
+// #registrationUL {
+//     list-style-type: none;
+//     padding: 0;
+//     margin: 0;
+//     li{
+//         text-align: center;
+//         a {
+//             border: 1px $border-style transparent;
+//             // margin-top: -1px;
+//             margin-bottom: 1px;
+//             background-color: $button-background;
+//             padding: 1rem;
+//             text-decoration: none;
+//             color: $font-color;
+//             display: block;
+//             &:hover {
+//                 color: $black;
+//                 border: 1px $border-style $black;
+//             }
+//         }
 
-    }
-}
-.add-margin {
-    margin: 1rem 0;
-}
+//     }
+// }
+// .add-margin {
+//     margin: 1rem 0;
+// }
 
 /*
 * HELP SLIDER 
@@ -846,6 +872,7 @@ table {
 .wrapper {
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 2rem;
     overflow: hidden;
     position: relative;
     width: 22rem;
@@ -894,7 +921,7 @@ table {
     }
     h3 {
         color: $font-color;
-        font-size: 1.2rem;
+        font-size: 1rem;
         // font-weight: $font-weight;
         line-height: 1.4rem;
         font-weight: 400;
@@ -984,7 +1011,43 @@ table {
 //     background-color: lightsalmon;
 //     transition: background-color .2s ease-in-out;
 // }
-.match-avatar-container {}
-.match-avatar-item {}
 
-
+/* -----------------
+* Registration
+----------------- */
+.registration-container {
+    margin: 0;
+    padding: 2rem 3rem 4rem;
+    background: $background;
+    @include screen(md) {
+        margin: 1rem 0;
+    }
+}
+.registration-search-input {
+    background-position: 0.65rem 0.75rem;
+    background-repeat: no-repeat;
+    background-color: transparentize($color: $primary-color, $amount: 0.9);
+    width: 100%;
+    padding: .8rem 2rem;
+    border-radius: 50px;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+    font-size: 0.8rem;
+}
+.registration-lists {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    overflow: scroll;
+    max-height: 10rem;
+    border: 1px $border-style $primary-color;
+    border-radius: 1rem;
+}
+.registration-link {
+    border-bottom :1px solid lightgray;
+    padding: 0.75rem 1.25rem;
+    text-decoration: none;
+    display: block;
+    margin-bottom: .08rem;
+    color: $primary-color
+}

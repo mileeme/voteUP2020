@@ -4,83 +4,67 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 <style>
-/* .card-candidate-profile {
-    margin: 1rem;
-    padding: 2rem;
-    background: #eaeaea;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-column-gap: 1.5rem;
-    grid-row-gap: 1rem;
-    border-radius: 20px 20px 0px 20px;
-    /* screen size md+ */
-    /* grid-column-gap: 4rem; */
-    /* grid-row-gap: 2rem; */
-    /* margin: 1rem 0; */
-}
-.card-h3 {
-    line-height: 2rem;
-}
-.card-p {
-    font-size: 12px;
-}
-.card-profile-left {
-    text-align: center;
-}
-.card-profile-right {
 
-}
-.card-profile-row {
-    grid-column: 1 / -1;
-    justify-self: center;
-    align-self: center;
-    padding: 2rem 0 1rem;
-    border-top: 1px solid white;
-}
-.card-profile-quote {
-    font-size: 16px;
-    line-height: 20px;
-}
-.card-profile-squad {
-    list-style: none;
-    display: flex;
-    text-align: center;
-    font-size: 10px;
-}
-.card-profile-squad li {
-    margin: .5rem .1rem;
-    padding: .2rem;
-}
-.card-profile-squad-img {
-   width: 40px;
-   border-radius: 10px; 
-   margin-bottom: .4rem;
-}
-.card-profile-match {
-    color: purple;
-}
-.card-profile-button {
-    text-align: center;
-    padding-top: .4rem;
-    padding-bottom: .4rem;
-    padding-left: auto;
-    padding-right: auto;
-    margin: 1rem 0 1rem;
-    background: purple;
-    color: white;
-    border-radius: .5rem;
-    font-size: 12px;
-    width: 100%;
-} */
-
-
-
-
-
-    .check-registration-static {
-
+    .HomepageHeroGradient {
+        --gradientColorZero: 
+        --gradientColorOne:
+        --gradientColorTwo:
+        --gradientColorThree:
+        --gradientColorZeroTransparent:
+        --gradientColorOneTransparent:
+        --gradientColorTwoTransparent:
+        --gradientColorThreeTransparent:
+        --gradientAngle: var(--angleStrong);
+        --gradientHeight: calc(100% + var(--sectionPaddingTop) + var(--transformOriginX)*var(--sectionAngleSin));
+        --offsetX:
+        --transformOriginX:
+        --sectionAngleSin:
+        position: absolute;
+        bottom: 0;
+        top: auto;
+        left: calc(var(--offsetX)*-1);
+        width: var(--windowWidth);
+        min-width: 1000px;
+        height: var(--gradientHeight);
+        transform-origin: var(--transformOriginX) 100%;
+        transform: skewY(var(--gradientAngle));
+        overflow: hidden;
+        border: none;
     }
-    .check-registration-dynamic {
-
+    .gradient__canvas {
+        position: relative;
+        display: block;
+        width: inherit;
+        height: 100%;
+        opacity: 0;
+    }
+    .gradient__canvas.isLoaded {
+        opacity :1
+        transition: opacity 1.8s ease-in 50ms;
     }
 </style>
+<script>
+    function registration() {
+        var input, filter, ul, li, urls, txtValue;
+        input = document.querySelector('#registrationInput');
+        filter = input.value.toUpperCase();
+        ul = document.querySelector('#registrationUL');
+        lists = ul.querySelectorAll('#registrationState')
+        urls = document.querySelectorAll('#registrationLink')
+        
+        lists.forEach(list => {
+            textValue = list.firstElementChild.innerHTML
+            
+            if(textValue.toUpperCase().indexOf(filter) > -1) {
+                list.style.display = ''
+            } else {
+                list.style.display = 'none'
+            }
+        })
+    }
+
+</script>
+<!-- 
+<div class="HomepageHeroGradient Gradient isLoaded">
+    <canvas class="Gradient__canvas isLoaded" data-js-controller="Gradient" data-transition-in width="375" height="600"></canvas>
+</div> -->
