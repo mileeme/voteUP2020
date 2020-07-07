@@ -9,13 +9,13 @@ import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-print(BASE_DIR)
+
 env = environ.Env(DEBUG=(bool, False))
 env_file = os.path.join(BASE_DIR, '.env')
 environ.Env.read_env(env_file)
 
-DEBUG = env('DEBUG')
 SECRET_KEY = env('SECRET_KEY')
+DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = ['LOCAL_DEV', 'HEROKU_DOMAIN', ]
 
@@ -23,7 +23,7 @@ ALLOWED_HOSTS = ['LOCAL_DEV', 'HEROKU_DOMAIN', ]
 # Application definition
 
 INSTALLED_APPS = [
-    'polls',
+    'polls.apps.PollsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

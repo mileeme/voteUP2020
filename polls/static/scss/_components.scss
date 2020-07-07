@@ -145,10 +145,10 @@ hr {
     background-color: $secondary-color;
     background: linear-gradient(271deg, $primary-color, $background, $secondary-color);
     background-size: 600% 600%;
-    -webkit-animation: heroGradient 3s ease infinite;
-    -moz-animation: heroGradient 3s ease infinite;
-    -o-animation: heroGradient 3s ease infinite;
-    animation: heroGradient 3s ease infinite;
+    -webkit-animation: heroGradient 20s ease infinite;
+    -moz-animation: heroGradient 20s ease infinite;
+    -o-animation: heroGradient 20s ease infinite;
+    animation: heroGradient 20s ease infinite;
     h1 {
         font-size: 2.2rem;
         color: $background;
@@ -161,22 +161,22 @@ hr {
 
 @-webkit-keyframes heroGradient {
     0% {background-position: 50% 0%}
-    50% {background-position: 51% 100%}
-    100% {background-position: 50% 0%}
+    50% {background-position: 75% 50%}
+    50% {background-position: 50% 0%}
 }
 @-moz-keyframes heroGradient {
     0% {background-position: 50% 0%}
-    50% {background-position: 51% 100%}
+    50% {background-position: 75% 50%}
     100% {background-position: 50% 0%}
 }
 @-o-keyframes heroGradient {
     0% {background-position: 50% 0%}
-    50% {background-position: 51% 100%}
+    50% {background-position: 75% 100%}
     100% {background-position: 50% 0%}
 }
 @keyframes heroGradient {
     0% {background-position: 50% 0%}
-    50% {background-position: 51% 100%}
+    50% {background-position: 75% 100%}
     100% {background-position: 50% 0%}
 }
 

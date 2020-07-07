@@ -606,10 +606,10 @@ hr {
   background-color: #1de0bc;
   background: linear-gradient(271deg, #5A45FF, #ffffff, #1de0bc);
   background-size: 600% 600%;
-  -webkit-animation: heroGradient 3s ease infinite;
-  -moz-animation: heroGradient 3s ease infinite;
-  -o-animation: heroGradient 3s ease infinite;
-  animation: heroGradient 3s ease infinite;
+  -webkit-animation: heroGradient 20s ease infinite;
+  -moz-animation: heroGradient 20s ease infinite;
+  -o-animation: heroGradient 20s ease infinite;
+  animation: heroGradient 20s ease infinite;
 }
 
 .hero h1 {
@@ -629,9 +629,9 @@ hr {
     background-position: 50% 0%;
   }
   50% {
-    background-position: 51% 100%;
+    background-position: 75% 50%;
   }
-  100% {
+  50% {
     background-position: 50% 0%;
   }
 }
@@ -641,7 +641,7 @@ hr {
     background-position: 50% 0%;
   }
   50% {
-    background-position: 51% 100%;
+    background-position: 75% 50%;
   }
   100% {
     background-position: 50% 0%;
@@ -653,7 +653,7 @@ hr {
     background-position: 50% 0%;
   }
   50% {
-    background-position: 51% 100%;
+    background-position: 75% 100%;
   }
   100% {
     background-position: 50% 0%;
@@ -665,7 +665,7 @@ hr {
     background-position: 50% 0%;
   }
   50% {
-    background-position: 51% 100%;
+    background-position: 75% 100%;
   }
   100% {
     background-position: 50% 0%;
