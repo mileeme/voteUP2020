@@ -3,6 +3,7 @@ Django settings for voteup2020 project.
 """
 
 import os
+import django_heroku
 import environ
 import dj_database_url
 
@@ -16,7 +17,7 @@ environ.Env.read_env(env_file)
 SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['LOCAL_DEV', 'HEROKU_DOMAIN', ]
 
 
 # Application definition
@@ -109,3 +110,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # STATICFILES_DIRS = [
 #     os.path.join(BASE_DIR, 'static'),
 # ]
+
+django_heroku.settings(locals())
