@@ -61,6 +61,7 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'voteup2020.wsgi.application'
 
 DATABASES = {}
@@ -84,7 +85,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
@@ -110,5 +110,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # STATICFILES_DIRS = [
 #     os.path.join(BASE_DIR, 'static'),
 # ]
-
 django_heroku.settings(locals())
+del DATABASES['default']['OPTIONS']['sslmode']
