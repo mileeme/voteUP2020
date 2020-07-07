@@ -9,13 +9,13 @@ import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+print(BASE_DIR)
 env = environ.Env(DEBUG=(bool, False))
 env_file = os.path.join(BASE_DIR, '.env')
 environ.Env.read_env(env_file)
 
-SECRET_KEY = 'xpm51jfn+%%5o*o&1^8xv$4eb9a0l_%u*7l!%t94vud^%rz^gg'
 DEBUG = env('DEBUG')
+SECRET_KEY = env('SECRET_KEY')
 
 ALLOWED_HOSTS = ['LOCAL_DEV', 'HEROKU_DOMAIN', ]
 
