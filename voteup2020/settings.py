@@ -14,7 +14,7 @@ env = environ.Env(DEBUG=(bool, False))
 env_file = os.path.join(BASE_DIR, '.env')
 environ.Env.read_env(env_file)
 
-SECRET_KEY = env('xpm51jfn+%%5o*o&1^8xv$4eb9a0l_%u*7l!%t94vud^%rz^gg')
+SECRET_KEY = 'xpm51jfn+%%5o*o&1^8xv$4eb9a0l_%u*7l!%t94vud^%rz^gg'
 DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = ['LOCAL_DEV', 'HEROKU_DOMAIN', ]
