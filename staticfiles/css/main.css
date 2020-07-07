@@ -1,0 +1,1441 @@
+/* 
+* Simple UI | MIT License 
+*
+* A simple front-end design toolkit built with Sass for developing
+* mobile-first responsive, browser-consistent web apps. 
+*
+* Author: Milee Yu https://mileeyu.com
+* Source/documentation: https://github.com/mileeme/simple
+ */
+/* -----------------
+* Configs
+----------------- */
+/** 
+* Variables
+ */
+/* -----------------
+* Containers
+----------------- */
+/* -----------------
+* Breakpoints
+----------------- */
+/* -----------------
+* Global colors
+----------------- */
+/* -----------------
+* Typography
+----------------- */
+/* -----------------
+* Spacing
+----------------- */
+/* -----------------
+* Borders
+----------------- */
+/* -----------------
+* Buttons
+----------------- */
+/* -----------------
+* Forms
+----------------- */
+/* -----------------
+* Tables
+----------------- */
+/* 
+* Mixins
+ */
+/* -----------------
+* Containers
+----------------- */
+/* -----------------
+* Breakpoints
+----------------- */
+/* -----------------
+* Resets
+----------------- */
+/** 
+* Normalize css, css reset and typography properties
+* for browser compatibility and clean base for designers and developers
+*/
+/**
+* 1 correct line height on all browsers
+* 2 prevent adjustments of font size after orientation changes in iOS
+ */
+html {
+  box-sizing: border-box;
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+
+/** 
+ * 1 remove margin in all browsers 
+ * 2 render `main` element consistently in IE
+ */
+body {
+  margin: 0;
+  /* 1 */
+}
+
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+  display: block;
+  /* 2 */
+  margin: 0;
+  /* reset */
+}
+
+/**
+ * 1 correct font size and margin on `h1` element within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari
+ */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  /* 1 */
+  font-size: inherit;
+  /* reset */
+  font-weight: inherit;
+  /* reset */
+}
+
+/**
+* 1 a dd correct box sizing in Firefox
+* 2 show overflow in Edge and IE 
+*/
+hr {
+  box-sizing: content-box;
+  /* 1 */
+  height: 0;
+  /* 1 */
+  overflow: visible;
+  /* 2 */
+}
+
+/** 
+* 1 correct inheritance and scaling of font size in all browsers
+* 2 correct `em` font sizing in all browsers
+*/
+pre {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1rem;
+}
+
+/** 
+* 1 remove the gray background on active links in IE 10
+* resets
+*/
+a {
+  background-color: transparent;
+  /* 1 */
+  text-decoration: none;
+  /* reset */
+  color: inherit;
+  /* reset */
+  cursor: pointer;
+  /* reset */
+}
+
+/** 
+* 1 remove bottom border in Chrome 57-
+* 2 add correct text decoration in Chrome, Edge, IE, Opera, and Safari 
+*/
+abbr[title] {
+  border-bottom: none;
+  /* 1 */
+  text-decoration: underline;
+  /* 2 */
+  text-decoration: underline dotted;
+  /* 2 */
+}
+
+/** 
+* add correct font weight in Chrome, Edge, and Safari 
+*/
+b, strong {
+  font-weight: bolder;
+}
+
+/** 
+* 1 correct inheritance and scaling of font size in all browsers
+* 2 correct `em` font sizing in all browsers
+*/
+code, kbd, samp {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1rem;
+  /* 2 */
+}
+
+small {
+  font-size: 0.8rem;
+}
+
+/**
+* prevent `sub` and `sup` elements from affecting line height in
+* all browsers
+*/
+sub, sup {
+  font-size: 0.75rem;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.2rem;
+}
+
+sup {
+  top: -0.4rem;
+}
+
+/** 
+* remove border on images inside links in IE 10
+*/
+img {
+  border-style: none;
+}
+
+/** 
+* 1 change font styles in all browsers
+* 2 remove margin in Firefox and Safari
+*/
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  /* 1 */
+  font-size: inherit;
+  /* 1 */
+  line-height: inherit;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+  background-color: transparent;
+  /* reset */
+  color: inherit;
+  /* reset */
+  border-width: 0;
+  /* reset */
+  border-color: none;
+  /* reset */
+  border-style: none;
+  /* reset */
+  border-image: none;
+  /* reset */
+  padding: 0;
+  /* reset */
+  cursor: pointer;
+  /* reset */
+}
+
+button:focus,
+input:focus,
+optgroup:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  /* reset */
+  box-shadow: none;
+  /* reset */
+}
+
+/** 
+* show overflow in IE
+* 1 show overflow in Edge
+*/
+button,
+input {
+  overflow: visible;
+  /* 2 */
+}
+
+/**
+* remove inheritance of text transform in Edge, Firefox, and IE
+* 1 remove the inheritance of text transform in Firefox
+*/
+button,
+select {
+  text-transform: none;
+  /* 1 */
+}
+
+/** 
+* correct inability to style clickable types in iOS and Safari
+*/
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+}
+
+/** 
+* remove inner border and padding in Firefox 
+*/
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+input::-moz-focus-inner {
+  border: 0;
+  /* reset */
+  padding: 0;
+  /* reset */
+  margin: 0;
+  /* reset */
+}
+
+/** 
+* 1 correct text wrapping in edge and IE
+* correct color inheritance from `fieldset` elements in IE
+* remove padding so developers are not caught out when they zero out
+* `fieldset` elements in all browsers
+*/
+legend {
+  box-sizing: border-box;
+  /* 1 */
+  display: table;
+  /* 1 */
+  max-width: 100%;
+  /* 1 */
+  white-space: normal;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  padding: 0;
+  /* 3 */
+}
+
+/** 
+* add correct vertical alignment in Chrome, Firefox, and Opera
+*/
+progress {
+  vertical-align: baseline;
+}
+
+/**
+* remove default vertical scrollbar in IE 10+ 
+*/
+text-area {
+  overflow: hidden;
+}
+
+/** 
+* 1 add correct box sizing in IE 10
+* 2 remove padding in IE 10 
+*/
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+
+/** 
+* correct cursor style of increment and decrement buttons in Chrome 
+*/
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/** 
+* 1 correct appearance in Chrome and Safari 
+* 2 correct outline style in Safari 
+*/
+[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */
+}
+
+/** 
+* remove inner padding in Chrome and Safari on macOS
+*/
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/** 
+* 1 correct inability to style clickable types in iOS and Safari 
+* 2 change properties to `inherit` in Safari
+*/
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+}
+
+/** 
+* add correct display in Edge, IE 10+ and Firefox 
+*/
+details {
+  display: block;
+}
+
+/**
+* add correct display on all browsers 
+*/
+summary {
+  display: list-item;
+}
+
+/** 
+* add correct display in IE 10+ 
+*/
+template {
+  display: none;
+}
+
+/** 
+* add correct display in IE 10 
+*/
+[hidden] {
+  display: none;
+}
+
+/** 
+* resets 
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+ul, ol, dd, dl {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+p {
+  margin: 0;
+}
+
+cite {
+  font-style: normal;
+}
+
+fieldset {
+  border-width: 0;
+  padding: 0;
+  margin: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* -----------------
+* Components
+----------------- */
+/**
+* Components
+ */
+/* -----------------
+* Scaffolding
+----------------- */
+html {
+  font-size: 1rem;
+  line-height: 1.15;
+}
+
+body {
+  font: normal normal normal 1rem/1.15 -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 1rem;
+  color: #425466;
+  background-color: rgba(236, 236, 236, 0.4);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 1.7rem;
+}
+
+@media (min-width: 48rem) {
+  h1 {
+    font-size: 1.87rem;
+  }
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+@media (min-width: 48rem) {
+  h2 {
+    font-size: 1.65rem;
+  }
+}
+
+h3 {
+  font-size: 1.3rem;
+}
+
+@media (min-width: 48rem) {
+  h3 {
+    font-size: 1.43rem;
+  }
+}
+
+h4 {
+  font-size: 1.1rem;
+}
+
+@media (min-width: 48rem) {
+  h4 {
+    font-size: 1.21rem;
+  }
+}
+
+h5 {
+  font-size: 1rem;
+}
+
+@media (min-width: 48rem) {
+  h5 {
+    font-size: 1.1rem;
+  }
+}
+
+h6 {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #425466;
+  padding-bottom: 1rem;
+}
+
+@media (min-width: 48rem) {
+  h6 {
+    font-size: 0.88rem;
+  }
+}
+
+.label {
+  color: #B4B4B4;
+  font-weight: 600;
+}
+
+mark {
+  background: #00D9E2;
+  padding: 0 0.2rem;
+}
+
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid #3C3C3C;
+}
+
+/* -----------------
+* Helpers
+----------------- */
+.clearfix::before,
+.clearfix::after {
+  content: ' ';
+  display: block;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.u-show {
+  display: block;
+}
+
+.u-hide {
+  display: none;
+}
+
+/* -----------------
+* Containers
+----------------- */
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 48rem) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+.header {
+  padding: 2rem;
+  font-size: .8rem;
+  font-weight: 600;
+}
+
+@media (min-width: 48rem) {
+  .header {
+    padding: 2rem 0;
+  }
+}
+
+/* -----------------
+* Grids
+----------------- */
+/* -----------------
+* Layout
+----------------- */
+/* -----------------
+* Heading
+----------------- */
+.hero {
+  display: block;
+  margin-top: -5rem;
+  margin-bottom: -6rem;
+  padding: 7rem 2rem 10rem;
+  background-color: #1de0bc;
+  background: linear-gradient(271deg, #5A45FF, #ffffff, #1de0bc);
+  background-size: 600% 600%;
+  -webkit-animation: heroGradient 20s ease infinite;
+  -moz-animation: heroGradient 20s ease infinite;
+  -o-animation: heroGradient 20s ease infinite;
+  animation: heroGradient 20s ease infinite;
+}
+
+.hero h1 {
+  font-size: 2.2rem;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+@media (min-width: 48rem) {
+  .hero h1 {
+    font-size: 3rem;
+  }
+}
+
+@-webkit-keyframes heroGradient {
+  0% {
+    background-position: 50% 0%;
+  }
+  50% {
+    background-position: 75% 50%;
+  }
+  50% {
+    background-position: 50% 0%;
+  }
+}
+
+@-moz-keyframes heroGradient {
+  0% {
+    background-position: 50% 0%;
+  }
+  50% {
+    background-position: 75% 50%;
+  }
+  100% {
+    background-position: 50% 0%;
+  }
+}
+
+@-o-keyframes heroGradient {
+  0% {
+    background-position: 50% 0%;
+  }
+  50% {
+    background-position: 75% 100%;
+  }
+  100% {
+    background-position: 50% 0%;
+  }
+}
+
+@keyframes heroGradient {
+  0% {
+    background-position: 50% 0%;
+  }
+  50% {
+    background-position: 75% 100%;
+  }
+  100% {
+    background-position: 50% 0%;
+  }
+}
+
+.hero-heading {
+  opacity: 1;
+  -webkit-transform: translate3d(0.2rem, 1.5rem, -0.5rem);
+  -moz-transform: translate3d(0.2rem, 1.5rem, -0.5rem);
+  -o-transform: translate3d(0.2rem, 1.5rem, -0.5rem);
+  transform: translate3d(0.2rem, 1.5rem, -0.5rem);
+  -webkit-transition: opacity 0.4s ease-in, transform 0.4s 0.25s cubic-bezier(0, 0, 0.3, 1);
+  -moz-transition: opacity 0.4s ease-in, transform 0.4s 0.25s cubic-bezier(0, 0, 0.3, 1);
+  -o-transition: opacity 0.4s ease-in, transform 0.4s 0.25s cubic-bezier(0, 0, 0.3, 1);
+  transition: opacity 0.4s ease-in, transform 0.4s 0.25s cubic-bezier(0, 0, 0.3, 1);
+}
+
+@media (min-width: 48rem) {
+  .hero-heading {
+    padding: 0 4rem;
+  }
+}
+
+.hero-heading h1 {
+  color: #425466;
+  font-weight: 600;
+}
+
+/* -----------------
+* Buttons
+----------------- */
+.section-result-button {
+  text-align: center;
+  padding: 2rem 1rem;
+  margin: 1rem 0 1rem;
+  background: #ffffff;
+}
+
+@media (min-width: 48rem) {
+  .section-result-button {
+    padding: 2rem 4rem;
+  }
+}
+
+.is-disabled-button {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.3rem;
+  font-weight: normal;
+  color: rgba(90, 69, 255, 0.5);
+  background-color: rgba(90, 69, 255, 0.1);
+  pointer-events: none;
+  border-radius: 0.4rem;
+}
+
+.is-abled-button {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 1rem;
+  font-size: 1.3rem;
+  font-weight: normal;
+  color: #ffffff;
+  background-color: rgba(90, 69, 255, 0.9);
+  border-radius: 0.4rem;
+  -webkit-transition: background-color .2s ease-in;
+  -moz-transition: background-color .2s ease-in;
+  -o-transition: background-color .2s ease-in;
+  transition: background-color .2s ease-in;
+}
+
+.is-abled-button:hover, .is-abled-button:active {
+  background-color: #5a45ff;
+}
+
+.button-ripple {
+  position: absolute;
+  background: #ffffff;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  border-radius: 50%;
+  -webkit-animation: ripple .4s linear;
+  -moz-animation: ripple .4s linear;
+  -o-animation: ripple .4s linear;
+  animation: ripple .4s linear;
+}
+
+@-webkit-keyframes ripple {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: .3;
+  }
+  100% {
+    width: 1000px;
+    height: 1000px;
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes ripple {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: .3;
+  }
+  100% {
+    width: 1000px;
+    height: 1000px;
+    opacity: 0;
+  }
+}
+
+@-o-keyframes ripple {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: .3;
+  }
+  100% {
+    width: 1000px;
+    height: 1000px;
+    opacity: 0;
+  }
+}
+
+@keyframes ripple {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: .3;
+  }
+  100% {
+    width: 1000px;
+    height: 1000px;
+    opacity: 0;
+  }
+}
+
+.button-profile-ripple {
+  position: absolute;
+  background: #ffffff;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  border-radius: 50%;
+  -webkit-animation: profileButtonRipple .4s linear;
+  -moz-animation: profileButtonRipple .4s linear;
+  -o-animation: profileButtonRipple .4s linear;
+  animation: profileButtonRipple .4s linear;
+}
+
+@-webkit-keyframes profileButtonRipple {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: .3;
+  }
+  100% {
+    width: 100px;
+    height: 100px;
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes profileButtonRipple {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: .3;
+  }
+  100% {
+    width: 100px;
+    height: 100px;
+    opacity: 0;
+  }
+}
+
+@-o-keyframes profileButtonRipple {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: .3;
+  }
+  100% {
+    width: 100px;
+    height: 100px;
+    opacity: 0;
+  }
+}
+
+@keyframes profileButtonRipple {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: .3;
+  }
+  100% {
+    width: 100px;
+    height: 100px;
+    opacity: 0;
+  }
+}
+
+.is-fixed-button {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #425466;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+/* -----------------
+* Forms
+----------------- */
+/* -----------------
+* Navigation
+----------------- */
+/* -----------------
+* Footer
+----------------- */
+footer {
+  background: #f3f6ff;
+  padding: 2rem 0;
+  height: 8rem;
+  margin-top: auto;
+}
+
+/* -----------------
+* Tables
+----------------- */
+.results-table {
+  display: none;
+}
+
+@media (min-width: 48rem) {
+  .results-table {
+    display: block;
+    padding: 2rem 4rem 4rem;
+  }
+}
+
+table {
+  border-spacing: 1rem;
+}
+
+/* -----------------
+* Card
+----------------- */
+.card {
+  margin: 1rem 0 0;
+  background: #ffffff;
+  border-top: 1px solid #ffffff;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.08), 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.card h3 {
+  font-weight: normal;
+  -moz-transition: width 1s ease-in-out, left 1.5s ease-in-out;
+  -webkit-transition: width 1s ease-in-out, left 1.5s ease-in-out;
+  -moz-transition: width 1s ease-in-out, left 1.5s ease-in-out;
+  -o-transition: width 1s ease-in-out, left 1.5s ease-in-out;
+  transition: width 1s ease-in-out, left 1.5s ease-in-out;
+}
+
+.card-question {
+  padding: 2rem 2rem 2.2rem;
+  background: #ffffff;
+}
+
+@media (min-width: 48rem) {
+  .card-question {
+    padding: 2rem 4rem 4rem;
+    min-height: 10rem;
+  }
+}
+
+.card-question h6 {
+  color: #B4B4B4;
+}
+
+.card-question h4 {
+  font-weight: 400;
+}
+
+.card-response {
+  padding: 0 2rem 2rem;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+@media (min-width: 48rem) {
+  .card-response {
+    padding: 0 4rem 2rem;
+  }
+}
+
+.candidate-response {
+  padding: 1rem;
+  margin: 0 0 0.6rem;
+  border-radius: 25px 25px 1px 25px;
+  color: #425466;
+  background-color: rgba(90, 69, 255, 0.1);
+  -webkit-transition: background-color .25 ease-in;
+  -moz-transition: background-color .25 ease-in;
+  -o-transition: background-color .25 ease-in;
+  transition: background-color .25 ease-in;
+}
+
+.candidate-response:hover, .candidate-response:active {
+  background-color: rgba(236, 236, 236, 0.4);
+}
+
+.is-active-response {
+  padding: 1rem;
+  margin: 0 0 0.6rem;
+  border-radius: 25px 25px 1px 25px;
+  color: #ffffff;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1), 2px 2px 2px rgba(0, 0, 0, 0.2);
+  background: #5a45ff;
+  background: linear-gradient(90deg, #5A45FF 0%, rgba(90, 69, 255, 0.6) 90%);
+  -webkit-transition: background-color 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+  -moz-transition: background-color 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+  -o-transition: background-color 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: background-color 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.card-detail {
+  display: block;
+  position: relative;
+  height: 0;
+  z-index: -1;
+  color: #909090;
+  background: rgba(255, 255, 255, 0.8);
+  -webkit-transform: translate3d(0rem, -18rem, -1rem);
+  -moz-transform: translate3d(0rem, -18rem, -1rem);
+  -o-transform: translate3d(0rem, -18rem, -1rem);
+  transform: translate3d(0rem, -18rem, -1rem);
+}
+
+.card-detail-section {
+  padding: 2rem;
+}
+
+@media (min-width: 48rem) {
+  .card-detail-section {
+    padding: 2rem 4rem;
+  }
+}
+
+.test {
+  position: relative;
+}
+
+.is-visible {
+  height: 100%;
+  opacity: 1;
+  -webkit-transform: translate3d(0rem, 0rem, 0rem);
+  -moz-transform: translate3d(0rem, 0rem, 0rem);
+  -o-transform: translate3d(0rem, 0rem, 0rem);
+  transform: translate3d(0rem, 0rem, 0rem);
+  -webkit-transition: opacity 0.1s, transform 0.3s cubic-bezier(0.6, 0.13, 0.01, 0.93);
+  -moz-transition: opacity 0.1s, transform 0.3s cubic-bezier(0.6, 0.13, 0.01, 0.93);
+  -o-transition: opacity 0.1s, transform 0.3s cubic-bezier(0.6, 0.13, 0.01, 0.93);
+  transition: opacity 0.1s, transform 0.3s cubic-bezier(0.6, 0.13, 0.01, 0.93);
+}
+
+.is-invisible {
+  height: 0;
+  opacity: 0;
+  -webkit-transition: transform .2s ease-in;
+  -moz-transition: transform .2s ease-in;
+  -o-transition: transform .2s ease-in;
+  transition: transform .2s ease-in;
+}
+
+/* -----------------
+* Question
+----------------- */
+.is-no-response {
+  display: inline-block;
+  width: 6rem;
+  border-bottom: 2px solid #3C3C3C;
+  text-decoration: none;
+}
+
+.is-response {
+  overflow: hidden;
+  color: #425466;
+  font-weight: 700;
+}
+
+/* -----------------
+* Result
+----------------- */
+#candidateName {
+  color: #000000;
+}
+
+.divider {
+  border-top: 1px solid rgba(60, 60, 60, 0.2);
+}
+
+.is-results-hide {
+  position: relative;
+  max-height: 0px;
+  overflow: hidden;
+}
+
+.is-results-show {
+  position: relative;
+  animation: showPoll 0.4s cubic-bezier(0.29, 0.24, 1, 0.19);
+}
+
+@keyframes showPoll {
+  0% {
+    opacity: 0;
+    max-height: 0;
+  }
+  50% {
+    opacity: 0;
+    max-height: var(max-height);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.result-heading {
+  text-align: center;
+  padding: 2rem;
+}
+
+@media (min-width: 48rem) {
+  .result-heading {
+    padding: 2rem 4rem;
+  }
+}
+
+.result-heading .candidate-winner {
+  color: #5A45FF;
+}
+
+.card-candidate-profile {
+  margin: 1rem;
+  padding: 2rem;
+  background: #ffffff;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-column-gap: 1.5rem;
+  grid-row-gap: 1rem;
+  border-radius: 20px 20px 0px 20px;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.08), 0 0 2px rgba(0, 0, 0, 0.12);
+}
+
+@media (min-width: 48rem) {
+  .card-candidate-profile {
+    grid-column-gap: 4rem;
+    grid-rop-gap: 2rem;
+    margin: 1rem 0;
+  }
+}
+
+.card-candidate-profile .profile-h3 {
+  line-height: 2rem;
+}
+
+.card-candidate-profile .profile-p {
+  font-size: .75rem;
+  color: #909090;
+}
+
+.card-candidate-profile .profile-left {
+  text-align: center;
+}
+
+.card-candidate-profile .profile-row {
+  grid-column: 1 / -1;
+  justify-self: center;
+  align-self: center;
+  padding: 2rem 0 1rem;
+  border-top: 1px solid rgba(90, 69, 255, 0.2);
+}
+
+.card-candidate-profile .profile-quote {
+  font-size: 0.9rem;
+  line-height: 1.2rem;
+}
+
+@media (min-width: 48rem) {
+  .card-candidate-profile .profile-quote {
+    padding: 2rem 4rem;
+  }
+}
+
+.card-candidate-profile .profile-squad {
+  list-style: none;
+  display: flex;
+  text-align: center;
+  font-size: 0.625rem;
+  color: #909090;
+}
+
+.card-candidate-profile .profile-squad li {
+  margin: 0.5rem 0.1rem;
+  padding: 0.2rem;
+}
+
+.card-candidate-profile .profile-squad-img {
+  width: 2.7rem;
+  border-radius: 0.625rem;
+  margin-bottom: 0.4rem;
+}
+
+.card-candidate-profile .profile-match {
+  color: #5A45FF;
+}
+
+.card-candidate-profile .profile-button {
+  display: block;
+  text-align: center;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: auto;
+  padding-right: auto;
+  margin: 1rem 0 1rem;
+  background-color: #5A45FF;
+  color: white;
+  border-radius: 10rem;
+  font-size: 0.8rem;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 48rem) {
+  .card-candidate-profile .profile-button {
+    width: 100px;
+  }
+}
+
+.profile-img {
+  width: 5.5rem;
+  -moz-outline-radius: 5.5rem;
+  padding: 2px;
+  border-radius: 5.5rem;
+  border: 4px solid transparent;
+  opacity: 1;
+}
+
+.is-profile-disabled {
+  border: 3px solid rgba(0, 0, 0, 0.2);
+  opacity: 0.7;
+}
+
+.is-profile-active {
+  border: 3px solid #5A45FF;
+}
+
+/* -----------------
+* Registration
+----------------- */
+/*
+* HELP SLIDER 
+*/
+/* -----------------
+* Carousel
+----------------- */
+/* -----------------
+* Carousel v.2
+----------------- */
+.slider-heading {
+  margin: 2rem 1rem 1rem;
+  text-align: center;
+}
+
+.wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  position: relative;
+  width: 22rem;
+  height: 22rem;
+  background: transparent;
+}
+
+@media (min-width: 48rem) {
+  .wrapper {
+    width: 35rem;
+    height: 22rem;
+  }
+}
+
+.slides {
+  display: flex;
+  position: relative;
+  left: 0;
+  height: 100%;
+  background: transparent;
+}
+
+.slides.shifting {
+  -webkit-transition: left .175s ease-in;
+  -moz-transition: left .175s ease-in;
+  -o-transition: left .175s ease-in;
+  transition: left .175s ease-in;
+}
+
+.slide {
+  text-align: left;
+  min-width: 22rem;
+  cursor: pointer;
+  position: relative;
+  background: transparent;
+  padding: .1rem;
+}
+
+@media (min-width: 48rem) {
+  .slide {
+    min-width: 35rem;
+  }
+}
+
+.slide-question {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  padding: 2rem;
+  width: 100%;
+  background-color: #1de0bc;
+  border-radius: 1rem;
+}
+
+@media (min-width: 48rem) {
+  .slide-question {
+    padding: 2rem 4rem;
+  }
+}
+
+.slide-question h3 {
+  color: #425466;
+  font-size: 1rem;
+  line-height: 1.4rem;
+  font-weight: 400;
+}
+
+@media (min-width: 48rem) {
+  .slide-question h3 {
+    line-height: 1.4rem;
+    font-size: 1.43rem;
+    font-weight: 400;
+  }
+}
+
+.slide-question h6 {
+  color: #ffffff;
+}
+
+.slide-question .is-no-response {
+  display: inline-block;
+  width: 6rem;
+  border-bottom: 1px solid #3C3C3C;
+  text-decoration: none;
+}
+
+.slide-question .is-response {
+  color: #425466;
+}
+
+.control {
+  display: none;
+}
+
+@media (min-width: 48rem) {
+  .control {
+    display: block;
+    position: absolute;
+    cursor: pointer;
+    top: 50%;
+    /* change based on screen size */
+    width: 50px;
+    height: 3rem;
+    background: transparent;
+    z-index: 2;
+    opacity: .2;
+    background-size: 22px;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -webkit-transition: opacity .25s ease-in-out, transform .25s ease-in;
+    -moz-transition: opacity .25s ease-in-out, transform .25s ease-in;
+    -o-transition: opacity .25s ease-in-out, transform .25s ease-in;
+    transition: opacity .25s ease-in-out, transform .25s ease-in;
+  }
+  .control:hover {
+    opacity: 1;
+    -webkit-transform: translateY(-50%) scale(1.5, 1.5);
+    -moz-transform: translateY(-50%) scale(1.5, 1.5);
+    -o-transform: translateY(-50%) scale(1.5, 1.5);
+    transform: translateY(-50%) scale(1.5, 1.5);
+  }
+}
+
+.prev {
+  background-image: url(https://cdn0.iconfinder.com/data/icons/navigation-set-arrows-part-one/32/ChevronLeft-512.png);
+  left: 0px;
+}
+
+.next {
+  background-image: url(https://cdn0.iconfinder.com/data/icons/navigation-set-arrows-part-one/32/ChevronRight-512.png);
+  right: 0px;
+}
+
+/* -----------------
+* Registration
+----------------- */
+.registration-container {
+  margin: 0;
+  padding: 2rem 3rem 4rem;
+  background: #ffffff;
+}
+
+@media (min-width: 48rem) {
+  .registration-container {
+    margin: 1rem 0;
+  }
+}
+
+.registration-search-input {
+  background-position: 0.65rem 0.75rem;
+  background-repeat: no-repeat;
+  background-color: rgba(90, 69, 255, 0.1);
+  width: 100%;
+  padding: .8rem 2rem;
+  border-radius: 50px;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+  font-size: 0.8rem;
+}
+
+.registration-lists {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  overflow: scroll;
+  max-height: 10rem;
+  border: 1px solid #5A45FF;
+  border-radius: 1rem;
+}
+
+.registration-link {
+  border-bottom: 1px solid lightgray;
+  padding: 0.75rem 1.25rem;
+  text-decoration: none;
+  display: block;
+  margin-bottom: .08rem;
+  color: #5A45FF;
+}
