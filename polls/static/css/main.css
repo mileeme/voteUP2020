@@ -602,8 +602,14 @@ hr {
   display: block;
   margin-top: -5rem;
   margin-bottom: -6rem;
-  padding: 9rem 2rem 12rem;
+  padding: 7rem 2rem 10rem;
   background-color: #1de0bc;
+  background: linear-gradient(271deg, #5A45FF, #ffffff, #1de0bc);
+  background-size: 600% 600%;
+  -webkit-animation: heroGradient 3s ease infinite;
+  -moz-animation: heroGradient 3s ease infinite;
+  -o-animation: heroGradient 3s ease infinite;
+  animation: heroGradient 3s ease infinite;
 }
 
 .hero h1 {
@@ -618,8 +624,56 @@ hr {
   }
 }
 
+@-webkit-keyframes heroGradient {
+  0% {
+    background-position: 50% 0%;
+  }
+  50% {
+    background-position: 51% 100%;
+  }
+  100% {
+    background-position: 50% 0%;
+  }
+}
+
+@-moz-keyframes heroGradient {
+  0% {
+    background-position: 50% 0%;
+  }
+  50% {
+    background-position: 51% 100%;
+  }
+  100% {
+    background-position: 50% 0%;
+  }
+}
+
+@-o-keyframes heroGradient {
+  0% {
+    background-position: 50% 0%;
+  }
+  50% {
+    background-position: 51% 100%;
+  }
+  100% {
+    background-position: 50% 0%;
+  }
+}
+
+@keyframes heroGradient {
+  0% {
+    background-position: 50% 0%;
+  }
+  50% {
+    background-position: 51% 100%;
+  }
+  100% {
+    background-position: 50% 0%;
+  }
+}
+
 .hero-heading {
-  opacity: 0;
+  opacity: 1;
   -webkit-transform: translate3d(0.2rem, 1.5rem, -0.5rem);
   -moz-transform: translate3d(0.2rem, 1.5rem, -0.5rem);
   -o-transform: translate3d(0.2rem, 1.5rem, -0.5rem);
@@ -636,9 +690,9 @@ hr {
   }
 }
 
-.is-heading-visible {
-  opacity: 1;
-  transform: translate3d(0, 0, 0);
+.hero-heading h1 {
+  color: #425466;
+  font-weight: 600;
 }
 
 /* -----------------
@@ -700,7 +754,49 @@ hr {
   transform: translate(-50%, -50%);
   pointer-events: none;
   border-radius: 50%;
-  animation: ripple .4s linear infinite;
+  -webkit-animation: ripple .4s linear;
+  -moz-animation: ripple .4s linear;
+  -o-animation: ripple .4s linear;
+  animation: ripple .4s linear;
+}
+
+@-webkit-keyframes ripple {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: .3;
+  }
+  100% {
+    width: 1000px;
+    height: 1000px;
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes ripple {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: .3;
+  }
+  100% {
+    width: 1000px;
+    height: 1000px;
+    opacity: 0;
+  }
+}
+
+@-o-keyframes ripple {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: .3;
+  }
+  100% {
+    width: 1000px;
+    height: 1000px;
+    opacity: 0;
+  }
 }
 
 @keyframes ripple {
@@ -712,6 +808,73 @@ hr {
   100% {
     width: 1000px;
     height: 1000px;
+    opacity: 0;
+  }
+}
+
+.button-profile-ripple {
+  position: absolute;
+  background: #ffffff;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  border-radius: 50%;
+  -webkit-animation: profileButtonRipple .4s linear;
+  -moz-animation: profileButtonRipple .4s linear;
+  -o-animation: profileButtonRipple .4s linear;
+  animation: profileButtonRipple .4s linear;
+}
+
+@-webkit-keyframes profileButtonRipple {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: .3;
+  }
+  100% {
+    width: 100px;
+    height: 100px;
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes profileButtonRipple {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: .3;
+  }
+  100% {
+    width: 100px;
+    height: 100px;
+    opacity: 0;
+  }
+}
+
+@-o-keyframes profileButtonRipple {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: .3;
+  }
+  100% {
+    width: 100px;
+    height: 100px;
+    opacity: 0;
+  }
+}
+
+@keyframes profileButtonRipple {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: .3;
+  }
+  100% {
+    width: 100px;
+    height: 100px;
     opacity: 0;
   }
 }
@@ -1040,9 +1203,9 @@ table {
   padding-left: auto;
   padding-right: auto;
   margin: 1rem 0 1rem;
-  background: #5A45FF;
+  background-color: #5A45FF;
   color: white;
-  border-radius: .5rem;
+  border-radius: 10rem;
   font-size: 0.8rem;
   width: 100%;
   margin-left: auto;

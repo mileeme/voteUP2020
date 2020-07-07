@@ -279,7 +279,6 @@ const response = () => {
     }
 }
 
-
 // touch enabled slider 
 const carousel = () => {
     // 1. initialize variables
@@ -457,43 +456,78 @@ const carousel = () => {
     }
 }
 
+// check registration 
+const registration = () => {
+    var input, filter, ul, lists, queryValue;
+        input = document.querySelector('#registrationInput'),
+        filter = input.value.toUpperCase(),
+        ul = document.querySelector('#registrationUL'),
+        lists = ul.querySelectorAll('#registrationState')
+
+    input.addEventListener('keyup', function (e) { checkRegistration(e) })
+
+    function checkRegistration(e) {
+        lists.forEach(list => {
+            queryValue = list.firstElementChild.innerHTML
+
+            if(queryValue.toUpperCase().indexOf(filter) > -1) {
+                list.style.display = ''
+            } else {
+                list.style.display = 'none'
+            }
+
+            if (queryValue.toUpperCase === filter) {
+                console.log(list.firstElementChild)
+
+                if (e.keyCode === 13) {
+                    list.firstElementChild.click()
+                }
+            }
+        })
+    }
+}
+
 // page animation 
 const animateOnScroll = () => {
     // scroll animation
-    var scroll = window.requestAnimationFrame || function(callback) { window.setTimeout(callback, 1000/60) },
-        scrollAnimate = document.querySelectorAll('#scrollAnimate')
+    // var scroll = window.requestAnimationFrame || function(callback) { window.setTimeout(callback, 1000/60) },
+    //     scrollAnimate = document.querySelectorAll('#scrollAnimate')
 
-    loop()
+    // loop()
 
-    // loop animation
-    function loop() {
-        scrollAnimate.forEach(element => {
-            if (isInViewport(element)) {
-                element.classList.add('is-heading-visible')
-            } else {
-                element.classList.remove('is-heading-visible')
-            }
-        })
-        scroll(loop)
-    }
+    // // loop animation
+    // function loop() {
+    //     scrollAnimate.forEach(element => {
+    //         if (isInViewport(element)) {
+    //             element.classList.add('is-heading-visible')
+    //         } else {
+    //             element.classList.remove('is-heading-visible')
+    //         }
+    //     })
+    //     scroll(loop)
+    // }
 
     // determine if element is in viewport
-    function isInViewport(element) {
-        var rect = element.getBoundingClientRect();
-            html = document.documentElement;
-        return (
-            rect.top >= 0 &&
-            rect.left >= 0 &&
-            rect.bottom <= (window.innerHeight || html.clientHeight) &&
-            rect.right <= (window.innerWidth || html.clientWidth)
-        );
-    }
+    // function isInViewport(element) {
+    //     var rect = element.getBoundingClientRect();
+    //         html = document.documentElement;
+    //     return (
+    //         rect.top >= 0 &&
+    //         rect.left >= 0 &&
+    //         rect.bottom <= (window.innerHeight || html.clientHeight) &&
+    //         rect.right <= (window.innerWidth || html.clientWidth)
+    //     );
+    // }
 }
 
 // buttons 
 const buttonRipple = () => {
-    // ripple effect 
-    const buttons = document.querySelectorAll('#showResults')
+    // variables
+    const buttons = document.querySelectorAll('#showResults'),
+        profileButton = document.querySelectorAll('#profileButton'),
+        registrationLinks = document.querySelectorAll('#registrationLink')
+
+    // result button
     buttons.forEach(button => {
         button.addEventListener('click', (e) => {
             e.preventDefault()
@@ -513,8 +547,30 @@ const buttonRipple = () => {
             }, 400)
         })
     })
+
+    // profile button
+    profileButton.forEach(button => {
+        button.addEventListener('click', (e) => {
+            console.log(button)
+            let rect = button.getBoundingClientRect(),
+                x = e.clientX - rect.left,
+                y = e.clientY - rect.top,
+                ripple = document.createElement('span')
+
+            ripple.setAttribute('class', 'button-profile-ripple')
+            ripple.style.left = x + 'px'
+            ripple.style.top = y + 'px'
+
+            button.appendChild(ripple)
+
+            setTimeout(() => {
+                ripple.remove()
+            }, 400)
+        })
+    })
 }
 animateOnScroll()
 response()
 carousel()
 buttonRipple()
+registration()

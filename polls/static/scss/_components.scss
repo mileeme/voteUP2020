@@ -141,17 +141,14 @@ hr {
     margin-top: -5rem;
     margin-bottom: -6rem;
     // padding-bottom: 6rem;
-    padding: 9rem 2rem 12rem;
+    padding: 7rem 2rem 10rem;
     background-color: $secondary-color;
-    // background-position: center;
-    // background-repeat: no-repeat;
-    // background-size: cover;
-    // background:
-    //     linear-gradient(90deg, 
-    //     rgba(90,69,255,0.5) 0%, 
-    //     rgba(255,255,255,0.2) 100%),
-    //     url('https://images.pexels.com/photos/1234853/pexels-photo-1234853.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
-
+    background: linear-gradient(271deg, $primary-color, $background, $secondary-color);
+    background-size: 600% 600%;
+    -webkit-animation: heroGradient 3s ease infinite;
+    -moz-animation: heroGradient 3s ease infinite;
+    -o-animation: heroGradient 3s ease infinite;
+    animation: heroGradient 3s ease infinite;
     h1 {
         font-size: 2.2rem;
         color: $background;
@@ -161,8 +158,30 @@ hr {
         }
     }
 }
+
+@-webkit-keyframes heroGradient {
+    0% {background-position: 50% 0%}
+    50% {background-position: 51% 100%}
+    100% {background-position: 50% 0%}
+}
+@-moz-keyframes heroGradient {
+    0% {background-position: 50% 0%}
+    50% {background-position: 51% 100%}
+    100% {background-position: 50% 0%}
+}
+@-o-keyframes heroGradient {
+    0% {background-position: 50% 0%}
+    50% {background-position: 51% 100%}
+    100% {background-position: 50% 0%}
+}
+@keyframes heroGradient {
+    0% {background-position: 50% 0%}
+    50% {background-position: 51% 100%}
+    100% {background-position: 50% 0%}
+}
+
 .hero-heading {
-    opacity: 0;
+    opacity: 1;
     -webkit-transform: translate3d(.2rem, 1.5rem, -.5rem);
     -moz-transform: translate3d(.2rem, 1.5rem, -.5rem);
     -o-transform: translate3d(.2rem, 1.5rem, -.5rem);
@@ -174,6 +193,10 @@ hr {
     @include screen(md) {
         padding: 0 4rem;
     }
+    h1 {
+        color: $font-color;
+        font-weight: 600;
+    }
 }
 
 // @animate heroMove {
@@ -182,10 +205,10 @@ hr {
 //         transform: translate3d() 
 //     }
 // }
-.is-heading-visible {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-}
+// .is-heading-visible {
+//     opacity: 1;
+//     transform: translate3d(0, 0, 0);
+// }
 // .election-description {
 //     padding: 9rem 2.5rem 6rem;
 // }
@@ -246,7 +269,46 @@ hr {
    transform: translate(-50%, -50%);
    pointer-events: none;
    border-radius: 50%;
-   animation: ripple .4s linear infinite;
+   -webkit-animation: ripple .4s linear;
+   -moz-animation: ripple .4s linear;
+   -o-animation: ripple .4s linear;
+   animation: ripple .4s linear;
+}
+@-webkit-keyframes ripple {
+    0% {
+        width: 0px;
+        height: 0px;
+        opacity: .3;
+    }
+    100% {
+        width: 1000px;
+        height: 1000px;
+        opacity: 0;
+    }
+}
+@-moz-keyframes ripple {
+    0% {
+        width: 0px;
+        height: 0px;
+        opacity: .3;
+    }
+    100% {
+        width: 1000px;
+        height: 1000px;
+        opacity: 0;
+    }
+}
+@-o-keyframes ripple {
+    0% {
+        width: 0px;
+        height: 0px;
+        opacity: .3;
+    }
+    100% {
+        width: 1000px;
+        height: 1000px;
+        opacity: 0;
+    }
 }
 @keyframes ripple {
     0% {
@@ -257,6 +319,69 @@ hr {
     100% {
         width: 1000px;
         height: 1000px;
+        opacity: 0;
+    }
+}
+
+.button-profile-ripple {
+   position: absolute; 
+   background: $background;
+   -webkit-transform: translate(-50%, -50%);
+   -moz-transform: translate(-50%, -50%);
+   -o-transform: translate(-50%, -50%);
+   transform: translate(-50%, -50%);
+   pointer-events: none;
+   border-radius: 50%;
+   -webkit-animation: profileButtonRipple .4s linear;
+   -moz-animation: profileButtonRipple .4s linear;
+   -o-animation: profileButtonRipple .4s linear;
+   animation: profileButtonRipple .4s linear;
+}
+@-webkit-keyframes profileButtonRipple {
+    0% {
+        width: 0px;
+        height: 0px;
+        opacity: .3;
+    }
+    100% {
+        width: 100px;
+        height: 100px;
+        opacity: 0;
+    }
+}
+@-moz-keyframes profileButtonRipple {
+    0% {
+        width: 0px;
+        height: 0px;
+        opacity: .3;
+    }
+    100% {
+        width: 100px;
+        height: 100px;
+        opacity: 0;
+    }
+}
+@-o-keyframes profileButtonRipple {
+    0% {
+        width: 0px;
+        height: 0px;
+        opacity: .3;
+    }
+    100% {
+        width: 100px;
+        height: 100px;
+        opacity: 0;
+    }
+}
+@keyframes profileButtonRipple {
+    0% {
+        width: 0px;
+        height: 0px;
+        opacity: .3;
+    }
+    100% {
+        width: 100px;
+        height: 100px;
         opacity: 0;
     }
 }
@@ -554,9 +679,9 @@ table {
         padding-left: auto;
         padding-right: auto;
         margin: 1rem 0 1rem;
-        background: $primary-color;
+        background-color: $primary-color;
         color: white;
-        border-radius: .5rem;
+        border-radius: 10rem;
         font-size: 0.8rem;
         width: 100%;
         margin-left: auto;
