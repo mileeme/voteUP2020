@@ -199,6 +199,19 @@ hr {
     }
 }
 
+// @animate heroMove {
+//     0% {
+//         opacity: 0;
+//         transform: translate3d() 
+//     }
+// }
+// .is-heading-visible {
+//     opacity: 1;
+//     transform: translate3d(0, 0, 0);
+// }
+// .election-description {
+//     padding: 9rem 2.5rem 6rem;
+// }
 
 /* -----------------
 * Buttons
@@ -546,8 +559,6 @@ table {
 
 .is-response {
     overflow: hidden;
-    // border-bottom: 5px $border-style transparentize($color: $secondary-color, $amount: 0.2);
-    // padding-bottom: .1rem;
     color: $font-color;
     font-weight: 700;
 }
@@ -688,22 +699,7 @@ table {
     border: 4px $border-style transparent;
     opacity: 1;
 }
-// .profile-detail {
-//     display: flex;
-//     flex-flow: row wrap;
-//     justify-content: center;
-//     align-content: flex-start;
 
-// }
-// .profile-detail-item {
-//     background: transparentize($black, 0.8);
-//     border-radius: 2rem;
-//     font-size: $font-size * $small;
-//     font-weight: 200;
-//     color: $black;
-//     padding: .25rem .75rem;
-//     margin: 0.17rem;
-// }
 .is-profile-disabled {
     // outline: 4px $border-style transparentize($secondary-color, 0.8); 
     border: 3px $border-style transparentize($black, 0.8);
@@ -714,8 +710,9 @@ table {
     border: 3px $border-style $primary-color;
 }
 
+
 /* -----------------
-* Carousel v.2
+* Carousel
 ----------------- */ 
 .slider-heading {
     margin: 2rem $margin $margin;
@@ -794,7 +791,6 @@ table {
     }
     .is-response {
         color: $font-color;
-        // border-bottom: 5px $border-style transparentize($color: $primary-color, $amount: 0.1);
     }
 }
 .slide-avatar-container {}
