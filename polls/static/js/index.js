@@ -335,12 +335,12 @@ const carousel = () => {
 
     // 2. eventlisteners
     // mouse
-    slides.onmousedown = dragStart
+    slides.onmousedown = touchstart
 
     // touch for chrome, firefox, android
-    slides.addEventListener('touchstart', dragStart)
-    slides.addEventListener('touchmove', dragMove)
-    slides.addEventListener('touchend', dragEnd)
+    slides.addEventListener('touchstart', touchstart, false)
+    slides.addEventListener('touchmove', touchmove, false)
+    slides.addEventListener('touchend', touchend, false)
 
     // click events 
     responses.forEach(response => { 
@@ -367,47 +367,47 @@ const carousel = () => {
     slides.addEventListener('transitionend', checkIndex, { passive: true })
 
     // 3. touchstart function
-    function dragStart(e) {
+    function touchstart(e) {
+        e.preventDefault()
         // get the initial left position of the slide 
         posInitial = slides.offsetLeft // positive number
 
         // if touch detected
         if (e.type == 'touchstart') {
             // gets touch x position inside element
-            startX = e.originalEvent.touches[0].clientX
-            startY = e.originalEvent.touches[0].clientY
+            startX = e.touches[0].pageX
+            startY = e.touches[0].pageY
+            document.querySelector('#testTouch1').innerHTML = startX
         } else {
             // for mouse event
-            startX = e.clientX
-            document.onmouseup = dragEnd
-            document.onmousemove = dragMove
+            startX = e.pageX
+            document.onmouseup = touchend
+            document.onmousemove = touchmove
         }
     }
 
     // 4. touch move function
-    function dragMove(e) {
+    function touchmove(e) {
         e.preventDefault()
-
         if (e.type == 'touchmove') {
             // get distanced moved 
-            distX = e.originalEvent.touches[0].clientX - startX
-            distY = e.originalEvent.touches[0].clientY - startY
-            console.log(`startX: ${startX}`)
-            console.log(`difference: ${distX}`)
+            distX = e.targetTouches[0].pageX - startX
+            distY = e.targetTouches[0].pageY - startY
+            document.querySelector('#testTouch2').innerHTML = distX
+
         } else {
             // get mouse event
-            distX = e.clientX - startX
+            distX = e.pageX - startX
         }
         // set new left position of slide 
         // based on distance of touch moved
         slides.style.left = (posInitial + distX) + 'px'
-        console.log(`slides left: ${slides.style.left}`)
+        // console.log(`slides left: ${slides.style.left}`)
     }
 
     // 5. end of touch/mousedown - either, call function or stay put
-    function dragEnd(e) {
+    function touchend(e) {
         e.preventDefault()
-
         if (e.type == 'touchend') {
             posFinal = slides.offsetLeft
         }
@@ -417,9 +417,12 @@ const carousel = () => {
             if (Math.sign(distX) == 1) {
                 // if positive, direction is prev
                 shiftSlide('prev', 'drag')
+                document.querySelector('#testTouch3').innerHTML = "prev"
             } else {
                 // if negative, direction is next
                 shiftSlide('next', 'drag')
+                document.querySelector('#testTouch4').innerHTML = "next"
+
             }
         } else {
             // if didn't meet the threshold than stay put 
@@ -440,12 +443,11 @@ const carousel = () => {
         if (dir == 'next') {
             slides.style.left = (posInitial - slideWidth) + 'px'
             index++
-
         } else if (dir == 'prev') {
             slides.style.left = (posInitial + slideWidth) + 'px'
             index--
-
         } 
+        document.querySelector('#testTouch5').innerHTML = slides.style.left
     }
     // 7. navigation 
     // function clickNav(e) {
@@ -487,7 +489,8 @@ const carousel = () => {
         } else if (index == slidesCount) {
             slides.style.left = -slidesArrayLeft + 'px'
             index = slidesCount - 1
-        }       
+        }
+        document.querySelector('#testTouch6').innerHTML = index
         // add active class to nav when on the slide 
         // dotsArray[index].classList.add('dot-active')
     }
@@ -569,8 +572,8 @@ const buttonRipple = () => {
         button.addEventListener('click', (e) => {
             e.preventDefault()
             let rect = button.getBoundingClientRect(),
-                x = e.clientX - rect.left,
-                y = e.clientY - rect.top,
+                x = e.pageX - rect.left,
+                y = e.pageY - rect.top,
                 ripple = document.createElement('span')
             
             ripple.setAttribute('class', 'button-ripple')
@@ -590,8 +593,8 @@ const buttonRipple = () => {
         button.addEventListener('click', (e) => {
             console.log(button)
             let rect = button.getBoundingClientRect(),
-                x = e.clientX - rect.left,
-                y = e.clientY - rect.top,
+                x = e.pageX - rect.left,
+                y = e.pageY - rect.top,
                 ripple = document.createElement('span')
 
             ripple.setAttribute('class', 'button-profile-ripple')
