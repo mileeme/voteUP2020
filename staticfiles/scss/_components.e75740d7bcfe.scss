@@ -10,14 +10,26 @@ html {
     line-height: $line-height;
 }
 body {
-    font: $font-style $font-variant $font-weight #{$font-size}/#{$line-height} $font-family;
+    font-family: $font-family;
     font-size: $font-size;
+    font-weight: $font-weight;
+    line-height: $line-height;
+    letter-spacing: $letter-spacing;
     color: $font-color;
     background-color: $background-secondary;
+    // background-color: $secondary-color;
+    // background: linear-gradient(271deg, $primary-color, $background, $secondary-color);
+    // background-size: 600% 600%;
+    // -webkit-animation: heroGradient 25s ease infinite;
+    // -moz-animation: heroGradient 25s ease infinite;
+    // -o-animation: heroGradient 25s ease infinite;
+    // animation: heroGradient 25s ease infinite;
 }
 
 h1, h2, h3, h4, h5, h6 {
+    font-family: $heading-font-family;
     font-weight: $heading-font-weight;
+    line-height: $heading-line-height;
 }
 
 h1 {
@@ -53,8 +65,6 @@ h5 {
 // main label
 h6 {
     font-size: $h6-sm;
-    font-weight: $heading-font-weight;
-    color: $font-color;
     padding-bottom: 1rem;
     @include screen(md) {
         font-size: $h6;
@@ -115,8 +125,8 @@ hr {
 
 .header {
     padding: 2rem;
-    font-size: .8rem;
-    font-weight: 600;
+    font-size: $font-size * $small;
+    font-weight: 800;
     @include screen(md) {
         padding: 2rem 0;
     }
@@ -138,17 +148,17 @@ hr {
 ----------------- */
 .hero {
     display: block;
-    margin-top: -5rem;
-    margin-bottom: -6rem;
+    margin-top: -7rem;
+    margin-bottom: -4rem;
     // padding-bottom: 6rem;
-    padding: 7rem 2rem 10rem;
+    padding: 10rem 2rem 10rem;
     background-color: $secondary-color;
     background: linear-gradient(271deg, $primary-color, $background, $secondary-color);
     background-size: 600% 600%;
-    -webkit-animation: heroGradient 20s ease infinite;
-    -moz-animation: heroGradient 20s ease infinite;
-    -o-animation: heroGradient 20s ease infinite;
-    animation: heroGradient 20s ease infinite;
+    -webkit-animation: heroGradient 15s ease infinite;
+    -moz-animation: heroGradient 15s ease infinite;
+    -o-animation: heroGradient 15s ease infinite;
+    animation: heroGradient 15s ease infinite;
     h1 {
         font-size: 2.2rem;
         color: $background;
@@ -181,42 +191,22 @@ hr {
 }
 
 .hero-heading {
-    opacity: 1;
-    -webkit-transform: translate3d(.2rem, 1.5rem, -.5rem);
-    -moz-transform: translate3d(.2rem, 1.5rem, -.5rem);
-    -o-transform: translate3d(.2rem, 1.5rem, -.5rem);
-    transform: translate3d(.2rem, 1.5rem, -.5rem);
-    -webkit-transition: opacity .4s ease-in, transform .4s .25s cubic-bezier(0,0,.3,1);
-    -moz-transition: opacity .4s ease-in, transform .4s .25s cubic-bezier(0,0,.3,1);
-    -o-transition: opacity .4s ease-in, transform .4s .25s cubic-bezier(0,0,.3,1);
-    transition: opacity .4s ease-in, transform .4s .25s cubic-bezier(0,0,.3,1);
     @include screen(md) {
         padding: 0 4rem;
     }
     h1 {
-        color: $font-color;
-        font-weight: 600;
+        color: #102942;
+        font-weight: 700;
     }
 }
-
-// @animate heroMove {
-//     0% {
-//         opacity: 0;
-//         transform: translate3d() 
-//     }
-// }
-// .is-heading-visible {
-//     opacity: 1;
-//     transform: translate3d(0, 0, 0);
-// }
-// .election-description {
-//     padding: 9rem 2.5rem 6rem;
-// }
 
 /* -----------------
 * Buttons
 ----------------- */
 .section-result-button {
+    font-size: $button-font-size;
+    font-weight: $button-font-weight;
+    letter-spacing: $button-letter-spacing;
     text-align: center;
     padding: 2rem 1rem;
     margin: 1rem 0 1rem;
@@ -231,10 +221,13 @@ hr {
     position: relative;
     width: 100%;
     padding: $padding;
-    font-size: $h3-sm;
-    font-weight: normal;
-    color: transparentize($primary-color, 0.5);
-    background-color: transparentize($color: $primary-color, $amount: 0.9);
+    // font-size: $h3-sm;
+    // font-weight: normal;
+    color: $button-disabled-font-color;
+    background-color: $button-disabled-background-color;
+    -moz-box-shadow:    inset 1px 1px 5px -1px rgba(0,0,0,0.08);
+    -webkit-box-shadow: inset 1px 1px 5px -1px rgba(0,0,0,0.08);
+    box-shadow:         inset 1px 1px 5px -1px rgba(0,0,0,0.08);
     pointer-events: none;
     border-radius: $button-border-radius;
 }
@@ -242,23 +235,18 @@ hr {
     display: inline-block;
     position: relative;
     width: 100%;
-    overflow: hidden;
     padding: $padding;
-    font-size: $h3-sm;
-    font-weight: normal;
+    // font-size: $h3-sm;
+    // font-weight: normal;
     color: $background;
-    background-color: transparentize($color: $primary-color, $amount: 0.1);
-    // background-color: linear-gradient(98deg, $primary-color, transparentize($primary-color, 0.5));
+    background-color: $button-background-color;
     border-radius: $button-border-radius;
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.1), 
+                1px 1px 2px rgba(0,0,0,0.2);
     -webkit-transition: background-color .2s ease-in;
     -moz-transition: background-color .2s ease-in;
     -o-transition: background-color .2s ease-in;
     transition: background-color .2s ease-in;
-    &:hover,
-    &:active {
-        background-color: transparentize($color: $primary-color, $amount: 0);
-
-    }
 }
 .button-ripple {
    position: absolute; 
@@ -391,7 +379,7 @@ hr {
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: $button-disabled-color;
+    background-color: $button-disabled-background-color;
     text-align: center;
     padding: 1rem 0;
 }
@@ -421,9 +409,8 @@ footer {
 * Tables
 ----------------- */ 
 .results-table {
-    display: none;
+    display: block;
     @include screen(md) {
-        display: block;
         padding: 2rem 4rem 4rem;
     }
 }
@@ -437,11 +424,11 @@ table {
 * Card
 ----------------- */ 
 .card {
-    margin: 1rem 0 0;
+    margin: 2rem 0 0;
     background: $background;
     border-top: 1px solid $background;
-    box-shadow: 0 0 1px rgba(0,0,0,0.08), 
-                1px 1px 3px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.19), 
+                0 4px 6px -1px rgba(0, 0, 0, 0.18);
     h3 {
         font-weight: normal;
         -moz-transition: width 1s ease-in-out, left 1.5s ease-in-out;
@@ -452,7 +439,7 @@ table {
     }
 }
 .card-question {
-    padding: 2rem 2rem 2.2rem;
+    padding: 4rem 2rem;
     background: $background;
     @include screen(md) {
         padding: 2rem 4rem 4rem;
@@ -462,13 +449,14 @@ table {
         color: $label-color;
         // padding-bottom: 0.5rem;
     }
-    h4 {
-        font-weight: 400;
+    p {
+        font-weight: 500;
     }
 }
 .card-response {
-    padding: 0 2rem 2rem;
+    padding: 0 2rem 3rem;
     background: $background;
+    font-weight: 400;
     cursor: pointer;
     @include screen(md) {
         padding: 0 4rem 2rem;
@@ -477,52 +465,54 @@ table {
 .candidate-response {
     padding: 1rem;
     margin: 0 0 0.6rem;
-    border-radius: 25px 25px 1px 25px;
+    border-radius: $button-border-radius;
     color: $font-color;
     background-color: transparentize($color: $primary-color, $amount: 0.9);
+    -moz-box-shadow:    inset 1px 1px 5px -1px rgba(0,0,0,0.08);
+    -webkit-box-shadow: inset 1px 1px 5px -1px rgba(0,0,0,0.08);
+    box-shadow:         inset 1px 1px 5px -1px rgba(0,0,0,0.08);
     -webkit-transition: background-color .25 ease-in;
     -moz-transition: background-color .25 ease-in;
     -o-transition: background-color .25 ease-in;
     transition: background-color .25 ease-in;
-    &:hover,
-    &:active {
-        background-color: $background-secondary;
-    }
+    // &:hover,
+    // &:active {
+    //     background-color: $background-secondary;
+    // }
 }
 .is-active-response {
+    opacity: 1;
     padding: 1rem;
     margin: 0 0 0.6rem;
-    border-radius: 25px 25px 1px 25px;
+    border-radius: $button-border-radius;
     color: $background;
     box-shadow: 1px 1px 1px rgba(0,0,0,0.1), 
-                2px 2px 2px rgba(0,0,0,0.2);
+                1px 1px 2px rgba(0,0,0,0.2);
     background: rgb(90,69,255);
-    background: linear-gradient(90deg, $primary-color 0%, transparentize($primary-color, 0.4) 90%);    
-    -webkit-transition: background-color .6s cubic-bezier(0.22, 0.61, 0.36, 1);
-    -moz-transition: background-color .6s cubic-bezier(0.22, 0.61, 0.36, 1);
-    -o-transition: background-color .6s cubic-bezier(0.22, 0.61, 0.36, 1);
-    transition: background-color .6s cubic-bezier(0.22, 0.61, 0.36, 1);
+    background: linear-gradient(140deg, transparentize($primary-color, 0.5) 0%, transparentize($primary-color, 0.7) 90%);    
 }
 .card-detail {
     display: block;
     position: relative;
     height: 0;
     z-index: -1;
-    color: $note-color;
-    background: transparentize($color: $background, $amount: 0.2);
+    color: $font-color;
+    background: transparentize($color: $background, $amount: 0.1);
     -webkit-transform: translate3d(0rem, -18rem, -1rem);
     -moz-transform: translate3d(0rem, -18rem, -1rem);
     -o-transform: translate3d(0rem, -18rem, -1rem);
     transform: translate3d(0rem, -18rem, -1rem);
 }
 .card-detail-section {
-    padding: 2rem;
+    padding: 4rem 2rem;
+    font-size: $footnote-size;
     @include screen(md) {
         padding: 2rem 4rem;
     }
-}
-.test {
-    position: relative;
+    h6 {
+        font-size: $footnote-size;
+        padding-bottom: 0.6rem;
+    }
 }
 .is-visible {
     height: 100%;
@@ -553,14 +543,14 @@ table {
 .is-no-response {
     display: inline-block;
     width: 6rem;
-    border-bottom: 2px $border-style $border-color;
+    border-bottom: 2px $border-style $border;
     text-decoration: none;
 }
 
 .is-response {
     overflow: hidden;
     color: $font-color;
-    font-weight: 700;
+    font-weight: 800;
 }
 
 /* -----------------
@@ -608,16 +598,16 @@ table {
 
 // candidate profile card
 .card-candidate-profile {
-    margin: 1rem;
-    padding: 2rem;
+    margin: $margin;
+    padding: 1.5rem;
     background: $background;
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-column-gap: 1.5rem;
     grid-row-gap: 1rem;
     border-radius: 20px 20px 0px 20px;
-    box-shadow: 0 0 1px rgba(0,0,0,0.08), 
-                0 0 2px rgba(0,0,0,0.12);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.19), 
+                0 4px 6px -1px rgba(0, 0, 0, 0.18);
     @include screen(md) {
         grid-column-gap: 4rem;
         grid-rop-gap: 2rem;
@@ -625,16 +615,18 @@ table {
     }
     .profile-h3 {
         line-height: 2rem;
+        margin-bottom: 0.4rem;
     }
     .profile-p {
-        font-size: .75rem;
-        color: $note-color;
+        font-size: $font-size * $small;
+        font-weight: 500;
     }
     .profile-left {
+        display: grid;
         text-align: center;
-    }
-    .profile-right {
-
+        grid-gap: 1.2rem;
+        align-content: start;
+        justify-content: center;
     }
     .profile-row {
         grid-column: 1 / -1;
@@ -644,46 +636,51 @@ table {
         border-top: 1px $border-style transparentize($color: $primary-color, $amount: 0.8);
     }
     .profile-quote {
-    font-size: 0.9rem;
-    line-height: 1.2rem;
-    @include screen(md) {
-        padding: 2rem 4rem;
-    }
+    // font-size: 0.9rem;
+    // line-height: 1.2rem;
+        @include screen(md) {
+            padding: 2rem 4rem;
+        }
     }
     .profile-squad {
+        margin-top: $margin;
+        ul {
         list-style: none;
         display: flex;
-        text-align: center;
-        font-size: 0.625rem;
-        color: $note-color;
-    }
-    .profile-squad li {
-        margin: 0.5rem 0.1rem;
-        padding: 0.2rem;
-    }
-    .profile-squad-img {
-    width: 2.7rem;
-    border-radius: 0.625rem; 
-    margin-bottom: 0.4rem;
+        }
+        li {
+            font-size: $font-size * $small;
+            text-align: center;
+            margin: 0.2rem 0.1rem;
+            padding: 0.2rem;
+            line-height: 1.4;
+        }
+        .profile-squad-img {
+            width: 2.7rem;
+            border-radius: 0.625rem; 
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.19), 
+                        0 4px 6px -1px rgba(0, 0, 0, 0.18);
+        }
     }
     .profile-match {
         color: $primary-color;
+        font-weight: 500;
     }
     .profile-button {
         display: block;
         text-align: center;
-        padding-top: 0.5rem;
+        font-size: $font-size * $small;
+        font-weight: 500;
+        padding-top: 0.4rem;
         padding-bottom: 0.5rem;
         padding-left: auto;
         padding-right: auto;
-        margin: 1rem 0 1rem;
-        background-color: $primary-color;
-        color: white;
-        border-radius: 10rem;
-        font-size: 0.8rem;
         width: 100%;
-        margin-left: auto;
-        margin-right: auto;
+        background-color: $button-background-color;
+        box-shadow: 1px 1px 1px rgba(0,0,0,0.1), 
+                    1px 1px 2px rgba(0,0,0,0.2);
+        color: $button-color;
+        border-radius: 20px;
         @include screen(md) {
             width: 100px;
         }
@@ -697,6 +694,8 @@ table {
     padding: 2px;
     border-radius: 5.5rem;
     border: 4px $border-style transparent;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.19), 
+                0 4px 6px -1px rgba(0, 0, 0, 0.18);
     opacity: 1;
 }
 
@@ -763,71 +762,59 @@ table {
     align-content: center;
     padding: 2rem;
     width: 100%;
-    background-color: $secondary-color;
+    color: $background;
+    background-color: transparentize($color: $primary-color, $amount: 0.4);
     border-radius: 1rem;
     @include screen(md) {
         padding: 2rem 4rem;
     }
-    h3 {
-        color: $font-color;
-        font-size: 1rem;
+    p {
+        // font-size: $font-size;
         // font-weight: $font-weight;
-        line-height: 1.4rem;
+        line-height: $line-height;
         font-weight: 400;
-        @include screen(md) {
-            line-height: 1.4rem;
-            font-size: $h3;
-            font-weight: 400;
-        }
-    }
-    h6 {
-        color: $background;
     }
     .is-no-response {
         display: inline-block;
         width: 6rem;
-        border-bottom: 1px $border-style $border-color;
+        border-bottom: 1px $border-style $background;
         text-decoration: none;
     }
     .is-response {
-        color: $font-color;
+        font-weight: 800;
+        color: $background;
     }
 }
-.slide-avatar-container {}
-.slide-avatar-item {}
 
 // /* allow controls only for non-touch displays */
 .control {
-    display: none;
-    @include screen(md) {
-        display: block;
-        position: absolute;
-        cursor: pointer;
-        top: 50%; /* change based on screen size */
-        width: 50px; 
-        height: 3rem;
-        background: transparent;
-        z-index: 2;
-        opacity: .2;
-        background-size: 22px;
-        background-position: center;
-        background-repeat: no-repeat;
-        -webkit-transform: translateY(-50%);
-        -moz-transform: translateY(-50%);
-        -o-transform: translateY(-50%);
-        transform: translateY(-50%);
-        -webkit-transition: opacity .25s ease-in-out, transform .25s ease-in;
-        -moz-transition: opacity .25s ease-in-out, transform .25s ease-in;
-        -o-transition: opacity .25s ease-in-out, transform .25s ease-in;
-        transition: opacity .25s ease-in-out, transform .25s ease-in;
-        &:hover {
-            opacity: 1;
-            -webkit-transform: translateY(-50%) scale(1.5, 1.5); 
-            -moz-transform: translateY(-50%) scale(1.5, 1.5); 
-            -o-transform: translateY(-50%) scale(1.5, 1.5); 
-            transform: translateY(-50%) scale(1.5, 1.5); 
-        }
-    }
+    display: block;
+    position: absolute;
+    cursor: pointer;
+    top: 50%; /* change based on screen size */
+    width: 50px; 
+    height: 3rem;
+    background: transparent;
+    z-index: 2;
+    opacity: .2;
+    background-size: 22px;
+    background-position: center;
+    background-repeat: no-repeat;
+    // -webkit-transform: translateY(-50%);
+    // -moz-transform: translateY(-50%);
+    // -o-transform: translateY(-50%);
+    // transform: translateY(-50%);
+    // -webkit-transition: opacity .25s ease-in-out, transform .25s ease-in;
+    // -moz-transition: opacity .25s ease-in-out, transform .25s ease-in;
+    // -o-transition: opacity .25s ease-in-out, transform .25s ease-in;
+    // transition: opacity .25s ease-in-out, transform .25s ease-in;
+    // &:hover {
+    //     opacity: 1;
+    //     -webkit-transform: translateY(-50%) scale(1.5, 1.5); 
+    //     -moz-transform: translateY(-50%) scale(1.5, 1.5); 
+    //     -o-transform: translateY(-50%) scale(1.5, 1.5); 
+    //     transform: translateY(-50%) scale(1.5, 1.5); 
+    // }
 }
 .prev {
     background-image: url(https://cdn0.iconfinder.com/data/icons/navigation-set-arrows-part-one/32/ChevronLeft-512.png);
@@ -875,6 +862,9 @@ table {
     background-position: 0.65rem 0.75rem;
     background-repeat: no-repeat;
     background-color: transparentize($color: $primary-color, $amount: 0.9);
+    -moz-box-shadow:    inset 1px 1px 5px -1px rgba(0,0,0,0.08);
+    -webkit-box-shadow: inset 1px 1px 5px -1px rgba(0,0,0,0.08);
+    box-shadow:         inset 1px 1px 5px -1px rgba(0,0,0,0.08);
     width: 100%;
     padding: .8rem 2rem;
     border-radius: 50px;

@@ -331,16 +331,16 @@ const carousel = () => {
         prev = document.querySelector('#prev'),
         next = document.querySelector('#next'),
         navDots = document.querySelector('#navDots'),
-        dotsArray
+        // dotsArray
 
     // 2. eventlisteners
     // mouse
     slides.onmousedown = dragStart
 
     // touch for chrome, firefox, android
-    slides.addEventListener('touchstart', dragStart, { passive: true })
-    slides.addEventListener('touchmove', dragMove, { passive: true })
-    slides.addEventListener('touchend', dragEnd, { passive: true })
+    slides.addEventListener('touchstart', dragStart)
+    slides.addEventListener('touchmove', dragMove)
+    slides.addEventListener('touchend', dragEnd)
 
     // click events 
     responses.forEach(response => { 
@@ -374,8 +374,8 @@ const carousel = () => {
         // if touch detected
         if (e.type == 'touchstart') {
             // gets touch x position inside element
-            startX = e.touches[0].clientX
-            startY = e.touches[0].clientY
+            startX = e.originalEvent.touches[0].clientX
+            startY = e.originalEvent.touches[0].clientY
         } else {
             // for mouse event
             startX = e.clientX
@@ -390,8 +390,10 @@ const carousel = () => {
 
         if (e.type == 'touchmove') {
             // get distanced moved 
-            distX = e.touches[0].clientX - startX
-            distY = e.touches[0].clientY - startY
+            distX = e.originalEvent.touches[0].clientX - startX
+            distY = e.originalEvent.touches[0].clientY - startY
+            console.log(`startX: ${startX}`)
+            console.log(`difference: ${distX}`)
         } else {
             // get mouse event
             distX = e.clientX - startX
@@ -399,6 +401,7 @@ const carousel = () => {
         // set new left position of slide 
         // based on distance of touch moved
         slides.style.left = (posInitial + distX) + 'px'
+        console.log(`slides left: ${slides.style.left}`)
     }
 
     // 5. end of touch/mousedown - either, call function or stay put

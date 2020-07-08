@@ -56,6 +56,8 @@ const response = () => {
         })
         candidate1Name = candidate1
         candidate2Name = candidate2
+        // console.log(candidate1)
+        // console.log(candidate1Name)
     }
 
     /*
@@ -83,10 +85,12 @@ const response = () => {
             candidateProfiles = document.querySelectorAll('#candidateProfile'),
             matchPercentages = document.querySelectorAll('#matchPercentage'),
             candidateProfileImages = Array.from(document.querySelectorAll('#candidateProfileImage')),
-            // slider and table
+            // carousel
             responseMatches = Array.from(document.querySelectorAll('#responseMatch')),
-            responseMatchColumns = Array.from(document.querySelectorAll('#responseMatchColumn')),
-            getMatches = Array.from(document.querySelectorAll('#getMatch'))
+            // responseNotMatches = Array.from(document.querySelectorAll('#responseMatch')),
+            getMatches = Array.from(document.querySelectorAll('#getMatch')),
+            getNotMatches = Array.from(document.querySelectorAll('#getNotMatch'))
+            // responseMatchColumns = Array.from(document.querySelectorAll('#responseMatchColumn')),
             
         // update name of winner in result heading
         candidateWinners.forEach((winner) => {
@@ -140,17 +144,21 @@ const response = () => {
             }
         })
 
-        // get all response results 
+        /*********************
+        * carousel for matches 
+        **********************/
+        
+        // get all the responses
         responseMatches.forEach((response) => {
-            if (response.dataset.response == targetIdResponse) {
-                if (response.dataset.candidate == targetIdCandidate) {
-                    // response.className = 'result-response-item'
+            if (response.dataset.response == targetIdResponse && response.dataset.candidate == targetIdCandidate) {
+                if (targetIdCandidate == 1) {
                     response.parentElement.classList.remove('candidate2')
                     response.parentElement.classList.add('candidate1')
                 } else {
                     response.parentElement.classList.remove('candidate1')
                     response.parentElement.classList.add('candidate2')
                 }
+                // console.log(response)
             }
         })
 
@@ -170,6 +178,27 @@ const response = () => {
                 }
             }
         })
+
+        /*********************
+        * carousel for not matched
+        **********************/
+
+        // get only non-matched responses 
+        getNotMatches.forEach((match) => {
+            if (candidate1Count > candidate2Count) {
+                if (match.classList.contains('candidate1')) {
+                    match.style.display = 'none'
+                } else {
+                    match.style.display = 'inherit'
+                }
+            } else {
+                if (match.classList.contains('candidate2')) {
+                    match.style.display = 'none'
+                } else {
+                    match.style.display = 'inherit'
+                }
+            }
+        })
         
         // update result slides
         // responseMatches.forEach((match) => {
@@ -185,16 +214,16 @@ const response = () => {
         // })
 
         // update result table columns
-        responseMatchColumns.forEach((match) => {
-            if (match.dataset.response == targetIdResponse) {
-                if (match.dataset.candidate == targetIdCandidate) {
-                    // match.className = 'result-match-item'
-                    match.firstElementChild.innerHTML = '✔️'
-                } else {
-                    match.firstElementChild.innerHTML = '✖️'
-                }
-            }
-        })
+        // responseMatchColumns.forEach((match) => {
+        //     if (match.dataset.response == targetIdResponse) {
+        //         if (match.dataset.candidate == targetIdCandidate) {
+        //             // match.className = 'result-match-item'
+        //             match.firstElementChild.innerHTML = '✔️'
+        //         } else {
+        //             match.firstElementChild.innerHTML = '✖️'
+        //         }
+        //     }
+        // })
     }
 
     /*
@@ -281,14 +310,9 @@ const response = () => {
 
 // touch enabled slider 
 const carousel = () => {
-    // 1. initialize variables
-    // variables to for HTML elements
+    // 1. variables for the slider
     var responses = document.querySelectorAll('#candidateResponse'),
         slides = document.querySelector('#slides'),
-        prev = document.querySelector('#prev'),
-        next = document.querySelector('#next'),
-        // navDots = document.querySelector('#navDots'),
-        // dotsArray,
         slidesArray = Array.from(slides.querySelectorAll('#getMatch')),
         slidesCount,
         slideWidth,
@@ -301,20 +325,30 @@ const carousel = () => {
         posInitial,
         posFinal,
         threshold = 100, //required min X-distance to be considered swipe
-        restraint = 100, // Y-height boundary to be considered a horizontal swipe
+        restraint = 200, // Y-height boundary to be considered a horizontal swipe
         index = 0
+        // navigation
+        prev = document.querySelector('#prev'),
+        next = document.querySelector('#next'),
+        navDots = document.querySelector('#navDots'),
+        // dotsArray
 
-    // 2. add event to elements
-    // mouse events
+    // 2. eventlisteners
+    // mouse
     slides.onmousedown = dragStart
 
-    // touch events (chrome, firefox, android)
+    // touch for chrome, firefox, android
     slides.addEventListener('touchstart', dragStart)
     slides.addEventListener('touchmove', dragMove)
     slides.addEventListener('touchend', dragEnd)
 
     // click events 
-    responses.forEach(response => { response.addEventListener('click', (e) => { updateSlides() }) })
+    responses.forEach(response => { 
+        response.addEventListener('click', (e) => { 
+            e.preventDefault()
+            updateSlides() 
+        }) 
+    })
     
     prev.addEventListener('click', (e) => { 
         e.preventDefault()
@@ -330,7 +364,7 @@ const carousel = () => {
     // })
 
     // transition events 
-    slides.addEventListener('transitionend', checkIndex)
+    slides.addEventListener('transitionend', checkIndex, { passive: true })
 
     // 3. touchstart function
     function dragStart(e) {
@@ -340,8 +374,8 @@ const carousel = () => {
         // if touch detected
         if (e.type == 'touchstart') {
             // gets touch x position inside element
-            startX = e.touches[0].clientX
-            startY = e.touches[0].clientY
+            startX = e.originalEvent.touches[0].clientX
+            startY = e.originalEvent.touches[0].clientY
         } else {
             // for mouse event
             startX = e.clientX
@@ -356,8 +390,10 @@ const carousel = () => {
 
         if (e.type == 'touchmove') {
             // get distanced moved 
-            distX = e.touches[0].clientX - startX
-            distY = e.touches[0].clientY - startY
+            distX = e.originalEvent.touches[0].clientX - startX
+            distY = e.originalEvent.touches[0].clientY - startY
+            console.log(`startX: ${startX}`)
+            console.log(`difference: ${distX}`)
         } else {
             // get mouse event
             distX = e.clientX - startX
@@ -365,6 +401,7 @@ const carousel = () => {
         // set new left position of slide 
         // based on distance of touch moved
         slides.style.left = (posInitial + distX) + 'px'
+        console.log(`slides left: ${slides.style.left}`)
     }
 
     // 5. end of touch/mousedown - either, call function or stay put

@@ -27,17 +27,24 @@ $breakpoints: (
 * Global colors
 ----------------- */ 
 $background: #ffffff !default;
-$background-secondary: rgba(236, 236, 236, 0.4) !default;
+$background-secondary: #06182c !default;
+// $background-secondary: rgba(236, 236, 236, 0.2) !default;
 $background-footer: #f3f6ff !default;
 $primary-color: #5A45FF !default;
 $secondary-color: #1de0bc !default;
-// $accent-color: !default;
+// body
+$font-color: #425466 !default;
+$body-link-color: $font-color !default;
+// Notes
+$label-color: #B4B4B4 !default;
+$note-color: #909090 !default;
+// highlight
 $highlight: #00D9E2 !default;
 $error: red !default;
 $success: $secondary-color !default;
+// borders and shadows
 $border: #3C3C3C !default;
 $shadow: #DCDCDC !default;
-
 $black: #000000 !default;
 
 /* -----------------
@@ -45,34 +52,29 @@ $black: #000000 !default;
 ----------------- */ 
 
 // Body
-$font-size: 1rem !default;
+$font-size: 16px !default;
 $font-style: normal !default;
 $font-variant: normal !default;
-$font-weight: normal !default;
-$font-color: #425466 !default;
-$body-link-color: $font-color !default;
+$font-weight: 300 !default;
 // $body-link-hover-color: scale($font-color, $50%) !default;
 $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif !default;
-$line-height: 1.15 !default;
-$small: 0.7 !default;
-
-// Notes
-$label-color: #B4B4B4 !default;
-$note-color: #909090 !default;
+$line-height: 1.6 !default;
+$letter-spacing: 0.2px;
+$small: 0.75 !default;
 
 // Headings
-$heading-font-color: $font-color !default;
-$heading-font-weight: 600 !default;
+$heading-font-weight: 500 !default;
 $heading-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif !default;
-$heading-line-height: 2 !default;
+$heading-line-height: 1.2 !default;
+$heading-letter-spacing: -0.1px;
 
 // heading font-size
-$h1-sm: 1.7rem !default;
-$h2-sm: 1.5rem !default;
-$h3-sm: 1.3rem !default;
-$h4-sm: 1.1rem !default;
-$h5-sm: 1rem !default;
-$h6-sm: 0.8rem !default;
+$h1-sm: 2rem !default;
+$h2-sm: 1.7rem !default;
+$h3-sm: 1.5rem !default;
+$h4-sm: 1.3rem !default;
+$h5-sm: 1.1rem !default;
+$h6-sm: 1rem !default;
 
 $multiplier: 1.1 !default;
 $h1: $h1-sm * $multiplier !default;
@@ -81,6 +83,9 @@ $h3: $h3-sm * $multiplier !default;
 $h4: $h4-sm * $multiplier !default;
 $h5: $h5-sm * $multiplier !default;
 $h6: $h6-sm * $multiplier !default;
+
+// footnote
+$footnote-size: 15px !default;
 
 /* -----------------
 * Spacing
@@ -93,35 +98,22 @@ $margin: 1rem !default;
 ----------------- */ 
 $border-width: 1px !default;
 $border-style: solid !default;
-$border-color: $border !default;
-$border-radius: .4rem !default;
-$borders: $border-width $border-style $border-color !default;
+$borders: $border-width $border-style $border !default;
 
 /* -----------------
 * Buttons
 ----------------- */ 
-$button-background: #EBECF1 !default;
 $button-active: $primary-color !default;
-$button-color: #ffffff !default;
-$button-font-weight: 600 !default;
-$button-font-size: 1rem !default;
+$button-color: $background !default;
+$button-font-weight: 500 !default;
+$button-font-size: calc($font-size * 1.1) !default;
+$button-letter-spacing: -0.1px !default;
 $button-border-style: solid !default;
 $button-border-color: transparent !default;
-$button-border-radius: $border-radius !default;
-$button-disabled-color: $font-color !default;
-
-// Accent buttons
-// $accent-button-background: $secondary-color !default;
-// $accent-button-background-hover: scale($accent-button-background, 10%) !default;
-// $accent-button-color: #ffffff !default;
-// $accent-button-color-hover: #ffffff !default;
-
-// Muted buttons
-
-// Round buttons
-
-// inputs
-
+$button-border-radius: 10px !default;
+$button-background-color: transparentize($color: $primary-color, $amount: 0.1) !default;
+$button-disabled-background-color: transparentize($primary-color, 0.9) !default;
+$button-disabled-font-color: transparentize($primary-color, 0.5) !default;
 
 
 /* -----------------

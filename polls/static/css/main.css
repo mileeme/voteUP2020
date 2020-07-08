@@ -978,10 +978,6 @@ table {
   transition: background-color .25 ease-in;
 }
 
-.candidate-response:hover, .candidate-response:active {
-  background-color: #06182c;
-}
-
 .is-active-response {
   opacity: 1;
   padding: 1rem;
@@ -991,10 +987,6 @@ table {
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1), 1px 1px 2px rgba(0, 0, 0, 0.2);
   background: #5a45ff;
   background: linear-gradient(140deg, rgba(90, 69, 255, 0.5) 0%, rgba(90, 69, 255, 0.3) 90%);
-  -webkit-transition: opacity 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
-  -moz-transition: opacity 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
-  -o-transition: opacity 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
-  transition: opacity 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 .card-detail {
@@ -1150,6 +1142,7 @@ table {
   text-align: center;
   grid-gap: 1.2rem;
   align-content: start;
+  justify-content: center;
 }
 
 .card-candidate-profile .profile-row {
@@ -1313,14 +1306,6 @@ table {
   font-weight: 400;
 }
 
-@media (min-width: 48rem) {
-  .slide-question p {
-    line-height: 1.4rem;
-    font-size: 1.65rem;
-    font-weight: 500;
-  }
-}
-
 .slide-question .is-no-response {
   display: inline-block;
   width: 6rem;
@@ -1334,40 +1319,19 @@ table {
 }
 
 .control {
-  display: none;
-}
-
-@media (min-width: 48rem) {
-  .control {
-    display: block;
-    position: absolute;
-    cursor: pointer;
-    top: 50%;
-    /* change based on screen size */
-    width: 50px;
-    height: 3rem;
-    background: transparent;
-    z-index: 2;
-    opacity: .2;
-    background-size: 22px;
-    background-position: center;
-    background-repeat: no-repeat;
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-    transform: translateY(-50%);
-    -webkit-transition: opacity .25s ease-in-out, transform .25s ease-in;
-    -moz-transition: opacity .25s ease-in-out, transform .25s ease-in;
-    -o-transition: opacity .25s ease-in-out, transform .25s ease-in;
-    transition: opacity .25s ease-in-out, transform .25s ease-in;
-  }
-  .control:hover {
-    opacity: 1;
-    -webkit-transform: translateY(-50%) scale(1.5, 1.5);
-    -moz-transform: translateY(-50%) scale(1.5, 1.5);
-    -o-transform: translateY(-50%) scale(1.5, 1.5);
-    transform: translateY(-50%) scale(1.5, 1.5);
-  }
+  display: block;
+  position: absolute;
+  cursor: pointer;
+  top: 50%;
+  /* change based on screen size */
+  width: 50px;
+  height: 3rem;
+  background: transparent;
+  z-index: 2;
+  opacity: .2;
+  background-size: 22px;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .prev {

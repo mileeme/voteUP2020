@@ -475,10 +475,10 @@ table {
     -moz-transition: background-color .25 ease-in;
     -o-transition: background-color .25 ease-in;
     transition: background-color .25 ease-in;
-    &:hover,
-    &:active {
-        background-color: $background-secondary;
-    }
+    // &:hover,
+    // &:active {
+    //     background-color: $background-secondary;
+    // }
 }
 .is-active-response {
     opacity: 1;
@@ -490,10 +490,6 @@ table {
                 1px 1px 2px rgba(0,0,0,0.2);
     background: rgb(90,69,255);
     background: linear-gradient(140deg, transparentize($primary-color, 0.5) 0%, transparentize($primary-color, 0.7) 90%);    
-    -webkit-transition: opacity .4s cubic-bezier(0.22, 0.61, 0.36, 1);
-    -moz-transition: opacity .4s cubic-bezier(0.22, 0.61, 0.36, 1);
-    -o-transition: opacity .4s cubic-bezier(0.22, 0.61, 0.36, 1);
-    transition: opacity .4s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 .card-detail {
     display: block;
@@ -630,9 +626,7 @@ table {
         text-align: center;
         grid-gap: 1.2rem;
         align-content: start;
-    }
-    .profile-right {
-
+        justify-content: center;
     }
     .profile-row {
         grid-column: 1 / -1;
@@ -779,11 +773,6 @@ table {
         // font-weight: $font-weight;
         line-height: $line-height;
         font-weight: 400;
-        @include screen(md) {
-            line-height: 1.4rem;
-            font-size: $h3;
-            font-weight: 500;
-        }
     }
     .is-no-response {
         display: inline-block;
@@ -796,41 +785,36 @@ table {
         color: $background;
     }
 }
-.slide-avatar-container {}
-.slide-avatar-item {}
 
 // /* allow controls only for non-touch displays */
 .control {
-    display: none;
-    @include screen(md) {
-        display: block;
-        position: absolute;
-        cursor: pointer;
-        top: 50%; /* change based on screen size */
-        width: 50px; 
-        height: 3rem;
-        background: transparent;
-        z-index: 2;
-        opacity: .2;
-        background-size: 22px;
-        background-position: center;
-        background-repeat: no-repeat;
-        -webkit-transform: translateY(-50%);
-        -moz-transform: translateY(-50%);
-        -o-transform: translateY(-50%);
-        transform: translateY(-50%);
-        -webkit-transition: opacity .25s ease-in-out, transform .25s ease-in;
-        -moz-transition: opacity .25s ease-in-out, transform .25s ease-in;
-        -o-transition: opacity .25s ease-in-out, transform .25s ease-in;
-        transition: opacity .25s ease-in-out, transform .25s ease-in;
-        &:hover {
-            opacity: 1;
-            -webkit-transform: translateY(-50%) scale(1.5, 1.5); 
-            -moz-transform: translateY(-50%) scale(1.5, 1.5); 
-            -o-transform: translateY(-50%) scale(1.5, 1.5); 
-            transform: translateY(-50%) scale(1.5, 1.5); 
-        }
-    }
+    display: block;
+    position: absolute;
+    cursor: pointer;
+    top: 50%; /* change based on screen size */
+    width: 50px; 
+    height: 3rem;
+    background: transparent;
+    z-index: 2;
+    opacity: .2;
+    background-size: 22px;
+    background-position: center;
+    background-repeat: no-repeat;
+    // -webkit-transform: translateY(-50%);
+    // -moz-transform: translateY(-50%);
+    // -o-transform: translateY(-50%);
+    // transform: translateY(-50%);
+    // -webkit-transition: opacity .25s ease-in-out, transform .25s ease-in;
+    // -moz-transition: opacity .25s ease-in-out, transform .25s ease-in;
+    // -o-transition: opacity .25s ease-in-out, transform .25s ease-in;
+    // transition: opacity .25s ease-in-out, transform .25s ease-in;
+    // &:hover {
+    //     opacity: 1;
+    //     -webkit-transform: translateY(-50%) scale(1.5, 1.5); 
+    //     -moz-transform: translateY(-50%) scale(1.5, 1.5); 
+    //     -o-transform: translateY(-50%) scale(1.5, 1.5); 
+    //     transform: translateY(-50%) scale(1.5, 1.5); 
+    // }
 }
 .prev {
     background-image: url(https://cdn0.iconfinder.com/data/icons/navigation-set-arrows-part-one/32/ChevronLeft-512.png);
