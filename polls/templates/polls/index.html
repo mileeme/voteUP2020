@@ -21,9 +21,9 @@
         <!-- question -->
         <div class="card-question">
             <h6>Topic</h6>
-            <h4 id="question" data-id="{{ question.number }}">
+            <p id="question" data-id="{{ question.number }}">
                 {{ question|safe }}
-            </h4>
+            </p>
         </div>
 
         <!-- response -->
@@ -45,7 +45,14 @@
     <div id="responseDetail" class="card-detail is-invisible" data-response="{{ response.response_id }}"
         data-candidate="{{ response.candidate_id }}">
         <div class="card-detail-section">
-            {{ response.description|safe }}
+            {% if response.description %}
+            <h6>Description heading</h6>
+            <p>{{ response.description|safe }}</p>
+            {% endif %}
+            {% if response.links %}
+            <h6>Links heading</h6>
+            <a href="#">links</a>
+            {% endif %}
         </div>
     </div>
     {% endif %}
@@ -67,7 +74,7 @@
         *********************************************
         * replace 'is-results-show' with 'is-results-hide'
     -->
-    <div id="pollResults" class="is-results-hide">
+    <div id="pollResults" class="is-results-show">
 
         <!-- 
             end of results
@@ -89,10 +96,8 @@
         {% for candidate in candidate_list %}
         <div id="candidateProfile" class="card-candidate-profile u-show" data-candidate="{{ candidate.id }}">
             <div class="profile-left">
-                <div><img id="candidateProfileImage" class="profile-img is-profile-disabled" data-profile="{{ candidate.id }}"
-                    src="{{ candidate.profile_photo.url }}" alt="candidate profile photo"></div>
-                
-                    <a href="{{ candidate.website }}" id="profileButton" class="profile-button" target="_blank">Connect</a>
+                <div><img id="candidateProfileImage" class="profile-img is-profile-disabled" data-profile="{{ candidate.id }}" src="{{ candidate.profile_photo.url }}" alt="candidate profile photo"></div>
+                <a href="{{ candidate.website }}" id="profileButton" class="profile-button" target="_blank">Connect</a>
             </div>
 
             <div class="profile-right">
@@ -100,16 +105,17 @@
                     {{ candidate.full_name }}
                 </h3>
                 <p class="profile-p">{{ candidate.age }} | {{ candidate.party }} | <span id="matchPercentage" class="profile-match" data-candidate="{{ candidate.id }}">0% match</span></p>
-                <br>
-                <p class="profile-p">Squad+</p>
-                <ul class="profile-squad">
-                    {% for e in endorsement_list %}
-                    {% if candidate.id == e.candidate_id %}
-                    <li><img class="profile-squad-img"
-                        src="{{ e.profile_photo.url }}" alt="candidate profile photo"><br>{{ e.f_name }}<br>{{ e.l_name }}</li>
-                    {% endif %}
-                    {% endfor %}
-                </ul>
+                <div class="profile-squad">
+                    <p class="profile-p">Squad+</p>
+                    <ul>
+                        {% for e in endorsement_list %}
+                        {% if candidate.id == e.candidate_id %}
+                        <li><img class="profile-squad-img" src="{{ e.profile_photo.url }}"
+                                alt="candidate profile photo"><br>{{ e.f_name }}<br>{{ e.l_name }}</li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
             <div class="profile-row">
                 <p class="profile-quote">{{ candidate.quote }}</p>
@@ -117,38 +123,72 @@
         </div>
         {% endfor %}
 
-        <!-- slider -->
-        <div class="slider-heading">
-            <!-- <h3>Where <span id="candidateWinnerName"></span> agrees with you</h3> -->
-            <h5>Where we agree</h5>
-        </div>
-        <div id="wrapper" class="wrapper">
-            <div id="slides" class="slides">
-                {% for question in question_list %}
-                <div id="getMatch" class="slide" style="display: none">
-                    <div class="slide-question" data-question="{{ question.number }}">
-                        <h6>Topic</h6>
-                        <h3>{{ question|safe }}</h3>
+        <!-- slider agree -->
+        <div>
+            <div class="slider-heading">
+                <!-- <h3>Where <span id="candidateWinnerName"></span> agrees with you</h3> -->
+                <h5>Where we agree</h5>
+            </div>
+            <div id="wrapper" class="wrapper">
+                <div id="slides" class="slides">
+                    {% for question in question_list %}
+                    <div id="getMatch" class="slide" style="display: none">
+                        <div class="slide-question" data-question="{{ question.number }}">
+                            <h6>Topic</h6>
+                            <p>{{ question|safe }}</p>
+                        </div>
+                        {% for response in response_list %}
+                        {% if question.number == response.response_id %}
+                        <div id="responseMatch" class="slide-avatar-container" data-response="{{ response.response_id }}"
+                            data-candidate="{{ response.candidate_id }}">
+                            <span class="slide-avatar-item"></span>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
                     </div>
-                    {% for response in response_list %}
-                    {% if question.number == response.response_id %}
-                    <div id="responseMatch" class="slide-avatar-container" data-response="{{ response.response_id }}"
-                        data-candidate="{{ response.candidate_id }}">
-                        <span class="slide-avatar-item"></span>
-                    </div>
-                    {% endif %}
                     {% endfor %}
                 </div>
-                {% endfor %}
+                <a id="prev" class="control prev"></a>
+                <a id="next" class="control next"></a>
+            
+                <div id="navDots" class="nav-dots-container">
+                    <a href="#" class="nav-dot"></a>
+                </div>
             </div>
-            <a id="prev" class="control prev"></a>
-            <a id="next" class="control next"></a>
-        
-            <!-- <div id="navDots" class="nav-dots-container">
-                            <a href="#" class="nav-dot"></a>
-                        </div> -->
         </div>
 
+        <!-- slider disagree -->
+        <!-- <div>
+            <div class="slider-heading">
+                <h5>Where we disagree</h5>
+            </div>
+            <div id="wrapper" class="wrapper">
+                <div id="slides" class="slides">
+                    {% for question in question_list %}
+                    <div id="getNotMatch" class="slide" style="display: none">
+                        <div class="slide-question" data-question="{{ question.number }}">
+                            <h6>Topic</h6>
+                            <p>{{ question|safe }}</p>
+                        </div>
+                        {% for response in response_list %}
+                        {% if question.number == response.response_id %}
+                        <div id="responseMatch" class="slide-avatar-container" data-response="{{ response.response_id }}"
+                            data-candidate="{{ response.candidate_id }}">
+                            <span class="slide-avatar-item"></span>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
+                </div>
+                <a id="prev" class="control prev"></a>
+                <a id="next" class="control next"></a>
+        
+                <div id="navDots" class="nav-dots-container">
+                    <a href="#" class="nav-dot"></a>
+                </div>
+            </div>
+        </div> -->
 
 
     </div>

@@ -115,7 +115,7 @@ hr {
 pre {
   font-family: monospace, monospace;
   /* 1 */
-  font-size: 1rem;
+  font-size: 16px;
 }
 
 /** 
@@ -160,12 +160,12 @@ b, strong {
 code, kbd, samp {
   font-family: monospace, monospace;
   /* 1 */
-  font-size: 1rem;
+  font-size: 16px;
   /* 2 */
 }
 
 small {
-  font-size: 0.8rem;
+  font-size: 12.8px;
 }
 
 /**
@@ -173,7 +173,7 @@ small {
 * all browsers
 */
 sub, sup {
-  font-size: 0.75rem;
+  font-size: 12px;
   line-height: 0;
   position: relative;
   vertical-align: baseline;
@@ -446,87 +446,90 @@ table {
 * Scaffolding
 ----------------- */
 html {
-  font-size: 1rem;
-  line-height: 1.15;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
 body {
-  font: normal normal normal 1rem/1.15 -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  font-size: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.6;
+  letter-spacing: 0.2px;
   color: #425466;
-  background-color: rgba(236, 236, 236, 0.4);
+  background-color: #06182c;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 600;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-weight: 500;
+  line-height: 1.2;
 }
 
 h1 {
-  font-size: 1.7rem;
+  font-size: 2rem;
 }
 
 @media (min-width: 48rem) {
   h1 {
-    font-size: 1.87rem;
+    font-size: 2.2rem;
   }
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
 }
 
 @media (min-width: 48rem) {
   h2 {
-    font-size: 1.65rem;
+    font-size: 1.87rem;
   }
 }
 
 h3 {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
 }
 
 @media (min-width: 48rem) {
   h3 {
-    font-size: 1.43rem;
+    font-size: 1.65rem;
   }
 }
 
 h4 {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
 }
 
 @media (min-width: 48rem) {
   h4 {
-    font-size: 1.21rem;
+    font-size: 1.43rem;
   }
 }
 
 h5 {
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 
 @media (min-width: 48rem) {
   h5 {
-    font-size: 1.1rem;
+    font-size: 1.21rem;
   }
 }
 
 h6 {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #425466;
+  font-size: 1rem;
   padding-bottom: 1rem;
 }
 
 @media (min-width: 48rem) {
   h6 {
-    font-size: 0.88rem;
+    font-size: 1.1rem;
   }
 }
 
 .label {
   color: #B4B4B4;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 mark {
@@ -579,8 +582,8 @@ hr {
 
 .header {
   padding: 2rem;
-  font-size: .8rem;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 800;
 }
 
 @media (min-width: 48rem) {
@@ -600,16 +603,16 @@ hr {
 ----------------- */
 .hero {
   display: block;
-  margin-top: -5rem;
-  margin-bottom: -6rem;
-  padding: 7rem 2rem 10rem;
+  margin-top: -7rem;
+  margin-bottom: -4rem;
+  padding: 10rem 2rem 10rem;
   background-color: #1de0bc;
   background: linear-gradient(271deg, #5A45FF, #ffffff, #1de0bc);
   background-size: 600% 600%;
-  -webkit-animation: heroGradient 20s ease infinite;
-  -moz-animation: heroGradient 20s ease infinite;
-  -o-animation: heroGradient 20s ease infinite;
-  animation: heroGradient 20s ease infinite;
+  -webkit-animation: heroGradient 15s ease infinite;
+  -moz-animation: heroGradient 15s ease infinite;
+  -o-animation: heroGradient 15s ease infinite;
+  animation: heroGradient 15s ease infinite;
 }
 
 .hero h1 {
@@ -672,18 +675,6 @@ hr {
   }
 }
 
-.hero-heading {
-  opacity: 1;
-  -webkit-transform: translate3d(0.2rem, 1.5rem, -0.5rem);
-  -moz-transform: translate3d(0.2rem, 1.5rem, -0.5rem);
-  -o-transform: translate3d(0.2rem, 1.5rem, -0.5rem);
-  transform: translate3d(0.2rem, 1.5rem, -0.5rem);
-  -webkit-transition: opacity 0.4s ease-in, transform 0.4s 0.25s cubic-bezier(0, 0, 0.3, 1);
-  -moz-transition: opacity 0.4s ease-in, transform 0.4s 0.25s cubic-bezier(0, 0, 0.3, 1);
-  -o-transition: opacity 0.4s ease-in, transform 0.4s 0.25s cubic-bezier(0, 0, 0.3, 1);
-  transition: opacity 0.4s ease-in, transform 0.4s 0.25s cubic-bezier(0, 0, 0.3, 1);
-}
-
 @media (min-width: 48rem) {
   .hero-heading {
     padding: 0 4rem;
@@ -691,14 +682,17 @@ hr {
 }
 
 .hero-heading h1 {
-  color: #425466;
-  font-weight: 600;
+  color: #102942;
+  font-weight: 700;
 }
 
 /* -----------------
 * Buttons
 ----------------- */
 .section-result-button {
+  font-size: calc($font-size * 1.1);
+  font-weight: 500;
+  letter-spacing: -0.1px;
   text-align: center;
   padding: 2rem 1rem;
   margin: 1rem 0 1rem;
@@ -716,33 +710,28 @@ hr {
   position: relative;
   width: 100%;
   padding: 1rem;
-  font-size: 1.3rem;
-  font-weight: normal;
   color: rgba(90, 69, 255, 0.5);
   background-color: rgba(90, 69, 255, 0.1);
+  -moz-box-shadow: inset 1px 1px 5px -1px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: inset 1px 1px 5px -1px rgba(0, 0, 0, 0.08);
+  box-shadow: inset 1px 1px 5px -1px rgba(0, 0, 0, 0.08);
   pointer-events: none;
-  border-radius: 0.4rem;
+  border-radius: 10px;
 }
 
 .is-abled-button {
   display: inline-block;
   position: relative;
   width: 100%;
-  overflow: hidden;
   padding: 1rem;
-  font-size: 1.3rem;
-  font-weight: normal;
   color: #ffffff;
   background-color: rgba(90, 69, 255, 0.9);
-  border-radius: 0.4rem;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1), 1px 1px 2px rgba(0, 0, 0, 0.2);
   -webkit-transition: background-color .2s ease-in;
   -moz-transition: background-color .2s ease-in;
   -o-transition: background-color .2s ease-in;
   transition: background-color .2s ease-in;
-}
-
-.is-abled-button:hover, .is-abled-button:active {
-  background-color: #5a45ff;
 }
 
 .button-ripple {
@@ -884,7 +873,7 @@ hr {
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: #425466;
+  background-color: rgba(90, 69, 255, 0.1);
   text-align: center;
   padding: 1rem 0;
 }
@@ -909,12 +898,11 @@ footer {
 * Tables
 ----------------- */
 .results-table {
-  display: none;
+  display: block;
 }
 
 @media (min-width: 48rem) {
   .results-table {
-    display: block;
     padding: 2rem 4rem 4rem;
   }
 }
@@ -927,10 +915,10 @@ table {
 * Card
 ----------------- */
 .card {
-  margin: 1rem 0 0;
+  margin: 2rem 0 0;
   background: #ffffff;
   border-top: 1px solid #ffffff;
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.08), 1px 1px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.19), 0 4px 6px -1px rgba(0, 0, 0, 0.18);
 }
 
 .card h3 {
@@ -943,7 +931,7 @@ table {
 }
 
 .card-question {
-  padding: 2rem 2rem 2.2rem;
+  padding: 4rem 2rem;
   background: #ffffff;
 }
 
@@ -958,13 +946,14 @@ table {
   color: #B4B4B4;
 }
 
-.card-question h4 {
-  font-weight: 400;
+.card-question p {
+  font-weight: 500;
 }
 
 .card-response {
-  padding: 0 2rem 2rem;
+  padding: 0 2rem 3rem;
   background: #ffffff;
+  font-weight: 400;
   cursor: pointer;
 }
 
@@ -977,9 +966,12 @@ table {
 .candidate-response {
   padding: 1rem;
   margin: 0 0 0.6rem;
-  border-radius: 25px 25px 1px 25px;
+  border-radius: 10px;
   color: #425466;
   background-color: rgba(90, 69, 255, 0.1);
+  -moz-box-shadow: inset 1px 1px 5px -1px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: inset 1px 1px 5px -1px rgba(0, 0, 0, 0.08);
+  box-shadow: inset 1px 1px 5px -1px rgba(0, 0, 0, 0.08);
   -webkit-transition: background-color .25 ease-in;
   -moz-transition: background-color .25 ease-in;
   -o-transition: background-color .25 ease-in;
@@ -987,21 +979,22 @@ table {
 }
 
 .candidate-response:hover, .candidate-response:active {
-  background-color: rgba(236, 236, 236, 0.4);
+  background-color: #06182c;
 }
 
 .is-active-response {
+  opacity: 1;
   padding: 1rem;
   margin: 0 0 0.6rem;
-  border-radius: 25px 25px 1px 25px;
+  border-radius: 10px;
   color: #ffffff;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1), 2px 2px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1), 1px 1px 2px rgba(0, 0, 0, 0.2);
   background: #5a45ff;
-  background: linear-gradient(90deg, #5A45FF 0%, rgba(90, 69, 255, 0.6) 90%);
-  -webkit-transition: background-color 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
-  -moz-transition: background-color 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
-  -o-transition: background-color 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
-  transition: background-color 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+  background: linear-gradient(140deg, rgba(90, 69, 255, 0.5) 0%, rgba(90, 69, 255, 0.3) 90%);
+  -webkit-transition: opacity 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+  -moz-transition: opacity 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+  -o-transition: opacity 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: opacity 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 .card-detail {
@@ -1009,8 +1002,8 @@ table {
   position: relative;
   height: 0;
   z-index: -1;
-  color: #909090;
-  background: rgba(255, 255, 255, 0.8);
+  color: #425466;
+  background: rgba(255, 255, 255, 0.9);
   -webkit-transform: translate3d(0rem, -18rem, -1rem);
   -moz-transform: translate3d(0rem, -18rem, -1rem);
   -o-transform: translate3d(0rem, -18rem, -1rem);
@@ -1018,7 +1011,8 @@ table {
 }
 
 .card-detail-section {
-  padding: 2rem;
+  padding: 4rem 2rem;
+  font-size: 15px;
 }
 
 @media (min-width: 48rem) {
@@ -1027,8 +1021,9 @@ table {
   }
 }
 
-.test {
-  position: relative;
+.card-detail-section h6 {
+  font-size: 15px;
+  padding-bottom: 0.6rem;
 }
 
 .is-visible {
@@ -1066,7 +1061,7 @@ table {
 .is-response {
   overflow: hidden;
   color: #425466;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 /* -----------------
@@ -1122,14 +1117,14 @@ table {
 
 .card-candidate-profile {
   margin: 1rem;
-  padding: 2rem;
+  padding: 1.5rem;
   background: #ffffff;
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-column-gap: 1.5rem;
   grid-row-gap: 1rem;
   border-radius: 20px 20px 0px 20px;
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.08), 0 0 2px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.19), 0 4px 6px -1px rgba(0, 0, 0, 0.18);
 }
 
 @media (min-width: 48rem) {
@@ -1142,15 +1137,19 @@ table {
 
 .card-candidate-profile .profile-h3 {
   line-height: 2rem;
+  margin-bottom: 0.4rem;
 }
 
 .card-candidate-profile .profile-p {
-  font-size: .75rem;
-  color: #909090;
+  font-size: 12px;
+  font-weight: 500;
 }
 
 .card-candidate-profile .profile-left {
+  display: grid;
   text-align: center;
+  grid-gap: 1.2rem;
+  align-content: start;
 }
 
 .card-candidate-profile .profile-row {
@@ -1161,11 +1160,6 @@ table {
   border-top: 1px solid rgba(90, 69, 255, 0.2);
 }
 
-.card-candidate-profile .profile-quote {
-  font-size: 0.9rem;
-  line-height: 1.2rem;
-}
-
 @media (min-width: 48rem) {
   .card-candidate-profile .profile-quote {
     padding: 2rem 4rem;
@@ -1173,43 +1167,47 @@ table {
 }
 
 .card-candidate-profile .profile-squad {
+  margin-top: 1rem;
+}
+
+.card-candidate-profile .profile-squad ul {
   list-style: none;
   display: flex;
-  text-align: center;
-  font-size: 0.625rem;
-  color: #909090;
 }
 
 .card-candidate-profile .profile-squad li {
-  margin: 0.5rem 0.1rem;
+  font-size: 12px;
+  text-align: center;
+  margin: 0.2rem 0.1rem;
   padding: 0.2rem;
+  line-height: 1.4;
 }
 
-.card-candidate-profile .profile-squad-img {
+.card-candidate-profile .profile-squad .profile-squad-img {
   width: 2.7rem;
   border-radius: 0.625rem;
-  margin-bottom: 0.4rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.19), 0 4px 6px -1px rgba(0, 0, 0, 0.18);
 }
 
 .card-candidate-profile .profile-match {
   color: #5A45FF;
+  font-weight: 500;
 }
 
 .card-candidate-profile .profile-button {
   display: block;
   text-align: center;
-  padding-top: 0.5rem;
+  font-size: 12px;
+  font-weight: 500;
+  padding-top: 0.4rem;
   padding-bottom: 0.5rem;
   padding-left: auto;
   padding-right: auto;
-  margin: 1rem 0 1rem;
-  background-color: #5A45FF;
-  color: white;
-  border-radius: 10rem;
-  font-size: 0.8rem;
   width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  background-color: rgba(90, 69, 255, 0.9);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1), 1px 1px 2px rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+  border-radius: 20px;
 }
 
 @media (min-width: 48rem) {
@@ -1224,6 +1222,7 @@ table {
   padding: 2px;
   border-radius: 5.5rem;
   border: 4px solid transparent;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.19), 0 4px 6px -1px rgba(0, 0, 0, 0.18);
   opacity: 1;
 }
 
@@ -1298,7 +1297,8 @@ table {
   align-content: center;
   padding: 2rem;
   width: 100%;
-  background-color: #1de0bc;
+  color: #ffffff;
+  background-color: rgba(90, 69, 255, 0.6);
   border-radius: 1rem;
 }
 
@@ -1308,34 +1308,29 @@ table {
   }
 }
 
-.slide-question h3 {
-  color: #425466;
-  font-size: 1rem;
-  line-height: 1.4rem;
+.slide-question p {
+  line-height: 1.6;
   font-weight: 400;
 }
 
 @media (min-width: 48rem) {
-  .slide-question h3 {
+  .slide-question p {
     line-height: 1.4rem;
-    font-size: 1.43rem;
-    font-weight: 400;
+    font-size: 1.65rem;
+    font-weight: 500;
   }
-}
-
-.slide-question h6 {
-  color: #ffffff;
 }
 
 .slide-question .is-no-response {
   display: inline-block;
   width: 6rem;
-  border-bottom: 1px solid #3C3C3C;
+  border-bottom: 1px solid #ffffff;
   text-decoration: none;
 }
 
 .slide-question .is-response {
-  color: #425466;
+  font-weight: 800;
+  color: #ffffff;
 }
 
 .control {
@@ -1404,6 +1399,9 @@ table {
   background-position: 0.65rem 0.75rem;
   background-repeat: no-repeat;
   background-color: rgba(90, 69, 255, 0.1);
+  -moz-box-shadow: inset 1px 1px 5px -1px rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: inset 1px 1px 5px -1px rgba(0, 0, 0, 0.08);
+  box-shadow: inset 1px 1px 5px -1px rgba(0, 0, 0, 0.08);
   width: 100%;
   padding: .8rem 2rem;
   border-radius: 50px;
