@@ -722,6 +722,7 @@ hr {
 .is-abled-button {
   display: inline-block;
   position: relative;
+  overflow: hidden;
   width: 100%;
   padding: 1rem;
   color: #ffffff;
@@ -996,7 +997,7 @@ table {
   height: 0;
   z-index: -1;
   color: #425466;
-  background: rgba(255, 255, 255, 0.9);
+  background: #fdfdfd;
   -webkit-transform: translate3d(0rem, -18rem, -1rem);
   -moz-transform: translate3d(0rem, -18rem, -1rem);
   -o-transform: translate3d(0rem, -18rem, -1rem);

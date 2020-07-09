@@ -234,6 +234,7 @@ hr {
 .is-abled-button {
     display: inline-block;
     position: relative;
+    overflow: hidden;
     width: 100%;
     padding: $padding;
     // font-size: $h3-sm;
@@ -498,7 +499,7 @@ table {
     height: 0;
     z-index: -1;
     color: $font-color;
-    background: transparentize($color: $background, $amount: 0.1);
+    background: #fdfdfd;
     -webkit-transform: translate3d(0rem, -18rem, -1rem);
     -moz-transform: translate3d(0rem, -18rem, -1rem);
     -o-transform: translate3d(0rem, -18rem, -1rem);
