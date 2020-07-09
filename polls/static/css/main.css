@@ -457,7 +457,7 @@ body {
   line-height: 1.6;
   letter-spacing: 0.2px;
   color: #425466;
-  background-color: #06182c;
+  background-color: #e1e5ef;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -607,12 +607,12 @@ hr {
   margin-bottom: -4rem;
   padding: 10rem 2rem 10rem;
   background-color: #1de0bc;
-  background: linear-gradient(271deg, #5A45FF, #ffffff, #1de0bc);
-  background-size: 600% 600%;
-  -webkit-animation: heroGradient 15s ease infinite;
-  -moz-animation: heroGradient 15s ease infinite;
-  -o-animation: heroGradient 15s ease infinite;
-  animation: heroGradient 15s ease infinite;
+  background: linear-gradient(250deg, #1de0bc, #ffffff, #fd64dced);
+  background-size: 300% 100%;
+  -webkit-animation: heroGradient 10s ease infinite;
+  -moz-animation: heroGradient 10s ease infinite;
+  -o-animation: heroGradient 10s ease infinite;
+  animation: heroGradient 10s ease infinite;
 }
 
 .hero h1 {
@@ -918,7 +918,7 @@ table {
   margin: 2rem 0 0;
   background: #ffffff;
   border-top: 1px solid #ffffff;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.19), 0 4px 6px -1px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 5px 20px -20px rgba(0, 0, 0, 0.19), 0 10px 20px -10px rgba(0, 0, 0, 0.18);
 }
 
 .card h3 {
@@ -968,7 +968,7 @@ table {
   margin: 0 0 0.6rem;
   border-radius: 10px;
   color: #425466;
-  background-color: rgba(90, 69, 255, 0.05);
+  background-color: rgba(29, 224, 188, 0.05);
   -moz-box-shadow: inset 1px 1px 5px -1px rgba(0, 0, 0, 0.08);
   -webkit-box-shadow: inset 1px 1px 5px -1px rgba(0, 0, 0, 0.08);
   box-shadow: inset 1px 1px 5px -1px rgba(0, 0, 0, 0.08);
@@ -984,9 +984,10 @@ table {
   margin: 0 0 0.6rem;
   border-radius: 10px;
   color: #425466;
+  font-weight: 500;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1), 1px 1px 2px rgba(0, 0, 0, 0.2);
   background: #5a45ff;
-  background: linear-gradient(100deg, rgba(90, 69, 255, 0.13) 0%, rgba(90, 69, 255, 0.08) 90%);
+  background: linear-gradient(100deg, rgba(29, 224, 188, 0.2) 0%, rgba(29, 224, 188, 0.1) 90%);
 }
 
 .card-detail {
@@ -1149,7 +1150,7 @@ table {
   grid-column: 1 / -1;
   justify-self: center;
   align-self: center;
-  padding: 2rem 0 1rem;
+  padding: 2.5rem 0;
   border-top: 1px solid rgba(90, 69, 255, 0.2);
 }
 
@@ -1332,8 +1333,9 @@ table {
   margin: 0;
   overflow: scroll;
   height: 9.5rem;
-  border: 1px solid #909090;
+  border: 1px solid rgba(144, 144, 144, 0.3);
   border-radius: 0.4rem;
+  overflow-x: hidden;
 }
 
 .registration-link {
@@ -1342,7 +1344,18 @@ table {
   text-decoration: none;
   display: block;
   margin-bottom: .08rem;
-  color: #5A45FF;
+  color: #425466;
+}
+
+::-webkit-scrollbar-track {
+  border: none;
+  background: rgba(144, 144, 144, 0.2);
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #909090;
+  border-radius: 50px;
 }
 
 /* -----------------
