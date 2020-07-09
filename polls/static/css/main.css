@@ -951,7 +951,7 @@ table {
 }
 
 .card-response {
-  padding: 0 2rem 3rem;
+  padding: 0 2rem 4rem;
   background: #ffffff;
   font-weight: 400;
   cursor: pointer;
@@ -968,7 +968,7 @@ table {
   margin: 0 0 0.6rem;
   border-radius: 10px;
   color: #425466;
-  background-color: rgba(90, 69, 255, 0.1);
+  background-color: rgba(90, 69, 255, 0.05);
   -moz-box-shadow: inset 1px 1px 5px -1px rgba(0, 0, 0, 0.08);
   -webkit-box-shadow: inset 1px 1px 5px -1px rgba(0, 0, 0, 0.08);
   box-shadow: inset 1px 1px 5px -1px rgba(0, 0, 0, 0.08);
@@ -983,10 +983,10 @@ table {
   padding: 1rem;
   margin: 0 0 0.6rem;
   border-radius: 10px;
-  color: #ffffff;
+  color: #425466;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1), 1px 1px 2px rgba(0, 0, 0, 0.2);
   background: #5a45ff;
-  background: linear-gradient(140deg, rgba(90, 69, 255, 0.5) 0%, rgba(90, 69, 255, 0.3) 90%);
+  background: linear-gradient(100deg, rgba(90, 69, 255, 0.13) 0%, rgba(90, 69, 255, 0.08) 90%);
 }
 
 .card-detail {
@@ -1229,59 +1229,11 @@ table {
 }
 
 /* -----------------
-* Carousel
+* Slider
 ----------------- */
 .slider-heading {
   margin: 2rem 1rem 1rem;
   text-align: center;
-}
-
-.wrapper {
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 2rem;
-  overflow: hidden;
-  position: relative;
-  width: 22rem;
-  height: 22rem;
-  background: transparent;
-}
-
-@media (min-width: 48rem) {
-  .wrapper {
-    width: 35rem;
-    height: 22rem;
-  }
-}
-
-.slides {
-  display: flex;
-  position: relative;
-  left: 0;
-  height: 100%;
-  background: transparent;
-}
-
-.slides.shifting {
-  -webkit-transition: left .175s ease-in;
-  -moz-transition: left .175s ease-in;
-  -o-transition: left .175s ease-in;
-  transition: left .175s ease-in;
-}
-
-.slide {
-  text-align: left;
-  min-width: 22rem;
-  cursor: pointer;
-  position: relative;
-  background: transparent;
-  padding: .1rem;
-}
-
-@media (min-width: 48rem) {
-  .slide {
-    min-width: 35rem;
-  }
 }
 
 .slide-question {
@@ -1290,6 +1242,7 @@ table {
   align-content: center;
   padding: 2rem;
   width: 100%;
+  height: 100%;
   color: #ffffff;
   background-color: rgba(90, 69, 255, 0.6);
   border-radius: 1rem;
@@ -1322,13 +1275,12 @@ table {
   display: block;
   position: absolute;
   cursor: pointer;
-  top: 50%;
-  /* change based on screen size */
+  transform: translateY(-50%);
   width: 50px;
   height: 3rem;
   background: transparent;
   z-index: 2;
-  opacity: .2;
+  opacity: 1;
   background-size: 22px;
   background-position: center;
   background-repeat: no-repeat;
@@ -1391,4 +1343,39 @@ table {
   display: block;
   margin-bottom: .08rem;
   color: #5A45FF;
+}
+
+/* -----------------
+* slider v2
+----------------- */
+.animate {
+  transition: transform 0.3s ease-out;
+}
+
+.slider-wrap {
+  width: 22rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2rem;
+}
+
+.slider {
+  width: 22rem;
+  height: 22rem;
+  overflow: hidden;
+}
+
+.holder {
+  width: 300%;
+  height: 100%;
+}
+
+.slide-wrapper {
+  width: 22rem;
+  height: 22rem;
+  float: left;
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+  padding: .1rem;
 }

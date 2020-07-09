@@ -123,24 +123,19 @@
         </div>
         {% endfor %}
 
-        <!-- slider agree -->
-        <div>
+
+        <!-- slider-wrap -->
+        <div class="slider-wrap">
             <div class="slider-heading">
-                <!-- <h3>Where <span id="candidateWinnerName"></span> agrees with you</h3> -->
-                <div>
-                    <p>touchstart startX: <span id="testTouch1"></span></p>
-                    <p>touchmove distX: <span id="testTouch2"></span></p>
-                    <p>touchend prev: <span id="testTouch3"></span></p>
-                    <p>touchend next: <span id="testTouch4"></span></p>
-                    <p>shiftslide slidesleft: <span id="testTouch5"></span></p>
-                    <p>checkindex index: <span id="testTouch6"></span></p>
-                </div>
                 <h5>Where we agree</h5>
             </div>
-            <div id="wrapper" class="wrapper">
-                <div id="slides" class="slides">
+            <!-- slider -->
+            <div id="slider" class="slider">
+                <!-- holder -->
+                <div id="holder" class="holder">
                     {% for question in question_list %}
-                    <div id="getMatch" class="slide" style="display: none">
+                    <!-- slide-wrapper -->
+                    <div id="getMatch" class="slide-wrapper" style="display: none">
                         <div class="slide-question" data-question="{{ question.number }}">
                             <h6>Topic</h6>
                             <p>{{ question|safe }}</p>
@@ -156,49 +151,14 @@
                     </div>
                     {% endfor %}
                 </div>
-                <a id="prev" class="control prev"></a>
-                <a id="next" class="control next"></a>
-            
-                <div id="navDots" class="nav-dots-container">
-                    <a href="#" class="nav-dot"></a>
-                </div>
             </div>
-        </div>
-
-        <!-- slider disagree -->
-        <!-- <div>
-            <div class="slider-heading">
-                <h5>Where we disagree</h5>
-            </div>
-            <div id="wrapper" class="wrapper">
-                <div id="slides" class="slides">
-                    {% for question in question_list %}
-                    <div id="getNotMatch" class="slide" style="display: none">
-                        <div class="slide-question" data-question="{{ question.number }}">
-                            <h6>Topic</h6>
-                            <p>{{ question|safe }}</p>
-                        </div>
-                        {% for response in response_list %}
-                        {% if question.number == response.response_id %}
-                        <div id="responseMatch" class="slide-avatar-container" data-response="{{ response.response_id }}"
-                            data-candidate="{{ response.candidate_id }}">
-                            <span class="slide-avatar-item"></span>
-                        </div>
-                        {% endif %}
-                        {% endfor %}
-                    </div>
-                    {% endfor %}
-                </div>
-                <a id="prev" class="control prev"></a>
-                <a id="next" class="control next"></a>
+            <!-- <a id="prev" class="control prev"></a>
+            <a id="next" class="control next"></a>
         
-                <div id="navDots" class="nav-dots-container">
-                    <a href="#" class="nav-dot"></a>
-                </div>
-            </div>
-        </div> -->
-
-
+            <div id="navDots" class="nav-dots-container">
+                <a href="#" class="nav-dot"></a>
+            </div> -->
+        </div>
     </div>
 
     <!-- check registration -->
@@ -216,5 +176,11 @@
     </div>
 </div>
 {% endfor %}
+
+<!-- scripts -->
+{% load static %}
+{% block js %}
+<script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+{% endblock %}
 
 {% endblock %}

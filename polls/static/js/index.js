@@ -1,3 +1,4 @@
+
 // poll response features 
 const response = () => {
     // 1. initialize variables
@@ -85,12 +86,9 @@ const response = () => {
             candidateProfiles = document.querySelectorAll('#candidateProfile'),
             matchPercentages = document.querySelectorAll('#matchPercentage'),
             candidateProfileImages = Array.from(document.querySelectorAll('#candidateProfileImage')),
-            // carousel
+            // slider
             responseMatches = Array.from(document.querySelectorAll('#responseMatch')),
-            // responseNotMatches = Array.from(document.querySelectorAll('#responseMatch')),
-            getMatches = Array.from(document.querySelectorAll('#getMatch')),
-            getNotMatches = Array.from(document.querySelectorAll('#getNotMatch'))
-            // responseMatchColumns = Array.from(document.querySelectorAll('#responseMatchColumn')),
+            getMatches = Array.from(document.querySelectorAll('#getMatch'))
             
         // update name of winner in result heading
         candidateWinners.forEach((winner) => {
@@ -145,7 +143,7 @@ const response = () => {
         })
 
         /*********************
-        * carousel for matches 
+        * slider for matches 
         **********************/
         
         // get all the responses
@@ -158,7 +156,6 @@ const response = () => {
                     response.parentElement.classList.remove('candidate1')
                     response.parentElement.classList.add('candidate2')
                 }
-                // console.log(response)
             }
         })
 
@@ -175,27 +172,6 @@ const response = () => {
                     match.style.display = 'inherit'
                 } else {
                     match.style.display = 'none'
-                }
-            }
-        })
-
-        /*********************
-        * carousel for not matched
-        **********************/
-
-        // get only non-matched responses 
-        getNotMatches.forEach((match) => {
-            if (candidate1Count > candidate2Count) {
-                if (match.classList.contains('candidate1')) {
-                    match.style.display = 'none'
-                } else {
-                    match.style.display = 'inherit'
-                }
-            } else {
-                if (match.classList.contains('candidate2')) {
-                    match.style.display = 'none'
-                } else {
-                    match.style.display = 'inherit'
                 }
             }
         })
@@ -227,7 +203,7 @@ const response = () => {
     }
 
     /*
-    * Survey
+    * poll
     *****************/
     // insert response to question
     function insertResponse(targetValue, targetIdResponse) {
@@ -308,191 +284,121 @@ const response = () => {
     }
 }
 
-// touch enabled slider 
-const carousel = () => {
-    // 1. variables for the slider
+// slider
+const slider = () => {
     var responses = document.querySelectorAll('#candidateResponse'),
-        slides = document.querySelector('#slides'),
-        slidesArray = Array.from(slides.querySelectorAll('#getMatch')),
-        slidesCount,
+        // slider = document.querySelector('#slider'),
+        holder = document.querySelector('.holder'),
+        slides = Array.from(document.querySelectorAll('#getMatch')),
         slideWidth,
-        slidesArrayWidth,
-        slidesArrayLeft,
-        startX,
-        startY,
-        distX,
-        distY,
-        posInitial,
-        posFinal,
-        threshold = 100, //required min X-distance to be considered swipe
-        restraint = 200, // Y-height boundary to be considered a horizontal swipe
-        index = 0
-        // navigation
+        slidesCount,
+        holderWidth,
+        lastSlidePosition,
+        lastIndex,
+        touchStartX = undefined,
+        touchMoveX = undefined,
+        moveX = undefined,
+        index = 0,
+        longTouch = false,
+        mouseMoving = false,
         prev = document.querySelector('#prev'),
-        next = document.querySelector('#next'),
-        navDots = document.querySelector('#navDots'),
-        // dotsArray
+        next = document.querySelector('#next')
 
-    // 2. eventlisteners
-    // mouse
-    slides.onmousedown = touchstart
+    // mouse event
+    holder.onmousedown = start
 
-    // touch for chrome, firefox, android
-    slides.addEventListener('touchstart', touchstart, false)
-    slides.addEventListener('touchmove', touchmove, false)
-    slides.addEventListener('touchend', touchend, false)
+    // touch event 
+    holder.addEventListener('touchstart', function (event) {start(event)}, false)
+    holder.addEventListener('touchmove', function (event) {move(event)}, false)
+    holder.addEventListener('touchend', function (event) {end(event)}, false)
 
-    // click events 
-    responses.forEach(response => { 
-        response.addEventListener('click', (e) => { 
-            e.preventDefault()
-            updateSlides() 
-        }) 
+    // click event 
+    // prev.addEventListener('click', function (event) {end(event, 'prev')})
+    // next.addEventListener('click', function (event) {end(event, 'next')})
+    responses.forEach(response => {
+        response.addEventListener('click', () => {updateSlides()})
     })
-    
-    prev.addEventListener('click', (e) => { 
-        e.preventDefault()
-        shiftSlide('prev') 
-    })
-    next.addEventListener('click', (e) => {
-        e.preventDefault() 
-        shiftSlide('next')
-    })
-    // navDots.addEventListener('click', e => { 
-    //     e.preventDefault
-    //     clickNav(e) 
-    // })
 
-    // transition events 
-    slides.addEventListener('transitionend', checkIndex, { passive: true })
+    function start(event) {
+        if (event.type == 'touchstart') {
+            event.preventDefault()
 
-    // 3. touchstart function
-    function touchstart(e) {
-        e.preventDefault()
-        // get the initial left position of the slide 
-        posInitial = slides.offsetLeft // positive number
+            // test for flick
+            longTouch = false
+            setTimeout(function () {
+                holder.longTouch = true
+            }, 250)
 
-        // if touch detected
-        if (e.type == 'touchstart') {
-            // gets touch x position inside element
-            startX = e.touches[0].pageX
-            startY = e.touches[0].pageY
-            document.querySelector('#testTouch1').innerHTML = startX
-        } else {
-            // for mouse event
-            startX = e.pageX
-            document.onmouseup = touchend
-            document.onmousemove = touchmove
+            // get the initial touch position
+            touchStartX = event.touches[0].pageX
+        } else if (event.type == 'mousedown') {
+            mouseMoving = true
+            touchStartX = event.pageX
+            holder.onmousemove = move
+            holder.onmouseup = end
         }
+        // remove animation 
+        holder.classList.remove('animate')
+        console.log(`width: ${slideWidth} slide count: ${slidesCount} last position: ${lastSlidePosition} holder width: ${holderWidth} last index: ${lastIndex}`)
     }
 
-    // 4. touch move function
-    function touchmove(e) {
-        e.preventDefault()
-        if (e.type == 'touchmove') {
-            // get distanced moved 
-            distX = e.targetTouches[0].pageX - startX
-            distY = e.targetTouches[0].pageY - startY
-            document.querySelector('#testTouch2').innerHTML = distX
+    function move(event) {
+        event.preventDefault()
 
-        } else {
-            // get mouse event
-            distX = e.pageX - startX
-        }
-        // set new left position of slide 
-        // based on distance of touch moved
-        slides.style.left = (posInitial + distX) + 'px'
-        // console.log(`slides left: ${slides.style.left}`)
-    }
+        if (event.type == 'touchmove') {
+            // get moving position
+            touchMoveX = event.touches[0].pageX
 
-    // 5. end of touch/mousedown - either, call function or stay put
-    function touchend(e) {
-        e.preventDefault()
-        if (e.type == 'touchend') {
-            posFinal = slides.offsetLeft
-        }
-        // check that distance move beyond threshold
-        if (Math.abs(distX) >= threshold && Math.abs(distY) <= restraint) {
-            // check whether wipe was in pos or neg direction 
-            if (Math.sign(distX) == 1) {
-                // if positive, direction is prev
-                shiftSlide('prev', 'drag')
-                document.querySelector('#testTouch3').innerHTML = "prev"
-            } else {
-                // if negative, direction is next
-                shiftSlide('next', 'drag')
-                document.querySelector('#testTouch4').innerHTML = "next"
+            // calculate slider movement
+            moveX = index * slideWidth + (touchStartX - touchMoveX)
 
+            // limit slider from moving beyond the last slide
+            if (moveX < lastSlidePosition) {
+                holder.style.webkitTransform = 'translate3d(-' + moveX + 'px,0,0)'
             }
-        } else {
-            // if didn't meet the threshold than stay put 
-            slides.style.left = posInitial + 'px'
-        }      
-        document.onmouseup = null
-        document.onmousemove = null
+        } else if (mouseMoving) {
+            touchMoveX = event.pageX
+            // calculate slider movement
+            moveX = index * slideWidth + (touchStartX - touchMoveX)
+        }
     }
-    // 6. function to move slide 
-    function shiftSlide(dir, action) {
-        // add css transition 
-        slides.classList.add('shifting')
-        // remove active css class during transition
-        // dotsArray[index].classList.remove('dot-active')
-        // transition to next slide
-        // if a click event, set posInitial to current click position
-        if (!action) { posInitial = slides.offsetLeft }
-        if (dir == 'next') {
-            slides.style.left = (posInitial - slideWidth) + 'px'
+
+    function end(event, clickEvent) {
+        event.preventDefault()
+        // calculate the distance swiped
+        var absMove = Math.abs(index * slideWidth - moveX)
+        if (event.type == 'mouseup' || event.type == 'touchend') {
+            if (absMove > 100 || longTouch == false) {
+                if ((moveX > index * slideWidth) && index < lastIndex) {
+                    index++
+                } else if ((moveX < index * slideWidth) && index > 0) {
+                    index--
+                }
+            }
+            mouseMoving = false
+            // move and animate the slide 
+            holder.classList.add('animate')
+            holder.style.webkitTransform = 'translate3d(-' + index * slideWidth + 'px,0,0)'
+        }
+
+        if (clickEvent == 'next' && index < lastIndex) {
             index++
-        } else if (dir == 'prev') {
-            slides.style.left = (posInitial + slideWidth) + 'px'
+            console.log(index)
+        } else if (clickEvent == 'prev' && index > 0) {
             index--
-        } 
-        document.querySelector('#testTouch5').innerHTML = slides.style.left
+        }
+        holder.classList.add('animate')
+        holder.style.webkitTransform = 'translate3d(-' + index * slideWidth + 'px,0,0)'
     }
-    // 7. navigation 
-    // function clickNav(e) {
-    //     const targetDot = e.target.closest('a')
-    //     if (!targetDot) return;
-    //     // make node list into array
-    //     const dots = Array.from(dotsArray)
-    //     // loop through array and find index of targetDot
-    //     const targetIndex = dots.findIndex(dot => dot === targetDot)
 
-    //     // add css transition 
-    //     slides.classList.add('shifting')
-    //     // remove active css class during transition
-    //     dotsArray[index].classList.remove('dot-active')
-    //     // transition to slide 
-    //     slides.style.left = -(slideWidth) * (targetIndex + 1) + 'px'
-    //     index = targetIndex
-    // }
-
-    // update slides
     function updateSlides() {
-        var slidesInherit = slidesArray.filter(slide => (slide.style.display == 'inherit'))
+        var slidesInherit = slides.filter(slide => (slide.style.display == 'inherit'))
 
         slidesCount = slidesInherit.length
-        slideWidth = slidesInherit[0].offsetWidth
-        slidesArrayWidth = slideWidth * slidesCount
-        slidesArrayLeft = slidesArrayWidth - slideWidth
-    }
-
-    // 8. check index 
-    function checkIndex() {
-        slides.classList.remove('shifting')
-        
-        // set first slide boundary 
-        if (index == -1) {
-            slides.style.left = 0 + 'px'
-            index = 0
-         // set last slide boundary 
-        } else if (index == slidesCount) {
-            slides.style.left = -slidesArrayLeft + 'px'
-            index = slidesCount - 1
-        }
-        document.querySelector('#testTouch6').innerHTML = index
-        // add active class to nav when on the slide 
-        // dotsArray[index].classList.add('dot-active')
+        slideWidth = slidesInherit[0].offsetWidth 
+        holderWidth = slideWidth * slidesCount 
+        lastSlidePosition = holderWidth - slideWidth 
+        lastIndex = slidesCount - 1
     }
 }
 
@@ -572,8 +478,8 @@ const buttonRipple = () => {
         button.addEventListener('click', (e) => {
             e.preventDefault()
             let rect = button.getBoundingClientRect(),
-                x = e.pageX - rect.left,
-                y = e.pageY - rect.top,
+                x = e.clientX - rect.left,
+                y = e.clientY - rect.top,
                 ripple = document.createElement('span')
             
             ripple.setAttribute('class', 'button-ripple')
@@ -593,8 +499,8 @@ const buttonRipple = () => {
         button.addEventListener('click', (e) => {
             console.log(button)
             let rect = button.getBoundingClientRect(),
-                x = e.pageX - rect.left,
-                y = e.pageY - rect.top,
+                x = e.clientX - rect.left,
+                y = e.clientY - rect.top,
                 ripple = document.createElement('span')
 
             ripple.setAttribute('class', 'button-profile-ripple')
@@ -609,8 +515,10 @@ const buttonRipple = () => {
         })
     })
 }
-animateOnScroll()
+
+
 response()
-carousel()
-buttonRipple()
+slider()
 registration()
+animateOnScroll()
+buttonRipple()
