@@ -274,7 +274,7 @@ const response = () => {
             showResultsButton.innerHTML = `${totalAnswers} / ${totalQuestions} answered`
         } else if (totalAnswers == totalQuestions) {
             showResultsButton.classList.replace('is-disabled-button', 'is-abled-button')
-            showResultsButton.innerHTML = 'See my match results'
+            showResultsButton.innerHTML = 'View my match'
         }
     }
 }
