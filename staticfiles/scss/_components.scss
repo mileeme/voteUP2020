@@ -16,7 +16,7 @@ body {
     line-height: $line-height;
     letter-spacing: $letter-spacing;
     color: $font-color;
-    background-color: $background-secondary;
+    background-color: $background;
     // background-color: $secondary-color;
     // background: linear-gradient(271deg, $primary-color, $background, $secondary-color);
     // background-size: 600% 600%;
@@ -454,7 +454,7 @@ table {
     }
 }
 .card-response {
-    padding: 0 2rem 3rem;
+    padding: 0 2rem 4rem;
     background: $background;
     font-weight: 400;
     cursor: pointer;
@@ -467,7 +467,7 @@ table {
     margin: 0 0 0.6rem;
     border-radius: $button-border-radius;
     color: $font-color;
-    background-color: transparentize($color: $primary-color, $amount: 0.9);
+    background-color: transparentize($color: $primary-color, $amount: 0.95);
     -moz-box-shadow:    inset 1px 1px 5px -1px rgba(0,0,0,0.08);
     -webkit-box-shadow: inset 1px 1px 5px -1px rgba(0,0,0,0.08);
     box-shadow:         inset 1px 1px 5px -1px rgba(0,0,0,0.08);
@@ -485,11 +485,11 @@ table {
     padding: 1rem;
     margin: 0 0 0.6rem;
     border-radius: $button-border-radius;
-    color: $background;
+    color: $font-color;
     box-shadow: 1px 1px 1px rgba(0,0,0,0.1), 
                 1px 1px 2px rgba(0,0,0,0.2);
     background: rgb(90,69,255);
-    background: linear-gradient(140deg, transparentize($primary-color, 0.5) 0%, transparentize($primary-color, 0.7) 90%);    
+    background: linear-gradient(100deg, transparentize($primary-color, 0.87) 0%, transparentize($primary-color, 0.92) 90%);    
 }
 .card-detail {
     display: block;
@@ -711,50 +711,53 @@ table {
 
 
 /* -----------------
-* Carousel
+* Slider
 ----------------- */ 
+// .slider-container {
+//     margin-left: auto;
+//     margin-right: auto;
+//     margin-bottom: 2rem;
+//     width: 22rem;
+// }
+// .slides-wrapper {
+//     width: 22rem;
+//     height: 22rem;
+//     overflow: hidden;
+//     // position: relative;
+//     // background: transparent;
+//     @include screen(md) {
+//         width: 35rem;
+//         height: 22rem;
+//     }
+// }
+// .slides {
+//     width: 300%;
+//     height: 100%;
+//     // display: flex;
+//     // position: relative;
+//     // background: transparent;
+// }
+// .slide {
+//     text-align: left;
+//     width: 22rem;
+//     float: left;
+//     height: 22rem;
+//     // cursor: pointer;
+//     position: relative;
+//     overflow: hidden;
+//     // background: transparent;
+//     padding: .1rem;
+//     @include screen(md) {
+//         min-width: 35rem;
+//     }
+// }
+// .slide img {
+//     z-index: -1;
+//     position: absolute;
+// }
 .slider-heading {
     margin: 2rem $margin $margin;
     text-align: center;
-}
-.wrapper {
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 2rem;
-    overflow: hidden;
-    position: relative;
-    width: 22rem;
-    height: 22rem;
-    background: transparent;
-    @include screen(md) {
-        width: 35rem;
-        height: 22rem;
-    }
-}
-.slides {
-    display: flex;
-    position: relative;
-    left: 0;
-    height: 100%;
-    background: transparent;
-}
-.slides.shifting {
-    -webkit-transition: left .175s ease-in;
-    -moz-transition: left .175s ease-in;
-    -o-transition: left .175s ease-in;
-    transition: left .175s ease-in;
-}
-.slide {
-    text-align: left;
-    min-width: 22rem;
-    // height: 100%;
-    cursor: pointer;
-    position: relative;
-    background: transparent;
-    padding: .1rem;
-    @include screen(md) {
-        min-width: 35rem;
-    }
 }
 .slide-question {
     display: grid;
@@ -762,6 +765,7 @@ table {
     align-content: center;
     padding: 2rem;
     width: 100%;
+    height: 100%;
     color: $background;
     background-color: transparentize($color: $primary-color, $amount: 0.4);
     border-radius: 1rem;
@@ -791,12 +795,13 @@ table {
     display: block;
     position: absolute;
     cursor: pointer;
-    top: 50%; /* change based on screen size */
+    transform: translateY(-50%);
+    // top: 50%; /* change based on screen size */
     width: 50px; 
     height: 3rem;
     background: transparent;
     z-index: 2;
-    opacity: .2;
+    opacity: 1;
     background-size: 22px;
     background-position: center;
     background-repeat: no-repeat;
@@ -847,6 +852,7 @@ table {
 //     transition: background-color .2s ease-in-out;
 // }
 
+
 /* -----------------
 * Registration
 ----------------- */
@@ -888,4 +894,73 @@ table {
     display: block;
     margin-bottom: .08rem;
     color: $primary-color
+}
+
+
+/* -----------------
+* slider v2
+----------------- */
+// .animate { transition: transform 0.3s ease-out; }
+
+// .slider-wrap {
+//   width: 300px;
+//   height: 500px;
+// //   position: absolute;
+// }
+// // same as slides-wrapper
+// .slider {
+//   width: 300px;
+//   height: 500px;
+//   overflow: hidden;
+// }
+// // same as slides 
+// .holder {
+//   width: 300%; // whatever max width of all the slides
+//   max-height: 500px;
+//   height: 100%;
+//   overflow-y: hidden;
+// }
+// // same as slide 
+// .slide-wrapper {
+//   width: 300px;
+//   float: left;
+//   height: 500px;
+//   position: relative;
+//   overflow: hidden;
+// }
+// .slide-wrapper img {
+//   position: absolute;
+//   z-index: -1;
+// }
+
+
+.animate { transition: transform 0.3s ease-out; }
+
+.slider-wrap {
+    width: 22rem;
+    //   height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+}
+// same as slides-wrapper
+.slider {
+    width: 22rem;
+    height: 22rem;
+    overflow: hidden;
+}
+// same as slides 
+.holder {
+    width: 1000%; // whatever max width of all the slides
+    height: 100%;
+}
+// same as slide 
+.slide-wrapper {
+    width: 22rem;
+    height: 22rem;
+    float: left;
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+    padding: .1rem;
 }

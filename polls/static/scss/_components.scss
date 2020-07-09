@@ -16,7 +16,7 @@ body {
     line-height: $line-height;
     letter-spacing: $letter-spacing;
     color: $font-color;
-    background-color: $background;
+    background-color: $background-secondary;
     // background-color: $secondary-color;
     // background: linear-gradient(271deg, $primary-color, $background, $secondary-color);
     // background-size: 600% 600%;
@@ -400,7 +400,7 @@ hr {
 ----------------- */
 footer {
     background: $background-footer;
-    padding: 2rem 0;
+    padding: 2rem $padding;
     height: 8rem;
     margin-top: auto;
 }
@@ -459,7 +459,7 @@ table {
     font-weight: 400;
     cursor: pointer;
     @include screen(md) {
-        padding: 0 4rem 2rem;
+        padding: 0 4rem 4rem;
     }
 }
 .candidate-response {
@@ -867,10 +867,10 @@ table {
 .registration-search-input {
     background-position: 0.65rem 0.75rem;
     background-repeat: no-repeat;
-    background-color: transparentize($color: $primary-color, $amount: 0.9);
-    -moz-box-shadow:    inset 1px 1px 5px -1px rgba(0,0,0,0.08);
-    -webkit-box-shadow: inset 1px 1px 5px -1px rgba(0,0,0,0.08);
-    box-shadow:         inset 1px 1px 5px -1px rgba(0,0,0,0.08);
+    background-color: transparentize($color: $primary-color, $amount: 0.95);
+    -moz-box-shadow:    inset 1px 1px 3px -1px rgba(0,0,0,0.2);
+    -webkit-box-shadow: inset 1px 1px 3px -1px rgba(0,0,0,0.2);
+    box-shadow:         inset 1px 1px 3px -1px rgba(0,0,0,0.2);
     width: 100%;
     padding: .8rem 2rem;
     border-radius: 50px;
@@ -883,9 +883,9 @@ table {
     padding: 0;
     margin: 0;
     overflow: scroll;
-    max-height: 10rem;
-    border: 1px $border-style $primary-color;
-    border-radius: 1rem;
+    height: 9.5rem;
+    border: 1px $border-style $note-color;
+    border-radius: 0.4rem;
 }
 .registration-link {
     border-bottom :1px solid lightgray;

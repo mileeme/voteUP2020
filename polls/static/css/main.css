@@ -457,7 +457,7 @@ body {
   line-height: 1.6;
   letter-spacing: 0.2px;
   color: #425466;
-  background-color: #ffffff;
+  background-color: #06182c;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -889,7 +889,7 @@ hr {
 ----------------- */
 footer {
   background: #f3f6ff;
-  padding: 2rem 0;
+  padding: 2rem 1rem;
   height: 8rem;
   margin-top: auto;
 }
@@ -959,7 +959,7 @@ table {
 
 @media (min-width: 48rem) {
   .card-response {
-    padding: 0 4rem 2rem;
+    padding: 0 4rem 4rem;
   }
 }
 
@@ -1314,10 +1314,10 @@ table {
 .registration-search-input {
   background-position: 0.65rem 0.75rem;
   background-repeat: no-repeat;
-  background-color: rgba(90, 69, 255, 0.1);
-  -moz-box-shadow: inset 1px 1px 5px -1px rgba(0, 0, 0, 0.08);
-  -webkit-box-shadow: inset 1px 1px 5px -1px rgba(0, 0, 0, 0.08);
-  box-shadow: inset 1px 1px 5px -1px rgba(0, 0, 0, 0.08);
+  background-color: rgba(90, 69, 255, 0.05);
+  -moz-box-shadow: inset 1px 1px 3px -1px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: inset 1px 1px 3px -1px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 1px 1px 3px -1px rgba(0, 0, 0, 0.2);
   width: 100%;
   padding: .8rem 2rem;
   border-radius: 50px;
@@ -1331,9 +1331,9 @@ table {
   padding: 0;
   margin: 0;
   overflow: scroll;
-  max-height: 10rem;
-  border: 1px solid #5A45FF;
-  border-radius: 1rem;
+  height: 9.5rem;
+  border: 1px solid #909090;
+  border-radius: 0.4rem;
 }
 
 .registration-link {
