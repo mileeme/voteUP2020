@@ -104,14 +104,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-# STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-# MEDIA_URL = '/media/'
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'static'),
-# ]
-
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # AWS settings
 AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
@@ -122,12 +118,12 @@ AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400', }
 
 AWS_DEFAULT_ACL = 'public-read'
 
-# aws staticfiles
+# # aws staticfiles
 AWS_STATIC_LOCATION = 'static'
 STATICFILES_STORAGE = 'voteup2020.storage_backends.StaticStorage'
 STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_STATIC_LOCATION)
 
-# aws mediafiles
+# # aws mediafiles
 DEFAULT_FILE_STORAGE = 'voteup2020.storage_backends.MediaStorage'
 
 

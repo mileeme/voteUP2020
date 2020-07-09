@@ -57,8 +57,6 @@ const response = () => {
         })
         candidate1Name = candidate1
         candidate2Name = candidate2
-        // console.log(candidate1)
-        // console.log(candidate1Name)
     }
 
     /*
@@ -74,9 +72,6 @@ const response = () => {
         // show results
         showPollResults.classList.replace('is-results-hide', 'is-results-show')
         showPollResults.style.setProperty('max-height', pollResultsHeight + 'px')
-        console.log(showPollResults)
-
-        // resultsHeading.scrollIntoView()
     }
 
     // update result changes
@@ -339,7 +334,7 @@ const slider = () => {
         }
         // remove animation 
         holder.classList.remove('animate')
-        console.log(`width: ${slideWidth} slide count: ${slidesCount} last position: ${lastSlidePosition} holder width: ${holderWidth} last index: ${lastIndex}`)
+        console.log(`width: ${slideWidth} slide count: ${slidesCount} last position: ${lastSlidePosition} holder width: ${holderWidth} last index: ${lastIndex} current index: ${index}`)
     }
 
     function move(event) {
@@ -383,7 +378,6 @@ const slider = () => {
 
         if (clickEvent == 'next' && index < lastIndex) {
             index++
-            console.log(index)
         } else if (clickEvent == 'prev' && index > 0) {
             index--
         }
@@ -497,7 +491,6 @@ const buttonRipple = () => {
     // profile button
     profileButton.forEach(button => {
         button.addEventListener('click', (e) => {
-            console.log(button)
             let rect = button.getBoundingClientRect(),
                 x = e.clientX - rect.left,
                 y = e.clientY - rect.top,
