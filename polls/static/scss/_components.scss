@@ -251,27 +251,30 @@ hr {
 }
 .button-ripple {
    position: absolute; 
-   background: $background;
+    background: $background;
    -webkit-transform: translate(-50%, -50%);
    -moz-transform: translate(-50%, -50%);
    -o-transform: translate(-50%, -50%);
    transform: translate(-50%, -50%);
    pointer-events: none;
    border-radius: 50%;
-   -webkit-animation: ripple .4s linear;
-   -moz-animation: ripple .4s linear;
-   -o-animation: ripple .4s linear;
-   animation: ripple .4s linear;
+   -webkit-animation: ripple .8s linear;
+   -moz-animation: ripple .8s linear;
+   -o-animation: ripple .8s linear;
+   animation: ripple .8s linear;
 }
+
 @-webkit-keyframes ripple {
     0% {
         width: 0px;
         height: 0px;
-        opacity: .3;
+        // transform: scale(0);
+        opacity: .25;
     }
     100% {
         width: 1000px;
         height: 1000px;
+        // transform: scale(2);
         opacity: 0;
     }
 }
@@ -279,11 +282,13 @@ hr {
     0% {
         width: 0px;
         height: 0px;
-        opacity: .3;
+        // transform: scale(0);
+        opacity: .25;
     }
     100% {
         width: 1000px;
         height: 1000px;
+        // transform: scale(2);
         opacity: 0;
     }
 }
@@ -291,11 +296,13 @@ hr {
     0% {
         width: 0px;
         height: 0px;
-        opacity: .3;
+        // transform: scale(0);
+        opacity: .25;
     }
     100% {
         width: 1000px;
         height: 1000px;
+        // transform: scale(2);
         opacity: 0;
     }
 }
@@ -303,77 +310,18 @@ hr {
     0% {
         width: 0px;
         height: 0px;
-        opacity: .3;
+        // transform: scale(0);
+        opacity: .25;
     }
     100% {
         width: 1000px;
         height: 1000px;
+        // transform: scale(2);
         opacity: 0;
     }
 }
 
-.button-profile-ripple {
-   position: absolute; 
-   background: $background;
-   -webkit-transform: translate(-50%, -50%);
-   -moz-transform: translate(-50%, -50%);
-   -o-transform: translate(-50%, -50%);
-   transform: translate(-50%, -50%);
-   pointer-events: none;
-   border-radius: 50%;
-   -webkit-animation: profileButtonRipple .4s linear;
-   -moz-animation: profileButtonRipple .4s linear;
-   -o-animation: profileButtonRipple .4s linear;
-   animation: profileButtonRipple .4s linear;
-}
-@-webkit-keyframes profileButtonRipple {
-    0% {
-        width: 0px;
-        height: 0px;
-        opacity: .3;
-    }
-    100% {
-        width: 100px;
-        height: 100px;
-        opacity: 0;
-    }
-}
-@-moz-keyframes profileButtonRipple {
-    0% {
-        width: 0px;
-        height: 0px;
-        opacity: .3;
-    }
-    100% {
-        width: 100px;
-        height: 100px;
-        opacity: 0;
-    }
-}
-@-o-keyframes profileButtonRipple {
-    0% {
-        width: 0px;
-        height: 0px;
-        opacity: .3;
-    }
-    100% {
-        width: 100px;
-        height: 100px;
-        opacity: 0;
-    }
-}
-@keyframes profileButtonRipple {
-    0% {
-        width: 0px;
-        height: 0px;
-        opacity: .3;
-    }
-    100% {
-        width: 100px;
-        height: 100px;
-        opacity: 0;
-    }
-}
+
 
 .is-fixed-button {
     position: fixed;
@@ -440,6 +388,7 @@ table {
     }
 }
 .card-question {
+    z-index: 1;
     padding: 4rem 2rem;
     background: $background;
     @include screen(md) {
@@ -455,8 +404,10 @@ table {
     }
 }
 .card-response {
+    z-index: 1;
     padding: 0 2rem 4rem;
     background: $background;
+    border-bottom: 1px $border-style $background-secondary;
     font-weight: 400;
     cursor: pointer;
     @include screen(md) {
@@ -497,13 +448,12 @@ table {
     display: block;
     position: relative;
     height: 0;
-    z-index: -1;
     color: $font-color;
-    background: #fdfdfd;
-    -webkit-transform: translate3d(0rem, -18rem, -1rem);
-    -moz-transform: translate3d(0rem, -18rem, -1rem);
-    -o-transform: translate3d(0rem, -18rem, -1rem);
-    transform: translate3d(0rem, -18rem, -1rem);
+    background: #fbfbfb;
+    -webkit-transform: translateY(-18rem);
+    -moz-transform: translateY(-18rem);
+    -o-transform: translateY(-18rem);
+    transform: translateY(-18rem);
 }
 .card-detail-section {
     padding: 4rem 2rem;
@@ -516,19 +466,8 @@ table {
         padding-bottom: 0.6rem;
     }
 }
-.is-visible {
-    height: 100%;
-    opacity: 1;
-    -webkit-transform: translate3d(0rem, 0rem, 0rem);
-    -moz-transform: translate3d(0rem, 0rem, 0rem);
-    -o-transform: translate3d(0rem, 0rem, 0rem);
-    transform: translate3d(0rem, 0rem, 0rem);
-    -webkit-transition: opacity .1s, transform .3s cubic-bezier(0.6, 0.13, 0.01, 0.93);
-    -moz-transition: opacity .1s, transform .3s cubic-bezier(0.6, 0.13, 0.01, 0.93);
-    -o-transition: opacity .1s, transform .3s cubic-bezier(0.6, 0.13, 0.01, 0.93);
-    transition: opacity .1s, transform .3s cubic-bezier(0.6, 0.13, 0.01, 0.93);   
-}
 .is-invisible { 
+    z-index: -1;
     height: 0;
     opacity: 0;
     -webkit-transition: transform .2s ease-in;
@@ -536,7 +475,61 @@ table {
     -o-transition: transform .2s ease-in;
     transition: transform .2s ease-in;
 }
-
+.is-visible {
+    height: 100%;
+    -webkit-transform: translateY(0rem);
+    -moz-transform: translateY(0rem);
+    -o-transform: translateY(0rem);
+    transform: translateY(0rem);
+    -webkit-transition: transform .4s cubic-bezier(0.6, 0.13, 0.01, 0.93);
+    -moz-transition: transform .4s cubic-bezier(0.6, 0.13, 0.01, 0.93);
+    -o-transition: transform .4s cubic-bezier(0.6, 0.13, 0.01, 0.93);
+    transition: transform .4s cubic-bezier(0.6, 0.13, 0.01, 0.93); 
+    -webkit-animation: detailVisible .8s cubic-bezier(0.34, 0.29, 0.6, 0.7);  
+    -moz-animation: detailVisible .8s cubic-bezier(0.34, 0.29, 0.6, 0.7);  
+    -o-animation: detailVisible .8s cubic-bezier(0.34, 0.29, 0.6, 0.7);  
+    animation: detailVisible .8s cubic-bezier(0.34, 0.29, 0.6, 0.7);  
+}
+@-webkit-keyframes detailVisible {
+    0% {
+        z-index: -1;
+        opacity: 0;
+    }
+    100% {
+        z-index: 1;
+        opacity: 1;
+    }
+}
+@-moz-keyframes detailVisible {
+    0% {
+        z-index: -1;
+        opacity: 0;
+    }
+    100% {
+        z-index: 1;
+        opacity: 1;
+    }
+}
+@-o-keyframes detailVisible {
+    0% {
+        z-index: -1;
+        opacity: 0;
+    }
+    100% {
+        z-index: 1;
+        opacity: 1;
+    }
+}
+@keyframes detailVisible {
+    0% {
+        z-index: -1;
+        opacity: 0;
+    }
+    100% {
+        z-index: 1;
+        opacity: 1;
+    }
+}
 
 /* -----------------
 * Question
@@ -896,7 +889,17 @@ table {
     text-decoration: none;
     display: block;
     margin-bottom: .08rem;
-    color: $font-color
+    color: $font-color;
+    background: $background;
+    overflow: hidden;
+}
+.registration-link:hover {
+    background: transparentize($color: ($primary-color), $amount: 0.97);
+}
+.registration-link:active,
+.registration-link:focus {
+    color: $primary-color;
+    background: transparentize($color: ($primary-color), $amount: 0.97);
 }
 ::-webkit-scrollbar-track { 
     border: none;

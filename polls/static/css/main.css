@@ -131,6 +131,8 @@ a {
   /* reset */
   cursor: pointer;
   /* reset */
+  -webkit-tap-highlight-color: transparent;
+  /* reset */
 }
 
 /** 
@@ -744,17 +746,17 @@ hr {
   transform: translate(-50%, -50%);
   pointer-events: none;
   border-radius: 50%;
-  -webkit-animation: ripple .4s linear;
-  -moz-animation: ripple .4s linear;
-  -o-animation: ripple .4s linear;
-  animation: ripple .4s linear;
+  -webkit-animation: ripple .8s linear;
+  -moz-animation: ripple .8s linear;
+  -o-animation: ripple .8s linear;
+  animation: ripple .8s linear;
 }
 
 @-webkit-keyframes ripple {
   0% {
     width: 0px;
     height: 0px;
-    opacity: .3;
+    opacity: .25;
   }
   100% {
     width: 1000px;
@@ -767,7 +769,7 @@ hr {
   0% {
     width: 0px;
     height: 0px;
-    opacity: .3;
+    opacity: .25;
   }
   100% {
     width: 1000px;
@@ -780,7 +782,7 @@ hr {
   0% {
     width: 0px;
     height: 0px;
-    opacity: .3;
+    opacity: .25;
   }
   100% {
     width: 1000px;
@@ -793,78 +795,11 @@ hr {
   0% {
     width: 0px;
     height: 0px;
-    opacity: .3;
+    opacity: .25;
   }
   100% {
     width: 1000px;
     height: 1000px;
-    opacity: 0;
-  }
-}
-
-.button-profile-ripple {
-  position: absolute;
-  background: #ffffff;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  border-radius: 50%;
-  -webkit-animation: profileButtonRipple .4s linear;
-  -moz-animation: profileButtonRipple .4s linear;
-  -o-animation: profileButtonRipple .4s linear;
-  animation: profileButtonRipple .4s linear;
-}
-
-@-webkit-keyframes profileButtonRipple {
-  0% {
-    width: 0px;
-    height: 0px;
-    opacity: .3;
-  }
-  100% {
-    width: 100px;
-    height: 100px;
-    opacity: 0;
-  }
-}
-
-@-moz-keyframes profileButtonRipple {
-  0% {
-    width: 0px;
-    height: 0px;
-    opacity: .3;
-  }
-  100% {
-    width: 100px;
-    height: 100px;
-    opacity: 0;
-  }
-}
-
-@-o-keyframes profileButtonRipple {
-  0% {
-    width: 0px;
-    height: 0px;
-    opacity: .3;
-  }
-  100% {
-    width: 100px;
-    height: 100px;
-    opacity: 0;
-  }
-}
-
-@keyframes profileButtonRipple {
-  0% {
-    width: 0px;
-    height: 0px;
-    opacity: .3;
-  }
-  100% {
-    width: 100px;
-    height: 100px;
     opacity: 0;
   }
 }
@@ -932,6 +867,7 @@ table {
 }
 
 .card-question {
+  z-index: 1;
   padding: 4rem 2rem;
   background: #ffffff;
 }
@@ -952,8 +888,10 @@ table {
 }
 
 .card-response {
+  z-index: 1;
   padding: 0 2rem 4rem;
   background: #ffffff;
+  border-bottom: 1px solid #e1e5ef;
   font-weight: 400;
   cursor: pointer;
 }
@@ -995,13 +933,12 @@ table {
   display: block;
   position: relative;
   height: 0;
-  z-index: -1;
   color: #425466;
-  background: #fdfdfd;
-  -webkit-transform: translate3d(0rem, -18rem, -1rem);
-  -moz-transform: translate3d(0rem, -18rem, -1rem);
-  -o-transform: translate3d(0rem, -18rem, -1rem);
-  transform: translate3d(0rem, -18rem, -1rem);
+  background: #fbfbfb;
+  -webkit-transform: translateY(-18rem);
+  -moz-transform: translateY(-18rem);
+  -o-transform: translateY(-18rem);
+  transform: translateY(-18rem);
 }
 
 .card-detail-section {
@@ -1020,26 +957,74 @@ table {
   padding-bottom: 0.6rem;
 }
 
-.is-visible {
-  height: 100%;
-  opacity: 1;
-  -webkit-transform: translate3d(0rem, 0rem, 0rem);
-  -moz-transform: translate3d(0rem, 0rem, 0rem);
-  -o-transform: translate3d(0rem, 0rem, 0rem);
-  transform: translate3d(0rem, 0rem, 0rem);
-  -webkit-transition: opacity 0.1s, transform 0.3s cubic-bezier(0.6, 0.13, 0.01, 0.93);
-  -moz-transition: opacity 0.1s, transform 0.3s cubic-bezier(0.6, 0.13, 0.01, 0.93);
-  -o-transition: opacity 0.1s, transform 0.3s cubic-bezier(0.6, 0.13, 0.01, 0.93);
-  transition: opacity 0.1s, transform 0.3s cubic-bezier(0.6, 0.13, 0.01, 0.93);
-}
-
 .is-invisible {
+  z-index: -1;
   height: 0;
   opacity: 0;
   -webkit-transition: transform .2s ease-in;
   -moz-transition: transform .2s ease-in;
   -o-transition: transform .2s ease-in;
   transition: transform .2s ease-in;
+}
+
+.is-visible {
+  height: 100%;
+  -webkit-transform: translateY(0rem);
+  -moz-transform: translateY(0rem);
+  -o-transform: translateY(0rem);
+  transform: translateY(0rem);
+  -webkit-transition: transform 0.4s cubic-bezier(0.6, 0.13, 0.01, 0.93);
+  -moz-transition: transform 0.4s cubic-bezier(0.6, 0.13, 0.01, 0.93);
+  -o-transition: transform 0.4s cubic-bezier(0.6, 0.13, 0.01, 0.93);
+  transition: transform 0.4s cubic-bezier(0.6, 0.13, 0.01, 0.93);
+  -webkit-animation: detailVisible 0.8s cubic-bezier(0.34, 0.29, 0.6, 0.7);
+  -moz-animation: detailVisible 0.8s cubic-bezier(0.34, 0.29, 0.6, 0.7);
+  -o-animation: detailVisible 0.8s cubic-bezier(0.34, 0.29, 0.6, 0.7);
+  animation: detailVisible 0.8s cubic-bezier(0.34, 0.29, 0.6, 0.7);
+}
+
+@-webkit-keyframes detailVisible {
+  0% {
+    z-index: -1;
+    opacity: 0;
+  }
+  100% {
+    z-index: 1;
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes detailVisible {
+  0% {
+    z-index: -1;
+    opacity: 0;
+  }
+  100% {
+    z-index: 1;
+    opacity: 1;
+  }
+}
+
+@-o-keyframes detailVisible {
+  0% {
+    z-index: -1;
+    opacity: 0;
+  }
+  100% {
+    z-index: 1;
+    opacity: 1;
+  }
+}
+
+@keyframes detailVisible {
+  0% {
+    z-index: -1;
+    opacity: 0;
+  }
+  100% {
+    z-index: 1;
+    opacity: 1;
+  }
 }
 
 /* -----------------
@@ -1346,6 +1331,18 @@ table {
   display: block;
   margin-bottom: .08rem;
   color: #425466;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.registration-link:hover {
+  background: rgba(90, 69, 255, 0.03);
+}
+
+.registration-link:active,
+.registration-link:focus {
+  color: #5A45FF;
+  background: rgba(90, 69, 255, 0.03);
 }
 
 ::-webkit-scrollbar-track {

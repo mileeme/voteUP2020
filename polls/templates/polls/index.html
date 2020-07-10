@@ -36,35 +36,32 @@
             {% endif %}
             {% endfor %}
         </div>
-
-    </div>
-    <!-- detail -->
-
-    {% for response in response_list %}
-    {% if question.number == response.response_id %}
-    <div id="responseDetail" class="card-detail is-invisible" data-response="{{ response.response_id }}"
-        data-candidate="{{ response.candidate_id }}">
-        <div class="card-detail-section">
-            {% if response.description %}
-            <h6>Description heading</h6>
-            <p>{{ response.description|safe }}</p>
-            {% endif %}
-            {% if response.links %}
-            <h6>Links heading</h6>
-            <a href="#">links</a>
-            {% endif %}
+        <!-- detail -->
+        {% for response in response_list %}
+        {% if question.number == response.response_id %}
+        <div id="responseDetail" class="card-detail is-invisible" data-response="{{ response.response_id }}"
+            data-candidate="{{ response.candidate_id }}">
+            <div class="card-detail-section">
+                {% if response.description %}
+                <h6>Description heading</h6>
+                <p>{{ response.description|safe }}</p>
+                {% endif %}
+                {% if response.links %}
+                <h6>Links heading</h6>
+                <a href="#">links</a>
+                {% endif %}
+            </div>
         </div>
+        {% endif %}
+        {% endfor %}
     </div>
-    {% endif %}
-    {% endfor %}
 
     {% endfor %}
 
 
     <!-- results button -->
-    <div id="pre-button"></div>
     <div class="section-result-button">
-        <a id="showResults" class="is-disabled-button">0 answered</a>
+        <a id="showResults" class="is-abled-button">0 answered</a>
     </div>
 
 
@@ -170,17 +167,13 @@
 
         <ul id="registrationUL" class="registration-lists">
             {% for registration in registration_list %}
-            <li id="registrationState"><a id="registrationLink" class='registration-link' href="{{ registration.check_url }}" target="_blank">{{ registration.state }}</a></li>
+            <li id="registrationState">
+                <a id="registrationLink" class='registration-link' href="{{ registration.check_url }}" target="_blank">{{ registration.state }}</a>
+            </li>
             {% endfor %}
         </ul>
     </div>
 </div>
 {% endfor %}
-
-<!-- scripts -->
-{% load static %}
-{% block js %}
-<script type="text/javascript" src="{% static 'js/index.js' %}"></script>
-{% endblock %}
 
 {% endblock %}

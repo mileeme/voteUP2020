@@ -274,7 +274,7 @@ const response = () => {
             showResultsButton.innerHTML = `${totalAnswers} / ${totalQuestions} answered`
         } else if (totalAnswers == totalQuestions) {
             showResultsButton.classList.replace('is-disabled-button', 'is-abled-button')
-            showResultsButton.innerHTML = 'See my match results'
+            showResultsButton.innerHTML = 'View my match'
         }
     }
 }
@@ -472,19 +472,20 @@ const buttonRipple = () => {
         button.addEventListener('click', (e) => {
             e.preventDefault()
             let rect = button.getBoundingClientRect(),
-                x = e.clientX - rect.left,
-                y = e.clientY - rect.top,
-                ripple = document.createElement('span')
-            
+            x = e.clientX - rect.left,
+            y = e.clientY - rect.top,
+            ripple = document.createElement('span')
+
             ripple.setAttribute('class', 'button-ripple')
             ripple.style.left = x + 'px'
             ripple.style.top = y + 'px'
+            console.log(button.firstElementChild)
 
             button.appendChild(ripple)
 
             setTimeout(() => {
                 ripple.remove()
-            }, 400)
+            }, 1000)
         })
     })
 
@@ -508,7 +509,6 @@ const buttonRipple = () => {
         })
     })
 }
-
 
 response()
 slider()

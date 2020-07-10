@@ -14,6 +14,12 @@
 <!-- main -->
 {% block body %}{% endblock %}
 
+<!-- scripts -->
+{% load static %}
+{% block js %}
+<script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+{% endblock %}
+
 <!-- footer -->
 {% include 'footer.html' %}
 </body>

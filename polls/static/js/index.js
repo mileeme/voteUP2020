@@ -22,7 +22,7 @@ const response = () => {
         getCandidateNames()
     })
     responses.forEach(response => {
-        response.addEventListener('click', e => { 
+        response.addEventListener('click', (e) => { 
             // variables 
             const targetResponse = e.target,
                 targetValue = targetResponse.innerHTML,
@@ -66,8 +66,8 @@ const response = () => {
     function showResults() {
         var showPollResults = document.querySelector('#pollResults'),
             // resultsHeading = document.querySelector('#resultsHeading'),
-            pollResults = document.querySelector('.is-results-hide'),
-            pollResultsHeight = pollResults.scrollHeight
+            // pollResults = document.querySelector('.is-results-hide'),
+            pollResultsHeight = showPollResults.scrollHeight
 
         // show results
         showPollResults.classList.replace('is-results-hide', 'is-results-show')
@@ -170,31 +170,6 @@ const response = () => {
                 }
             }
         })
-        
-        // update result slides
-        // responseMatches.forEach((match) => {
-        //     if (match.dataset.response == targetIdResponse) {
-        //         if (match.dataset.candidate == targetIdCandidate) {
-        //             // match.className = 'result-match-item'
-        //             match.firstElementChild.innerHTML = '✔️'
-        //         } else {
-        //             match.firstElementChild.innerHTML = '✖️'
-        //             // console.log(match)
-        //         }
-        //     }
-        // })
-
-        // update result table columns
-        // responseMatchColumns.forEach((match) => {
-        //     if (match.dataset.response == targetIdResponse) {
-        //         if (match.dataset.candidate == targetIdCandidate) {
-        //             // match.className = 'result-match-item'
-        //             match.firstElementChild.innerHTML = '✔️'
-        //         } else {
-        //             match.firstElementChild.innerHTML = '✖️'
-        //         }
-        //     }
-        // })
     }
 
     /*
@@ -303,9 +278,9 @@ const slider = () => {
     holder.onmousedown = start
 
     // touch event 
-    holder.addEventListener('touchstart', function (event) {start(event)}, false)
-    holder.addEventListener('touchmove', function (event) {move(event)}, false)
-    holder.addEventListener('touchend', function (event) {end(event)}, false)
+    holder.addEventListener('touchstart', (event) => {start(event)}, false)
+    holder.addEventListener('touchmove', (event) => {move(event)}, false)
+    holder.addEventListener('touchend', (event) => {end(event)}, false)
 
     // click event 
     // prev.addEventListener('click', function (event) {end(event, 'prev')})
@@ -325,10 +300,10 @@ const slider = () => {
             }, 250)
 
             // get the initial touch position
-            touchStartX = event.touches[0].pageX
+            touchStartX = event.touches[0].clientX
         } else if (event.type == 'mousedown') {
             mouseMoving = true
-            touchStartX = event.pageX
+            touchStartX = event.clientX
             holder.onmousemove = move
             holder.onmouseup = end
         }
@@ -342,7 +317,7 @@ const slider = () => {
 
         if (event.type == 'touchmove') {
             // get moving position
-            touchMoveX = event.touches[0].pageX
+            touchMoveX = event.touches[0].clientX
 
             // calculate slider movement
             moveX = index * slideWidth + (touchStartX - touchMoveX)
@@ -352,7 +327,7 @@ const slider = () => {
                 holder.style.webkitTransform = 'translate3d(-' + moveX + 'px,0,0)'
             }
         } else if (mouseMoving) {
-            touchMoveX = event.pageX
+            touchMoveX = event.clientX
             // calculate slider movement
             moveX = index * slideWidth + (touchStartX - touchMoveX)
         }
@@ -404,7 +379,8 @@ const registration = () => {
         ul = document.querySelector('#registrationUL'),
         lists = ul.querySelectorAll('#registrationState')
 
-    input.addEventListener('keyup', function (e) { checkRegistration(e) })
+    // keyup
+    input.addEventListener('keyup', (event) => { checkRegistration(event) })
 
     function checkRegistration(e) {
         lists.forEach(list => {
@@ -414,14 +390,6 @@ const registration = () => {
                 list.style.display = ''
             } else {
                 list.style.display = 'none'
-            }
-
-            if (queryValue.toUpperCase === filter) {
-                console.log(list.firstElementChild)
-
-                if (e.keyCode === 13) {
-                    list.firstElementChild.click()
-                }
             }
         })
     }
@@ -462,56 +430,33 @@ const animateOnScroll = () => {
 
 // buttons 
 const buttonRipple = () => {
-    // variables
-    const buttons = document.querySelectorAll('#showResults'),
-        profileButton = document.querySelectorAll('#profileButton'),
-        registrationLinks = document.querySelectorAll('#registrationLink')
+
+    const button = document.querySelector('#showResults')
 
     // result button
-    buttons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            e.preventDefault()
-            let rect = button.getBoundingClientRect(),
-                x = e.clientX - rect.left,
-                y = e.clientY - rect.top,
-                ripple = document.createElement('span')
-            
-            ripple.setAttribute('class', 'button-ripple')
-            ripple.style.left = x + 'px'
-            ripple.style.top = y + 'px'
+    button.addEventListener('click', (e) => {
 
-            button.appendChild(ripple)
+        let ripple = document.createElement('span'), 
+            rect = button.getBoundingClientRect(),
+            x = e.clientX - rect.left,
+            y = e.clientY - rect.top
+        
+        ripple.setAttribute('class', 'button-ripple')
+        ripple.style.left = x + 'px'
+        ripple.style.top = y + 'px'
 
-            setTimeout(() => {
-                ripple.remove()
-            }, 400)
-        })
-    })
+        button.appendChild(ripple)
 
-    // profile button
-    profileButton.forEach(button => {
-        button.addEventListener('click', (e) => {
-            let rect = button.getBoundingClientRect(),
-                x = e.clientX - rect.left,
-                y = e.clientY - rect.top,
-                ripple = document.createElement('span')
-
-            ripple.setAttribute('class', 'button-profile-ripple')
-            ripple.style.left = x + 'px'
-            ripple.style.top = y + 'px'
-
-            button.appendChild(ripple)
-
-            setTimeout(() => {
-                ripple.remove()
-            }, 400)
-        })
+        setTimeout(() => {
+            ripple.remove()
+        }, 800)
     })
 }
 
-
-response()
-slider()
-registration()
-animateOnScroll()
-buttonRipple()
+window.addEventListener('DOMContentLoaded', function () {
+    response()
+    slider()
+    registration()
+    animateOnScroll()
+    buttonRipple()
+})
