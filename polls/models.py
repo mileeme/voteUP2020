@@ -79,7 +79,7 @@ class Response(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     response_id = models.PositiveIntegerField('response id', blank=True, null=True)
     response = models.TextField(max_length=255, blank=True, null=True)
-    description = models.TextField(max_length=255, blank=True, null=True)
+    description = models.TextField(max_length=1000, blank=True, null=True)
 
     class Meta:
         ordering = ['response_id', 'candidate', ]
