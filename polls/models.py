@@ -63,7 +63,7 @@ class Endorsement(models.Model):
 
 
 class Question(models.Model):
-    # topic = models.ForeignKey(Topic, blank=True, null=True, on_delete=models.CASCADE, related_name="topics")
+    topic = models.TextField(max_length=255, blank=True, null=True, default='')
     number = models.PositiveIntegerField('number', blank=True, null=True)
     question = models.TextField(max_length=1000, blank=True, null=True)
 
@@ -79,6 +79,7 @@ class Response(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     response_id = models.PositiveIntegerField('response id', blank=True, null=True)
     response = models.TextField(max_length=255, blank=True, null=True)
+    description_heading = models.TextField(max_length=255, blank=True, null=True, default='')
     description = models.TextField(max_length=1000, blank=True, null=True)
 
     class Meta:

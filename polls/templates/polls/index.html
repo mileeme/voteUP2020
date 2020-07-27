@@ -20,7 +20,7 @@
     <div class="card">
         <!-- question -->
         <div class="card-question">
-            <h6>Topic</h6>
+            <h6>{{ question.topic }}</h6>
             <p id="question" data-id="{{ question.number }}">
                 {{ question|safe }}
             </p>
@@ -42,14 +42,14 @@
         <div id="responseDetail" class="card-detail is-invisible" data-response="{{ response.response_id }}"
             data-candidate="{{ response.candidate_id }}">
             <div class="card-detail-section">
-                {% if response.description %}
-                <h6>Description heading</h6>
+                {% if response %}
+                <h6>{{ response.description_heading }}</h6>
                 <p>{{ response.description|safe }}</p>
                 {% endif %}
-                {% if response.links %}
+                <!-- {% if response.links %}
                 <h6>Links heading</h6>
                 <a href="#">links</a>
-                {% endif %}
+                {% endif %} -->
             </div>
         </div>
         {% endif %}
