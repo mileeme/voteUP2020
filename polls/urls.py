@@ -8,7 +8,8 @@ app_name = 'polls'
 urlpatterns = [
     path('', views.index, name='index'),
     path('about', views.about, name='about'),
+    path('privacy', views.privacy, name='privacy'),
 ]
 
-# urlpatterns += staticfiles_urlpatterns()
-# urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -118,6 +118,42 @@ hr {
         @include container(md);
     }
 }
+.privacy-container {
+    background: $background;
+    padding: 4rem 2rem;
+    @include screen(md) {
+        padding: 4rem 4rem;
+    }
+    h1 {
+        margin-bottom: 2rem;
+    }
+    h3 {
+        padding-bottom: 1rem;
+        margin-top: 2rem;
+    }
+    p {
+        margin: 0 0 0.7rem;
+    }
+    ul {
+        list-style-type: circle;
+        list-style-position: outside;
+        margin: 0 0 0.7rem;
+        li {
+            margin-left: 2rem;
+            padding-left: 0.5rem;
+        }
+    }
+}
+
+.header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    @include screen(md) {
+        padding: 0 4rem;
+    }
+}
 /* -----------------
 * Grids
 ----------------- */
@@ -158,7 +194,7 @@ hr {
 .about {
     display: block;
     margin-top: -7rem;
-    margin-bottom: 4rem;
+    // margin-bottom: 4rem;
     padding: 10rem 2rem 6rem;
     background-color: $secondary-color;
     background: linear-gradient(250deg, $secondary-color, #ffffff);
@@ -178,10 +214,11 @@ hr {
     }
 }
 .about-body {
-    padding: 2rem;
-    margin-bottom: 3rem;
+    padding: 5rem 2rem;
+    background: $background;
+    // margin-bottom: 3rem;
     @include screen(md) {
-        padding: 0 4rem;
+        padding: 7rem 4rem;
     }
     h1, h2 {
         padding-bottom: 1.5rem;
@@ -401,12 +438,18 @@ hr {
 footer {
     background: $background-footer;
     padding: 2rem;
-    // height: 12rem;
     margin-top: auto;
     .footer-container {
+        display: flex;
+        flex-direction: row;
+        color: $note-color;
         a {
             font-size: $font-size * $small;
             text-decoration: underline;
+            padding-right: 1.5rem;
+            &:hover, &:active {
+                color: $primary-color;
+            }
         }
         @include screen(md) {
             padding: 2rem 4rem;

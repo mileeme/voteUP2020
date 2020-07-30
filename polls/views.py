@@ -34,3 +34,8 @@ def about(request):
         'registration_list': registration_list,
     }
     return render(request, template_name, context)
+
+def privacy(request):
+    template_name = 'polls/privacy.html'
+    context = {}
+    return render(request, template_name, context)

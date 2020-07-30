@@ -3,7 +3,7 @@
     <!-- check registration -->
     <div class="registration-container">
         <div class="slider-heading">
-            <h5>Check my voter registration status</h5>
+            <h5>Check your voter registration status</h5>
         </div>
         <input type="text" id="registrationInput" class="registration-search-input" placeholder="Search by state"
             onkeyup="registration()">
@@ -21,5 +21,7 @@
     <div class="container footer-container">
         <div><a href="{% url 'polls:index' %}">Home</a></div>
         <div><a href="{% url 'polls:about' %}">About</a></div>
+        <div><a href="{% url 'polls:privacy' %}">Privacy</a></div>
+        <div><small>© 2020 VOTEUP</small></div>
     </div>
 </footer>
