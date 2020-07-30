@@ -7,8 +7,15 @@
 <body>
 
 <!-- heading -->
+<!-- <div class="announcement">
+    <div class="container">this is a counter</div>
+</div> -->
 <div class="header">
-    <div class="container">VOTE2020</div>
+    <div class="container header-container">
+        <div><a href="{% url 'polls:index' %}">VOTE2020</a></div>
+        <div class="counter"><span id="dateCountdown"></span></div>
+
+    </div>
 </div>
 
 <!-- main -->
@@ -17,7 +24,17 @@
 <!-- scripts -->
 {% load static %}
 {% block js %}
-<script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', function () {
+        response()
+        slider()
+        registration()
+        animateOnScroll()
+        buttonRipple()
+        countDown()
+        countDown()
+    })
+</script>
 {% endblock %}
 
 <!-- footer -->

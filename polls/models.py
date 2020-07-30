@@ -80,7 +80,7 @@ class Response(models.Model):
     response_id = models.PositiveIntegerField('response id', blank=True, null=True)
     response = models.TextField(max_length=255, blank=True, null=True)
     description_heading = models.TextField(max_length=255, blank=True, null=True, default='')
-    description = models.TextField(max_length=1000, blank=True, null=True)
+    description = models.TextField(max_length=1500, blank=True, null=True)
 
     class Meta:
         ordering = ['response_id', 'candidate', ]

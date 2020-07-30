@@ -17,10 +17,11 @@ const response = () => {
         candidate2Count = 0,
         candidate2Percentage = 0
 
+    getCandidateNames()
+
     // 2. add eventlisteners to elements
-    document.addEventListener('DOMContentLoaded', () => {
-        getCandidateNames()
-    })
+
+    // on click
     responses.forEach(response => {
         response.addEventListener('click', (e) => { 
             // variables 
@@ -38,6 +39,7 @@ const response = () => {
             e.preventDefault()
         }, false)
     })
+
     showResultsButton.addEventListener('click', function() { showResults() })
 
     // 3. functions 
@@ -309,7 +311,8 @@ const slider = () => {
         }
         // remove animation 
         holder.classList.remove('animate')
-        console.log(`width: ${slideWidth} slide count: ${slidesCount} last position: ${lastSlidePosition} holder width: ${holderWidth} last index: ${lastIndex} current index: ${index}`)
+        
+        // console.log(`width: ${slideWidth} slide count: ${slidesCount} last position: ${lastSlidePosition} holder width: ${holderWidth} last index: ${lastIndex} current index: ${index}`)
     }
 
     function move(event) {
@@ -453,10 +456,25 @@ const buttonRipple = () => {
     })
 }
 
-window.addEventListener('DOMContentLoaded', function () {
-    response()
-    slider()
-    registration()
-    animateOnScroll()
-    buttonRipple()
-})
+// date counter 
+const countDown = () => {
+    var dateCountdown = document.querySelector('#dateCountdown'),
+        oneDay = 24 * 60 * 60 * 1000,
+        now = new Date(),
+        endDate = new Date(2020, 10, 3),
+        difference = endDate - now,
+        daysLeft = Math.floor(difference / oneDay)
+    // console.log(`now: ${now}, endDate: ${endDate}, difference: ${difference}, days left: ${daysLeft}`)
+    console.log(1)
+
+    // insert counter
+    if (daysLeft > 0) {
+        dateCountdown.innerHTML = daysLeft + ' days left';    
+    } else if (daysLeft == 0) {
+        dateCountdown.innerHTML = 'Vote today!'
+    } else {
+        dateCountdown.style.display = 'none'
+    }
+}
+
+

@@ -27,3 +27,10 @@ def index(request):
     }
     return render(request, template_name, context)
 
+def about(request):
+    registration_list = RegisterToVote.objects.all()
+    template_name = 'polls/about.html'
+    context = {
+        'registration_list': registration_list,
+    }
+    return render(request, template_name, context)

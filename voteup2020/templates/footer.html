@@ -1,6 +1,25 @@
 <footer>
-    <div class="container">
-        <div><a href="#">About us</a></div>
-        <div><a href="">Links</a></div>
+<div class="container">
+    <!-- check registration -->
+    <div class="registration-container">
+        <div class="slider-heading">
+            <h5>Check my voter registration status</h5>
+        </div>
+        <input type="text" id="registrationInput" class="registration-search-input" placeholder="Search by state"
+            onkeyup="registration()">
+    
+        <ul id="registrationUL" class="registration-lists">
+            {% for registration in registration_list %}
+            <li id="registrationState">
+                <a id="registrationLink" class='registration-link' href="{{ registration.check_url }}"
+                    target="_blank">{{ registration.state }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+    <div class="container footer-container">
+        <div><a href="{% url 'polls:index' %}">Home</a></div>
+        <div><a href="{% url 'polls:about' %}">About</a></div>
     </div>
 </footer>
