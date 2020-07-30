@@ -1108,6 +1108,10 @@ table {
   padding-bottom: 0.6rem;
 }
 
+.card-detail-section a {
+  text-decoration: underline;
+}
+
 .is-invisible {
   z-index: -1;
   height: 0;
