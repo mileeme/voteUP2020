@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}2020 Candidate Info{% endblock %}
-{% block body %}
+{% block title %}2020 Presidential Candidate Poll{% endblock %}
 
+{% block body %}
 <!-- poll -->
 {% for election in election_list %}
 <div class="hero">
@@ -176,17 +176,13 @@
     </div> -->
 </div>
 {% endfor %}
-
 <!-- scripts -->
-<!-- <script>
+<script>
     window.addEventListener('DOMContentLoaded', function () {
         response()
         slider()
-        registration()
         animateOnScroll()
         buttonRipple()
-        countDown()
     })
-</script> -->
-
+</script>
 {% endblock %}

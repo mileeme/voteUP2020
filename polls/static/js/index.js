@@ -17,6 +17,7 @@ const response = () => {
         candidate2Count = 0,
         candidate2Percentage = 0
 
+    // get candidate names
     getCandidateNames()
 
     // 2. add eventlisteners to elements
@@ -470,11 +471,14 @@ const countDown = () => {
     // insert counter
     if (daysLeft > 0) {
         dateCountdown.innerHTML = daysLeft + ' days left';    
+    } else if (daysLeft == 1) {
+        dateCountdown.innerHTML = daysLeft + ' day left';
     } else if (daysLeft == 0) {
-        dateCountdown.innerHTML = 'Vote today!'
+        dateCountdown.innerHTML = 'Go vote today!'
     } else {
         dateCountdown.style.display = 'none'
     }
 }
+
 
 
