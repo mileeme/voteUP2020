@@ -623,9 +623,9 @@ hr {
 
 .counter {
   padding: .3rem 1rem;
-  background-color: rgba(90, 69, 255, 0.35);
+  background-color: rgba(255, 255, 255, 0.35);
   border-radius: 50px;
-  color: white;
+  color: #5A45FF;
   font-weight: 400;
 }
 
@@ -675,6 +675,11 @@ hr {
 /* -----------------
 * Heading
 ----------------- */
+.logo {
+  color: #5A45FF;
+  font-size: 1rem;
+}
+
 .hero {
   display: block;
   margin-top: -7rem;

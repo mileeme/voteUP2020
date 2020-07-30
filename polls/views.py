@@ -8,7 +8,7 @@ def index(request):
     candidate_list = Candidate.objects.all()
     endorsement_list = Endorsement.objects.all()
     question_list = Question.objects.all().order_by('number')
-    response_list = Response.objects.all().order_by('response', 'description')
+    response_list = Response.objects.all().order_by('description', 'response')
     registration_list = RegisterToVote.objects.all()
     # state_query = request.GET.get('state_query')
 

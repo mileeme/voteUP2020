@@ -150,9 +150,9 @@ hr {
 }
 .counter {
     padding: .3rem 1rem;
-    background-color: transparentize($color: $primary-color, $amount: 0.65);
+    background-color: transparentize($color: $background, $amount: 0.65);
     border-radius: 50px;
-    color: white;
+    color: $primary-color;
     font-weight: 400;
 }
 .about {
@@ -193,6 +193,10 @@ hr {
 /* -----------------
 * Heading
 ----------------- */
+.logo {
+    color: $primary-color;
+    font-size: $h6-sm;
+}
 .hero {
     display: block;
     margin-top: -7rem;
