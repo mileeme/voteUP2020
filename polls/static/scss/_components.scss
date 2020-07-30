@@ -231,7 +231,7 @@ hr {
 * Heading
 ----------------- */
 .logo {
-    color: $primary-color;
+    color: $font-color;
     font-size: $h6-sm;
 }
 .hero {
@@ -503,7 +503,7 @@ table {
         min-height: 10rem;
     }
     h6 {
-        color: $label-color;
+        color: $primary-color;
         // padding-bottom: 0.5rem;
     }
     p {
