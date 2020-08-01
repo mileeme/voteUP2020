@@ -69,6 +69,8 @@ a {
     text-decoration: none; /* reset */
     color: inherit; /* reset */
     cursor: pointer; /* reset */
+    // overrides highlight color when user taps in Chrome
+    -webkit-tap-highlight-color: transparent; /* reset */
 }
 
 /** 

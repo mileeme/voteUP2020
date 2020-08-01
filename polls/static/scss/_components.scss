@@ -186,9 +186,9 @@ hr {
 }
 .counter {
     padding: .3rem 1rem;
-    background-color: transparentize($color: $background, $amount: 0.65);
+    background-color: transparentize($color: $background, $amount: 0.85);
     border-radius: 50px;
-    color: $primary-color;
+    color: #25188a;
     font-weight: 400;
 }
 .about {
@@ -231,7 +231,7 @@ hr {
 * Heading
 ----------------- */
 .logo {
-    color: $font-color;
+    color: #25188a;
     font-size: $h6-sm;
 }
 .hero {
@@ -241,7 +241,7 @@ hr {
     // padding-bottom: 6rem;
     padding: 10rem 2rem 10rem;
     background-color: $secondary-color;
-    background: linear-gradient(250deg, $secondary-color, #ffffff, #fd64dced);
+    background: linear-gradient(250deg, $secondary-color, transparentize($primary-color, 0.65), $primary-color);
     background-size: 300% 100%;
     -webkit-animation: heroGradient 10s ease infinite;
     -moz-animation: heroGradient 10s ease infinite;
@@ -249,8 +249,8 @@ hr {
     animation: heroGradient 10s ease infinite;
     h1 {
         font-size: 2.2rem;
-        color: $background;
-        font-weight: 500;
+        // color: $background;
+        // font-weight: 500;
         @include screen(md) {
             font-size: 3rem;
         }
@@ -283,8 +283,13 @@ hr {
         padding: 0 4rem;
     }
     h1 {
-        color: #102942;
-        font-weight: 600;
+        background: -webkit-linear-gradient(#25188a, #3b115a);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 700;
+    }
+    h6 {
+        color: $background;
     }
 }
 
@@ -547,9 +552,9 @@ table {
     color: $font-color;
     font-weight: 500;
     box-shadow: 1px 1px 1px rgba(0,0,0,0.1), 
-                1px 1px 2px rgba(0,0,0,0.2);
+                1px 1px 3px 0px rgba(0,0,0,0.02);
     background: rgb(90,69,255);
-    background: linear-gradient(100deg, transparentize($color: $secondary-color, $amount: 0.8) 0%, transparentize($color: $secondary-color, $amount: 0.9) 90%);    
+    background: linear-gradient(100deg, transparentize($color: $secondary-color, $amount: 0.7) 0%, transparentize($color: $secondary-color, $amount: 0.8) 90%);    
 }
 .card-detail {
     display: block;

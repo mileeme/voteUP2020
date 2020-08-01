@@ -40,8 +40,8 @@ const response = () => {
             e.preventDefault()
         }, false)
     })
-
-    showResultsButton.addEventListener('click', function() { showResults() })
+    
+    showResultsButton.addEventListener('click', (e) => { showResults() })
 
     // 3. functions 
     // get candidate names
@@ -68,8 +68,6 @@ const response = () => {
     // display results
     function showResults() {
         var showPollResults = document.querySelector('#pollResults'),
-            // resultsHeading = document.querySelector('#resultsHeading'),
-            // pollResults = document.querySelector('.is-results-hide'),
             pollResultsHeight = showPollResults.scrollHeight
 
         // show results
@@ -224,15 +222,20 @@ const response = () => {
             }
             // count all active responses and candidates
             if (response.className == 'is-active-response') {
-                totalActives = document.querySelectorAll('.is-active-response')
+                totalActives = document.getElementsByClassName('is-active-response')
                 if (response.dataset.candidate == '1') {
                     candidateA++
                 } else {
                     candidateB++
                 }
                 allAnswers = totalActives.length
+                allAnswers = candidateA + candidateB
+                console.log(targetIdResponse)
+                console.log(targetIdCandidate)
+                console.log(`allanswers: ${allAnswers}`)
             }
         })
+
         // get totals
         activeResponses = totalActives
         totalAnswers = allAnswers
@@ -466,7 +469,6 @@ const countDown = () => {
         difference = endDate - now,
         daysLeft = Math.floor(difference / oneDay)
     // console.log(`now: ${now}, endDate: ${endDate}, difference: ${difference}, days left: ${daysLeft}`)
-    console.log(1)
 
     // insert counter
     if (daysLeft > 0) {
@@ -479,6 +481,3 @@ const countDown = () => {
         dateCountdown.style.display = 'none'
     }
 }
-
-
-

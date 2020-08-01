@@ -671,9 +671,9 @@ hr {
 
 .counter {
   padding: .3rem 1rem;
-  background-color: rgba(255, 255, 255, 0.35);
+  background-color: rgba(255, 255, 255, 0.15);
   border-radius: 50px;
-  color: #5A45FF;
+  color: #25188a;
   font-weight: 400;
 }
 
@@ -723,7 +723,7 @@ hr {
 * Heading
 ----------------- */
 .logo {
-  color: #425466;
+  color: #25188a;
   font-size: 1rem;
 }
 
@@ -733,7 +733,7 @@ hr {
   margin-bottom: -4rem;
   padding: 10rem 2rem 10rem;
   background-color: #1de0bc;
-  background: linear-gradient(250deg, #1de0bc, #ffffff, #fd64dced);
+  background: linear-gradient(250deg, #1de0bc, rgba(90, 69, 255, 0.35), #5A45FF);
   background-size: 300% 100%;
   -webkit-animation: heroGradient 10s ease infinite;
   -moz-animation: heroGradient 10s ease infinite;
@@ -743,8 +743,6 @@ hr {
 
 .hero h1 {
   font-size: 2.2rem;
-  color: #ffffff;
-  font-weight: 500;
 }
 
 @media (min-width: 48rem) {
@@ -808,8 +806,14 @@ hr {
 }
 
 .hero-heading h1 {
-  color: #102942;
-  font-weight: 600;
+  background: -webkit-linear-gradient(#25188a, #3b115a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+.hero-heading h6 {
+  color: #ffffff;
 }
 
 /* -----------------
@@ -1075,9 +1079,9 @@ table {
   border-radius: 10px;
   color: #425466;
   font-weight: 500;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1), 1px 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1), 1px 1px 3px 0px rgba(0, 0, 0, 0.02);
   background: #5a45ff;
-  background: linear-gradient(100deg, rgba(29, 224, 188, 0.2) 0%, rgba(29, 224, 188, 0.1) 90%);
+  background: linear-gradient(100deg, rgba(29, 224, 188, 0.3) 0%, rgba(29, 224, 188, 0.2) 90%);
 }
 
 .card-detail {

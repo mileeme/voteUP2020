@@ -17,13 +17,9 @@ body {
     letter-spacing: $letter-spacing;
     color: $font-color;
     background-color: $background-secondary;
-    // background-color: $secondary-color;
-    // background: linear-gradient(271deg, $primary-color, $background, $secondary-color);
-    // background-size: 600% 600%;
-    // -webkit-animation: heroGradient 25s ease infinite;
-    // -moz-animation: heroGradient 25s ease infinite;
-    // -o-animation: heroGradient 25s ease infinite;
-    // animation: heroGradient 25s ease infinite;
+    @include screen(md) {
+        background-color: $background;
+    }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -122,13 +118,40 @@ hr {
         @include container(md);
     }
 }
-
-.header {
-    padding: 2rem;
-    font-size: $font-size * $small;
-    font-weight: 800;
+.privacy-container {
+    background: $background;
+    padding: 4rem 2rem;
     @include screen(md) {
-        padding: 2rem 0;
+        padding: 4rem 4rem;
+    }
+    h1 {
+        margin-bottom: 2rem;
+    }
+    h3 {
+        padding-bottom: 1rem;
+        margin-top: 2rem;
+    }
+    p {
+        margin: 0 0 0.7rem;
+    }
+    ul {
+        list-style-type: circle;
+        list-style-position: outside;
+        margin: 0 0 0.7rem;
+        li {
+            margin-left: 2rem;
+            padding-left: 0.5rem;
+        }
+    }
+}
+
+.header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    @include screen(md) {
+        padding: 0 4rem;
     }
 }
 /* -----------------
@@ -140,12 +163,77 @@ hr {
 /* -----------------
 * Layout
 ----------------- */
+.announcement {
+    padding: 0.7rem 2rem;
+    color: $background-secondary;
+    background-color: $black;
+    font-size: $font-size * $small;
+    font-weight: 500;
+}
+.header {
+    padding: 2rem;
+    font-size: $font-size * $small;
+    font-weight: 800;
+}
+.header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    @include screen(md) {
+        padding: 0 4rem;
+    }
+}
+.counter {
+    padding: .3rem 1rem;
+    background-color: transparentize($color: $background, $amount: 0.85);
+    border-radius: 50px;
+    color: #25188a;
+    font-weight: 400;
+}
+.about {
+    display: block;
+    margin-top: -7rem;
+    // margin-bottom: 4rem;
+    padding: 10rem 2rem 6rem;
+    background-color: $secondary-color;
+    background: linear-gradient(250deg, $secondary-color, #ffffff);
+    background-size: 300% 100%;
+    h4 {
+        font-weight: 500;
+        line-height: 1.4;
+        font-size: 1.3rem;
+        @include screen(md) {
+            font-size: 1.4rem;
+        }
+    }
+    .about-hero {
+        @include screen(md) {
+            padding: 0 4rem;
+        }
+    }
+}
+.about-body {
+    padding: 5rem 2rem;
+    background: $background;
+    // margin-bottom: 3rem;
+    @include screen(md) {
+        padding: 7rem 4rem;
+    }
+    h1, h2 {
+        padding-bottom: 1.5rem;
+    }
+}
 
 
 
 /* -----------------
 * Heading
 ----------------- */
+.logo {
+    color: #25188a;
+    font-size: $h6-sm;
+}
 .hero {
     display: block;
     margin-top: -7rem;
@@ -153,7 +241,7 @@ hr {
     // padding-bottom: 6rem;
     padding: 10rem 2rem 10rem;
     background-color: $secondary-color;
-    background: linear-gradient(250deg, $secondary-color, #ffffff, #fd64dced);
+    background: linear-gradient(250deg, $secondary-color, transparentize($primary-color, 0.65), $primary-color);
     background-size: 300% 100%;
     -webkit-animation: heroGradient 10s ease infinite;
     -moz-animation: heroGradient 10s ease infinite;
@@ -161,8 +249,8 @@ hr {
     animation: heroGradient 10s ease infinite;
     h1 {
         font-size: 2.2rem;
-        color: $background;
-        font-weight: 500;
+        // color: $background;
+        // font-weight: 500;
         @include screen(md) {
             font-size: 3rem;
         }
@@ -195,8 +283,13 @@ hr {
         padding: 0 4rem;
     }
     h1 {
-        color: #102942;
+        background: -webkit-linear-gradient(#25188a, #3b115a);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
         font-weight: 700;
+    }
+    h6 {
+        color: $background;
     }
 }
 
@@ -251,27 +344,30 @@ hr {
 }
 .button-ripple {
    position: absolute; 
-   background: $background;
+    background: $background;
    -webkit-transform: translate(-50%, -50%);
    -moz-transform: translate(-50%, -50%);
    -o-transform: translate(-50%, -50%);
    transform: translate(-50%, -50%);
    pointer-events: none;
    border-radius: 50%;
-   -webkit-animation: ripple 1s linear;
-   -moz-animation: ripple 1s linear;
-   -o-animation: ripple 1s linear;
-   animation: ripple 1s linear;
+   -webkit-animation: ripple .8s linear;
+   -moz-animation: ripple .8s linear;
+   -o-animation: ripple .8s linear;
+   animation: ripple .8s linear;
 }
+
 @-webkit-keyframes ripple {
     0% {
         width: 0px;
         height: 0px;
-        opacity: .3;
+        // transform: scale(0);
+        opacity: .25;
     }
     100% {
         width: 1000px;
         height: 1000px;
+        // transform: scale(2);
         opacity: 0;
     }
 }
@@ -279,11 +375,13 @@ hr {
     0% {
         width: 0px;
         height: 0px;
-        opacity: .3;
+        // transform: scale(0);
+        opacity: .25;
     }
     100% {
         width: 1000px;
         height: 1000px;
+        // transform: scale(2);
         opacity: 0;
     }
 }
@@ -291,11 +389,13 @@ hr {
     0% {
         width: 0px;
         height: 0px;
-        opacity: .3;
+        // transform: scale(0);
+        opacity: .25;
     }
     100% {
         width: 1000px;
         height: 1000px;
+        // transform: scale(2);
         opacity: 0;
     }
 }
@@ -303,77 +403,18 @@ hr {
     0% {
         width: 0px;
         height: 0px;
-        opacity: .3;
+        // transform: scale(0);
+        opacity: .25;
     }
     100% {
         width: 1000px;
         height: 1000px;
+        // transform: scale(2);
         opacity: 0;
     }
 }
 
-.button-profile-ripple {
-   position: absolute; 
-   background: $background;
-   -webkit-transform: translate(-50%, -50%);
-   -moz-transform: translate(-50%, -50%);
-   -o-transform: translate(-50%, -50%);
-   transform: translate(-50%, -50%);
-   pointer-events: none;
-   border-radius: 50%;
-   -webkit-animation: profileButtonRipple .4s linear;
-   -moz-animation: profileButtonRipple .4s linear;
-   -o-animation: profileButtonRipple .4s linear;
-   animation: profileButtonRipple .4s linear;
-}
-@-webkit-keyframes profileButtonRipple {
-    0% {
-        width: 0px;
-        height: 0px;
-        opacity: .3;
-    }
-    100% {
-        width: 100px;
-        height: 100px;
-        opacity: 0;
-    }
-}
-@-moz-keyframes profileButtonRipple {
-    0% {
-        width: 0px;
-        height: 0px;
-        opacity: .3;
-    }
-    100% {
-        width: 100px;
-        height: 100px;
-        opacity: 0;
-    }
-}
-@-o-keyframes profileButtonRipple {
-    0% {
-        width: 0px;
-        height: 0px;
-        opacity: .3;
-    }
-    100% {
-        width: 100px;
-        height: 100px;
-        opacity: 0;
-    }
-}
-@keyframes profileButtonRipple {
-    0% {
-        width: 0px;
-        height: 0px;
-        opacity: .3;
-    }
-    100% {
-        width: 100px;
-        height: 100px;
-        opacity: 0;
-    }
-}
+
 
 .is-fixed-button {
     position: fixed;
@@ -401,9 +442,24 @@ hr {
 ----------------- */
 footer {
     background: $background-footer;
-    padding: 2rem $padding;
-    height: 8rem;
+    padding: 2rem;
     margin-top: auto;
+    .footer-container {
+        display: flex;
+        flex-direction: row;
+        color: $note-color;
+        a {
+            font-size: $font-size * $small;
+            text-decoration: underline;
+            padding-right: 1.5rem;
+            &:hover, &:active {
+                color: $primary-color;
+            }
+        }
+        @include screen(md) {
+            padding: 2rem 4rem;
+        }
+    }
 }
 
 /* -----------------
@@ -430,6 +486,10 @@ table {
     border-top: 1px solid $background;
     box-shadow: 0 5px 20px -20px rgba(0, 0, 0, 0.19), 
                 0 10px 20px -10px rgba(0, 0, 0, 0.18);
+    @include screen(md) {
+        box-shadow: 0 0 0 0 transparent,
+                    0 0 0 0 transparent;
+    }
     h3 {
         font-weight: normal;
         -moz-transition: width 1s ease-in-out, left 1.5s ease-in-out;
@@ -440,6 +500,7 @@ table {
     }
 }
 .card-question {
+    z-index: 1;
     padding: 4rem 2rem;
     background: $background;
     @include screen(md) {
@@ -447,7 +508,7 @@ table {
         min-height: 10rem;
     }
     h6 {
-        color: $label-color;
+        color: $primary-color;
         // padding-bottom: 0.5rem;
     }
     p {
@@ -455,8 +516,10 @@ table {
     }
 }
 .card-response {
+    z-index: 1;
     padding: 0 2rem 4rem;
     background: $background;
+    border-bottom: 1px $border-style $background-secondary;
     font-weight: 400;
     cursor: pointer;
     @include screen(md) {
@@ -489,21 +552,20 @@ table {
     color: $font-color;
     font-weight: 500;
     box-shadow: 1px 1px 1px rgba(0,0,0,0.1), 
-                1px 1px 2px rgba(0,0,0,0.2);
+                1px 1px 3px 0px rgba(0,0,0,0.02);
     background: rgb(90,69,255);
-    background: linear-gradient(100deg, transparentize($color: $secondary-color, $amount: 0.8) 0%, transparentize($color: $secondary-color, $amount: 0.9) 90%);    
+    background: linear-gradient(100deg, transparentize($color: $secondary-color, $amount: 0.7) 0%, transparentize($color: $secondary-color, $amount: 0.8) 90%);    
 }
 .card-detail {
     display: block;
     position: relative;
     height: 0;
-    z-index: -1;
     color: $font-color;
-    background: #fdfdfd;
-    -webkit-transform: translate3d(0rem, -18rem, -1rem);
-    -moz-transform: translate3d(0rem, -18rem, -1rem);
-    -o-transform: translate3d(0rem, -18rem, -1rem);
-    transform: translate3d(0rem, -18rem, -1rem);
+    background: #fbfbfb;
+    -webkit-transform: translateY(-18rem);
+    -moz-transform: translateY(-18rem);
+    -o-transform: translateY(-18rem);
+    transform: translateY(-18rem);
 }
 .card-detail-section {
     padding: 4rem 2rem;
@@ -515,20 +577,12 @@ table {
         font-size: $footnote-size;
         padding-bottom: 0.6rem;
     }
-}
-.is-visible {
-    height: 100%;
-    opacity: 1;
-    -webkit-transform: translate3d(0rem, 0rem, 0rem);
-    -moz-transform: translate3d(0rem, 0rem, 0rem);
-    -o-transform: translate3d(0rem, 0rem, 0rem);
-    transform: translate3d(0rem, 0rem, 0rem);
-    -webkit-transition: opacity .1s, transform .3s cubic-bezier(0.6, 0.13, 0.01, 0.93);
-    -moz-transition: opacity .1s, transform .3s cubic-bezier(0.6, 0.13, 0.01, 0.93);
-    -o-transition: opacity .1s, transform .3s cubic-bezier(0.6, 0.13, 0.01, 0.93);
-    transition: opacity .1s, transform .3s cubic-bezier(0.6, 0.13, 0.01, 0.93);   
+    a {
+        text-decoration: underline;
+    }
 }
 .is-invisible { 
+    z-index: -1;
     height: 0;
     opacity: 0;
     -webkit-transition: transform .2s ease-in;
@@ -536,7 +590,61 @@ table {
     -o-transition: transform .2s ease-in;
     transition: transform .2s ease-in;
 }
-
+.is-visible {
+    height: 100%;
+    -webkit-transform: translateY(0rem);
+    -moz-transform: translateY(0rem);
+    -o-transform: translateY(0rem);
+    transform: translateY(0rem);
+    -webkit-transition: transform .4s cubic-bezier(0.6, 0.13, 0.01, 0.93);
+    -moz-transition: transform .4s cubic-bezier(0.6, 0.13, 0.01, 0.93);
+    -o-transition: transform .4s cubic-bezier(0.6, 0.13, 0.01, 0.93);
+    transition: transform .4s cubic-bezier(0.6, 0.13, 0.01, 0.93); 
+    -webkit-animation: detailVisible .8s cubic-bezier(0.34, 0.29, 0.6, 0.7);  
+    -moz-animation: detailVisible .8s cubic-bezier(0.34, 0.29, 0.6, 0.7);  
+    -o-animation: detailVisible .8s cubic-bezier(0.34, 0.29, 0.6, 0.7);  
+    animation: detailVisible .8s cubic-bezier(0.34, 0.29, 0.6, 0.7);  
+}
+@-webkit-keyframes detailVisible {
+    0% {
+        z-index: -1;
+        opacity: 0;
+    }
+    100% {
+        z-index: 1;
+        opacity: 1;
+    }
+}
+@-moz-keyframes detailVisible {
+    0% {
+        z-index: -1;
+        opacity: 0;
+    }
+    100% {
+        z-index: 1;
+        opacity: 1;
+    }
+}
+@-o-keyframes detailVisible {
+    0% {
+        z-index: -1;
+        opacity: 0;
+    }
+    100% {
+        z-index: 1;
+        opacity: 1;
+    }
+}
+@keyframes detailVisible {
+    0% {
+        z-index: -1;
+        opacity: 0;
+    }
+    100% {
+        z-index: 1;
+        opacity: 1;
+    }
+}
 
 /* -----------------
 * Question
@@ -759,7 +867,7 @@ table {
 // }
 .slider-heading {
     margin: 2rem $margin $margin;
-    text-align: center;
+    // text-align: center;
 }
 .slide-question {
     display: grid;
@@ -859,11 +967,11 @@ table {
 * Registration
 ----------------- */
 .registration-container {
-    margin: 0;
-    padding: 2rem 3rem 4rem;
-    background: $background;
+    margin: 2rem 0;
+    // padding: 2rem 2rem 4rem;
+    // background: $background;
     @include screen(md) {
-        margin: 1rem 0;
+        padding: 0 4rem;
     }
 }
 .registration-search-input {
@@ -896,7 +1004,17 @@ table {
     text-decoration: none;
     display: block;
     margin-bottom: .08rem;
-    color: $font-color
+    color: $font-color;
+    background: $background;
+    overflow: hidden;
+}
+.registration-link:hover {
+    background: transparentize($color: ($primary-color), $amount: 0.97);
+}
+.registration-link:active,
+.registration-link:focus {
+    color: $primary-color;
+    background: transparentize($color: ($primary-color), $amount: 0.97);
 }
 ::-webkit-scrollbar-track { 
     border: none;
@@ -954,12 +1072,18 @@ table {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 2rem;
+    @include screen(md) {
+        width: 45rem;
+    }
 }
 // same as slides-wrapper
 .slider {
     width: 22rem;
-    height: 22rem;
+    height: 27rem;
     overflow: hidden;
+    @include screen(md) {
+        width: 45rem;
+    }
 }
 // same as slides 
 .holder {
@@ -969,10 +1093,13 @@ table {
 // same as slide 
 .slide-wrapper {
     width: 22rem;
-    height: 22rem;
+    height: 27rem;
     float: left;
     position: relative;
     overflow: hidden;
     text-align: left;
     padding: .1rem;
+    @include screen(md) {
+        width: 45rem;
+    }
 }
