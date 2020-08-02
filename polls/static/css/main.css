@@ -462,12 +462,6 @@ body {
   background-color: #eceef1;
 }
 
-@media (min-width: 48rem) {
-  body {
-    background-color: #ffffff;
-  }
-}
-
 h1, h2, h3, h4, h5, h6 {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-weight: 500;
