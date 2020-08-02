@@ -540,10 +540,10 @@ mark {
 }
 
 hr {
-  margin-top: 1rem;
+  margin-top: 2rem;
   margin-bottom: 1rem;
   border: 0;
-  border-top: 1px solid #3C3C3C;
+  border-top: 1px solid #CCCCCC;
 }
 
 /* -----------------
@@ -674,7 +674,7 @@ hr {
 .about {
   display: block;
   margin-top: -7rem;
-  color: #230d50;
+  color: #425466;
   padding: 10rem 2rem 6rem;
   background-color: #1de0bc;
   background: linear-gradient(190deg, rgba(109, 90, 255, 0.9), rgba(245, 245, 245, 0.9));
@@ -701,7 +701,6 @@ hr {
 
 .about-body {
   padding: 5rem 2rem;
-  background: #ffffff;
 }
 
 @media (min-width: 48rem) {
@@ -729,7 +728,7 @@ hr {
   padding: 10rem 2rem 2rem;
   background-color: #1de0bc;
   background: linear-gradient(250deg, #25e1ff, #8f2ac3, #2b31ffc7);
-  background-size: 200% 200%;
+  background-size: 140% 200%;
   -webkit-animation: heroGradient 10s ease infinite;
   -moz-animation: heroGradient 10s ease infinite;
   -o-animation: heroGradient 10s ease infinite;
@@ -742,7 +741,7 @@ hr {
 
 @media (min-width: 48rem) {
   .hero h1 {
-    font-size: 3.5rem;
+    font-size: 3.3rem;
   }
 }
 
@@ -794,9 +793,13 @@ hr {
   }
 }
 
+.hero-heading {
+  padding: 0 0 8rem;
+}
+
 @media (min-width: 48rem) {
   .hero-heading {
-    padding: 0 4rem;
+    padding: 0 4rem 8rem;
   }
 }
 
@@ -815,32 +818,25 @@ hr {
 .sharethis {
   display: flex;
   flex-direction: row;
-  padding: 6rem 0rem 3rem;
   align-items: center;
   cursor: pointer;
 }
 
-@media (min-width: 48rem) {
-  .sharethis {
-    padding: 6rem 4rem 3rem;
-  }
-}
-
 .sharethis svg {
-  width: 22px;
-  fill: rgba(243, 207, 255, 0.75);
+  width: 25px;
+  fill: #425466;
 }
 
 .sharethis svg:hover, .sharethis svg:active {
-  fill: #dc71ff;
+  fill: #5A45FF;
 }
 
 .st-custom-button[data-network="twitter"] {
-  padding-right: 0.75rem;
+  padding-right: 0.8rem;
 }
 
 .st-custom-button[data-network="facebook"] {
-  padding-right: 0.75rem;
+  padding-right: 0.8rem;
 }
 
 /* -----------------
@@ -1213,13 +1209,18 @@ table {
   }
 }
 
+.background-secondary {
+  background-color: #eceef1;
+  box-shadow: none;
+}
+
 /* -----------------
 * Question
 ----------------- */
 .is-no-response {
   display: inline-block;
   width: 6rem;
-  border-bottom: 2px solid #3C3C3C;
+  border-bottom: 2px solid #425466;
   text-decoration: none;
 }
 
@@ -1237,7 +1238,7 @@ table {
 }
 
 .divider {
-  border-top: 1px solid rgba(60, 60, 60, 0.2);
+  border-top: 1px solid rgba(204, 204, 204, 0.2);
 }
 
 .is-results-hide {

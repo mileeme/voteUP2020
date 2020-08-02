@@ -79,7 +79,7 @@ mark {
 }
 
 hr {
-    margin-top: $margin;
+    margin-top: 2rem;
     margin-bottom: $margin;
     border: 0;
     border-top: $borders;
@@ -280,8 +280,9 @@ hr {
 }
 
 .hero-heading {
+    padding: 0 0 8rem;
     @include screen(md) {
-        padding: 0 4rem;
+        padding: 0 4rem 8rem;
     }
     h1 {
         background: -webkit-linear-gradient(#e5a6fff5, #ffe7f6);
@@ -298,26 +299,28 @@ hr {
 .sharethis {
     display: flex;
     flex-direction: row;
-    padding: 6rem 0rem 3rem;
+    // padding: 6rem 0rem 3rem;
     // justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    @include screen(md) {
-        padding: 6rem 4rem 3rem;
-    }
+    // @include screen(md) {
+    //     padding: 6rem 4rem 3rem;
+    // }
     svg {
-        width: 22px;
-        fill: rgba(243, 207, 255, 0.75);
+        width: 25px;
+        // fill: rgba(243, 207, 255, 0.75);
+        fill: $font-color;
         &:hover, &:active {
-            fill: rgb(220, 113, 255);
+            // fill: rgb(220, 113, 255);
+            fill: $primary-color;
         }
     }
 }
 .st-custom-button[data-network="twitter"] {
-    padding-right: 0.75rem;
+    padding-right: 0.8rem;
 }
 .st-custom-button[data-network="facebook"] {
-    padding-right: 0.75rem;
+    padding-right: 0.8rem;
 }
 .st-custom-button[data-network="pinterest"] {}
 
@@ -674,7 +677,10 @@ table {
         opacity: 1;
     }
 }
-
+.background-secondary {
+    background-color: $background-secondary;
+    box-shadow: none;
+}
 /* -----------------
 * Question
 ----------------- */ 
@@ -682,7 +688,7 @@ table {
 .is-no-response {
     display: inline-block;
     width: 6rem;
-    border-bottom: 2px $border-style $border;
+    border-bottom: 2px $border-style $font-color;
     text-decoration: none;
 }
 
