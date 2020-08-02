@@ -194,7 +194,7 @@ hr {
 .about {
     display: block;
     margin-top: -7rem;
-    color: #230d50;
+    color: $font-color;
     // margin-bottom: 4rem;
     padding: 10rem 2rem 6rem;
     background-color: $secondary-color;
@@ -216,7 +216,7 @@ hr {
 }
 .about-body {
     padding: 5rem 2rem;
-    background: $background;
+    // background: $background;
     // margin-bottom: 3rem;
     @include screen(md) {
         padding: 7rem 4rem;
@@ -243,7 +243,7 @@ hr {
     padding: 10rem 2rem 2rem;
     background-color: $secondary-color;
     background: linear-gradient(250deg, #25e1ff, #8f2ac3, #2b31ffc7);
-    background-size: 200% 200%;
+    background-size: 140% 200%;
     -webkit-animation: heroGradient 10s ease infinite;
     -moz-animation: heroGradient 10s ease infinite;
     -o-animation: heroGradient 10s ease infinite;
@@ -253,7 +253,7 @@ hr {
         // color: $background;
         // font-weight: 500;
         @include screen(md) {
-            font-size: 3.5rem;
+            font-size: 3.3rem;
         }
     }
 }

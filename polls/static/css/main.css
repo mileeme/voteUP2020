@@ -674,7 +674,7 @@ hr {
 .about {
   display: block;
   margin-top: -7rem;
-  color: #230d50;
+  color: #425466;
   padding: 10rem 2rem 6rem;
   background-color: #1de0bc;
   background: linear-gradient(190deg, rgba(109, 90, 255, 0.9), rgba(245, 245, 245, 0.9));
@@ -701,7 +701,6 @@ hr {
 
 .about-body {
   padding: 5rem 2rem;
-  background: #ffffff;
 }
 
 @media (min-width: 48rem) {
@@ -729,7 +728,7 @@ hr {
   padding: 10rem 2rem 2rem;
   background-color: #1de0bc;
   background: linear-gradient(250deg, #25e1ff, #8f2ac3, #2b31ffc7);
-  background-size: 200% 200%;
+  background-size: 140% 200%;
   -webkit-animation: heroGradient 10s ease infinite;
   -moz-animation: heroGradient 10s ease infinite;
   -o-animation: heroGradient 10s ease infinite;
@@ -742,7 +741,7 @@ hr {
 
 @media (min-width: 48rem) {
   .hero h1 {
-    font-size: 3.5rem;
+    font-size: 3.3rem;
   }
 }
 
