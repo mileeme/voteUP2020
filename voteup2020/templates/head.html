@@ -1,7 +1,8 @@
 {% load static %}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="title" content="2020 Presidential Candidate Match Quiz">
+<meta name="description" content="Find out which candidate, Donald Trump or Joe Biden agrees with you most.">
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-168226268-2"></script>
 <script>
@@ -18,5 +19,9 @@
 <!-- custom css -->
 <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 <link rel="shortcut icon" type="image/png" href="{% static 'img/polls/favicon.ico' %}" />
+
+<!-- sharethis -->
+<script type="text/javascript"
+    src="//platform-api.sharethis.com/js/sharethis.js#property=#{property?._id}&product=custom-share-buttons"></script>
 
 <title>{% block title %}{% endblock %}</title>

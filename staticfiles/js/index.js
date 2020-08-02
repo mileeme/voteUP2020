@@ -472,9 +472,9 @@ const countDown = () => {
 
     // insert counter
     if (daysLeft > 0) {
-        dateCountdown.innerHTML = daysLeft + ' days left till election';    
+        dateCountdown.innerHTML = daysLeft + ' days till election';    
     } else if (daysLeft == 1) {
-        dateCountdown.innerHTML = daysLeft + ' day left till election';
+        dateCountdown.innerHTML = 'Go vote tomorrow!';
     } else if (daysLeft == 0) {
         dateCountdown.innerHTML = 'Go vote today!'
     } else {

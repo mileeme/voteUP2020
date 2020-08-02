@@ -188,19 +188,20 @@ hr {
     padding: .3rem 1rem;
     background-color: transparentize($color: $background, $amount: 0.85);
     border-radius: 50px;
-    color: #25188a;
+    color: $background;
     font-weight: 400;
 }
 .about {
     display: block;
     margin-top: -7rem;
+    color: #230d50;
     // margin-bottom: 4rem;
     padding: 10rem 2rem 6rem;
     background-color: $secondary-color;
-    background: linear-gradient(250deg, $secondary-color, #ffffff);
+    background: linear-gradient(190deg, rgba(109, 90, 255, 0.9), rgba(245, 245, 245, 0.9));
     background-size: 300% 100%;
     h4 {
-        font-weight: 500;
+        font-weight: 400;
         line-height: 1.4;
         font-size: 1.3rem;
         @include screen(md) {
@@ -220,7 +221,7 @@ hr {
     @include screen(md) {
         padding: 7rem 4rem;
     }
-    h1, h2 {
+    h1, h5 {
         padding-bottom: 1.5rem;
     }
 }
@@ -231,7 +232,7 @@ hr {
 * Heading
 ----------------- */
 .logo {
-    color: #25188a;
+    color: transparentize($color: $background, $amount: 0.25);
     font-size: $h6-sm;
 }
 .hero {
@@ -239,10 +240,10 @@ hr {
     margin-top: -7rem;
     margin-bottom: -4rem;
     // padding-bottom: 6rem;
-    padding: 10rem 2rem 10rem;
+    padding: 10rem 2rem 2rem;
     background-color: $secondary-color;
-    background: linear-gradient(250deg, $secondary-color, transparentize($primary-color, 0.65), $primary-color);
-    background-size: 300% 100%;
+    background: linear-gradient(250deg, #25e1ff, #8f2ac3, #2b31ffc7);
+    background-size: 200% 200%;
     -webkit-animation: heroGradient 10s ease infinite;
     -moz-animation: heroGradient 10s ease infinite;
     -o-animation: heroGradient 10s ease infinite;
@@ -252,7 +253,7 @@ hr {
         // color: $background;
         // font-weight: 500;
         @include screen(md) {
-            font-size: 3rem;
+            font-size: 3.5rem;
         }
     }
 }
@@ -283,15 +284,43 @@ hr {
         padding: 0 4rem;
     }
     h1 {
-        background: -webkit-linear-gradient(#25188a, #3b115a);
+        background: -webkit-linear-gradient(#e5a6fff5, #ffe7f6);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        font-weight: 700;
+        font-weight: 600;
     }
     h6 {
-        color: $background;
+        color: #cfaafff5;
+        line-height: 1.2;
+        font-weight: 400;
     }
 }
+
+.sharethis {
+    display: flex;
+    flex-direction: row;
+    padding: 6rem 0rem 3rem;
+    // justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    @include screen(md) {
+        padding: 6rem 4rem 3rem;
+    }
+    svg {
+        width: 22px;
+        fill: rgba(243, 207, 255, 0.75);
+        &:hover, &:active {
+            fill: rgb(220, 113, 255);
+        }
+    }
+}
+.st-custom-button[data-network="twitter"] {
+    padding-right: 0.75rem;
+}
+.st-custom-button[data-network="facebook"] {
+    padding-right: 0.75rem;
+}
+.st-custom-button[data-network="pinterest"] {}
 
 /* -----------------
 * Buttons
@@ -441,7 +470,7 @@ hr {
 * Footer
 ----------------- */
 footer {
-    background: $background-footer;
+    background: #6138b3;
     padding: 2rem;
     margin-top: auto;
     .footer-container {
@@ -531,7 +560,7 @@ table {
     margin: 0 0 0.6rem;
     border-radius: $button-border-radius;
     color: $font-color;
-    background-color: transparentize($color: $secondary-color, $amount: 0.95);
+    background-color: transparentize($color: rgb(214, 214, 214), $amount: 0.75);
     -moz-box-shadow:    inset 1px 1px 5px -1px rgba(0,0,0,0.08);
     -webkit-box-shadow: inset 1px 1px 5px -1px rgba(0,0,0,0.08);
     box-shadow:         inset 1px 1px 5px -1px rgba(0,0,0,0.08);
@@ -554,7 +583,8 @@ table {
     box-shadow: 1px 1px 1px rgba(0,0,0,0.1), 
                 1px 1px 3px 0px rgba(0,0,0,0.02);
     background: rgb(90,69,255);
-    background: linear-gradient(100deg, transparentize($color: $secondary-color, $amount: 0.7) 0%, transparentize($color: $secondary-color, $amount: 0.8) 90%);    
+    background: linear-gradient(100deg, rgb(214, 214, 214) 0%, 
+            rgb(214, 214, 214) 90%);    
 }
 .card-detail {
     display: block;
@@ -823,48 +853,6 @@ table {
 /* -----------------
 * Slider
 ----------------- */ 
-// .slider-container {
-//     margin-left: auto;
-//     margin-right: auto;
-//     margin-bottom: 2rem;
-//     width: 22rem;
-// }
-// .slides-wrapper {
-//     width: 22rem;
-//     height: 22rem;
-//     overflow: hidden;
-//     // position: relative;
-//     // background: transparent;
-//     @include screen(md) {
-//         width: 35rem;
-//         height: 22rem;
-//     }
-// }
-// .slides {
-//     width: 300%;
-//     height: 100%;
-//     // display: flex;
-//     // position: relative;
-//     // background: transparent;
-// }
-// .slide {
-//     text-align: left;
-//     width: 22rem;
-//     float: left;
-//     height: 22rem;
-//     // cursor: pointer;
-//     position: relative;
-//     overflow: hidden;
-//     // background: transparent;
-//     padding: .1rem;
-//     @include screen(md) {
-//         min-width: 35rem;
-//     }
-// }
-// .slide img {
-//     z-index: -1;
-//     position: absolute;
-// }
 .slider-heading {
     margin: 2rem $margin $margin;
     // text-align: center;
@@ -876,8 +864,8 @@ table {
     padding: 2rem;
     width: 100%;
     height: 100%;
-    color: $background;
-    background-color: transparentize($color: $primary-color, $amount: 0.4);
+    // color: $primary-color;
+    background-color: #dedede;
     border-radius: 1rem;
     @include screen(md) {
         padding: 2rem 4rem;
@@ -896,7 +884,6 @@ table {
     }
     .is-response {
         font-weight: 800;
-        color: $background;
     }
 }
 
@@ -915,21 +902,6 @@ table {
     background-size: 22px;
     background-position: center;
     background-repeat: no-repeat;
-    // -webkit-transform: translateY(-50%);
-    // -moz-transform: translateY(-50%);
-    // -o-transform: translateY(-50%);
-    // transform: translateY(-50%);
-    // -webkit-transition: opacity .25s ease-in-out, transform .25s ease-in;
-    // -moz-transition: opacity .25s ease-in-out, transform .25s ease-in;
-    // -o-transition: opacity .25s ease-in-out, transform .25s ease-in;
-    // transition: opacity .25s ease-in-out, transform .25s ease-in;
-    // &:hover {
-    //     opacity: 1;
-    //     -webkit-transform: translateY(-50%) scale(1.5, 1.5); 
-    //     -moz-transform: translateY(-50%) scale(1.5, 1.5); 
-    //     -o-transform: translateY(-50%) scale(1.5, 1.5); 
-    //     transform: translateY(-50%) scale(1.5, 1.5); 
-    // }
 }
 .prev {
     background-image: url(https://cdn0.iconfinder.com/data/icons/navigation-set-arrows-part-one/32/ChevronLeft-512.png);
@@ -974,13 +946,19 @@ table {
         padding: 0 4rem;
     }
 }
+.registration-heading {
+    padding: 2rem 1rem 1rem;
+    h5 {
+        color: #cacaca;
+    }
+}
 .registration-search-input {
     background-position: 0.65rem 0.75rem;
     background-repeat: no-repeat;
-    background-color: transparentize($color: $primary-color, $amount: 0.95);
-    -moz-box-shadow:    inset 1px 1px 3px -1px rgba(0,0,0,0.2);
-    -webkit-box-shadow: inset 1px 1px 3px -1px rgba(0,0,0,0.2);
-    box-shadow:         inset 1px 1px 3px -1px rgba(0,0,0,0.2);
+    background-color: #5129a2;
+    -moz-box-shadow:    inset 1px 1px 3px -1px rgba(0,0,0,0.75);
+    -webkit-box-shadow: inset 1px 1px 3px -1px rgba(0,0,0,0.75);
+    box-shadow:         inset 1px 1px 3px -1px rgba(0,0,0,0.75);
     width: 100%;
     padding: .8rem 2rem;
     border-radius: 50px;
@@ -994,18 +972,18 @@ table {
     margin: 0;
     overflow: scroll;
     height: 9.5rem;
-    border: 1px $border-style transparentize($color: $note-color, $amount: 0.7);
+    // border: 1px $border-style transparentize($color: $note-color, $amount: 0.7);
     border-radius: 0.4rem;
     overflow-x: hidden;
 }
 .registration-link {
-    border-bottom :1px solid lightgray;
+    border-bottom :1px solid #5c32b1;
     padding: 0.75rem 1.25rem;
     text-decoration: none;
     display: block;
     margin-bottom: .08rem;
-    color: $font-color;
-    background: $background;
+    color: #6f6e6f;
+    background: #5129a2;
     overflow: hidden;
 }
 .registration-link:hover {
@@ -1030,39 +1008,6 @@ table {
 /* -----------------
 * slider v2
 ----------------- */
-// .animate { transition: transform 0.3s ease-out; }
-
-// .slider-wrap {
-//   width: 300px;
-//   height: 500px;
-// //   position: absolute;
-// }
-// // same as slides-wrapper
-// .slider {
-//   width: 300px;
-//   height: 500px;
-//   overflow: hidden;
-// }
-// // same as slides 
-// .holder {
-//   width: 300%; // whatever max width of all the slides
-//   max-height: 500px;
-//   height: 100%;
-//   overflow-y: hidden;
-// }
-// // same as slide 
-// .slide-wrapper {
-//   width: 300px;
-//   float: left;
-//   height: 500px;
-//   position: relative;
-//   overflow: hidden;
-// }
-// .slide-wrapper img {
-//   position: absolute;
-//   z-index: -1;
-// }
-
 
 .animate { transition: transform 0.3s ease-out; }
 
