@@ -123,6 +123,7 @@ hr {
     padding: 4rem 2rem;
     @include screen(md) {
         padding: 4rem 4rem;
+        margin-bottom: 2rem;
     }
     h1 {
         margin-bottom: 2rem;
@@ -307,7 +308,7 @@ hr {
     //     padding: 6rem 4rem 3rem;
     // }
     svg {
-        width: 25px;
+        width: 1.3rem;
         // fill: rgba(243, 207, 255, 0.75);
         fill: $font-color;
         &:hover, &:active {
@@ -317,6 +318,7 @@ hr {
     }
 }
 .st-custom-button[data-network="twitter"] {
+    padding-left: 0.8rem;
     padding-right: 0.8rem;
 }
 .st-custom-button[data-network="facebook"] {
@@ -955,12 +957,14 @@ table {
     padding: 2rem 1rem 1rem;
     h5 {
         color: #cacaca;
+        font-weight: 400;
     }
 }
 .registration-search-input {
     background-position: 0.65rem 0.75rem;
     background-repeat: no-repeat;
     background-color: #5129a2;
+    color: $background;
     -moz-box-shadow:    inset 1px 1px 3px -1px rgba(0,0,0,0.75);
     -webkit-box-shadow: inset 1px 1px 3px -1px rgba(0,0,0,0.75);
     box-shadow:         inset 1px 1px 3px -1px rgba(0,0,0,0.75);
@@ -991,13 +995,11 @@ table {
     background: #5129a2;
     overflow: hidden;
 }
-.registration-link:hover {
-    background: transparentize($color: ($primary-color), $amount: 0.97);
-}
+.registration-link:hover,
 .registration-link:active,
 .registration-link:focus {
     color: $primary-color;
-    background: transparentize($color: ($primary-color), $amount: 0.97);
+    // background: transparentize($color: ($primary-color), $amount: 0.97);
 }
 ::-webkit-scrollbar-track { 
     border: none;

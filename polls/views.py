@@ -36,6 +36,9 @@ def about(request):
     return render(request, template_name, context)
 
 def privacy(request):
+    registration_list = RegisterToVote.objects.all()
     template_name = 'polls/privacy.html'
-    context = {}
+    context = {
+        'registration_list': registration_list,
+    }
     return render(request, template_name, context)

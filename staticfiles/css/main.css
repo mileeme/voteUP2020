@@ -590,6 +590,7 @@ hr {
 @media (min-width: 48rem) {
   .privacy-container {
     padding: 4rem 4rem;
+    margin-bottom: 2rem;
   }
 }
 
@@ -823,7 +824,7 @@ hr {
 }
 
 .sharethis svg {
-  width: 25px;
+  width: 1.3rem;
   fill: #425466;
 }
 
@@ -832,6 +833,7 @@ hr {
 }
 
 .st-custom-button[data-network="twitter"] {
+  padding-left: 0.8rem;
   padding-right: 0.8rem;
 }
 
@@ -1486,12 +1488,14 @@ table {
 
 .registration-heading h5 {
   color: #cacaca;
+  font-weight: 400;
 }
 
 .registration-search-input {
   background-position: 0.65rem 0.75rem;
   background-repeat: no-repeat;
   background-color: #5129a2;
+  color: #ffffff;
   -moz-box-shadow: inset 1px 1px 3px -1px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: inset 1px 1px 3px -1px rgba(0, 0, 0, 0.75);
   box-shadow: inset 1px 1px 3px -1px rgba(0, 0, 0, 0.75);
@@ -1524,14 +1528,10 @@ table {
   overflow: hidden;
 }
 
-.registration-link:hover {
-  background: rgba(90, 69, 255, 0.03);
-}
-
+.registration-link:hover,
 .registration-link:active,
 .registration-link:focus {
   color: #5A45FF;
-  background: rgba(90, 69, 255, 0.03);
 }
 
 ::-webkit-scrollbar-track {
