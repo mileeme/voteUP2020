@@ -30,7 +30,7 @@ class Candidate(models.Model):
     birth_date = models.DateField(blank=True, null=True, default=date.today)
     party = models.CharField(max_length=20, choices=PartyAssociation.choices, blank=True, null=True, default='')
     website = models.URLField(max_length=255, blank=True, null=True, default='')
-    quote = models.TextField(max_length=255, blank=True, null=True, default='')
+    quote = models.TextField(max_length=1000, blank=True, null=True, default='')
     
     class Meta: 
         ordering = ['f_name', 'l_name',]
