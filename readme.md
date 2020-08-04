@@ -1,5 +1,6 @@
 # VoteUp2020
 
+<img align="right" src="media/polls/logo_votup_square.png" width="300px">
 Votup.app compares the presidential candidate's stance on the issues Americans care about in a fun, mad libs-like application.
 
 # Stats
