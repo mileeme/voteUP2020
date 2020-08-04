@@ -235,6 +235,10 @@ hr {
 .logo {
     color: transparentize($color: $background, $amount: 0.25);
     font-size: $h6-sm;
+    svg {
+        fill: $background;
+        width: 4rem;
+    }
 }
 .hero {
     display: block;
@@ -300,6 +304,7 @@ hr {
 .sharethis {
     display: flex;
     flex-direction: row;
+    padding: 1rem 1.5rem 3rem;
     // padding: 6rem 0rem 3rem;
     // justify-content: space-between;
     align-items: center;
@@ -308,7 +313,7 @@ hr {
     //     padding: 6rem 4rem 3rem;
     // }
     svg {
-        width: 1.3rem;
+        width: 1.8rem;
         // fill: rgba(243, 207, 255, 0.75);
         fill: $font-color;
         &:hover, &:active {
@@ -317,14 +322,12 @@ hr {
         }
     }
 }
+.st-custom-button {
+    padding-right: 1rem;
+}
 .st-custom-button[data-network="twitter"] {
     padding-left: 0.8rem;
-    padding-right: 0.8rem;
 }
-.st-custom-button[data-network="facebook"] {
-    padding-right: 0.8rem;
-}
-.st-custom-button[data-network="pinterest"] {}
 
 /* -----------------
 * Buttons
@@ -587,8 +590,7 @@ table {
     box-shadow: 1px 1px 1px rgba(0,0,0,0.1), 
                 1px 1px 3px 0px rgba(0,0,0,0.02);
     background: rgb(90,69,255);
-    background: linear-gradient(100deg, rgb(214, 214, 214) 0%, 
-            rgb(214, 214, 214) 90%);    
+    background: linear-gradient(100deg, #5a45ff40, #5a45ff40);    
 }
 .card-detail {
     display: block;

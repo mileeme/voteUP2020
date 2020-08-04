@@ -722,6 +722,11 @@ hr {
   font-size: 1rem;
 }
 
+.logo svg {
+  fill: #ffffff;
+  width: 4rem;
+}
+
 .hero {
   display: block;
   margin-top: -7rem;
@@ -819,12 +824,13 @@ hr {
 .sharethis {
   display: flex;
   flex-direction: row;
+  padding: 1rem 1.5rem 3rem;
   align-items: center;
   cursor: pointer;
 }
 
 .sharethis svg {
-  width: 1.3rem;
+  width: 1.8rem;
   fill: #425466;
 }
 
@@ -832,13 +838,12 @@ hr {
   fill: #5A45FF;
 }
 
-.st-custom-button[data-network="twitter"] {
-  padding-left: 0.8rem;
-  padding-right: 0.8rem;
+.st-custom-button {
+  padding-right: 1rem;
 }
 
-.st-custom-button[data-network="facebook"] {
-  padding-right: 0.8rem;
+.st-custom-button[data-network="twitter"] {
+  padding-left: 0.8rem;
 }
 
 /* -----------------
@@ -1106,7 +1111,7 @@ table {
   font-weight: 500;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1), 1px 1px 3px 0px rgba(0, 0, 0, 0.02);
   background: #5a45ff;
-  background: linear-gradient(100deg, #d6d6d6 0%, #d6d6d6 90%);
+  background: linear-gradient(100deg, #5a45ff40, #5a45ff40);
 }
 
 .card-detail {
