@@ -714,6 +714,29 @@ hr {
   padding-bottom: 1.5rem;
 }
 
+.about-body .icon-mobile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+@media (min-width: 48rem) {
+  .about-body .icon-mobile {
+    padding-top: 0;
+  }
+}
+
+.about-body .icon-mobile svg {
+  fill: #425466;
+  margin-right: 1rem;
+  width: 2.5rem;
+}
+
+.about-body .icon-mobile svg:hover, .about-body .icon-mobile svg:active {
+  fill: #5A45FF;
+}
+
 /* -----------------
 * Heading
 ----------------- */
@@ -810,10 +833,10 @@ hr {
 }
 
 .hero-heading h1 {
-  background: -webkit-linear-gradient(#e5a6fff5, #ffe7f6);
+  background: -webkit-linear-gradient(#a3c4ff, #fcd0ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .hero-heading h6 {
@@ -1007,28 +1030,6 @@ footer .footer-container a:hover, footer .footer-container a:active {
 @media (min-width: 48rem) {
   footer .footer-container {
     padding: 2rem 4rem;
-  }
-  footer .footer-container div:nth-of-type(5) {
-    margin-left: auto;
-  }
-}
-
-footer .footer-container svg {
-  fill: #909090;
-  width: 1.2rem;
-}
-
-footer .footer-container svg:hover, footer .footer-container svg:active {
-  fill: #5A45FF;
-}
-
-footer .footer-container .icon-mobile {
-  padding-top: 1rem;
-}
-
-@media (min-width: 48rem) {
-  footer .footer-container .icon-mobile {
-    padding-top: 0;
   }
 }
 
