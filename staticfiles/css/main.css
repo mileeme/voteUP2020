@@ -990,6 +990,7 @@ footer {
 footer .footer-container {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   color: #909090;
 }
 
@@ -1006,6 +1007,28 @@ footer .footer-container a:hover, footer .footer-container a:active {
 @media (min-width: 48rem) {
   footer .footer-container {
     padding: 2rem 4rem;
+  }
+  footer .footer-container div:nth-of-type(5) {
+    margin-left: auto;
+  }
+}
+
+footer .footer-container svg {
+  fill: #909090;
+  width: 1.2rem;
+}
+
+footer .footer-container svg:hover, footer .footer-container svg:active {
+  fill: #5A45FF;
+}
+
+footer .footer-container .icon-mobile {
+  padding-top: 1rem;
+}
+
+@media (min-width: 48rem) {
+  footer .footer-container .icon-mobile {
+    padding-top: 0;
   }
 }
 

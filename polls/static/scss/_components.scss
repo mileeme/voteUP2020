@@ -483,6 +483,7 @@ footer {
     .footer-container {
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
         color: $note-color;
         a {
             font-size: $font-size * $small;
@@ -494,6 +495,22 @@ footer {
         }
         @include screen(md) {
             padding: 2rem 4rem;
+            div:nth-of-type(5) {
+                margin-left: auto;
+            } 
+        }
+        svg {
+            fill: $note-color;
+            width: 1.2rem;
+            &:hover, &:active {
+                fill: $primary-color;
+            }
+        }
+        .icon-mobile {
+            padding-top:1rem;
+            @include screen(md) {
+                padding-top: 0;
+            }
         }
     }
 }
