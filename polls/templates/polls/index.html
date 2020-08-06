@@ -7,6 +7,7 @@
 {% for election in election_list %}
 <div class="hero">
     <div id="scrollAnimate" class="container hero-heading">
+        <div class="trump-biden">{% include 'polls/drawingTrumpBiden.html' %}</div>
         <h6>{{ election.name|safe }}</h6>
         {% if election.description %}
         <h1>{{ election.description|safe }}</h1>
@@ -16,9 +17,8 @@
 
 <div class="container">
     <div class="card">
-       <div class="card-question background-secondary">
+       <div class="card-question">
             <p>The 2020 Presidential Election will be held on Tuesday, November 3. The current US president, Donald Trump and formal Vice president, Joe Biden are the contenders with different views on how our nation should be governed.</p>
-            <br>
             <hr>
             <p>Take the quiz to see which candidate matches your views.</p>
        </div>
@@ -166,7 +166,7 @@
         <div class="container sharethis">
             <p>Share:</p>
             <div data-network="twitter" class="st-custom-button" data-url="https://votup.app"
-                data-image="https://vote2020.s3-us-west-1.amazonaws.com/media/polls/profile_donald_trump_300px.png"
+                data-image="https://vote2020.s3-us-west-1.amazonaws.com/static/img/polls/votup_app_2020PresidentialCandidate_Quiz.png"
                 data-title="Trump or Biden? Who agrees with you most? | 2020 Presidential Candidate Match Quiz">
                 <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -174,7 +174,7 @@
                 </svg>
             </div>
             <div data-network="facebook" class="st-custom-button" data-url="https://votup.app"
-                data-image="https://vote2020.s3-us-west-1.amazonaws.com/media/polls/profile_donald_trump_300px.png"
+                data-image="https://vote2020.s3-us-west-1.amazonaws.com/static/img/polls/votup_app_2020PresidentialCandidate_Quiz.png"
                 data-title="Trump or Biden? Who agrees with you most? | 2020 Presidential Candidate Match Quiz">
                 <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -182,7 +182,7 @@
                 </svg>
             </div>
             <div data-network="pinterest" class="st-custom-button" data-url="https://votup.app"
-                data-image="https://vote2020.s3-us-west-1.amazonaws.com/media/polls/profile_donald_trump_300px.png"
+                data-image="https://vote2020.s3-us-west-1.amazonaws.com/static/img/polls/votup_app_2020PresidentialCandidate_Quiz.png"
                 data-title="Trump or Biden? Who agrees with you most? | 2020 Presidential Candidate Match Quiz">
                 <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
                     <path

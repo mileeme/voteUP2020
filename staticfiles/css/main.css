@@ -833,7 +833,7 @@ hr {
 }
 
 .hero-heading h1 {
-  background: -webkit-linear-gradient(#a3c4ff, #fcd0ff);
+  background: -webkit-linear-gradient(#000000, #170158);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 700;
