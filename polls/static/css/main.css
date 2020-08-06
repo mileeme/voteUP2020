@@ -755,8 +755,8 @@ hr {
   margin-bottom: -4rem;
   padding: 12rem 2rem 3rem;
   background-color: #1de0bc;
-  background: radial-gradient(ellipse at top, #1dffd6, #ffdfdf), radial-gradient(ellipse at bottom, #c537c7, #ffb8b8);
-  background-size: 100% 200%;
+  background: radial-gradient(ellipse at top, #38ffda, #ffdfdfb5), radial-gradient(ellipse at bottom, #c73737, #99da43);
+  background-size: 100% 100%;
   -webkit-animation: heroGradient 10s ease infinite;
   -moz-animation: heroGradient 10s ease infinite;
   -o-animation: heroGradient 10s ease infinite;
@@ -851,7 +851,7 @@ hr {
 
 .trump-biden {
   fill: #7970ff;
-  margin: -4rem 1rem -1rem -1rem;
+  margin: -4rem 1rem -1rem 0rem;
   width: 70%;
 }
 
