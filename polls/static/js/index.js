@@ -405,34 +405,34 @@ const registration = () => {
 // page animation 
 const animateOnScroll = () => {
     // scroll animation
-    // var scroll = window.requestAnimationFrame || function(callback) { window.setTimeout(callback, 1000/60) },
-    //     scrollAnimate = document.querySelectorAll('#scrollAnimate')
+    var scroll = window.requestAnimationFrame || function(callback) { window.setTimeout(callback, 1000/60) },
+        scrollAnimate = document.querySelectorAll('#scrollAnimate')
 
-    // loop()
+    loop()
 
-    // // loop animation
-    // function loop() {
-    //     scrollAnimate.forEach(element => {
-    //         if (isInViewport(element)) {
-    //             element.classList.add('is-heading-visible')
-    //         } else {
-    //             element.classList.remove('is-heading-visible')
-    //         }
-    //     })
-    //     scroll(loop)
-    // }
+    // loop animation
+    function loop() {
+        scrollAnimate.forEach(element => {
+            if (isInViewport(element)) {
+                element.classList.add('is-heading-visible')
+            } else {
+                element.classList.remove('is-heading-visible')
+            }
+        })
+        scroll(loop)
+    }
 
     // determine if element is in viewport
-    // function isInViewport(element) {
-    //     var rect = element.getBoundingClientRect();
-    //         html = document.documentElement;
-    //     return (
-    //         rect.top >= 0 &&
-    //         rect.left >= 0 &&
-    //         rect.bottom <= (window.innerHeight || html.clientHeight) &&
-    //         rect.right <= (window.innerWidth || html.clientWidth)
-    //     );
-    // }
+    function isInViewport(element) {
+        var rect = element.getBoundingClientRect();
+            html = document.documentElement;
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || html.clientHeight) &&
+            rect.right <= (window.innerWidth || html.clientWidth)
+        );
+    }
 }
 
 // buttons 

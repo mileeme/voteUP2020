@@ -678,8 +678,8 @@ hr {
   color: #425466;
   padding: 10rem 2rem 6rem;
   background-color: #1de0bc;
-  background: linear-gradient(190deg, #5A45FF, rgba(90, 69, 255, 0.2));
-  background-size: 300% 100%;
+  background: linear-gradient(180deg, #c0bfce, #ffffff);
+  background-size: 100% 100%;
 }
 
 .about h4 {
@@ -730,7 +730,7 @@ hr {
 .about-body .icon-mobile svg {
   fill: #425466;
   margin-right: 1rem;
-  width: 2rem;
+  width: 2.5rem;
 }
 
 .about-body .icon-mobile svg:hover, .about-body .icon-mobile svg:active {
@@ -854,12 +854,13 @@ hr {
 
 .trump-biden {
   fill: #7970ff;
-  margin: -2em 0 -1rem -1rem;
+  margin: -4rem 1rem -1rem -1rem;
 }
 
 @media (min-width: 48rem) {
   .trump-biden {
     margin: -3rem 0 -4rem;
+    width: 80%;
   }
 }
 
@@ -1159,7 +1160,7 @@ table {
   font-weight: 500;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1), 1px 1px 3px 0px rgba(0, 0, 0, 0.02);
   background: #5a45ff;
-  background: linear-gradient(100deg, #5a45ff26, #5a45ff26);
+  background: linear-gradient(100deg, #a09aff26, #aea4ff26);
 }
 
 .card-detail {

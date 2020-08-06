@@ -199,8 +199,8 @@ hr {
     // margin-bottom: 4rem;
     padding: 10rem 2rem 6rem;
     background-color: $secondary-color;
-    background: linear-gradient(190deg, $primary-color, transparentize($primary-color, 0.8));
-    background-size: 300% 100%;
+    background: linear-gradient(180deg, #c0bfce, $background);
+    background-size: 100% 100%;
     h4 {
         font-weight: 400;
         line-height: 1.4;
@@ -236,7 +236,7 @@ hr {
         svg {
             fill: $font-color;
             margin-right: 1rem;
-            width: 2rem;
+            width: 2.5rem;
             &:hover, &:active {
                 fill: $primary-color;
             }
@@ -270,14 +270,6 @@ hr {
     -moz-animation: heroGradient 10s ease infinite;
     -o-animation: heroGradient 10s ease infinite;
     animation: heroGradient 10s ease infinite;
-    h1 {
-        font-size: 2.2rem;
-        // color: $background;
-        // font-weight: 500;
-        @include screen(md) {
-            font-size: 3.3rem;
-        }
-    }
 }
 
 @-webkit-keyframes heroGradient {
@@ -310,8 +302,12 @@ hr {
         background: -webkit-linear-gradient(#ecefff, #ffffff);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+        font-size: 2.2rem;
         font-weight: 600;
         letter-spacing: -0.065rem;
+        @include screen(md) {
+            font-size: 3.3rem;
+        }
     }
     h6 {
         color: $font-color;
@@ -325,10 +321,18 @@ hr {
 }
 .trump-biden {
     fill: #7970ff;
-    margin: -2em 0 -1rem -1rem;
+    margin: -4rem 1rem -1rem -1rem;
     @include screen(md) {
         margin: -3rem 0 -4rem;
+        width: 80%;
     }
+}
+
+.is-heading-visible {
+    -webkit-animation: moveHeroHeading 10s ease infinite;
+    -moz-animation: moveHeroHeading 10s ease infinite;
+    -o-animation: moveHeroHeading 10s ease infinite;
+    animation: moveHeroHeading 10s ease infinite;
 }
 
 .sharethis {
@@ -593,10 +597,6 @@ table {
 .card-response {
     z-index: 1;
     padding: 0 2rem 4rem;
-    // background-image: url('https://vote2020.s3-us-west-1.amazonaws.com/static/img/polls/background_paper_wht_1400w.png');
-    // background-position: center;
-    // background-repeat: no-repeat;
-    // background-size: cover;
     border-bottom: 1px $border-style $background-secondary;
     font-weight: 400;
     cursor: pointer;
@@ -632,7 +632,7 @@ table {
     box-shadow: 1px 1px 1px rgba(0,0,0,0.1), 
                 1px 1px 3px 0px rgba(0,0,0,0.02);
     background: rgb(90,69,255);
-    background: linear-gradient(100deg, #5a45ff26, #5a45ff26);    
+    background: linear-gradient(100deg, #a09aff26, #aea4ff26);    
 }
 .card-detail {
     display: block;
