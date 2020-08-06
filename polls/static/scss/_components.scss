@@ -199,7 +199,7 @@ hr {
     // margin-bottom: 4rem;
     padding: 10rem 2rem 6rem;
     background-color: $secondary-color;
-    background: linear-gradient(180deg, #c0bfce, $background);
+    background: linear-gradient(180deg, transparentize($primary-color, 0.7), $background);
     background-size: 100% 100%;
     h4 {
         font-weight: 400;
@@ -252,7 +252,7 @@ hr {
 .logo {
     font-size: $h6-sm;
     svg {
-        fill: $background;
+        fill: $primary-color;
         width: 4rem;
     }
 }
@@ -263,8 +263,8 @@ hr {
     // padding-bottom: 6rem;
     padding: 12rem 2rem 3rem;
     background-color: $secondary-color;
-    background: radial-gradient(ellipse at top, #38ffda, #ffdfdfb5), 
-                radial-gradient(ellipse at bottom, #c73737, #99da43);
+    background: radial-gradient(ellipse at top, #8d45ff38, #fdffffcc), 
+                radial-gradient(ellipse at bottom, #f0e9fd, #ffffff);
     background-size: 100% 100%;
     -webkit-animation: heroGradient 10s ease infinite;
     -moz-animation: heroGradient 10s ease infinite;
@@ -294,12 +294,12 @@ hr {
 }
 
 .hero-heading {
-    padding: 0 0 6rem 1rem;
+    padding: 0 0 4rem 1rem;
     @include screen(md) {
         padding: 0 4rem 8rem;
     }
     h1 {
-        background: -webkit-linear-gradient($primary-color, $black);
+        background: -webkit-linear-gradient($primary-color, #281b96);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         font-size: 2.2rem;
@@ -322,10 +322,9 @@ hr {
 .trump-biden {
     fill: #7970ff;
     margin: -4rem 1rem -1rem 0rem;
-    width: 70%;
+    width: 80%;
     @include screen(md) {
         margin: -3rem 0 -4rem;
-        width: 50%;
     }
 }
 

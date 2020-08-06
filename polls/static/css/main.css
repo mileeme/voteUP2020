@@ -678,7 +678,7 @@ hr {
   color: #425466;
   padding: 10rem 2rem 6rem;
   background-color: #1de0bc;
-  background: linear-gradient(180deg, #c0bfce, #ffffff);
+  background: linear-gradient(180deg, rgba(90, 69, 255, 0.3), #ffffff);
   background-size: 100% 100%;
 }
 
@@ -745,7 +745,7 @@ hr {
 }
 
 .logo svg {
-  fill: #ffffff;
+  fill: #5A45FF;
   width: 4rem;
 }
 
@@ -755,7 +755,7 @@ hr {
   margin-bottom: -4rem;
   padding: 12rem 2rem 3rem;
   background-color: #1de0bc;
-  background: radial-gradient(ellipse at top, #38ffda, #ffdfdfb5), radial-gradient(ellipse at bottom, #c73737, #99da43);
+  background: radial-gradient(ellipse at top, #8d45ff38, #fdffffcc), radial-gradient(ellipse at bottom, #f0e9fd, #ffffff);
   background-size: 100% 100%;
   -webkit-animation: heroGradient 10s ease infinite;
   -moz-animation: heroGradient 10s ease infinite;
@@ -812,7 +812,7 @@ hr {
 }
 
 .hero-heading {
-  padding: 0 0 6rem 1rem;
+  padding: 0 0 4rem 1rem;
 }
 
 @media (min-width: 48rem) {
@@ -822,7 +822,7 @@ hr {
 }
 
 .hero-heading h1 {
-  background: -webkit-linear-gradient(#5A45FF, #000000);
+  background: -webkit-linear-gradient(#5A45FF, #281b96);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 2.2rem;
@@ -852,13 +852,12 @@ hr {
 .trump-biden {
   fill: #7970ff;
   margin: -4rem 1rem -1rem 0rem;
-  width: 70%;
+  width: 80%;
 }
 
 @media (min-width: 48rem) {
   .trump-biden {
     margin: -3rem 0 -4rem;
-    width: 50%;
   }
 }
 
