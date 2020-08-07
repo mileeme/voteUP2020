@@ -83,7 +83,7 @@
         *********************************************
         * replace 'is-results-show' with 'is-results-hide'
     -->
-    <div id="pollResults" class="is-results-hide">
+    <div id="pollResults" class="is-results-show">
 
         <!-- 
             end of results
@@ -127,7 +127,7 @@
                 </div>
             </div>
             <div class="profile-row">
-                <p class="profile-quote">{{ candidate.quote|safe }}</p>
+                <div class="profile-quote">{{ candidate.quote|safe }}</div>
             </div>
         </div>
         {% endfor %}

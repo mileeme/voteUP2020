@@ -294,7 +294,7 @@ hr {
 }
 
 .hero-heading {
-    padding: 0 0 4rem;
+    padding: 0 0 4rem 1rem;
     @include screen(md) {
         padding: 0 4rem 8rem;
     }
@@ -791,7 +791,7 @@ table {
 .card-candidate-profile {
     margin: $margin;
     padding: 1.5rem;
-    background: $background;
+    background-image: url('https://vote2020.s3-us-west-1.amazonaws.com/static/img/polls/background_paper_wht_1400w.png');
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-column-gap: 1.5rem;
@@ -827,8 +827,9 @@ table {
         border-top: 1px $border-style transparentize($color: $primary-color, $amount: 0.8);
     }
     .profile-quote {
-    // font-size: 0.9rem;
-    // line-height: 1.2rem;
+        ul {
+            padding: 1rem 0 0;
+        }
         @include screen(md) {
             padding: 2rem 4rem;
         }
@@ -916,7 +917,7 @@ table {
     width: 100%;
     height: 100%;
     // color: $primary-color;
-    background-color: #dedede;
+    background-image: url('https://vote2020.s3-us-west-1.amazonaws.com/static/img/polls/background_paper_gry_1400w.png');
     border-radius: 1rem;
     @include screen(md) {
         padding: 2rem 4rem;

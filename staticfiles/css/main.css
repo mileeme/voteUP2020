@@ -812,7 +812,7 @@ hr {
 }
 
 .hero-heading {
-  padding: 0 0 4rem;
+  padding: 0 0 4rem 1rem;
 }
 
 @media (min-width: 48rem) {
@@ -1342,7 +1342,7 @@ table {
 .card-candidate-profile {
   margin: 1rem;
   padding: 1.5rem;
-  background: #ffffff;
+  background-image: url("https://vote2020.s3-us-west-1.amazonaws.com/static/img/polls/background_paper_wht_1400w.png");
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-column-gap: 1.5rem;
@@ -1383,6 +1383,10 @@ table {
   align-self: center;
   padding: 2.5rem 0;
   border-top: 1px solid rgba(90, 69, 255, 0.2);
+}
+
+.card-candidate-profile .profile-quote ul {
+  padding: 1rem 0 0;
 }
 
 @media (min-width: 48rem) {
@@ -1474,7 +1478,7 @@ table {
   padding: 2rem;
   width: 100%;
   height: 100%;
-  background-color: #dedede;
+  background-image: url("https://vote2020.s3-us-west-1.amazonaws.com/static/img/polls/background_paper_gry_1400w.png");
   border-radius: 1rem;
 }
 
