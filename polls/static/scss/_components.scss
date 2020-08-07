@@ -294,7 +294,7 @@ hr {
 }
 
 .hero-heading {
-    padding: 0 0 4rem;
+    padding: 0 0 4rem 1rem;
     @include screen(md) {
         padding: 0 4rem 8rem;
     }
