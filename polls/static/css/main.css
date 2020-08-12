@@ -755,60 +755,6 @@ hr {
   margin-bottom: -4rem;
   padding: 12rem 2rem 3rem;
   background-color: #1de0bc;
-  background: radial-gradient(ellipse at top, #8d45ff38, #fdffffcc), radial-gradient(ellipse at bottom, #f0e9fd, #ffffff);
-  background-size: 100% 100%;
-  -webkit-animation: heroGradient 10s ease infinite;
-  -moz-animation: heroGradient 10s ease infinite;
-  -o-animation: heroGradient 10s ease infinite;
-  animation: heroGradient 10s ease infinite;
-}
-
-@-webkit-keyframes heroGradient {
-  0% {
-    background-position: 50% 0%;
-  }
-  50% {
-    background-position: 75% 50%;
-  }
-  50% {
-    background-position: 50% 0%;
-  }
-}
-
-@-moz-keyframes heroGradient {
-  0% {
-    background-position: 50% 0%;
-  }
-  50% {
-    background-position: 75% 50%;
-  }
-  100% {
-    background-position: 50% 0%;
-  }
-}
-
-@-o-keyframes heroGradient {
-  0% {
-    background-position: 50% 0%;
-  }
-  50% {
-    background-position: 75% 100%;
-  }
-  100% {
-    background-position: 50% 0%;
-  }
-}
-
-@keyframes heroGradient {
-  0% {
-    background-position: 50% 0%;
-  }
-  50% {
-    background-position: 75% 100%;
-  }
-  100% {
-    background-position: 50% 0%;
-  }
 }
 
 .hero-heading {
@@ -822,9 +768,8 @@ hr {
 }
 
 .hero-heading h1 {
-  background: -webkit-linear-gradient(#5A45FF, #281b96);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #ffffff;
+  text-shadow: rgba(255, 255, 255, 0.5) 0px 0px 2px;
   font-size: 2.2rem;
   font-weight: 600;
   letter-spacing: -0.065rem;
@@ -839,8 +784,8 @@ hr {
 .hero-heading h6 {
   color: #425466;
   line-height: 1.4;
-  font-weight: 700;
-  font-size: 0.85rem;
+  font-weight: 600;
+  font-size: 0.7rem;
 }
 
 @media (min-width: 48rem) {
@@ -850,7 +795,7 @@ hr {
 }
 
 .trump-biden {
-  fill: #7970ff;
+  fill: #font-color;
   margin: -4rem 1rem -1rem 0rem;
   width: 80%;
 }
