@@ -216,11 +216,11 @@ hr {
     }
 }
 .about-body {
-    padding: 5rem 2rem;
+    padding: 3rem 2rem 5rem;
     // background: $background;
     // margin-bottom: 3rem;
     @include screen(md) {
-        padding: 7rem 4rem;
+        padding: 3rem 4rem 5rem;
     }
     h1, h5 {
         padding-bottom: 1.5rem;
@@ -244,7 +244,27 @@ hr {
     }
 }
 
+.partner-container {
+    display: grid;
+    grid-gap: 1rem;
+    padding: 3rem 1rem 2rem;
+    border: $borders;
+    border-radius: 1rem;
+    @include screen(md) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    a {
+        text-decoration: underline;
+        &:hover, &:active {
+            color: $primary-color;
+        }
+    }
+}
 
+.partner-item-one {
+    align-self: center;
+    justify-self: center;
+}
 
 /* -----------------
 * Heading
@@ -595,6 +615,10 @@ table {
     p {
         font-weight: 500;
     }
+}
+.card-question-sponsor {
+    margin-left: 1rem;
+    width: 4.3rem;
 }
 .card-response {
     z-index: 1;

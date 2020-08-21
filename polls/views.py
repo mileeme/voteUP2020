@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from .models import Election, Candidate, Question, Response, RegisterToVote, Endorsement
 
@@ -42,3 +42,6 @@ def privacy(request):
         'registration_list': registration_list,
     }
     return render(request, template_name, context)
+
+def sheVotes(request):
+    return redirect('polls:index')

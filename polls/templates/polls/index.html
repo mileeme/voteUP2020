@@ -32,7 +32,7 @@
     <div class="card">
         <!-- question -->
         <div class="card-question">
-            <h6>{{ question.topic }}</h6>
+            <h6>{{ question.topic|safe }}</h6>
             <p id="question" data-id="{{ question.number }}">
                 {{ question|safe }}
             </p>
@@ -146,7 +146,7 @@
                     <!-- slide-wrapper -->
                     <div id="getMatch" class="slide-wrapper" style="display: none">
                         <div class="slide-question" data-question="{{ question.number }}">
-                            <h6>{{ question.topic }}</h6>
+                            <h6>{{ question.topic|safe }}</h6>
                             <p>{{ question|safe }}</p>
                         </div>
                         {% for response in response_list %}

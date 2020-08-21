@@ -701,12 +701,12 @@ hr {
 }
 
 .about-body {
-  padding: 5rem 2rem;
+  padding: 3rem 2rem 5rem;
 }
 
 @media (min-width: 48rem) {
   .about-body {
-    padding: 7rem 4rem;
+    padding: 3rem 4rem 5rem;
   }
 }
 
@@ -735,6 +735,33 @@ hr {
 
 .about-body .icon-mobile svg:hover, .about-body .icon-mobile svg:active {
   fill: #5A45FF;
+}
+
+.partner-container {
+  display: grid;
+  grid-gap: 1rem;
+  padding: 3rem 1rem 2rem;
+  border: 1px solid #CCCCCC;
+  border-radius: 1rem;
+}
+
+@media (min-width: 48rem) {
+  .partner-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.partner-container a {
+  text-decoration: underline;
+}
+
+.partner-container a:hover, .partner-container a:active {
+  color: #5A45FF;
+}
+
+.partner-item-one {
+  align-self: center;
+  justify-self: center;
 }
 
 /* -----------------
