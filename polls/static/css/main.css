@@ -780,8 +780,8 @@ hr {
   display: block;
   margin-top: -7rem;
   margin-bottom: -4rem;
-  padding: 12rem 2rem 3rem;
-  background-color: #da75af;
+  padding: 12rem 2rem 1rem;
+  background-color: #e063ffbf;
 }
 
 .hero-heading {
@@ -824,7 +824,7 @@ hr {
 .trump-biden {
   fill: #font-color;
   margin: -4rem 1rem -1rem 0rem;
-  width: 80%;
+  width: 85%;
 }
 
 @media (min-width: 48rem) {

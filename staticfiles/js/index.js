@@ -98,9 +98,9 @@ const response = () => {
         // update candidate percentage match
         matchPercentages.forEach((match) => {
             if (match.dataset.candidate == 1) {
-                match.innerHTML = candidate1Percentage + '% match'
+                match.innerHTML = Math.round(candidate1Percentage) + '% match'
             } else {
-                match.innerHTML = candidate2Percentage + '% match'
+                match.innerHTML = Math.round(candidate2Percentage) + '% match'
             }
         })
 

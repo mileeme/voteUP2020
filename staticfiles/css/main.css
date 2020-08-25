@@ -780,8 +780,8 @@ hr {
   display: block;
   margin-top: -7rem;
   margin-bottom: -4rem;
-  padding: 12rem 2rem 3rem;
-  background-color: #1de0bc;
+  padding: 12rem 2rem 1rem;
+  background-color: #e063ffbf;
 }
 
 .hero-heading {
@@ -809,7 +809,7 @@ hr {
 }
 
 .hero-heading h6 {
-  color: #425466;
+  color: #271645;
   line-height: 1.4;
   font-weight: 600;
   font-size: 0.7rem;
@@ -824,7 +824,7 @@ hr {
 .trump-biden {
   fill: #font-color;
   margin: -4rem 1rem -1rem 0rem;
-  width: 80%;
+  width: 85%;
 }
 
 @media (min-width: 48rem) {
@@ -1096,6 +1096,11 @@ table {
 
 .card-question p {
   font-weight: 500;
+}
+
+.card-question-sponsor {
+  margin-left: 1rem;
+  width: 4.3rem;
 }
 
 .card-response {
