@@ -282,7 +282,7 @@ hr {
     margin-bottom: -4rem;
     // padding-bottom: 6rem;
     padding: 12rem 2rem 1rem;
-    background-color: #e063ffbf;
+    background-color: $secondary-color;
     // background: radial-gradient(ellipse at top, #8d45ff38, #fdffffcc), 
     //             radial-gradient(ellipse at bottom, #f0e9fd, #ffffff);
     // background-size: 100% 100%;
@@ -323,7 +323,7 @@ hr {
         // -webkit-background-clip: text;
         // -webkit-text-fill-color: transparent;
         color: $background;
-        text-shadow: transparentize($color: $background, $amount: 0.5) 0px 0px 2px;
+        // text-shadow: transparentize($color: $background, $amount: 0.5) 0px 0px 2px;
         font-size: 2.2rem;
         font-weight: 600;
         letter-spacing: -0.065rem;
@@ -333,7 +333,7 @@ hr {
     }
     h6 {
         color: #271645;
-        line-height: 1.4;
+        // line-height: 1.4;
         font-weight: 600;
         font-size: 0.7rem;
         @include screen(md) {
